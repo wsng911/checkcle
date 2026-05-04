@@ -10,16 +10,16 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { authService } from "@/services/authService";
 import { AlertCircle, CheckCircle } from "lucide-react";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Alert, Alert描述 } from "@/components/ui/alert";
 import { useNavigate } from "react-router-dom";
 
 // Profile update form schema
 const profileFormSchema = z.object({
   full_name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
+    message: "名称 must be at least 2 characters.",
   }),
   username: z.string().min(3, {
-    message: "Username must be at least 3 characters.",
+    message: "用户名 must be at least 3 characters.",
   }),
   email: z.string().email({
     message: "Please enter a valid email address.",
@@ -33,7 +33,7 @@ interface UpdateProfileFormProps {
 }
 
 export function UpdateProfileForm({ user }: UpdateProfileFormProps) {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [is提交ting, setIs提交ting] = useState(false);
   const [updateError, setUpdateError] = useState<string | null>(null);
   const [updateSuccess, setUpdateSuccess] = useState<string | null>(null);
   const { toast } = useToast();
@@ -49,25 +49,25 @@ export function UpdateProfileForm({ user }: UpdateProfileFormProps) {
     },
   });
 
-  async function onSubmit(data: ProfileFormValues) {
-    setIsSubmitting(true);
+  async function on提交(data: ProfileFormValues) {
+    setIs提交ting(true);
     setUpdateError(null);
     setUpdateSuccess(null);
     
     try {
-      console.log("Submitting profile update with data:", data);
+      console.log("提交ting profile update with data:", data);
       
       // Detect if email is being changed
-      const isEmailChanged = data.email !== user.email;
+      const is邮箱Changed = data.email !== user.email;
       
-      // Create update payload with all fields
+      // 创建 update payload with all fields
       const updateData = {
         full_name: data.full_name,
         username: data.username,
         // Only include email if it's changed
-        email: isEmailChanged ? data.email : undefined,
+        email: is邮箱Changed ? data.email : undefined,
         // Always set emailVisibility to true if email is changing
-        emailVisibility: isEmailChanged ? true : undefined
+        emailVisibility: is邮箱Changed ? true : undefined
       };
       
       console.log("Sending update payload:", updateData);
@@ -76,11 +76,11 @@ export function UpdateProfileForm({ user }: UpdateProfileFormProps) {
       await userService.updateUser(user.id, updateData);
       
       // If email was changed, show success message and auto-logout
-      if (isEmailChanged) {
-        setUpdateSuccess("Email changed successfully! You will be logged out for security reasons. Please log in again with your new email.");
+      if (is邮箱Changed) {
+        setUpdateSuccess("邮箱 changed successfully! You will be logged out for security reasons. Please log in again with your new email.");
         
         toast({
-          title: "Email changed successfully",
+          title: "邮箱 changed successfully",
           description: "You will be logged out for security reasons. Please log in again with your new email.",
           variant: "default",
         });
@@ -116,26 +116,26 @@ export function UpdateProfileForm({ user }: UpdateProfileFormProps) {
         variant: "destructive",
       });
     } finally {
-      setIsSubmitting(false);
+      setIs提交ting(false);
     }
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form on提交={form.handle提交(on提交)} class名称="space-y-6">
         {updateError && (
           <Alert variant="destructive">
-            <AlertCircle className="h-4 w-4" />
-            <AlertDescription>{updateError}</AlertDescription>
+            <AlertCircle class名称="h-4 w-4" />
+            <Alert描述>{updateError}</Alert描述>
           </Alert>
         )}
         
         {updateSuccess && (
-          <Alert className="bg-green-50 border-green-200 text-green-800">
-            <CheckCircle className="h-4 w-4 text-green-600" />
-            <AlertDescription>
+          <Alert class名称="bg-green-50 border-green-200 text-green-800">
+            <CheckCircle class名称="h-4 w-4 text-green-600" />
+            <Alert描述>
               {updateSuccess}
-            </AlertDescription>
+            </Alert描述>
           </Alert>
         )}
 
@@ -144,7 +144,7 @@ export function UpdateProfileForm({ user }: UpdateProfileFormProps) {
           name="full_name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Full Name</FormLabel>
+              <FormLabel>Full 名称</FormLabel>
               <FormControl>
                 <Input placeholder="Your full name" {...field} />
               </FormControl>
@@ -158,9 +158,9 @@ export function UpdateProfileForm({ user }: UpdateProfileFormProps) {
           name="username"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>用户名</FormLabel>
               <FormControl>
-                <Input placeholder="Username" {...field} />
+                <Input placeholder="用户名" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -172,13 +172,13 @@ export function UpdateProfileForm({ user }: UpdateProfileFormProps) {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>邮箱</FormLabel>
               <FormControl>
                 <Input type="email" placeholder="your.email@example.com" {...field} />
               </FormControl>
               <FormMessage />
               {field.value !== user.email && (
-                <p className="text-xs text-muted-foreground mt-1">
+                <p class名称="text-xs text-muted-foreground mt-1">
                   Changing your email will log you out for security reasons. You will need to log in again with your new email.
                 </p>
               )}
@@ -186,8 +186,8 @@ export function UpdateProfileForm({ user }: UpdateProfileFormProps) {
           )}
         />
 
-        <Button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Saving..." : "Save Changes"}
+        <Button type="submit" disabled={is提交ting}>
+          {is提交ting ? "Saving..." : "保存 Changes"}
         </Button>
       </form>
     </Form>

@@ -5,7 +5,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogDescription
+  Dialog描述
 } from "@/components/ui/dialog";
 import { Service } from "@/types/service.types";
 import { ServiceUptimeHistory } from "@/components/services/ServiceUptimeHistory";
@@ -44,20 +44,20 @@ export const ServiceHistoryDialog = ({
   
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className={`${theme === 'dark' ? 'bg-black text-white border-gray-800' : 'bg-background text-foreground border-border'} sm:max-w-[800px]`}>
+      <DialogContent class名称={`${theme === 'dark' ? 'bg-black text-white border-gray-800' : 'bg-background text-foreground border-border'} sm:max-w-[800px]`}>
         <DialogHeader>
-          <DialogTitle className="text-xl">
+          <DialogTitle class名称="text-xl">
             {selectedService?.name} - Uptime History
           </DialogTitle>
-          <DialogDescription className={theme === 'dark' ? 'text-gray-400' : 'text-muted-foreground'}>
+          <Dialog描述 class名称={theme === 'dark' ? 'text-gray-400' : 'text-muted-foreground'}>
             Showing the most recent uptime checks for this service.
             {selectedService?.interval && (
               <span> Checked every {selectedService.interval} seconds.</span>
             )}
-          </DialogDescription>
+          </Dialog描述>
         </DialogHeader>
         
-        <div className="mb-4">
+        <div class名称="mb-4">
           <DateRangeFilter onRangeChange={handleDateRangeChange} />
         </div>
         

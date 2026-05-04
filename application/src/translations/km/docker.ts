@@ -1,8 +1,8 @@
 import { DockerTranslations } from '../types/docker';
 
 export const dockerTranslations: DockerTranslations = {
-  dockerContainers: "Containers Docker",
-  container: "Containers",
+  docker容器: "容器 Docker",
+  container: "容器",
   status: "ស្ថានភាព",
   cpuUsage: "ការប្រើប្រាស់ CPU",
   memory: "អង្គចងចាំ",
@@ -10,7 +10,7 @@ export const dockerTranslations: DockerTranslations = {
   uptime: "ពេលដំណើរការ",
   lastChecked: "បានពិនិត្យចុងក្រោយ",
   actions: "សកម្មភាព",
-  searchContainersPlaceholder: "ស្វែងរកContainers...",
+  search容器Placeholder: "ស្វែងរក容器...",
   refresh: "ធ្វើបច្ចុប្បន្នភាព",
   openMenu: "បើកម៉ឺនុយ",
   viewMetrics: "មើលមេត្រីក",
@@ -20,19 +20,19 @@ export const dockerTranslations: DockerTranslations = {
   stopped: "បានបញ្ឈប់",
   warning: "ការព្រមាន",
   unknown: "មិនស្គាល់",
-  totalContainers: "Containers សរុប",
-  containersLabel: "Containers",
+  total容器: "容器 សរុប",
+  containersLabel: "容器",
 
-  noContainersFound: "រកមិនឃើញContainers",
-  noContainersRunning: "គ្មានContainersកំពុងដំណើរការ",
-  tryAdjustSearch: "សូមព្យាយាមកែសម្រួលពាក្យស្វែងរករបស់អ្នក។",
-  startSomeContainers: "ចាប់ផ្តើមContainersខ្លះៗ ដើម្បីមើលពួកវានៅទីនេះ។",
+  no容器Found: "រកមិនឃើញ容器",
+  no容器Running: "គ្មាន容器កំពុងដំណើរការ",
+  tryAdjust搜索: "សូមព្យាយាមកែសម្រួលពាក្យស្វែងរករបស់អ្នក។",
+  startSome容器: "ចាប់ផ្តើម容器ខ្លះៗ ដើម្បីមើលពួកវានៅទីនេះ។",
 
-  containerMetricsTitle: "មេត្រីកContainers: {name}",
+  containerMetricsTitle: "មេត្រីក容器: {name}",
   dockerId: "Docker ID",
   loadingMetrics: "កំពុងផ្ទុកមេត្រីក...",
   errorLoadingMetrics: "កំហុសក្នុងការផ្ទុកមេត្រីក",
-  noMetricsAvailable: "គ្មានទិន្នន័យមេត្រីកសម្រាប់Containersនេះ",
+  noMetricsAvailable: "គ្មានទិន្នន័យមេត្រីកសម្រាប់容器នេះ",
 
   minutes60: "៦០ នាទី",
   day1: "១ ថ្ងៃ",

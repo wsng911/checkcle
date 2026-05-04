@@ -52,7 +52,7 @@ export const getAllIncidents = async (forceRefresh = false): Promise<IncidentIte
       setTimeout(() => reject(new Error('Request timeout')), 20000); // Longer timeout (20s)
     });
     
-    // Create the fetch promise with a unique request key to prevent conflicts
+    // 创建 the fetch promise with a unique request key to prevent conflicts
     const now = Date.now();
     const requestKey = `incidents-${now}`;
     const fetchPromise = pb.collection('incidents').getList(1, 100, {

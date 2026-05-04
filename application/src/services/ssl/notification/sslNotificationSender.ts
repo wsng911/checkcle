@@ -35,7 +35,7 @@ export async function sendSSLNotification(
     const alertConfig: AlertConfiguration = {
       id: alertConfigRecord.id,
       collectionId: alertConfigRecord.collectionId,
-      collectionName: alertConfigRecord.collectionName,
+      collection名称: alertConfigRecord.collection名称,
       service_id: alertConfigRecord.service_id || "",
       notification_type: alertConfigRecord.notification_type,
       telegram_chat_id: alertConfigRecord.telegram_chat_id,
@@ -50,7 +50,7 @@ export async function sendSSLNotification(
       updated: alertConfigRecord.updated
     };
     
-    // Create an SSL notification object for tracking
+    // 创建 an SSL notification object for tracking
     const sslNotification: SSLNotification = {
       certificateId: certificate.id,
       domain: certificate.domain,
@@ -81,7 +81,7 @@ async function sendNotificationByType(
   switch (alertConfig.notification_type) {
     case 'telegram':
       return await sendTelegramNotification(alertConfig, certificate, message, isCritical);
-    // Add other notification types as they are implemented
+    // 添加 other notification types as they are implemented
     // case 'discord':
     //   return await sendDiscordNotification(alertConfig, certificate, message, isCritical);
     // case 'slack':
@@ -115,7 +115,7 @@ async function sendTelegramNotification(
 Domain: ${certificate.domain}
 Days Remaining: ${certificate.days_left}
 Expiration Date: ${certificate.valid_till}
-Status: ${certificate.status.toUpperCase()}
+状态: ${certificate.status.toUpperCase()}
 
 ${message}
 

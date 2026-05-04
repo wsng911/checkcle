@@ -1,6 +1,6 @@
 
 import React from "react";
-import { FormField, FormItem, FormLabel, FormControl, FormMessage, FormDescription } from "@/components/ui/form";
+import { FormField, FormItem, FormLabel, FormControl, FormMessage, Form描述 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import { Control } from "react-hook-form";
 import { Card, CardContent } from "@/components/ui/card";
@@ -11,10 +11,10 @@ interface MessagesTabContentProps {
 
 export const MessagesTabContent: React.FC<MessagesTabContentProps> = ({ control }) => {
   return (
-    <div className="space-y-6">
+    <div class名称="space-y-6">
       <Card>
-        <CardContent className="pt-6">
-          <div className="space-y-4">
+        <CardContent class名称="pt-6">
+          <div class名称="space-y-4">
             <FormField
               control={control}
               name="up_message"
@@ -24,13 +24,13 @@ export const MessagesTabContent: React.FC<MessagesTabContentProps> = ({ control 
                   <FormControl>
                     <Textarea 
                       placeholder="Service ${service_name} is UP. Response time: ${response_time}ms" 
-                      className="min-h-24"
+                      class名称="min-h-24"
                       {...field} 
                     />
                   </FormControl>
-                  <FormDescription>
+                  <Form描述>
                     Message sent when a service returns to UP status
-                  </FormDescription>
+                  </Form描述>
                   <FormMessage />
                 </FormItem>
               )}
@@ -44,14 +44,14 @@ export const MessagesTabContent: React.FC<MessagesTabContentProps> = ({ control 
                   <FormLabel>Down Message</FormLabel>
                   <FormControl>
                     <Textarea 
-                      placeholder="Service ${service_name} is DOWN. Status: ${status}" 
-                      className="min-h-24"
+                      placeholder="Service ${service_name} is DOWN. 状态: ${status}" 
+                      class名称="min-h-24"
                       {...field} 
                     />
                   </FormControl>
-                  <FormDescription>
+                  <Form描述>
                     Message sent when a service goes DOWN
-                  </FormDescription>
+                  </Form描述>
                   <FormMessage />
                 </FormItem>
               )}
@@ -61,8 +61,8 @@ export const MessagesTabContent: React.FC<MessagesTabContentProps> = ({ control 
       </Card>
       
       <Card>
-        <CardContent className="pt-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <CardContent class名称="pt-6">
+          <div class名称="grid grid-cols-1 md:grid-cols-3 gap-4">
             <FormField
               control={control}
               name="maintenance_message"
@@ -72,7 +72,7 @@ export const MessagesTabContent: React.FC<MessagesTabContentProps> = ({ control 
                   <FormControl>
                     <Textarea 
                       placeholder="Service ${service_name} is under maintenance" 
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>
@@ -90,7 +90,7 @@ export const MessagesTabContent: React.FC<MessagesTabContentProps> = ({ control 
                   <FormControl>
                     <Textarea 
                       placeholder="Warning: Service ${service_name} has an incident" 
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>
@@ -108,7 +108,7 @@ export const MessagesTabContent: React.FC<MessagesTabContentProps> = ({ control 
                   <FormControl>
                     <Textarea 
                       placeholder="Issue with service ${service_name} has been resolved" 
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>

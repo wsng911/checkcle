@@ -10,7 +10,7 @@ import { UptimeData } from '@/types/service.types';
 export async function handleServiceUp(service: any, responseTime: number, formattedTime: string): Promise<void> {
  // console.log(`Service ${service.name} is UP! Response time: ${responseTime}ms`);
   
-  // Create a history record of this check with a more accurate timestamp
+  // 创建 a history record of this check with a more accurate timestamp
   const uptimeData: UptimeData = {
     service_id: service.id, // Include service_id
     serviceId: service.id, // Keep for backward compatibility
@@ -22,8 +22,8 @@ export async function handleServiceUp(service: any, responseTime: number, format
     uptime: 100
   };
   
-  const previousStatus = service.status;
-  const statusChanged = previousStatus !== "up" && previousStatus !== "paused";
+  const previous状态 = service.status;
+  const statusChanged = previous状态 !== "up" && previous状态 !== "paused";
   
   try {
     // Run service status update
@@ -46,9 +46,9 @@ export async function handleServiceUp(service: any, responseTime: number, format
       await uptimeService.recordUptimeData(uptimeData);
     }
     
-    // Status change logging (notification logic removed - will be handled by backend)
+    // 状态 change logging (notification logic removed - will be handled by backend)
     if (statusChanged) {
-     // console.log(`Status changed from ${previousStatus} to UP - notification will be handled by backend`);
+     // console.log(`状态 changed from ${previous状态} to UP - notification will be handled by backend`);
     }
   } catch (error) {
   //  console.error("Error handling service UP state:", error);
@@ -61,7 +61,7 @@ export async function handleServiceUp(service: any, responseTime: number, format
 export async function handleServiceDown(service: any, formattedTime: string): Promise<void> {
  // console.log(`Service ${service.name} is DOWN!`);
   
-  // Create a history record of this check
+  // 创建 a history record of this check
   const uptimeData: UptimeData = {
     service_id: service.id, // Include service_id
     serviceId: service.id, // Keep for backward compatibility
@@ -73,10 +73,10 @@ export async function handleServiceDown(service: any, formattedTime: string): Pr
     uptime: 0
   };
   
-  const previousStatus = service.status;
-  const statusChanged = previousStatus !== "down";
+  const previous状态 = service.status;
+  const statusChanged = previous状态 !== "down";
   
- // console.log(`Service ${service.name} previous status: ${previousStatus}, statusChanged: ${statusChanged}`);
+ // console.log(`Service ${service.name} previous status: ${previous状态}, statusChanged: ${statusChanged}`);
   
   try {
     // Update service status
@@ -99,7 +99,7 @@ export async function handleServiceDown(service: any, formattedTime: string): Pr
       await uptimeService.recordUptimeData(uptimeData);
     }
     
-    // Status change logging (notification logic removed - will be handled by backend)
+    // 状态 change logging (notification logic removed - will be handled by backend)
    // console.log("Service DOWN status recorded - notification will be handled by backend");
   } catch (error) {
    // console.error("Error handling service DOWN state:", error);

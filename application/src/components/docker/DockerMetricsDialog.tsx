@@ -201,27 +201,27 @@ export const DockerMetricsDialog = ({ container, open, onOpenChange }: DockerMet
     icon: any;
     color: string;
   }) => (
-    <div className="bg-muted/30 rounded-lg p-4 space-y-2">
-      <div className="flex items-center gap-2">
-        <Icon className="h-4 w-4" style={{ color }} />
-        <span className="text-sm font-medium">{title}</span>
+    <div class名称="bg-muted/30 rounded-lg p-4 space-y-2">
+      <div class名称="flex items-center gap-2">
+        <Icon class名称="h-4 w-4" style={{ color }} />
+        <span class名称="text-sm font-medium">{title}</span>
       </div>
-      <div className="space-y-1 text-xs">
-        <div className="flex justify-between">
-          <span className="text-muted-foreground">Used:</span>
-          <span className="font-mono">{used}</span>
+      <div class名称="space-y-1 text-xs">
+        <div class名称="flex justify-between">
+          <span class名称="text-muted-foreground">Used:</span>
+          <span class名称="font-mono">{used}</span>
         </div>
-        <div className="flex justify-between">
-          <span className="text-muted-foreground">Free:</span>
-          <span className="font-mono">{free}</span>
+        <div class名称="flex justify-between">
+          <span class名称="text-muted-foreground">Free:</span>
+          <span class名称="font-mono">{free}</span>
         </div>
-        <div className="flex justify-between">
-          <span className="text-muted-foreground">Total:</span>
-          <span className="font-mono">{total}</span>
+        <div class名称="flex justify-between">
+          <span class名称="text-muted-foreground">Total:</span>
+          <span class名称="font-mono">{total}</span>
         </div>
-        <div className="flex justify-between">
-          <span className="text-muted-foreground">Usage:</span>
-          <span className="font-mono">{percentage.toFixed(1)}%</span>
+        <div class名称="flex justify-between">
+          <span class名称="text-muted-foreground">Usage:</span>
+          <span class名称="font-mono">{percentage.toFixed(1)}%</span>
         </div>
       </div>
     </div>
@@ -231,18 +231,18 @@ export const DockerMetricsDialog = ({ container, open, onOpenChange }: DockerMet
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-7xl max-h-[95vh] overflow-y-auto bg-background text-foreground">
+      <DialogContent class名称="max-w-7xl max-h-[95vh] overflow-y-auto bg-background text-foreground">
         <DialogHeader>
-          <DialogTitle className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded bg-primary/10 flex items-center justify-center">
-                <Cpu className="h-4 w-4 text-primary" />
+          <DialogTitle class名称="flex items-center justify-between">
+              <div class名称="flex items-center gap-2">
+              <div class名称="h-8 w-8 rounded bg-primary/10 flex items-center justify-center">
+                <Cpu class名称="h-4 w-4 text-primary" />
               </div>
                 {t('containerMetricsTitle', 'docker', { name: container.name })}
             </div>
-            <div className="flex items-center gap-2">
+            <div class名称="flex items-center gap-2">
               <Select value={timeRange} onValueChange={(value: TimeRange) => setTimeRange(value)}>
-                <SelectTrigger className="w-[140px] h-8">
+                <SelectTrigger class名称="w-[140px] h-8">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -255,29 +255,29 @@ export const DockerMetricsDialog = ({ container, open, onOpenChange }: DockerMet
               </Select>
             </div>
           </DialogTitle>
-          <p className="text-sm text-muted-foreground">
+          <p class名称="text-sm text-muted-foreground">
             {t('dockerId', 'docker')}: {container.docker_id} • {container.hostname}
           </p>
         </DialogHeader>
 
         {isLoading ? (
-          <div className="flex items-center justify-center h-96">
-            <Loader2 className="h-8 w-8 animate-spin" />
-            <span className="ml-2">{t('loadingMetrics', 'docker')}</span>
+          <div class名称="flex items-center justify-center h-96">
+            <Loader2 class名称="h-8 w-8 animate-spin" />
+            <span class名称="ml-2">{t('loadingMetrics', 'docker')}</span>
           </div>
         ) : error ? (
-          <div className="flex items-center justify-center h-96 text-muted-foreground">
+          <div class名称="flex items-center justify-center h-96 text-muted-foreground">
             <p>{t('errorLoadingMetrics', 'docker')}: {String((error as any)?.message ?? '')}</p>
           </div>
         ) : chartData.length === 0 ? (
-          <div className="flex items-center justify-center h-96 text-muted-foreground">
+          <div class名称="flex items-center justify-center h-96 text-muted-foreground">
             <p>{t('noMetricsAvailable', 'docker')}</p>
           </div>
         ) : (
           <>
             {/* Current Metrics Summary */}
             {latestMetric && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+              <div class名称="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                 <MetricCard
                   title={t('cpu', 'docker')}
                   used={`${latestMetric.cpuUsage}%`}
@@ -317,34 +317,34 @@ export const DockerMetricsDialog = ({ container, open, onOpenChange }: DockerMet
               </div>
             )}
 
-            <Tabs defaultValue="cpu" className="w-full">
-              <TabsList className="grid w-full grid-cols-4 bg-muted">
-                <TabsTrigger value="cpu" className="flex items-center gap-2 data-[state=active]:bg-background">
-                  <Cpu className="h-4 w-4" />
+            <Tabs defaultValue="cpu" class名称="w-full">
+              <TabsList class名称="grid w-full grid-cols-4 bg-muted">
+                <TabsTrigger value="cpu" class名称="flex items-center gap-2 data-[state=active]:bg-background">
+                  <Cpu class名称="h-4 w-4" />
                   {t('cpu', 'docker')}
                 </TabsTrigger>
-                <TabsTrigger value="memory" className="flex items-center gap-2 data-[state=active]:bg-background">
-                  <MemoryStick className="h-4 w-4" />
+                <TabsTrigger value="memory" class名称="flex items-center gap-2 data-[state=active]:bg-background">
+                  <MemoryStick class名称="h-4 w-4" />
                   {t('memoryTitle', 'docker')}
                 </TabsTrigger>
-                <TabsTrigger value="disk" className="flex items-center gap-2 data-[state=active]:bg-background">
-                  <HardDrive className="h-4 w-4" />
+                <TabsTrigger value="disk" class名称="flex items-center gap-2 data-[state=active]:bg-background">
+                  <HardDrive class名称="h-4 w-4" />
                   {t('diskTitle', 'docker')}
                 </TabsTrigger>
-                <TabsTrigger value="network" className="flex items-center gap-2 data-[state=active]:bg-background">
-                  <Network className="h-4 w-4" />
+                <TabsTrigger value="network" class名称="flex items-center gap-2 data-[state=active]:bg-background">
+                  <Network class名称="h-4 w-4" />
                   {t('network', 'docker')}
                 </TabsTrigger>
               </TabsList>
 
-              <TabsContent value="cpu" className="space-y-4 mt-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Card className="bg-card border-border">
+              <TabsContent value="cpu" class名称="space-y-4 mt-6">
+                <div class名称="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Card class名称="bg-card border-border">
                     <CardHeader>
-                      <CardTitle className="text-foreground">{t('cpuUsagePct', 'docker')}</CardTitle>
+                      <CardTitle class名称="text-foreground">{t('cpuUsagePct', 'docker')}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <ChartContainer config={chartConfig} className="h-80">
+                      <ChartContainer config={chartConfig} class名称="h-80">
                         <LineChart data={chartData}>
                           <CartesianGrid strokeDasharray="3 3" stroke={getGridColor()} />
                           <XAxis 
@@ -358,7 +358,7 @@ export const DockerMetricsDialog = ({ container, open, onOpenChange }: DockerMet
                             axisLine={{ stroke: getGridColor() }}
                           />
                           <ChartTooltip 
-                            content={<ChartTooltipContent className="bg-popover border-border" />}
+                            content={<ChartTooltipContent class名称="bg-popover border-border" />}
                             cursor={{ stroke: getGridColor() }}
                           />
                           <Line 
@@ -374,12 +374,12 @@ export const DockerMetricsDialog = ({ container, open, onOpenChange }: DockerMet
                     </CardContent>
                   </Card>
 
-                  <Card className="bg-card border-border">
+                  <Card class名称="bg-card border-border">
                     <CardHeader>
-                      <CardTitle className="text-foreground">{t('cpuUsageVsAvailable', 'docker')}</CardTitle>
+                      <CardTitle class名称="text-foreground">{t('cpuUsageVsAvailable', 'docker')}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <ChartContainer config={chartConfig} className="h-80">
+                      <ChartContainer config={chartConfig} class名称="h-80">
                         <AreaChart data={chartData}>
                           <CartesianGrid strokeDasharray="3 3" stroke={getGridColor()} />
                           <XAxis 
@@ -393,7 +393,7 @@ export const DockerMetricsDialog = ({ container, open, onOpenChange }: DockerMet
                             axisLine={{ stroke: getGridColor() }}
                           />
                           <ChartTooltip 
-                            content={<ChartTooltipContent className="bg-popover border-border" />}
+                            content={<ChartTooltipContent class名称="bg-popover border-border" />}
                             cursor={{ stroke: getGridColor() }}
                           />
                           <Area 
@@ -421,14 +421,14 @@ export const DockerMetricsDialog = ({ container, open, onOpenChange }: DockerMet
                 </div>
               </TabsContent>
 
-              <TabsContent value="memory" className="space-y-4 mt-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Card className="bg-card border-border">
+              <TabsContent value="memory" class名称="space-y-4 mt-6">
+                <div class名称="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Card class名称="bg-card border-border">
                     <CardHeader>
-                      <CardTitle className="text-foreground">{t('ramUsagePct', 'docker')}</CardTitle>
+                      <CardTitle class名称="text-foreground">{t('ramUsagePct', 'docker')}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <ChartContainer config={chartConfig} className="h-80">
+                      <ChartContainer config={chartConfig} class名称="h-80">
                         <AreaChart data={chartData}>
                           <CartesianGrid strokeDasharray="3 3" stroke={getGridColor()} />
                           <XAxis 
@@ -442,7 +442,7 @@ export const DockerMetricsDialog = ({ container, open, onOpenChange }: DockerMet
                             axisLine={{ stroke: getGridColor() }}
                           />
                           <ChartTooltip 
-                            content={<ChartTooltipContent className="bg-popover border-border" />}
+                            content={<ChartTooltipContent class名称="bg-popover border-border" />}
                             cursor={{ stroke: getGridColor() }}
                           />
                           <Area 
@@ -459,12 +459,12 @@ export const DockerMetricsDialog = ({ container, open, onOpenChange }: DockerMet
                     </CardContent>
                   </Card>
 
-                  <Card className="bg-card border-border">
+                  <Card class名称="bg-card border-border">
                     <CardHeader>
-                      <CardTitle className="text-foreground">{t('memoryUsageBytes', 'docker')}</CardTitle>
+                      <CardTitle class名称="text-foreground">{t('memoryUsageBytes', 'docker')}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <ChartContainer config={chartConfig} className="h-80">
+                      <ChartContainer config={chartConfig} class名称="h-80">
                         <AreaChart data={chartData}>
                           <CartesianGrid strokeDasharray="3 3" stroke={getGridColor()} />
                           <XAxis 
@@ -478,7 +478,7 @@ export const DockerMetricsDialog = ({ container, open, onOpenChange }: DockerMet
                             tickFormatter={(value) => formatBytes(value)}
                           />
                           <ChartTooltip 
-                            content={<ChartTooltipContent className="bg-popover border-border" />}
+                            content={<ChartTooltipContent class名称="bg-popover border-border" />}
                             cursor={{ stroke: getGridColor() }}
                             formatter={(value, name) => [
                               name === t('usedMemory', 'docker') ? formatBytes(Number(value)) : 
@@ -511,14 +511,14 @@ export const DockerMetricsDialog = ({ container, open, onOpenChange }: DockerMet
                 </div>
               </TabsContent>
 
-              <TabsContent value="disk" className="space-y-4 mt-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Card className="bg-card border-border">
+              <TabsContent value="disk" class名称="space-y-4 mt-6">
+                <div class名称="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Card class名称="bg-card border-border">
                     <CardHeader>
-                      <CardTitle className="text-foreground">{t('diskUsagePct', 'docker')}</CardTitle>
+                      <CardTitle class名称="text-foreground">{t('diskUsagePct', 'docker')}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <ChartContainer config={chartConfig} className="h-80">
+                      <ChartContainer config={chartConfig} class名称="h-80">
                         <AreaChart data={chartData}>
                           <CartesianGrid strokeDasharray="3 3" stroke={getGridColor()} />
                           <XAxis 
@@ -532,7 +532,7 @@ export const DockerMetricsDialog = ({ container, open, onOpenChange }: DockerMet
                             axisLine={{ stroke: getGridColor() }}
                           />
                           <ChartTooltip 
-                            content={<ChartTooltipContent className="bg-popover border-border" />}
+                            content={<ChartTooltipContent class名称="bg-popover border-border" />}
                             cursor={{ stroke: getGridColor() }}
                           />
                           <Area 
@@ -549,12 +549,12 @@ export const DockerMetricsDialog = ({ container, open, onOpenChange }: DockerMet
                     </CardContent>
                   </Card>
 
-                  <Card className="bg-card border-border">
+                  <Card class名称="bg-card border-border">
                     <CardHeader>
-                      <CardTitle className="text-foreground">{t('diskUsageBytes', 'docker')}</CardTitle>
+                      <CardTitle class名称="text-foreground">{t('diskUsageBytes', 'docker')}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <ChartContainer config={chartConfig} className="h-80">
+                      <ChartContainer config={chartConfig} class名称="h-80">
                         <AreaChart data={chartData}>
                           <CartesianGrid strokeDasharray="3 3" stroke={getGridColor()} />
                           <XAxis 
@@ -568,7 +568,7 @@ export const DockerMetricsDialog = ({ container, open, onOpenChange }: DockerMet
                             tickFormatter={(value) => formatBytes(value)}
                           />
                           <ChartTooltip 
-                            content={<ChartTooltipContent className="bg-popover border-border" />}
+                            content={<ChartTooltipContent class名称="bg-popover border-border" />}
                             cursor={{ stroke: getGridColor() }}
                             formatter={(value, name) => [
                               name === t('usedDisk', 'docker') ? formatBytes(Number(value)) : 
@@ -601,14 +601,14 @@ export const DockerMetricsDialog = ({ container, open, onOpenChange }: DockerMet
                 </div>
               </TabsContent>
 
-              <TabsContent value="network" className="space-y-4 mt-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Card className="bg-card border-border">
+              <TabsContent value="network" class名称="space-y-4 mt-6">
+                <div class名称="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Card class名称="bg-card border-border">
                     <CardHeader>
-                      <CardTitle className="text-foreground">{t('networkTraffic', 'docker')}</CardTitle>
+                      <CardTitle class名称="text-foreground">{t('networkTraffic', 'docker')}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <ChartContainer config={chartConfig} className="h-64">
+                      <ChartContainer config={chartConfig} class名称="h-64">
                         <LineChart data={chartData}>
                           <CartesianGrid strokeDasharray="3 3" stroke={getGridColor()} />
                           <XAxis 
@@ -621,7 +621,7 @@ export const DockerMetricsDialog = ({ container, open, onOpenChange }: DockerMet
                             axisLine={{ stroke: getGridColor() }}
                           />
                           <ChartTooltip 
-                            content={<ChartTooltipContent className="bg-popover border-border" />}
+                            content={<ChartTooltipContent class名称="bg-popover border-border" />}
                             cursor={{ stroke: getGridColor() }}
                           />
                           <Line 
@@ -645,12 +645,12 @@ export const DockerMetricsDialog = ({ container, open, onOpenChange }: DockerMet
                     </CardContent>
                   </Card>
 
-                  <Card className="bg-card border-border">
+                  <Card class名称="bg-card border-border">
                     <CardHeader>
-                      <CardTitle className="text-foreground">{t('networkSpeedKbs', 'docker')}</CardTitle>
+                      <CardTitle class名称="text-foreground">{t('networkSpeedKbs', 'docker')}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <ChartContainer config={chartConfig} className="h-64">
+                      <ChartContainer config={chartConfig} class名称="h-64">
                         <LineChart data={chartData}>
                           <CartesianGrid strokeDasharray="3 3" stroke={getGridColor()} />
                           <XAxis 
@@ -663,7 +663,7 @@ export const DockerMetricsDialog = ({ container, open, onOpenChange }: DockerMet
                             axisLine={{ stroke: getGridColor() }}
                           />
                           <ChartTooltip 
-                            content={<ChartTooltipContent className="bg-popover border-border" />}
+                            content={<ChartTooltipContent class名称="bg-popover border-border" />}
                             cursor={{ stroke: getGridColor() }}
                           />
                           <Line 

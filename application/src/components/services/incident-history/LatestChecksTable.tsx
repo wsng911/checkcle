@@ -2,12 +2,12 @@
 import { useState, useEffect, useMemo } from "react";
 import { UptimeData } from "@/types/service.types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { StatusFilterTabs } from "./StatusFilterTabs";
+import { 状态FilterTabs } from "./状态FilterTabs";
 import { TablePagination } from "./TablePagination";
 import { EmptyState } from "./EmptyState";
 import { IncidentTable } from "./IncidentTable";
-import { StatusFilter, PageSize } from "./types";
-import { getStatusChangeEvents } from "./utils";
+import { 状态Filter, PageSize } from "./types";
+import { get状态ChangeEvents } from "./utils";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -17,7 +17,7 @@ export function LatestChecksTable({ uptimeData }: { uptimeData: UptimeData[] }) 
 	const { t } = useLanguage();
   
   // Filter state
-  const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
+  const [statusFilter, set状态Filter] = useState<状态Filter>("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState<PageSize>("25");
   
@@ -28,9 +28,9 @@ export function LatestChecksTable({ uptimeData }: { uptimeData: UptimeData[] }) 
 
   // Filter incidents by status
   const incidents = useMemo(() => {
-    const statusChanges = getStatusChangeEvents(uptimeData);
+    const statusChanges = get状态ChangeEvents(uptimeData);
   //  console.log(`Total status changes: ${statusChanges.length}`);
-  //  console.log(`Status types in incidents: ${[...new Set(statusChanges.map(i => i.status))].join(', ')}`);
+  //  console.log(`状态 types in incidents: ${[...new Set(statusChanges.map(i => i.status))].join(', ')}`);
     
     if (statusFilter === "all") return statusChanges;
     
@@ -60,16 +60,16 @@ export function LatestChecksTable({ uptimeData }: { uptimeData: UptimeData[] }) 
   // Calculate items per page for pagination display
   const itemsPerPage = pageSize === "all" ? incidents.length : parseInt(pageSize, 10);
 
- // console.log(`Status Filter: ${statusFilter}, Incidents: ${incidents.length}, Includes paused: ${incidents.some(i => i.status === 'paused')}`);
+ // console.log(`状态 Filter: ${statusFilter}, Incidents: ${incidents.length}, Includes paused: ${incidents.some(i => i.status === 'paused')}`);
 
   return (
-    <Card className={`mb-6 transition-colors ${theme === 'dark' ? 'bg-card border-border' : 'bg-white border-gray-200'}`}>
+    <Card class名称={`mb-6 transition-colors ${theme === 'dark' ? 'bg-card border-border' : 'bg-white border-gray-200'}`}>
       <CardHeader>
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <CardTitle className="text-card-foreground">
+        <div class名称="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <CardTitle class名称="text-card-foreground">
             <span>{t("incidentHistory")}</span>
           </CardTitle>
-          <StatusFilterTabs statusFilter={statusFilter} onStatusFilterChange={setStatusFilter} />
+          <状态FilterTabs statusFilter={statusFilter} on状态FilterChange={set状态Filter} />
         </div>
       </CardHeader>
       <CardContent>

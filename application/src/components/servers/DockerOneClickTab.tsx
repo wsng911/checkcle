@@ -3,7 +3,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Copy, Download, Container } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, Card描述, CardHeader, CardTitle } from "@/components/ui/card";
 import { copyToClipboard } from "@/utils/copyUtils";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -11,13 +11,13 @@ interface DockerOneClickTabProps {
   serverToken: string;
   currentPocketBaseUrl: string;
   formData: {
-    serverName: string;
+    server名称: string;
     osType: string;
     checkInterval: string;
     retryAttempt: string;
   };
   serverId: string;
-  onDialogClose: () => void;
+  onDialog关闭: () => void;
 }
 
 export const DockerOneClickTab: React.FC<DockerOneClickTabProps> = ({
@@ -25,7 +25,7 @@ export const DockerOneClickTab: React.FC<DockerOneClickTabProps> = ({
   currentPocketBaseUrl,
   formData,
   serverId,
-  onDialogClose,
+  onDialog关闭,
 }) => {
   const { t } = useLanguage();
   const getDockerOneClickCommand = () => {
@@ -35,7 +35,7 @@ export const DockerOneClickTab: React.FC<DockerOneClickTabProps> = ({
 chmod +x server-docker-agent.sh
 SERVER_TOKEN="${serverToken}" \\
 POCKETBASE_URL="${currentPocketBaseUrl}" \\
-SERVER_NAME="${formData.serverName}" \\
+SERVER_NAME="${formData.server名称}" \\
 AGENT_ID="${serverId}" \\
 sudo -E bash ./server-docker-agent.sh`;
   };
@@ -47,7 +47,7 @@ sudo -E bash ./server-docker-agent.sh`;
   -p 8081:8081 \\
   --group-add 999 \\
   -e AGENT_ID="${serverId}" \\
-  -e SERVER_NAME="${formData.serverName}" \\
+  -e SERVER_NAME="${formData.server名称}" \\
   -e SERVER_TOKEN="${serverToken}" \\
   -e POCKETBASE_URL="${currentPocketBaseUrl}" \\
   -e POCKETBASE_ENABLED=true \\
@@ -82,41 +82,41 @@ sudo -E bash ./server-docker-agent.sh`;
   };
 
   return (
-    <div className="space-y-6">
+    <div class名称="space-y-6">
       {/* One-Click Docker Installation */}
-      <Card className="border-blue-500/20 bg-blue-50/50 dark:bg-blue-950/20">
+      <Card class名称="border-blue-500/20 bg-blue-50/50 dark:bg-blue-950/20">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-blue-700 dark:text-blue-400">
-            <Container className="h-5 w-5" />
+          <CardTitle class名称="flex items-center gap-2 text-blue-700 dark:text-blue-400">
+            <Container class名称="h-5 w-5" />
             {t('dockerOneClickTitle')}
           </CardTitle>
-          <CardDescription className="text-blue-600 dark:text-blue-300">
+          <Card描述 class名称="text-blue-600 dark:text-blue-300">
             {t('dockerOneClickDesc')}
-          </CardDescription>
+          </Card描述>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <Label className="text-blue-700 dark:text-blue-400">{t('dockerOneClickCommand')}</Label>
-            <div className="relative">
-              <pre className="bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 p-4 rounded-md text-sm overflow-x-auto whitespace-pre-wrap break-all text-blue-800 dark:text-blue-200">
+        <CardContent class名称="space-y-4">
+          <div class名称="space-y-2">
+            <Label class名称="text-blue-700 dark:text-blue-400">{t('dockerOneClickCommand')}</Label>
+            <div class名称="relative">
+              <pre class名称="bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 p-4 rounded-md text-sm overflow-x-auto whitespace-pre-wrap break-all text-blue-800 dark:text-blue-200">
                 <code>{getDockerOneClickCommand()}</code>
               </pre>
               <Button
                 type="button"
                 variant="outline"
                 size="sm"
-                className="absolute top-2 right-2 bg-blue-50 dark:bg-blue-950/50 border-blue-200 dark:border-blue-800 hover:bg-blue-100 dark:hover:bg-blue-900 text-blue-700 dark:text-blue-400"
+                class名称="absolute top-2 right-2 bg-blue-50 dark:bg-blue-950/50 border-blue-200 dark:border-blue-800 hover:bg-blue-100 dark:hover:bg-blue-900 text-blue-700 dark:text-blue-400"
                 onClick={handleCopyOneClickCommand}
               >
-                <Copy className="h-4 w-4 mr-1" />
+                <Copy class名称="h-4 w-4 mr-1" />
                 {t('copy')}
               </Button>
             </div>
           </div>
           
-          <div className="text-sm text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-800 p-3 rounded-md">
-            <p className="font-medium mb-1">{t('dockerScriptWill')}</p>
-            <ol className="list-decimal list-inside space-y-1 text-xs">
+          <div class名称="text-sm text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-800 p-3 rounded-md">
+            <p class名称="font-medium mb-1">{t('dockerScriptWill')}</p>
+            <ol class名称="list-decimal list-inside space-y-1 text-xs">
               <li>{t('dockerScriptStep1')}</li>
               <li>{t('dockerScriptStep2')}</li>
               <li>{t('dockerScriptStep3')}</li>
@@ -127,39 +127,39 @@ sudo -E bash ./server-docker-agent.sh`;
       </Card>
 
       {/* Direct Docker Run Command */}
-      <Card className="border-gray-500/20">
+      <Card class名称="border-gray-500/20">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Container className="h-5 w-5" />
+          <CardTitle class名称="flex items-center gap-2">
+            <Container class名称="h-5 w-5" />
             {t('directDockerTitle')}
           </CardTitle>
-          <CardDescription>
+          <Card描述>
             {t('directDockerDesc')}
-          </CardDescription>
+          </Card描述>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-2">
+        <CardContent class名称="space-y-4">
+          <div class名称="space-y-2">
             <Label>{t('dockerRunCommand')}</Label>
-            <div className="relative">
-              <pre className="bg-muted border p-4 rounded-md text-sm overflow-x-auto whitespace-pre-wrap break-all">
+            <div class名称="relative">
+              <pre class名称="bg-muted border p-4 rounded-md text-sm overflow-x-auto whitespace-pre-wrap break-all">
                 <code>{getDirectDockerCommand()}</code>
               </pre>
               <Button
                 type="button"
                 variant="outline"
                 size="sm"
-                className="absolute top-2 right-2"
+                class名称="absolute top-2 right-2"
                 onClick={handleCopyDockerCommand}
               >
-                <Copy className="h-4 w-4 mr-1" />
+                <Copy class名称="h-4 w-4 mr-1" />
                 {t('copy')}
               </Button>
             </div>
           </div>
 
-          <div className="text-sm text-muted-foreground bg-muted/50 border p-3 rounded-md">
-            <p className="font-medium mb-1">{t('dockerPrerequisites')}</p>
-            <ol className="list-decimal list-inside space-y-1 text-xs">
+          <div class名称="text-sm text-muted-foreground bg-muted/50 border p-3 rounded-md">
+            <p class名称="font-medium mb-1">{t('dockerPrerequisites')}</p>
+            <ol class名称="list-decimal list-inside space-y-1 text-xs">
               <li>{t('dockerPrereqStep1')}</li>
               <li>{t('dockerPrereqStep2')}</li>
               <li>{t('dockerPrereqStep3')}</li>
@@ -168,8 +168,8 @@ sudo -E bash ./server-docker-agent.sh`;
         </CardContent>
       </Card>
 
-      <div className="flex justify-end pt-4">
-        <Button onClick={onDialogClose}>
+      <div class名称="flex justify-end pt-4">
+        <Button onClick={onDialog关闭}>
           {t('done')}
         </Button>
       </div>

@@ -9,10 +9,10 @@ export const getServiceFormDefaults = (): ServiceFormData => ({
   port: "",
   interval: "60",
   retries: "3",
-  notificationStatus: "disabled",
+  notification状态: "disabled",
   notificationChannels: [],
   alertTemplate: "",
-  regionalMonitoringEnabled: false,
+  regional监控ingEnabled: false,
   regionalAgents: [],
 });
 
@@ -44,7 +44,7 @@ export const mapServiceToFormData = (service: Service): ServiceFormData => {
   
   // Parse multiple regional agents from comma-separated region_name and agent_id fields
   if (isRegionalEnabled && service.region_name && service.agent_id) {
-    const regionNames = service.region_name.includes(',') 
+    const region名称s = service.region_name.includes(',') 
       ? service.region_name.split(',').map(name => name.trim()).filter(name => name)
       : [service.region_name];
     
@@ -53,12 +53,12 @@ export const mapServiceToFormData = (service: Service): ServiceFormData => {
       : [service.agent_id];
     
     // Combine region names and agent IDs (they should have the same length)
-    const maxLength = Math.max(regionNames.length, agentIds.length);
+    const maxLength = Math.max(region名称s.length, agentIds.length);
     for (let i = 0; i < maxLength; i++) {
-      const regionName = regionNames[i] || regionNames[0] || "";
+      const region名称 = region名称s[i] || region名称s[0] || "";
       const agentId = agentIds[i] || agentIds[0] || "";
-      if (regionName && agentId) {
-        regionalAgents.push(`${regionName}|${agentId}`);
+      if (region名称 && agentId) {
+        regionalAgents.push(`${region名称}|${agentId}`);
       }
     }
   }
@@ -91,11 +91,11 @@ export const mapServiceToFormData = (service: Service): ServiceFormData => {
   }
 
   // Handle notification_status - it can be boolean or string
-  let notificationStatus: "enabled" | "disabled" = "disabled";
+  let notification状态: "enabled" | "disabled" = "disabled";
   if (typeof service.notification_status === "boolean") {
-    notificationStatus = service.notification_status ? "enabled" : "disabled";
+    notification状态 = service.notification_status ? "enabled" : "disabled";
   } else if (typeof service.notification_status === "string") {
-    notificationStatus = service.notification_status === "enabled" ? "enabled" : "disabled";
+    notification状态 = service.notification_status === "enabled" ? "enabled" : "disabled";
   }
 
   return {
@@ -105,23 +105,23 @@ export const mapServiceToFormData = (service: Service): ServiceFormData => {
     port: portValue,
     interval: String(service.interval || 60),
     retries: String(service.retries || 3),
-    notificationStatus: notificationStatus,
+    notification状态: notification状态,
     notificationChannels: notificationChannels,
     alertTemplate: service.alertTemplate === "default" ? "" : service.alertTemplate || "",
-    regionalMonitoringEnabled: isRegionalEnabled,
+    regional监控ingEnabled: isRegionalEnabled,
     regionalAgents: regionalAgents,
   };
 };
 
 export const mapFormDataToServiceData = (data: ServiceFormData) => {
   // Parse regional agent selections - store multiple agents as comma-separated values
-  let regionNames = "";
+  let region名称s = "";
   let agentIds = "";
-  let regionalStatus: "enabled" | "disabled" = "disabled";
+  let regional状态: "enabled" | "disabled" = "disabled";
   
   // Set regional status and agent data based on form values
-  if (data.regionalMonitoringEnabled && data.regionalAgents && data.regionalAgents.length > 0) {
-    regionalStatus = "enabled";
+  if (data.regional监控ingEnabled && data.regionalAgents && data.regionalAgents.length > 0) {
+    regional状态 = "enabled";
     
     // Extract region names and agent IDs from the selected agents
     const parsedRegions: string[] = [];
@@ -129,16 +129,16 @@ export const mapFormDataToServiceData = (data: ServiceFormData) => {
     
     data.regionalAgents.forEach(agentValue => {
       if (agentValue && agentValue !== "") {
-        const [regionName, agentId] = agentValue.split("|");
-        if (regionName && agentId) {
-          parsedRegions.push(regionName);
+        const [region名称, agentId] = agentValue.split("|");
+        if (region名称 && agentId) {
+          parsedRegions.push(region名称);
           parsedAgentIds.push(agentId);
         }
       }
     });
     
     // Store as comma-separated strings
-    regionNames = parsedRegions.join(',');
+    region名称s = parsedRegions.join(',');
     agentIds = parsedAgentIds.join(',');
   }
   
@@ -149,12 +149,12 @@ export const mapFormDataToServiceData = (data: ServiceFormData) => {
     interval: parseInt(data.interval),
     retries: parseInt(data.retries),
     // Convert string status to boolean for notification_status field
-    notificationStatus: data.notificationStatus === "enabled",
+    notification状态: data.notification状态 === "enabled",
     notificationChannels: data.notificationChannels || [],
     alertTemplate: data.alertTemplate === "default" ? "" : data.alertTemplate,
     // Use regional_status field and store multiple agents as comma-separated values
-    regionalStatus: regionalStatus,
-    regionName: regionNames,
+    regional状态: regional状态,
+    region名称: region名称s,
     agentId: agentIds,
     // Map the URL field to appropriate database field based on service type
     ...(data.type === "dns" 

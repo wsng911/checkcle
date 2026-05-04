@@ -6,14 +6,14 @@ import { Service } from '@/types/service.types';
 /**
  * Pause monitoring for a specific service
  */
-export async function pauseMonitoring(serviceId: string): Promise<void> {
+export async function pause监控ing(serviceId: string): Promise<void> {
   try {
     // Clear the monitoring interval if it exists
     const intervalId = monitoringIntervals.get(serviceId);
     if (intervalId) {
       clearInterval(intervalId);
       monitoringIntervals.delete(serviceId);
-     // console.log(`Monitoring paused for service ${serviceId}`);
+     // console.log(`监控ing paused for service ${serviceId}`);
     }
     
     // Get current timestamp formatted as a string

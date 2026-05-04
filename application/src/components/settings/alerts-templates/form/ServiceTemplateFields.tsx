@@ -11,13 +11,13 @@ interface ServiceTemplateFieldsProps {
 
 export const ServiceTemplateFields: React.FC<ServiceTemplateFieldsProps> = ({ control }) => {
   return (
-    <div className="space-y-6">
+    <div class名称="space-y-6">
       <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-sm font-medium">Service Status Messages</CardTitle>
+        <CardHeader class名称="pb-3">
+          <CardTitle class名称="text-sm font-medium">Service 状态 Messages</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class名称="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField
               control={control}
               name="up_message"
@@ -27,7 +27,7 @@ export const ServiceTemplateFields: React.FC<ServiceTemplateFieldsProps> = ({ co
                   <FormControl>
                     <Textarea 
                       placeholder="Service ${service_name} is UP. Response time: ${response_time}ms"
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>
@@ -44,8 +44,8 @@ export const ServiceTemplateFields: React.FC<ServiceTemplateFieldsProps> = ({ co
                   <FormLabel>Service Down Message</FormLabel>
                   <FormControl>
                     <Textarea 
-                      placeholder="Service ${service_name} is DOWN. Status: ${status}"
-                      className="min-h-20"
+                      placeholder="Service ${service_name} is DOWN. 状态: ${status}"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>
@@ -63,7 +63,7 @@ export const ServiceTemplateFields: React.FC<ServiceTemplateFieldsProps> = ({ co
                   <FormControl>
                     <Textarea 
                       placeholder="Service ${service_name} is under maintenance"
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>
@@ -81,7 +81,7 @@ export const ServiceTemplateFields: React.FC<ServiceTemplateFieldsProps> = ({ co
                   <FormControl>
                     <Textarea 
                       placeholder="Service ${service_name} has an incident"
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>
@@ -99,7 +99,7 @@ export const ServiceTemplateFields: React.FC<ServiceTemplateFieldsProps> = ({ co
                   <FormControl>
                     <Textarea 
                       placeholder="Issue with service ${service_name} has been resolved"
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>
@@ -117,7 +117,7 @@ export const ServiceTemplateFields: React.FC<ServiceTemplateFieldsProps> = ({ co
                   <FormControl>
                     <Textarea 
                       placeholder="Warning: Service ${service_name} response time is high"
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>

@@ -18,7 +18,7 @@ export const getBaseUrl = (): string => {
   return getCurrentEndpoint();
 };
 
-export const validateEmail = (email: string): boolean => {
+export const validate邮箱 = (email: string): boolean => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 };

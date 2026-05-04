@@ -26,7 +26,7 @@ export const IncidentConfigFields: React.FC = () => {
   const { control } = useFormContext<IncidentFormValues>();
 
   return (
-    <div className="grid grid-cols-1 gap-4">
+    <div class名称="grid grid-cols-1 gap-4">
       <FormField
         control={control}
         name="status"
@@ -36,7 +36,7 @@ export const IncidentConfigFields: React.FC = () => {
             <Select onValueChange={field.onChange} defaultValue={field.value}>
               <FormControl>
                 <SelectTrigger>
-                  <SelectValue placeholder={t('selectIncidentStatus')} />
+                  <SelectValue placeholder={t('selectIncident状态')} />
                 </SelectTrigger>
               </FormControl>
               <SelectContent>
@@ -57,30 +57,30 @@ export const IncidentConfigFields: React.FC = () => {
         control={control}
         name="impact"
         render={({ field }) => (
-          <FormItem className="space-y-2">
+          <FormItem class名称="space-y-2">
             <FormLabel>{t('impact')}</FormLabel>
             <FormControl>
               <RadioGroup
                 onValueChange={field.onChange}
                 defaultValue={field.value}
-                className="flex space-x-1"
+                class名称="flex space-x-1"
               >
-                <div className="flex items-center space-x-2">
+                <div class名称="flex items-center space-x-2">
                   <RadioGroupItem value="minor" id="minor" />
                   <Label htmlFor="minor">{t('minor')}</Label>
                 </div>
                 <span>•</span>
-                <div className="flex items-center space-x-2">
+                <div class名称="flex items-center space-x-2">
                   <RadioGroupItem value="major" id="major" />
                   <Label htmlFor="major">{t('major')}</Label>
                 </div>
                 <span>•</span>
-                <div className="flex items-center space-x-2">
+                <div class名称="flex items-center space-x-2">
                   <RadioGroupItem value="critical" id="critical" />
                   <Label htmlFor="critical">{t('critical')}</Label>
                 </div>
                 <span>•</span>
-                <div className="flex items-center space-x-2">
+                <div class名称="flex items-center space-x-2">
                   <RadioGroupItem value="none" id="none" />
                   <Label htmlFor="none">{t('none')}</Label>
                 </div>

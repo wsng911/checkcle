@@ -1,13 +1,13 @@
 
 import { pb } from '@/lib/pocketbase';
-import { Service, CreateServiceParams, UptimeData } from '@/types/service.types';
+import { Service, 创建ServiceParams, UptimeData } from '@/types/service.types';
 import { monitoringService } from './monitoring';
 import { uptimeService } from './uptimeService';
 
-export type { Service, UptimeData, CreateServiceParams };
+export type { Service, UptimeData, 创建ServiceParams };
 
 export const serviceService = {
-  async getServices(): Promise<Service[]> {
+  async get服务(): Promise<Service[]> {
     try {
       // First get the total count of records
       const countResponse = await pb.collection('services').getList(1, 1, {
@@ -35,7 +35,7 @@ export const serviceService = {
         interval: item.heartbeat_interval || item.interval || 60,
         retries: item.max_retries || item.retries || 3,
         notificationChannel: item.notification_id,
-        notification_channel: item.notification_channel, // Add this field for multiple channels support
+        notification_channel: item.notification_channel, // 添加 this field for multiple channels support
         notification_status: item.notification_status || false,
         alertTemplate: item.template_id,
         muteAlerts: item.alerts === "muted",  // Convert string to boolean for compatibility
@@ -45,7 +45,7 @@ export const serviceService = {
         region_name: item.region_name || "",
         agent_id: item.agent_id || "",
         regional_status: item.regional_status || "disabled",
-        regional_monitoring_enabled: item.regional_status === "enabled", // Backward compatibility
+        regional_monitoring_enabled: item.regional_status === "enabled", // 返回ward compatibility
       }));
     } catch (error) {
       throw new Error('Failed to load services data.');
@@ -69,7 +69,7 @@ export const serviceService = {
         heartbeat_interval: params.interval,
         max_retries: params.retries,
         // Store notification_status as boolean
-        notification_status: params.notificationStatus === true,
+        notification_status: params.notification状态 === true,
         // Always store channels and template if provided (don't clear based on status)
         notification_channel: params.notificationChannels && params.notificationChannels.length > 0 
           ? JSON.stringify(params.notificationChannels)
@@ -79,8 +79,8 @@ export const serviceService = {
           : null,
         template_id: params.alertTemplate || null,
         // Regional monitoring fields - use regional_status
-        regional_status: params.regionalStatus || "disabled",
-        region_name: params.regionName || "",
+        regional_status: params.regional状态 || "disabled",
+        region_name: params.region名称 || "",
         agent_id: params.agentId || "",
         // Conditionally add fields based on service type
         ...(serviceType === "dns" 
@@ -121,7 +121,7 @@ export const serviceService = {
       } as Service;
       
       // Immediately start monitoring for the new service
-      await monitoringService.startMonitoringService(record.id);
+      await monitoringService.start监控ingService(record.id);
       
       return newService;
     } catch (error) {
@@ -142,7 +142,7 @@ export const serviceService = {
         heartbeat_interval: params.interval,
         max_retries: params.retries,
         // Store notification_status as boolean - preserve existing channels/template
-        notification_status: params.notificationStatus === true,
+        notification_status: params.notification状态 === true,
         // Only update channels and template if they are provided (don't clear them)
         ...(params.notificationChannels && params.notificationChannels.length > 0 && {
           notification_channel: JSON.stringify(params.notificationChannels),
@@ -152,8 +152,8 @@ export const serviceService = {
           template_id: params.alertTemplate
         }),
         // Regional monitoring fields - use regional_status
-        regional_status: params.regionalStatus || "disabled",
-        region_name: params.regionName || "",
+        regional_status: params.regional状态 || "disabled",
+        region_name: params.region名称 || "",
         agent_id: params.agentId || "",
         // Conditionally update fields based on service type
         ...(serviceType === "dns" 
@@ -207,10 +207,10 @@ export const serviceService = {
   },
   
   // Control service monitoring
-  startMonitoringService: monitoringService.startMonitoringService,
-  pauseMonitoring: monitoringService.pauseMonitoring,
-  resumeMonitoring: monitoringService.resumeMonitoring,
-  startAllActiveServices: monitoringService.startAllActiveServices,
+  start监控ingService: monitoringService.start监控ingService,
+  pause监控ing: monitoringService.pause监控ing,
+  resume监控ing: monitoringService.resume监控ing,
+  startAllActive服务: monitoringService.startAllActive服务,
   
   // Re-export uptime functions
   recordUptimeData: uptimeService.recordUptimeData,

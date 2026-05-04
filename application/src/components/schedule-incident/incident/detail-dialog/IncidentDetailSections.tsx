@@ -42,7 +42,7 @@ export const IncidentDetailSections = ({ incident }: { incident: IncidentItem | 
   if (!incident) return null;
 
   return (
-    <div className="space-y-6">
+    <div class名称="space-y-6">
       <BasicInfoSection incident={incident} assignedUser={assignedUser} />
       <Separator />
       <TimelineSection incident={incident} assignedUser={assignedUser} />

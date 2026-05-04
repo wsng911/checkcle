@@ -6,8 +6,8 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { useIncidentData } from '../hooks/useIncidentData';
 import { IncidentItem } from '@/services/incident';
 import { useToast } from '@/hooks/use-toast';
-import { OverviewCards } from './OverviewCards';
-import { HeaderActions } from './HeaderActions';
+import { 概览Cards } from './概览Cards';
+import { Header操作 } from './Header操作';
 import { TabContent } from './TabContent';
 import { LoadingState } from '@/components/services/LoadingState';
 import { IncidentDetailDialog } from '../incident/detail-dialog/IncidentDetailDialog';
@@ -84,7 +84,7 @@ export const IncidentManagementContainer: React.FC<IncidentManagementContainerPr
   }, []);
 
   // Handle detail dialog close with refresh
-  const handleDetailDialogClose = useCallback((open: boolean) => {
+  const handleDetailDialog关闭 = useCallback((open: boolean) => {
     setDetailDialogOpen(open);
     if (!open) {
       // When dialog closes, refresh data
@@ -108,8 +108,8 @@ export const IncidentManagementContainer: React.FC<IncidentManagementContainerPr
 
   return (
     <>
-      {/* Overview Cards */}
-      <OverviewCards 
+      {/* 概览 Cards */}
+      <概览Cards 
         overviewStats={overviewStats} 
         loading={loading} 
         initialized={initialized} 
@@ -117,19 +117,19 @@ export const IncidentManagementContainer: React.FC<IncidentManagementContainerPr
 
       <Card>
         <CardHeader>
-          <HeaderActions 
+          <Header操作 
             onRefresh={handleManualRefresh} 
             isRefreshing={isRefreshing} 
           />
         </CardHeader>
         <CardContent>
-          <Tabs value={filter} className="w-full" onValueChange={handleTabChange}>
-            <TabsList className="mb-6">
+          <Tabs value={filter} class名称="w-full" onValueChange={handleTabChange}>
+            <TabsList class名称="mb-6">
               <TabsTrigger value="unresolved">{t('unresolvedIncidents')}</TabsTrigger>
               <TabsTrigger value="resolved">{t('resolvedIncidents')}</TabsTrigger>
             </TabsList>
 
-            <TabsContent value="unresolved" className="space-y-4">
+            <TabsContent value="unresolved" class名称="space-y-4">
               <TabContent 
                 error={error}
                 isEmpty={isEmpty}
@@ -143,7 +143,7 @@ export const IncidentManagementContainer: React.FC<IncidentManagementContainerPr
               />
             </TabsContent>
             
-            <TabsContent value="resolved" className="space-y-4">
+            <TabsContent value="resolved" class名称="space-y-4">
               <TabContent 
                 error={error}
                 isEmpty={isEmpty}
@@ -163,7 +163,7 @@ export const IncidentManagementContainer: React.FC<IncidentManagementContainerPr
       {/* Incident Detail Dialog */}
       <IncidentDetailDialog 
         open={detailDialogOpen}
-        onOpenChange={handleDetailDialogClose}
+        onOpenChange={handleDetailDialog关闭}
         incident={selectedIncident}
       />
     </>

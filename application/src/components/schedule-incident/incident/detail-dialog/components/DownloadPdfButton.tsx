@@ -8,23 +8,23 @@ import { IncidentItem } from '@/services/incident';
 
 interface DownloadPdfButtonProps {
   incident: IncidentItem;
-  className?: string;
+  class名称?: string;
 }
 
 export const DownloadPdfButton: React.FC<DownloadPdfButtonProps> = ({ 
   incident, 
-  className 
+  class名称 
 }) => {
   const { t } = useLanguage();
   const { handleDownloadPDF } = useDownloadIncidentPdf();
   
   return (
     <Button
-      className={`flex items-center gap-2 ${className || ''}`}
+      class名称={`flex items-center gap-2 ${class名称 || ''}`}
       onClick={() => handleDownloadPDF(incident)}
       variant="outline"
     >
-      <Download className="h-4 w-4" />
+      <Download class名称="h-4 w-4" />
       {t('downloadPdf', 'incident')}
     </Button>
   );

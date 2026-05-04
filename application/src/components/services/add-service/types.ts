@@ -10,10 +10,10 @@ export type ServiceFormData = {
   port?: string;
   interval: string;
   retries: string;
-  notificationStatus?: "enabled" | "disabled";
+  notification状态?: "enabled" | "disabled";
   notificationChannels?: string[];
   alertTemplate?: string;
-  regionalMonitoringEnabled?: boolean;
+  regional监控ingEnabled?: boolean;
   regionalAgents?: string[];
 };
 
@@ -21,7 +21,7 @@ export type ServiceFormData = {
 export const useServiceSchema = () => {
   const { t } = useLanguage();
   return z.object({
-      name: z.string().min(1, t("serviceNameRequired")),
+      name: z.string().min(1, t("service名称Required")),
       type: z.enum(["http", "ping", "tcp", "dns"]),
       url: z.string()
         .min(1, t("urlDomainHostRequired"))
@@ -36,11 +36,11 @@ export const useServiceSchema = () => {
       port: z.string().optional(),
       interval: z.string(),
       retries: z.string(),
-      notificationStatus: z.enum(["enabled", "disabled"]).optional(),
+      notification状态: z.enum(["enabled", "disabled"]).optional(),
       notificationChannels: z.array(z.string()).optional(),
       alertTemplate: z.string().optional(),
       // Regional monitoring fields - now supports multiple agents
-      regionalMonitoringEnabled: z.boolean().optional(),
+      regional监控ingEnabled: z.boolean().optional(),
       regionalAgents: z.array(z.string()).optional(),
     });
 };

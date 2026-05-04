@@ -1,12 +1,12 @@
 
-import { ServicesTranslations } from '../types/services';
+import { 服务Translations } from '../types/services';
 
-export const servicesTranslations: ServicesTranslations = {
-  serviceStatus: "ស្ថានភាព",
+export const servicesTranslations: 服务Translations = {
+  service状态: "ស្ថានភាព",
   uptime: "រយៈពេលដំណើរការ",
   lastChecked: "បានពិនិត្យចុងក្រោយ",
-  noServices: "គ្មានសេវាកម្មណាមួយត្រូវនឹងលក្ខណៈវិនិច្ឆ័យតម្រងរបស់អ្នកទេ។",
-  currentlyMonitoring: "កំពុងត្រួតពិនិត្យ",
+  no服务: "គ្មានសេវាកម្មណាមួយត្រូវនឹងលក្ខណៈវិនិច្ឆ័យតម្រងរបស់អ្នកទេ។",
+  currently监控ing: "កំពុងត្រួតពិនិត្យ",
   retry: "សាកល្បងម្តងទៀត",
   overview: "ទិដ្ឋភាពទូទៅ",
   newService: "សេវាកម្មថ្មី",
@@ -17,8 +17,8 @@ export const servicesTranslations: ServicesTranslations = {
   createNewServiceDesc: "បំពេញព័ត៌មានលម្អិតដើម្បីបង្កើតសេវាកម្មថ្មីសម្រាប់ត្រួតពិនិត្យ។",
 
   // ServiceBasicFields.tsx
-  serviceName: "ឈ្មោះសេវាកម្ម",
-  serviceNameDesc: "បញ្ចូលឈ្មោះដែលពិពណ៌នាអំពីសេវាកម្មរបស់អ្នក",
+  service名称: "ឈ្មោះសេវាកម្ម",
+  service名称Desc: "បញ្ចូលឈ្មោះដែលពិពណ៌នាអំពីសេវាកម្មរបស់អ្នក",
 
   // ServiceConfigFields.tsx
   checkInterval: "ចន្លោះពេលពិនិត្យ",
@@ -62,8 +62,8 @@ export const servicesTranslations: ServicesTranslations = {
   serviceTypeDNSDesc: "ត្រួតពិនិត្យការដោះស្រាយ DNS",
 
   // ServiceRegionalFields.tsx
-  regionalMonitoring: "ការត្រួតពិនិត្យតាមតំបន់",
-  regionalMonitoringDesc: "ចាត់តាំងសេវាកម្មនេះទៅភ្នាក់ងារត្រួតពិនិត្យតាមតំបន់សម្រាប់ការត្រួតពិនិត្យចែកចាយ",
+  regional监控ing: "ការត្រួតពិនិត្យតាមតំបន់",
+  regional监控ingDesc: "ចាត់តាំងសេវាកម្មនេះទៅភ្នាក់ងារត្រួតពិនិត្យតាមតំបន់សម្រាប់ការត្រួតពិនិត្យចែកចាយ",
   regionalAgents: "ភ្នាក់ងារតាមតំបន់",
   regionalAgentsLoading: "កំពុងផ្ទុកភ្នាក់ងារ...",
   regionalAgentsAvailablePlaceholder: "ជ្រើសរើសភ្នាក់ងារតាមតំបន់បន្ថែម...",
@@ -85,21 +85,21 @@ export const servicesTranslations: ServicesTranslations = {
   targetDefaultPlaceholder: "បញ្ចូល URL ឬឈ្មោះម៉ាស៊ីន",
 
   // types.ts
-  serviceNameRequired: "តម្រូវឱ្យមានឈ្មោះសេវាកម្ម",
+  service名称Required: "តម្រូវឱ្យមានឈ្មោះសេវាកម្ម",
   urlDomainHostRequired: "តម្រូវឱ្យមាន URL/ដែន/ម៉ាស៊ីន",
   enterValidUrlHostnameDomain: "សូមបញ្ចូល URL, ឈ្មោះម៉ាស៊ីន ឬដែនដែលត្រឹមត្រូវ",
   spacesNotAllowed: "មិនអនុញ្ញាតឱ្យមានចន្លោះទំនេរទេ",
 
-  // Dashboard
-  upServices: "សេវាកម្មដំណើរការ",
-  downServices: "សេវាកម្មមិនដំណើរការ",
-  pausedServices: "សេវាកម្មផ្អាក",
-  warningServices: "សេវាកម្មព្រមាន",
+  // 仪表盘
+  up服务: "សេវាកម្មដំណើរការ",
+  down服务: "សេវាកម្មមិនដំណើរការ",
+  paused服务: "សេវាកម្មផ្អាក",
+  warning服务: "សេវាកម្មព្រមាន",
 
-  // ServiceRowActions.tsx
+  // ServiceRow操作.tsx
   viewDetail: "មើលលម្អិត",
-  resumeMonitoring: "បន្តការត្រួតពិនិត្យ",
-  pauseMonitoring: "ផ្អាកការត្រួតពិនិត្យ",
+  resume监控ing: "បន្តការត្រួតពិនិត្យ",
+  pause监控ing: "ផ្អាកការត្រួតពិនិត្យ",
 
   // IncidentTable.tsx
   responseTime: "ពេលវេលាឆ្លើយតប",
@@ -115,7 +115,7 @@ export const servicesTranslations: ServicesTranslations = {
   monitoringPaused: "ការត្រួតពិនិត្យត្រូវបានផ្អាក",
   noAutomaticChecks: "គ្មានការពិនិត្យដោយស្វ័យប្រវត្តិ",
 
-  // ServiveEditDialog.tsx
+  // Servive编辑Dialog.tsx
   editService: "កែសម្រួលសេវាកម្ម",
   editServiceDesc: "ធ្វើបច្ចុប្បន្នភាពលម្អិតនៃសេវាកម្មដែលត្រូវបានត្រួតពិនិត្យរបស់អ្នក។",
 
@@ -126,11 +126,11 @@ export const servicesTranslations: ServicesTranslations = {
   basedOnlastChecksCount: "ផ្អែកលើការពិនិត្យចុងក្រោយ {count} ដង",
   totalUptime: "រយៈពេលដំណើរការសរុប",
   totalDowntime: "រយៈពេលមិនដំណើរការសរុប",
-  monitoringSettings: "ការកំណត់ការត្រួតពិនិត្យ",
-  monitoringSettingsInterval: "បានពិនិត្យរៀងរាល់ {interval} វិនាទី",
-  monitoringSettingsType: "ការត្រួតពិនិត្យ",
-  upStatusDuration: "ដំណើរការអស់រយៈពេល {duration}",
-  downStatusDuration: "មិនដំណើរការអស់រយៈពេល {duration}",
+  monitoring设置: "ការកំណត់ការត្រួតពិនិត្យ",
+  monitoring设置Interval: "បានពិនិត្យរៀងរាល់ {interval} វិនាទី",
+  monitoring设置Type: "ការត្រួតពិនិត្យ",
+  up状态Duration: "ដំណើរការអស់រយៈពេល {duration}",
+  down状态Duration: "មិនដំណើរការអស់រយៈពេល {duration}",
 
   incidentHistory: "ប្រវត្តិឧប្បត្តិហេតុ",
   processing: "កំពុងដំណើរការ",
@@ -168,7 +168,7 @@ export const servicesTranslations: ServicesTranslations = {
   // ManualInstallTab.tsx
   manualInstallTitle: "ជំហានការដំឡើងដោយដៃ",
   manualInstallDesc: "ដំណើរការដំឡើងជាជំហានៗ",
-  serverName: "ឈ្មោះម៉ាស៊ីនមេ",
+  server名称: "ឈ្មោះម៉ាស៊ីនមេ",
   agentId: "លេខសម្គាល់ភ្នាក់ងារ",
   osType: "ប្រភេទប្រព័ន្ធប្រតិបត្តិការ",
   downloadScript: "ទាញយកស្គ្រីបដំឡើង",
@@ -190,12 +190,12 @@ export const servicesTranslations: ServicesTranslations = {
   monitorServerMetrics: "ត្រួតពិនិត្យMetricsប្រសិទ្ធភាពម៉ាស៊ីនមេ និងសុខភាពប្រព័ន្ធ",
   serverHostnameIpOs: "{hostname} • {ip_address} • {os_type}",
 
-  // ContainerMonitoring.tsx
-  errorLoadingContainers: "កំហុសក្នុងការផ្ទុក Container",
+  // Container监控ing.tsx
+  errorLoading容器: "កំហុសក្នុងការផ្ទុក Container",
   unableToFetchContainerData: "មិនអាចទាញយកទិន្នន័យ Container បានទេ?। សូមពិនិត្យការតភ្ជាប់របស់អ្នក ហើយព្យាយាមម្តងទៀត។",
   errorUnknown: "កំហុសមិនស្គាល់",
-  containerMonitoring: "ការត្រួតពិនិត្យ Container",
-  monitorAndManageContainers: "ត្រួតពិនិត្យ និងគ្រប់គ្រង Docker Container របស់អ្នកក្នុងពេលជាក់ស្តែង",
+  container监控ing: "ការត្រួតពិនិត្យ Container",
+  monitorAndManage容器: "ត្រួតពិនិត្យ និងគ្រប់គ្រង Docker Container របស់អ្នកក្នុងពេលជាក់ស្តែង",
   serverIdLabel: "លេខសម្គាល់ម៉ាស៊ីនមេ",
 
 };

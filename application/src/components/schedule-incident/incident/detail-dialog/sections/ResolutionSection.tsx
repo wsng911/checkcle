@@ -14,23 +14,23 @@ export const ResolutionSection: React.FC<ResolutionSectionProps> = ({ incident }
   if (!incident) return null;
   
   return (
-    <div className="space-y-2">
-      <h3 className="font-semibold text-lg">{t('resolutionDetails')}</h3>
+    <div class名称="space-y-2">
+      <h3 class名称="font-semibold text-lg">{t('resolutionDetails')}</h3>
       
-      <div className="space-y-4">
+      <div class名称="space-y-4">
         <div>
-          <h4 className="text-sm font-medium text-muted-foreground">{t('rootCause')}</h4>
-          <p className="mt-1 whitespace-pre-line">{incident.root_cause || '-'}</p>
+          <h4 class名称="text-sm font-medium text-muted-foreground">{t('rootCause')}</h4>
+          <p class名称="mt-1 whitespace-pre-line">{incident.root_cause || '-'}</p>
         </div>
         
         <div>
-          <h4 className="text-sm font-medium text-muted-foreground">{t('resolutionSteps')}</h4>
-          <p className="mt-1 whitespace-pre-line">{incident.resolution_steps || '-'}</p>
+          <h4 class名称="text-sm font-medium text-muted-foreground">{t('resolutionSteps')}</h4>
+          <p class名称="mt-1 whitespace-pre-line">{incident.resolution_steps || '-'}</p>
         </div>
         
         <div>
-          <h4 className="text-sm font-medium text-muted-foreground">{t('lessonsLearned')}</h4>
-          <p className="mt-1 whitespace-pre-line">{incident.lessons_learned || '-'}</p>
+          <h4 class名称="text-sm font-medium text-muted-foreground">{t('lessonsLearned')}</h4>
+          <p class名称="mt-1 whitespace-pre-line">{incident.lessons_learned || '-'}</p>
         </div>
       </div>
     </div>

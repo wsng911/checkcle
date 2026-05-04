@@ -8,7 +8,7 @@ import {
   FormLabel, 
   FormControl, 
   FormMessage,
-  FormDescription 
+  Form描述 
 } from '@/components/ui/form';
 import { 
   Select, 
@@ -18,7 +18,7 @@ import {
   SelectValue 
 } from '@/components/ui/select';
 
-export const StatusField = () => {
+export const 状态Field = () => {
   const { t } = useLanguage();
   const form = useFormContext();
   
@@ -35,7 +35,7 @@ export const StatusField = () => {
           >
             <FormControl>
               <SelectTrigger>
-                <SelectValue placeholder={t('selectStatus')} />
+                <SelectValue placeholder={t('select状态')} />
               </SelectTrigger>
             </FormControl>
             <SelectContent>
@@ -45,9 +45,9 @@ export const StatusField = () => {
               <SelectItem value="cancelled">{t('cancelled')}</SelectItem>
             </SelectContent>
           </Select>
-          <FormDescription>
-            {t('statusDescription')}
-          </FormDescription>
+          <Form描述>
+            {t('status描述')}
+          </Form描述>
           <FormMessage />
         </FormItem>
       )}

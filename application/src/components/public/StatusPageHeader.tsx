@@ -3,55 +3,55 @@ import { OperationalPageRecord } from '@/types/operational.types';
 import { Shield, Globe, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-interface StatusPageHeaderProps {
+interface 状态PageHeaderProps {
   page: OperationalPageRecord;
 }
 
-export const StatusPageHeader = ({ page }: StatusPageHeaderProps) => {
+export const 状态PageHeader = ({ page }: 状态PageHeaderProps) => {
   return (
-    <header className="bg-background border-b border-border">
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
+    <header class名称="bg-background border-b border-border">
+      <div class名称="max-w-4xl mx-auto px-4 py-8">
+        <div class名称="flex items-center justify-between">
+          <div class名称="flex items-center gap-4">
             {page.logo_url ? (
               <img 
                 src={page.logo_url} 
                 alt={`${page.title} logo`}
-                className="h-12 w-12 rounded-lg object-cover"
+                class名称="h-12 w-12 rounded-lg object-cover"
               />
             ) : (
-              <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                <Shield className="h-6 w-6 text-primary" />
+              <div class名称="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                <Shield class名称="h-6 w-6 text-primary" />
               </div>
             )}
             <div>
-              <h1 className="text-3xl font-bold text-foreground">{page.title}</h1>
-              <p className="text-muted-foreground mt-1">{page.description}</p>
+              <h1 class名称="text-3xl font-bold text-foreground">{page.title}</h1>
+              <p class名称="text-muted-foreground mt-1">{page.description}</p>
             </div>
           </div>
           
-          <div className="flex items-center gap-3">
+          <div class名称="flex items-center gap-3">
             {page.custom_domain && (
               <Button variant="outline" size="sm" asChild>
                 <a 
                   href={`https://${page.custom_domain}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2"
+                  class名称="flex items-center gap-2"
                 >
-                  <Globe className="h-4 w-4" />
+                  <Globe class名称="h-4 w-4" />
                   Visit Site
-                  <ExternalLink className="h-3 w-3" />
+                  <ExternalLink class名称="h-3 w-3" />
                 </a>
               </Button>
             )}
             
-            <div className="text-right text-sm text-muted-foreground">
-              <div className="flex items-center gap-1">
-                <div className="h-2 w-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="font-medium">Live Status</span>
+            <div class名称="text-right text-sm text-muted-foreground">
+              <div class名称="flex items-center gap-1">
+                <div class名称="h-2 w-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span class名称="font-medium">Live 状态</span>
               </div>
-              <div className="text-xs">
+              <div class名称="text-xs">
                 Auto-updated every 30s
               </div>
             </div>
@@ -59,11 +59,11 @@ export const StatusPageHeader = ({ page }: StatusPageHeaderProps) => {
         </div>
         
         {/* Breadcrumb */}
-        <div className="mt-6 flex items-center gap-2 text-sm text-muted-foreground">
-          <Shield className="h-4 w-4" />
-          <span>Status Page</span>
+        <div class名称="mt-6 flex items-center gap-2 text-sm text-muted-foreground">
+          <Shield class名称="h-4 w-4" />
+          <span>状态 Page</span>
           <span>•</span>
-          <span className="text-foreground font-medium">{page.title}</span>
+          <span class名称="text-foreground font-medium">{page.title}</span>
         </div>
       </div>
     </header>

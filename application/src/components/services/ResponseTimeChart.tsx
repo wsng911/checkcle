@@ -77,7 +77,7 @@ export function ResponseTimeChart({ uptimeData }: ResponseTimeChartProps) {
           
           if (!hasRegionalDefault) {
             group.defaultValue = data.status === "paused" ? null : data.responseTime;
-            group.defaultStatus = data.status;
+            group.default状态 = data.status;
           }
         } else {
           // Regional monitoring data - distinguish by region and agent
@@ -187,13 +187,13 @@ export function ResponseTimeChart({ uptimeData }: ResponseTimeChartProps) {
     
     const regionalSources = sortedSources.map((source, index) => {
       const data = sourceInfo.get(source);
-      const [regionName, agentId] = source.split('|');
+      const [region名称, agentId] = source.split('|');
       
-      // Create proper label with region and agent info
-      let label = regionName;
+      // 创建 proper label with region and agent info
+      let label = region名称;
       if (data?.agent_id && data.agent_id !== '1') {
-        label = `${regionName} (Agent ${data.agent_id})`;
-      } else if (regionName === 'Default' && data?.agent_id === '1') {
+        label = `${region名称} (Agent ${data.agent_id})`;
+      } else if (region名称 === 'Default' && data?.agent_id === '1') {
         label = `Default System Check`;
       }
       
@@ -204,7 +204,7 @@ export function ResponseTimeChart({ uptimeData }: ResponseTimeChartProps) {
         label: label,
         stroke: fixedColors[colorIndex].stroke,
         fill: fixedColors[colorIndex].fill,
-        colorName: fixedColors[colorIndex].name
+        color名称: fixedColors[colorIndex].name
       };
     });
 
@@ -219,28 +219,28 @@ export function ResponseTimeChart({ uptimeData }: ResponseTimeChartProps) {
       label: 'Default System',
       stroke: fixedColors[regionalSources.length % fixedColors.length].stroke,
       fill: fixedColors[regionalSources.length % fixedColors.length].fill,
-      colorName: fixedColors[regionalSources.length % fixedColors.length].name
+      color名称: fixedColors[regionalSources.length % fixedColors.length].name
     }] : [];
 
     return [...defaultSources, ...regionalSources];
   }, [uptimeData, hasMultipleSources]);
   
-  // Create a custom tooltip for the chart
+  // 创建 a custom tooltip for the chart
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       
       return (
-        <div className={`${theme === 'dark' ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-200'} p-4 border rounded-lg shadow-lg min-w-64`}>
-          <p className="text-sm font-semibold mb-1">{String(label)}</p>
-          <p className="text-xs text-muted-foreground mb-3">{String(data.date)}</p>
+        <div class名称={`${theme === 'dark' ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-200'} p-4 border rounded-lg shadow-lg min-w-64`}>
+          <p class名称="text-sm font-semibold mb-1">{String(label)}</p>
+          <p class名称="text-xs text-muted-foreground mb-3">{String(data.date)}</p>
           
           {hasMultipleSources ? (
             // Multi-source tooltip
-            <div className="space-y-3">
+            <div class名称="space-y-3">
               {sources.map(source => {
                 const valueKey = source.key === 'default' ? 'defaultValue' : `${source.key}_value`;
-                const statusKey = source.key === 'default' ? 'defaultStatus' : `${source.key}_status`;
+                const statusKey = source.key === 'default' ? 'default状态' : `${source.key}_status`;
                 const value = data[valueKey];
                 const status = data[statusKey];
                 
@@ -266,22 +266,22 @@ export function ResponseTimeChart({ uptimeData }: ResponseTimeChartProps) {
                 }
                 
                 return (
-                  <div key={source.key} className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3 min-w-0 flex-1">
+                  <div key={source.key} class名称="flex items-center justify-between gap-3">
+                    <div class名称="flex items-center gap-3 min-w-0 flex-1">
                       <div 
-                        className="w-4 h-4 rounded-full border-2 border-white shadow-sm flex-shrink-0"
+                        class名称="w-4 h-4 rounded-full border-2 border-white shadow-sm flex-shrink-0"
                         style={{ backgroundColor: source.stroke }}
                       ></div>
-                      <div className="min-w-0 flex-1">
-                        <span className="text-sm font-medium truncate block">{String(source.label)}</span>
-                        <span className="text-xs text-muted-foreground">{source.colorName}</span>
+                      <div class名称="min-w-0 flex-1">
+                        <span class名称="text-sm font-medium truncate block">{String(source.label)}</span>
+                        <span class名称="text-xs text-muted-foreground">{source.color名称}</span>
                       </div>
                     </div>
-                    <div className="flex flex-col items-end gap-1">
-                      <span className={statusBadgeClass}>
+                    <div class名称="flex flex-col items-end gap-1">
+                      <span class名称={statusBadgeClass}>
                         {statusText}
                       </span>
-                      <div className="text-sm font-mono">
+                      <div class名称="text-sm font-mono">
                         {status === "paused" ? "Paused" : 
                          value !== null && value !== undefined ? `${value} ms` : "No data"}
                       </div>
@@ -293,20 +293,20 @@ export function ResponseTimeChart({ uptimeData }: ResponseTimeChartProps) {
           ) : (
             // Single source tooltip - showing status with color
             <>
-              <div className={`flex items-center gap-3 mt-2 ${data.status === "paused" ? "opacity-70" : ""}`}>
-                <div className={`w-4 h-4 rounded-full ${
+              <div class名称={`flex items-center gap-3 mt-2 ${data.status === "paused" ? "opacity-70" : ""}`}>
+                <div class名称={`w-4 h-4 rounded-full ${
                   data.status === "up" ? "bg-green-500" :
                   data.status === "down" ? "bg-red-500" :
                   data.status === "warning" ? "bg-yellow-500" : "bg-gray-500"
                 }`}></div>
-                <span className="font-medium">{
+                <span class名称="font-medium">{
                   data.status === "up" ? "Up" :
                   data.status === "down" ? "Down" :
                   data.status === "warning" ? "Warning" : "Paused"
                 }</span>
               </div>
-              <p className="mt-2 font-mono text-lg">
-                {data.status === "paused" ? "Monitoring paused" : 
+              <p class名称="mt-2 font-mono text-lg">
+                {data.status === "paused" ? "监控ing paused" : 
                  data.value !== null ? `${data.value} ms` : "No data"}
               </p>
             </>
@@ -513,59 +513,59 @@ export function ResponseTimeChart({ uptimeData }: ResponseTimeChartProps) {
     : `${dateRange.start} - ${dateRange.end}`;
   
   return (
-    <Card className="mb-8">
+    <Card class名称="mb-8">
       <CardHeader>
-        <CardTitle className="flex flex-col md:flex-row md:items-center gap-2 justify-between">
+        <CardTitle class名称="flex flex-col md:flex-row md:items-center gap-2 justify-between">
           <span>Response Time History</span>
-          <div className="flex items-center gap-4">
+          <div class名称="flex items-center gap-4">
             {hasMultipleSources && (
-              <div className="flex items-center gap-2 bg-muted/30 p-1 rounded-lg border">
+              <div class名称="flex items-center gap-2 bg-muted/30 p-1 rounded-lg border">
                 <Button
                   variant={chartType === 'area' ? 'default' : 'ghost'}
                   size="sm"
                   onClick={() => setChartType('area')}
-                  className="h-8 px-2"
+                  class名称="h-8 px-2"
                 >
-                  <AreaChartIcon className="h-4 w-4" />
+                  <AreaChartIcon class名称="h-4 w-4" />
                 </Button>
                 <Button
                   variant={chartType === 'line' ? 'default' : 'ghost'}
                   size="sm"
                   onClick={() => setChartType('line')}
-                  className="h-8 px-2"
+                  class名称="h-8 px-2"
                 >
-                  <TrendingUp className="h-4 w-4" />
+                  <TrendingUp class名称="h-4 w-4" />
                 </Button>
                 <Button
                   variant={chartType === 'bar' ? 'default' : 'ghost'}
                   size="sm"
                   onClick={() => setChartType('bar')}
-                  className="h-8 px-2"
+                  class名称="h-8 px-2"
                 >
-                  <BarChart3 className="h-4 w-4" />
+                  <BarChart3 class名称="h-4 w-4" />
                 </Button>
               </div>
             )}
             {hasData && (
-              <span className="text-sm font-normal text-muted-foreground">
+              <span class名称="text-sm font-normal text-muted-foreground">
                 {dateRangeDisplay}
               </span>
             )}
           </div>
         </CardTitle>
         {hasMultipleSources && (
-          <div className="flex flex-wrap gap-4 text-sm bg-muted/30 p-3 rounded-lg border">
-            <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground mb-2 w-full">
-              <span>Monitoring Sources:</span>
+          <div class名称="flex flex-wrap gap-4 text-sm bg-muted/30 p-3 rounded-lg border">
+            <div class名称="flex items-center gap-2 text-xs font-medium text-muted-foreground mb-2 w-full">
+              <span>监控ing Sources:</span>
             </div>
             {sources.map(source => (
-              <div key={source.key} className="flex items-center gap-2 bg-background px-3 py-1.5 rounded-md border shadow-sm">
+              <div key={source.key} class名称="flex items-center gap-2 bg-background px-3 py-1.5 rounded-md border shadow-sm">
                 <div 
-                  className="w-3 h-3 rounded-full border border-white shadow-sm" 
+                  class名称="w-3 h-3 rounded-full border border-white shadow-sm" 
                   style={{ backgroundColor: source.stroke }}
                 ></div>
-                <span className="font-medium">{String(source.label)}</span>
-                <span className="text-xs text-muted-foreground">({source.colorName})</span>
+                <span class名称="font-medium">{String(source.label)}</span>
+                <span class名称="text-xs text-muted-foreground">({source.color名称})</span>
               </div>
             ))}
           </div>
@@ -573,11 +573,11 @@ export function ResponseTimeChart({ uptimeData }: ResponseTimeChartProps) {
       </CardHeader>
       <CardContent>
         {!hasData ? (
-          <div className="h-80 flex items-center justify-center text-muted-foreground">
+          <div class名称="h-80 flex items-center justify-center text-muted-foreground">
             <p>No data available for the selected time period.</p>
           </div>
         ) : (
-          <div className="h-80">
+          <div class名称="h-80">
             <ResponsiveContainer width="100%" height="100%">
               {renderChart()}
             </ResponsiveContainer>

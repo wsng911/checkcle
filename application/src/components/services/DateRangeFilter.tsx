@@ -44,7 +44,7 @@ export function DateRangeFilter({ onRangeChange, selectedOption = '24h' }: DateR
     
     const now = new Date();
     let startDate: Date;
-    let endDate: Date = new Date(now.getTime() + (5 * 60 * 1000)); // Add 5 minutes buffer to future
+    let endDate: Date = new Date(now.getTime() + (5 * 60 * 1000)); // 添加 5 minutes buffer to future
     
     switch (option) {
       case '24h':
@@ -89,9 +89,9 @@ export function DateRangeFilter({ onRangeChange, selectedOption = '24h' }: DateR
   };
 
   return (
-    <div className="flex items-center space-x-2">
+    <div class名称="flex items-center space-x-2">
       <Select value={currentOption} onValueChange={handleOptionChange}>
-        <SelectTrigger className="w-[180px]">
+        <SelectTrigger class名称="w-[180px]">
           <SelectValue placeholder="Select time range" />
         </SelectTrigger>
         <SelectContent>
@@ -109,12 +109,12 @@ export function DateRangeFilter({ onRangeChange, selectedOption = '24h' }: DateR
             <Button
               id="date"
               variant="outline"
-              className={cn(
+              class名称={cn(
                 "w-[280px] justify-start text-left font-normal",
                 !customDateRange.from && "text-muted-foreground"
               )}
             >
-              <CalendarIcon className="mr-2 h-4 w-4" />
+              <CalendarIcon class名称="mr-2 h-4 w-4" />
               {customDateRange.from ? (
                 customDateRange.to ? (
                   <>
@@ -129,13 +129,13 @@ export function DateRangeFilter({ onRangeChange, selectedOption = '24h' }: DateR
               )}
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="center">
+          <PopoverContent class名称="w-auto p-0" align="center">
             <Calendar
               mode="range"
               selected={customDateRange}
               onSelect={handleCustomRangeSelect}
               initialFocus
-              className="pointer-events-auto"
+              class名称="pointer-events-auto"
             />
           </PopoverContent>
         </Popover>

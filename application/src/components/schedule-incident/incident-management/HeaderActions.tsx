@@ -1,36 +1,36 @@
 
 import React from 'react';
-import { CardDescription, CardTitle } from '@/components/ui/card';
+import { Card描述, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { RefreshCw } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-interface HeaderActionsProps {
+interface Header操作Props {
   onRefresh: () => void;
   isRefreshing: boolean;
 }
 
-export const HeaderActions: React.FC<HeaderActionsProps> = ({ onRefresh, isRefreshing }) => {
+export const Header操作: React.FC<Header操作Props> = ({ onRefresh, isRefreshing }) => {
   const { t } = useLanguage();
   
   return (
-    <div className="flex flex-row items-center justify-between">
+    <div class名称="flex flex-row items-center justify-between">
       <div>
         <CardTitle>{t('incidentManagement')}</CardTitle>
-        <CardDescription>
+        <Card描述>
           {t('incidentsManagementDesc')}
-        </CardDescription>
+        </Card描述>
       </div>
       <Button 
         variant="outline" 
         size="icon" 
         onClick={onRefresh} 
-        className="ml-auto"
+        class名称="ml-auto"
         title={t('refreshData')}
         disabled={isRefreshing}
       >
-        <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
-        <span className="sr-only">{t('refresh')}</span>
+        <RefreshCw class名称={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
+        <span class名称="sr-only">{t('refresh')}</span>
       </Button>
     </div>
   );

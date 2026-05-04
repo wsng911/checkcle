@@ -1,15 +1,15 @@
 
 import { monitoringIntervals } from './monitoringIntervals';
 import { 
-  startMonitoringService, 
-  pauseMonitoring, 
-  resumeMonitoring, 
-  startAllActiveServices 
+  start监控ingService, 
+  pause监控ing, 
+  resume监控ing, 
+  startAllActive服务 
 } from './service-status';
 
 export const monitoringService = {
-  startMonitoringService,
-  pauseMonitoring,
-  resumeMonitoring,
-  startAllActiveServices
+  start监控ingService,
+  pause监控ing,
+  resume监控ing,
+  startAllActive服务
 };

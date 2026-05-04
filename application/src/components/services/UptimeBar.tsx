@@ -2,7 +2,7 @@
 import React, { memo, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { TooltipProvider } from '@/components/ui/tooltip';
-import { UptimeStatusItem } from './uptime/UptimeStatusItem';
+import { Uptime状态Item } from './uptime/Uptime状态Item';
 import { uptimeService } from '@/services/uptimeService';
 import { UptimeData } from '@/types/service.types';
 import {useLanguage} from "@/contexts/LanguageContext.tsx";
@@ -38,7 +38,7 @@ const UptimeBarComponent = ({ uptime, status, serviceId, interval, serviceType =
     refetchOnReconnect: false,
     retry: 1, // Reduce retries for faster failure
     retryDelay: 1000, // Faster retry delay
-    refetchIntervalInBackground: true, // Allow background updates
+    refetchIntervalIn返回ground: true, // Allow background updates
     placeholderData: (previousData) => previousData, // Keep showing previous data while refetching
   });
 
@@ -68,26 +68,26 @@ const UptimeBarComponent = ({ uptime, status, serviceId, interval, serviceType =
   // Memoize the status items to prevent unnecessary re-renders
   const statusItems = useMemo(() => 
     displayData.map((item, index) => (
-      <UptimeStatusItem key={`${item.id}-${index}`} item={item} index={index} />
+      <Uptime状态Item key={`${item.id}-${index}`} item={item} index={index} />
     )),
     [displayData]
   );
 
   return (
     <TooltipProvider>
-      <div className="flex items-center space-x-3">
-        <div className="flex space-x-0.5 min-w-0">
+      <div class名称="flex items-center space-x-3">
+        <div class名称="flex space-x-0.5 min-w-0">
           {statusItems.length > 0 ? statusItems : (
             // Fallback display when no data
-            <div className="h-5 w-1.5 rounded-sm bg-gray-400" />
+            <div class名称="h-5 w-1.5 rounded-sm bg-gray-400" />
           )}
         </div>
-        <span className="text-sm font-medium whitespace-nowrap">
+        <span class名称="text-sm font-medium whitespace-nowrap">
           {uptimePercentage.toFixed(1)}%
         </span>
       </div>
       
-      <span className="text-xs text-muted-foreground">
+      <span class名称="text-xs text-muted-foreground">
             {t('last20Checks')}
       </span>    
     </TooltipProvider>

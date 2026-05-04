@@ -5,7 +5,7 @@ import { toast } from "@/hooks/use-toast";
 export interface AlertConfiguration {
   id?: string;
   collectionId?: string;
-  collectionName?: string;
+  collection名称?: string;
   service_id: string;
   notification_type: "telegram" | "discord" | "slack" | "signal" | "google_chat" | "email" | "ntfy" | "pushover" | "notifiarr" | "gotify" | "webhook" | "matrix";
   telegram_chat_id?: string;
@@ -20,7 +20,7 @@ export interface AlertConfiguration {
   enabled: boolean;
   created?: string;
   updated?: string;
-  // Email specific fields
+  // 邮箱 specific fields
   email_address?: string;
   email_sender_name?: string;
   smtp_server?: string;
@@ -55,7 +55,7 @@ export const alertConfigService = {
     }
   },
 
-  async createAlertConfiguration(config: Omit<AlertConfiguration, 'id' | 'collectionId' | 'collectionName' | 'created' | 'updated'>): Promise<AlertConfiguration | null> {
+  async createAlertConfiguration(config: Omit<AlertConfiguration, 'id' | 'collectionId' | 'collection名称' | 'created' | 'updated'>): Promise<AlertConfiguration | null> {
     
     try {
       // Build the configuration object with proper field mapping
@@ -67,7 +67,7 @@ export const alertConfigService = {
         template_id: config.template_id || "",
       };
 
-      // Add type-specific fields based on notification type
+      // 添加 type-specific fields based on notification type
       if (config.notification_type === "telegram") {
         cleanConfig.telegram_chat_id = config.telegram_chat_id || "";
         cleanConfig.bot_token = config.bot_token || "";

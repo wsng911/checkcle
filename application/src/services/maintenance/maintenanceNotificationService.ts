@@ -50,7 +50,7 @@ export const maintenanceNotificationService = {
         return false;
       }
       
-      // Create notification message based on type
+      // 创建 notification message based on type
       const message = this.generateMaintenanceMessage(maintenance, notificationType);
       
     //  console.log(`Sending ${notificationConfig.notification_type} notification with message: ${message}`);
@@ -60,7 +60,7 @@ export const maintenanceNotificationService = {
         return await sendTelegramNotification(notificationConfig, message);
       }
       
-      // Add more notification types here as needed
+      // 添加 more notification types here as needed
       
      // console.log(`Unsupported notification type: ${notificationConfig.notification_type}`);
       return false;
@@ -77,7 +77,7 @@ export const maintenanceNotificationService = {
     const startDate = new Date(maintenance.start_time);
     const endDate = new Date(maintenance.end_time);
     const duration = formatDistanceToNow(endDate, { addSuffix: false });
-    const affectedServices = maintenance.affected.split(',').map(s => s.trim()).join(', ');
+    const affected服务 = maintenance.affected.split(',').map(s => s.trim()).join(', ');
     
     let emoji = '🔧';
     let statusText = '';
@@ -104,8 +104,8 @@ export const maintenanceNotificationService = {
     return `${emoji} <b>Maintenance ${statusText}</b>
 
 <b>Title:</b> ${maintenance.title}
-<b>Description:</b> ${maintenance.description}
-<b>Affected Services:</b> ${affectedServices}
+<b>描述:</b> ${maintenance.description}
+<b>Affected 服务:</b> ${affected服务}
 <b>${timeText}</b>
 
 <b>Priority:</b> ${maintenance.priority.toUpperCase()}

@@ -1,5 +1,5 @@
 
-import { FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from "@/components/ui/form";
+import { FormControl, FormField, FormItem, FormLabel, FormMessage, Form描述 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { UseFormReturn } from "react-hook-form";
@@ -28,10 +28,10 @@ export function ServiceConfigFields({ form }: ServiceConfigFieldsProps) {
   };
 
   return (
-    <div className="space-y-4">
+    <div class名称="space-y-4">
       <ServiceUrlField form={form} />
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class名称="grid grid-cols-1 md:grid-cols-2 gap-4">
         <FormField
           control={form.control}
           name="interval"
@@ -56,7 +56,7 @@ export function ServiceConfigFields({ form }: ServiceConfigFieldsProps) {
                   </Select>
                 </FormControl>
               ) : (
-                <div className="space-y-2">
+                <div class名称="space-y-2">
                   <FormControl>
                     <Input
                       type="number"
@@ -72,18 +72,18 @@ export function ServiceConfigFields({ form }: ServiceConfigFieldsProps) {
                       setIsCustomInterval(false);
                       form.setValue("interval", "60");
                     }}
-                    className="text-sm text-blue-600 hover:text-blue-800"
+                    class名称="text-sm text-blue-600 hover:text-blue-800"
                   >
 	                  {t("backToPresets")}
                   </button>
                 </div>
               )}
-              <FormDescription className="text-xs">
+              <Form描述 class名称="text-xs">
                 {isCustomInterval 
                   ? t("checkIntervalDescCustom")
                   : t("checkIntervalDesc")
                 }
-              </FormDescription>
+              </Form描述>
               <FormMessage />
             </FormItem>
           )}
@@ -108,9 +108,9 @@ export function ServiceConfigFields({ form }: ServiceConfigFieldsProps) {
                   </SelectContent>
                 </Select>
               </FormControl>
-              <FormDescription className="text-xs">
+              <Form描述 class名称="text-xs">
 	              {t("retryAttemptsDesc")}
-              </FormDescription>
+              </Form描述>
               <FormMessage />
             </FormItem>
           )}

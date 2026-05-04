@@ -1,23 +1,23 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, Dialog描述, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { toast } from '@/components/ui/use-toast';
 import { Mail, ArrowLeft } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getCurrentEndpoint } from '@/lib/pocketbase';
 
-interface ForgotPasswordDialogProps {
+interface Forgot密码DialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
 
-export function ForgotPasswordDialog({ open, onOpenChange }: ForgotPasswordDialogProps) {
+export function Forgot密码Dialog({ open, onOpenChange }: Forgot密码DialogProps) {
   const [step, setStep] = useState<'request' | 'confirm'>('request');
-  const [email, setEmail] = useState('');
+  const [email, set邮箱] = useState('');
   const [token, setToken] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [password, set密码] = useState('');
+  const [password确认, set密码确认] = useState('');
   const [loading, setLoading] = useState(false);
   const { t } = useLanguage();
 
@@ -41,12 +41,12 @@ export function ForgotPasswordDialog({ open, onOpenChange }: ForgotPasswordDialo
       }
       
       toast({
-        title: "Reset Email Sent",
+        title: "Reset 邮箱 Sent",
         description: "Please check your email for password reset instructions.",
       });
       setStep('confirm');
     } catch (error) {
-      console.error('Password reset request error:', error);
+      console.error('密码 reset request error:', error);
       toast({
         variant: "destructive",
         title: "Reset Failed",
@@ -57,14 +57,14 @@ export function ForgotPasswordDialog({ open, onOpenChange }: ForgotPasswordDialo
     }
   };
 
-  const handleConfirmReset = async (e: React.FormEvent) => {
+  const handle确认Reset = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (password !== passwordConfirm) {
+    if (password !== password确认) {
       toast({
         variant: "destructive",
-        title: "Password Mismatch",
-        description: "Passwords do not match. Please try again.",
+        title: "密码 Mismatch",
+        description: "密码s do not match. Please try again.",
       });
       return;
     }
@@ -72,8 +72,8 @@ export function ForgotPasswordDialog({ open, onOpenChange }: ForgotPasswordDialo
     if (password.length < 6) {
       toast({
         variant: "destructive",
-        title: "Password Too Short",
-        description: "Password must be at least 6 characters long.",
+        title: "密码 Too Short",
+        description: "密码 must be at least 6 characters long.",
       });
       return;
     }
@@ -90,7 +90,7 @@ export function ForgotPasswordDialog({ open, onOpenChange }: ForgotPasswordDialo
         body: JSON.stringify({ 
           token, 
           password, 
-          passwordConfirm 
+          password确认 
         }),
       });
 
@@ -100,18 +100,18 @@ export function ForgotPasswordDialog({ open, onOpenChange }: ForgotPasswordDialo
       }
 
       toast({
-        title: "Password Reset Successful",
+        title: "密码 Reset Successful",
         description: "Your password has been reset successfully. You can now log in with your new password.",
       });
       onOpenChange(false);
       // Reset form state
       setStep('request');
-      setEmail('');
+      set邮箱('');
       setToken('');
-      setPassword('');
-      setPasswordConfirm('');
+      set密码('');
+      set密码确认('');
     } catch (error) {
-      console.error('Password reset confirmation error:', error);
+      console.error('密码 reset confirmation error:', error);
       toast({
         variant: "destructive",
         title: "Reset Failed",
@@ -122,75 +122,75 @@ export function ForgotPasswordDialog({ open, onOpenChange }: ForgotPasswordDialo
     }
   };
 
-  const handleClose = () => {
+  const handle关闭 = () => {
     onOpenChange(false);
     // Reset form state when closing
     setStep('request');
-    setEmail('');
+    set邮箱('');
     setToken('');
-    setPassword('');
-    setPasswordConfirm('');
+    set密码('');
+    set密码确认('');
   };
 
   return (
-    <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-md">
+    <Dialog open={open} onOpenChange={handle关闭}>
+      <DialogContent class名称="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>
-            {step === 'request' ? 'Reset Password' : 'Confirm Password Reset'}
+            {step === 'request' ? 'Reset 密码' : '确认 密码 Reset'}
           </DialogTitle>
-          <DialogDescription>
+          <Dialog描述>
             {step === 'request' 
               ? 'Enter your email address and we\'ll send you a reset link.' 
               : 'Enter the reset token from your email and your new password.'
             }
-          </DialogDescription>
+          </Dialog描述>
         </DialogHeader>
 
         {step === 'request' ? (
-          <form onSubmit={handleRequestReset} className="space-y-4">
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-foreground" htmlFor="reset-email">
-                Email Address
+          <form on提交={handleRequestReset} class名称="space-y-4">
+            <div class名称="space-y-2">
+              <label class名称="text-sm font-medium text-foreground" htmlFor="reset-email">
+                邮箱 添加ress
               </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <Mail className="h-4 w-4 text-muted-foreground" />
+              <div class名称="relative">
+                <div class名称="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <Mail class名称="h-4 w-4 text-muted-foreground" />
                 </div>
                 <Input
                   id="reset-email"
                   placeholder="your.email@provider.com"
                   type="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => set邮箱(e.target.value)}
                   required
-                  className="pl-10"
+                  class名称="pl-10"
                 />
               </div>
             </div>
             
-            <div className="flex gap-2">
+            <div class名称="flex gap-2">
               <Button 
                 type="button" 
                 variant="outline" 
-                onClick={handleClose}
-                className="flex-1"
+                onClick={handle关闭}
+                class名称="flex-1"
               >
-                Cancel
+                取消
               </Button>
               <Button 
                 type="submit" 
                 disabled={loading || !email}
-                className="flex-1 bg-emerald-500 hover:bg-emerald-600"
+                class名称="flex-1 bg-emerald-500 hover:bg-emerald-600"
               >
-                {loading ? 'Sending...' : 'Send Reset Email'}
+                {loading ? 'Sending...' : 'Send Reset 邮箱'}
               </Button>
             </div>
           </form>
         ) : (
-          <form onSubmit={handleConfirmReset} className="space-y-4">
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-foreground" htmlFor="reset-token">
+          <form on提交={handle确认Reset} class名称="space-y-4">
+            <div class名称="space-y-2">
+              <label class名称="text-sm font-medium text-foreground" htmlFor="reset-token">
                 Reset Token
               </label>
               <Input
@@ -203,52 +203,52 @@ export function ForgotPasswordDialog({ open, onOpenChange }: ForgotPasswordDialo
               />
             </div>
 
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-foreground" htmlFor="new-password">
-                New Password
+            <div class名称="space-y-2">
+              <label class名称="text-sm font-medium text-foreground" htmlFor="new-password">
+                New 密码
               </label>
               <Input
                 id="new-password"
                 placeholder="••••••••••••"
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => set密码(e.target.value)}
                 required
                 minLength={6}
               />
             </div>
 
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-foreground" htmlFor="confirm-password">
-                Confirm Password
+            <div class名称="space-y-2">
+              <label class名称="text-sm font-medium text-foreground" htmlFor="confirm-password">
+                确认 密码
               </label>
               <Input
                 id="confirm-password"
                 placeholder="••••••••••••"
                 type="password"
-                value={passwordConfirm}
-                onChange={(e) => setPasswordConfirm(e.target.value)}
+                value={password确认}
+                onChange={(e) => set密码确认(e.target.value)}
                 required
                 minLength={6}
               />
             </div>
             
-            <div className="flex gap-2">
+            <div class名称="flex gap-2">
               <Button 
                 type="button" 
                 variant="outline" 
                 onClick={() => setStep('request')}
-                className="flex-1"
+                class名称="flex-1"
               >
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Back
+                <ArrowLeft class名称="h-4 w-4 mr-2" />
+                返回
               </Button>
               <Button 
                 type="submit" 
-                disabled={loading || !token || !password || !passwordConfirm}
-                className="flex-1 bg-emerald-500 hover:bg-emerald-600"
+                disabled={loading || !token || !password || !password确认}
+                class名称="flex-1 bg-emerald-500 hover:bg-emerald-600"
               >
-                {loading ? 'Resetting...' : 'Reset Password'}
+                {loading ? 'Resetting...' : 'Reset 密码'}
               </Button>
             </div>
           </form>

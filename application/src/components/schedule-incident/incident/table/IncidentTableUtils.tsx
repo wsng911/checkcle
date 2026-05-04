@@ -38,7 +38,7 @@ export const AssignedUserCell: React.FC<AssignedUserCellProps> = ({ userId }) =>
   });
 
   if (isLoading) {
-    return <Skeleton className="h-6 w-20" />;
+    return <Skeleton class名称="h-6 w-20" />;
   }
 
   if (!user || !userId) {
@@ -46,12 +46,12 @@ export const AssignedUserCell: React.FC<AssignedUserCellProps> = ({ userId }) =>
   }
 
   return (
-    <div className="flex items-center gap-2">
-      <Avatar className="h-6 w-6">
+    <div class名称="flex items-center gap-2">
+      <Avatar class名称="h-6 w-6">
         <AvatarImage src={user.avatar} alt={user.full_name || user.username} />
         <AvatarFallback>{getUserInitials(user)}</AvatarFallback>
       </Avatar>
-      <span className="truncate max-w-[100px]">{user.full_name || user.username}</span>
+      <span class名称="truncate max-w-[100px]">{user.full_name || user.username}</span>
     </div>
   );
 };

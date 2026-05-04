@@ -1,6 +1,6 @@
 
-import { CreateIncidentInput, IncidentItem, UpdateIncidentInput } from './types';
-import { createIncident, updateIncident, updateIncidentStatus, deleteIncident } from './incidentOperations';
+import { 创建IncidentInput, IncidentItem, UpdateIncidentInput } from './types';
+import { createIncident, updateIncident, updateIncident状态, deleteIncident } from './incidentOperations';
 import { getAllIncidents, getIncidentById } from './incidentFetch';
 import { generateIncidentPDF } from './incidentPdfService';
 
@@ -12,7 +12,7 @@ export const incidentService = {
   // CRUD operations
   createIncident,
   updateIncident,
-  updateIncidentStatus,
+  updateIncident状态,
   deleteIncident,
   
   // PDF operations

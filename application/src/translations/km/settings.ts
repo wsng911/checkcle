@@ -1,54 +1,54 @@
 
-import { SettingsTranslations } from '../types/settings';
+import { 设置Translations } from '../types/settings';
 
-export const settingsTranslations: SettingsTranslations = {
-  // General Settings - Tabs
-  systemSettings: "ការកំណត់ប្រព័ន្ធ",
-  mailSettings: "ការកំណត់សំបុត្រ",
+export const settingsTranslations: 设置Translations = {
+  // General 设置 - Tabs
+  system设置: "ការកំណត់ប្រព័ន្ធ",
+  mail设置: "ការកំណត់សំបុត្រ",
 
-  // General Settings - System Settings
-  appName: "ឈ្មោះកម្មវិធី",
+  // General 设置 - System 设置
+  app名称: "ឈ្មោះកម្មវិធី",
   appURL: "URL កម្មវិធី",
-  senderName: "ឈ្មោះអ្នកផ្ញើ",
-  senderEmail: "អាសយដ្ឋានអ៊ីមែលអ្នកផ្ញើ",
+  sender名称: "ឈ្មោះអ្នកផ្ញើ",
+  sender邮箱: "អាសយដ្ឋានអ៊ីមែលអ្នកផ្ញើ",
   hideControls: "លាក់ការគ្រប់គ្រង",
 
-  // General Settings - Mail Settings
-  smtpSettings: "ការកំណត់រចនាសម្ព័ន្ធ SMTP",
+  // General 设置 - Mail 设置
+  smtp设置: "ការកំណត់រចនាសម្ព័ន្ធ SMTP",
   smtpEnabled: "បើក SMTP",
   smtpHost: "ម៉ាស៊ីន SMTP",
   smtpPort: "ច្រក SMTP",
-  smtpUsername: "ឈ្មោះអ្នកប្រើ SMTP",
-  smtpPassword: "ពាក្យសម្ងាត់ SMTP",
+  smtp用户名: "ឈ្មោះអ្នកប្រើ SMTP",
+  smtp密码: "ពាក្យសម្ងាត់ SMTP",
   smtpAuthMethod: "វិធីសាស្ត្រផ្ទៀងផ្ទាត់",
   enableTLS: "បើក TLS",
-  localName: "ឈ្មោះមូលដ្ឋាន",
+  local名称: "ឈ្មោះមូលដ្ឋាន",
 
-  // General Settings - Test Email
-  testEmail: "សាកល្បងអ៊ីមែល",
-  sendTestEmail: "ផ្ញើអ៊ីមែលសាកល្បង",
+  // General 设置 - Test 邮箱
+  test邮箱: "សាកល្បងអ៊ីមែល",
+  sendTest邮箱: "ផ្ញើអ៊ីមែលសាកល្បង",
   emailTemplate: "គំរូអ៊ីមែល",
   verification: "ការផ្ទៀងផ្ទាត់",
   passwordReset: "កំណត់ពាក្យសម្ងាត់ឡើងវិញ",
-  confirmEmailChange: "បញ្ជាក់ការផ្លាស់ប្តូរអ៊ីមែល",
+  confirm邮箱Change: "បញ្ជាក់ការផ្លាស់ប្តូរអ៊ីមែល",
   otp: "លេខកូដ OTP",
   loginAlert: "ការជូនដំណឹងចូលប្រព័ន្ធ",
   authCollection: "បណ្តុំផ្ទៀងផ្ទាត់",
   selectCollection: "ជ្រើសរើសបណ្តុំ",
-  toEmailAddress: "ទៅអាសយដ្ឋានអ៊ីមែល",
-  enterEmailAddress: "បញ្ចូលអាសយដ្ឋានអ៊ីមែល",
+  to邮箱添加ress: "ទៅអាសយដ្ឋានអ៊ីមែល",
+  enter邮箱添加ress: "បញ្ចូលអាសយដ្ឋានអ៊ីមែល",
   send: "ផ្ញើ",
   sending: "កំពុងផ្ញើ...",
-  testEmailSettings: "សាកល្បងការកំណត់អ៊ីមែល",
-  testEmailDescription: "សាកល្បងថាតើការកំណត់អ៊ីមែលបច្ចុប្បន្នអាចប្រើបានឬអត់",
-  testEmailAlert: "នេះនឹងផ្ញើអ៊ីមែលសាកល្បងដោយប្រើការកំណត់ SMTP របស់អ្នក។ សូមប្រាកដថា SMTP ត្រូវបានកំណត់យ៉ាងត្រឹមត្រូវជាមុន។",
+  test邮箱设置: "សាកល្បងការកំណត់អ៊ីមែល",
+  test邮箱描述: "សាកល្បងថាតើការកំណត់អ៊ីមែលបច្ចុប្បន្នអាចប្រើបានឬអត់",
+  test邮箱Alert: "នេះនឹងផ្ញើអ៊ីមែលសាកល្បងដោយប្រើការកំណត់ SMTP របស់អ្នក។ សូមប្រាកដថា SMTP ត្រូវបានកំណត់យ៉ាងត្រឹមត្រូវជាមុន។",
 
-  // General Settings - Actions and status
+  // General 设置 - 操作 and status
   save: "រក្សាទុកការផ្លាស់ប្តូរ",
   saving: "កំពុងរក្សាទុក...",
   settingsUpdated: "បានធ្វើបច្ចុប្បន្នភាពការកំណត់ដោយជោគជ័យ",
-  errorSavingSettings: "មានបញ្ហាក្នុងការរក្សាទុកការកំណត់",
-  errorFetchingSettings: "មានបញ្ហាក្នុងការទាញយកការកំណត់",
+  errorSaving设置: "មានបញ្ហាក្នុងការរក្សាទុកការកំណត់",
+  errorFetching设置: "មានបញ្ហាក្នុងការទាញយកការកំណត់",
   testConnection: "សាកល្បងការតភ្ជាប់",
   testingConnection: "កំពុងសាកល្បងការតភ្ជាប់...",
   connectionSuccess: "ការតភ្ជាប់ជោគជ័យ",
@@ -57,13 +57,13 @@ export const settingsTranslations: SettingsTranslations = {
   // User Management
   addUser: "បន្ថែមអ្នកប្រើប្រាស់",
   permissionNotice: "សេចក្តីជូនដំណឹងអំពីការអនុញ្ញាត:",
-  permissionNoticeAddUser: "ក្នុងនាមជាអ្នកប្រើប្រាស់ជាអ្នកគ្រប់គ្រង អ្នកមិនមានសិទ្ធិចូលមើល ឬកែប្រែការកំណត់ប្រព័ន្ធ និងអ៊ីមែលទេ។ ការកំណត់ទាំងនេះអាចចូលប្រើ និងកែប្រែបានដោយអ្នកគ្រប់គ្រងជាន់ខ្ពស់តែប៉ុណ្ណោះ។ សូមទាក់ទងអ្នកគ្រប់គ្រងជាន់ខ្ពស់របស់អ្នក ប្រសិនបើអ្នកត្រូវការធ្វើការផ្លាស់ប្តូរលើការកំណត់ប្រព័ន្ធ ឬការកំណត់អ៊ីមែល។",
-  loadingSettings: "កំពុងផ្ទុកការកំណត់...",
-  loadingSettingsError: "កំហុសក្នុងការផ្ទុកការកំណត់",
+  permissionNotice添加User: "ក្នុងនាមជាអ្នកប្រើប្រាស់ជាអ្នកគ្រប់គ្រង អ្នកមិនមានសិទ្ធិចូលមើល ឬកែប្រែការកំណត់ប្រព័ន្ធ និងអ៊ីមែលទេ។ ការកំណត់ទាំងនេះអាចចូលប្រើ និងកែប្រែបានដោយអ្នកគ្រប់គ្រងជាន់ខ្ពស់តែប៉ុណ្ណោះ។ សូមទាក់ទងអ្នកគ្រប់គ្រងជាន់ខ្ពស់របស់អ្នក ប្រសិនបើអ្នកត្រូវការធ្វើការផ្លាស់ប្តូរលើការកំណត់ប្រព័ន្ធ ឬការកំណត់អ៊ីមែល។",
+  loading设置: "កំពុងផ្ទុកការកំណត់...",
+  loading设置Error: "កំហុសក្នុងការផ្ទុកការកំណត់",
 
-  //NotificationSettings.ts
+  //Notification设置.ts
   titleNotification: "ការកំណត់ការជូនដំណឹង",
-descriptionChannelsServices: "កំណត់រចនាសម្ព័ន្ធបណ្តាញជូនដំណឹងសម្រាប់សេវាកម្មរបស់អ្នក",
+descriptionChannels服务: "កំណត់រចនាសម្ព័ន្ធបណ្តាញជូនដំណឹងសម្រាប់សេវាកម្មរបស់អ្នក",
   addChannel: "បន្ថែមបណ្តាញ",
   all: "បណ្តាញទាំងអស់",
   telegram: "តេឡេក្រាម",
@@ -78,8 +78,8 @@ descriptionChannelsServices: "កំណត់រចនាសម្ព័ន្�
   // NotificationChannelDialog.tsx
   editChannel: "កែសម្រួលបណ្តាញជូនដំណឹង",
   addChannelDialog: "បន្ថែមបណ្តាញជូនដំណឹង",
-  channelName: "ឈ្មោះបណ្តាញ",
-  channelNameDesc: "ឈ្មោះសម្រាប់កំណត់អត្តសញ្ញាណបណ្តាញជូនដំណឹងនេះ",
+  channel名称: "ឈ្មោះបណ្តាញ",
+  channel名称Desc: "ឈ្មោះសម្រាប់កំណត់អត្តសញ្ញាណបណ្តាញជូនដំណឹងនេះ",
   channelType: "ប្រភេទបណ្តាញ",
   selectType: "ជ្រើសរើសប្រភេទជូនដំណឹង",
   enabled: "បើក",
@@ -111,14 +111,14 @@ descriptionChannelsServices: "កំណត់រចនាសម្ព័ន្�
   signalApiEndpointDesc: "ចំណុចបញ្ចប់ API សម្រាប់សេវាកម្ម Signal របស់អ្នក",
   googleChatWebhookUrl: "URL នៃ Webhook របស់ Google Chat",
   googleChatWebhookUrlDesc: "URL នៃ webhook របស់ Google Chat ពីកន្លែង Google Chat របស់អ្នក",
-  emailAddress: "អាសយដ្ឋានអ៊ីមែល",
-  emailAddressDesc: "អាសយដ្ឋានអ៊ីមែលដើម្បីផ្ញើការជូនដំណឹងទៅ",
-  emailSenderName: "ឈ្មោះអ្នកផ្ញើ",
-  emailSenderNameDesc: "ឈ្មោះបង្ហាញសម្រាប់អ៊ីមែលដែលផ្ញើចេញ",
+  email添加ress: "អាសយដ្ឋានអ៊ីមែល",
+  email添加ressDesc: "អាសយដ្ឋានអ៊ីមែលដើម្បីផ្ញើការជូនដំណឹងទៅ",
+  emailSender名称: "ឈ្មោះអ្នកផ្ញើ",
+  emailSender名称Desc: "ឈ្មោះបង្ហាញសម្រាប់អ៊ីមែលដែលផ្ញើចេញ",
   smtpServer: "ម៉ាស៊ីនបម្រើ SMTP",
   // smtpPort: "ច្រក SMTP",
-  // smtpPassword: "លេខសម្ងាត់ SMTP",
-  smtpPasswordDesc: "លេខសម្ងាត់សម្រាប់ការផ្ទៀងផ្ទាត់ជាមួយម៉ាស៊ីនបម្រើ SMTP",
+  // smtp密码: "លេខសម្ងាត់ SMTP",
+  smtp密码Desc: "លេខសម្ងាត់សម្រាប់ការផ្ទៀងផ្ទាត់ជាមួយម៉ាស៊ីនបម្រើ SMTP",
   ntfyEndpoint: "ចំណុចបញ្ចប់ NTFY",
   ntfyEndpointDesc: "URL នៃចំណុចបញ្ចប់ NTFY រួមទាំងប្រធានបទរបស់អ្នក (ឧ. https://ntfy.sh/checkcle)",
   apiToken: "លេខសម្គាល់ API",
@@ -136,9 +136,9 @@ descriptionChannelsServices: "កំណត់រចនាសម្ព័ន្�
   matrixRoomIdDesc: "Matrix room ID ដែលការជូនដំណឹងនឹងត្រូវបានផ្ញើទៅ (ឧ. !abc123:matrix.org)",
   matrixAccessToken: "Access Token",
   matrixAccessTokenDesc: "Access token នៃ Matrix bot account របស់អ្នក",
-  errorSaveChannel: "បរាជ័យក្នុងការរក្សាទុកបណ្តាញជូនដំណឹង",
+  error保存Channel: "បរាជ័យក្នុងការរក្សាទុកបណ្តាញជូនដំណឹង",
 
-  channelNamePlaceholder: "ប៉ុស្តិ៍ផ្ទាល់សារជូនដំណឹងរបស់ខ្ញុំ",
+  channel名称Placeholder: "ប៉ុស្តិ៍ផ្ទាល់សារជូនដំណឹងរបស់ខ្ញុំ",
   telegramChatIdPlaceholder: "ID កុំព្យូទ័រនិមិត្តសារ Telegram",
   botTokenPlaceholder: "Token Bot Telegram",
   discordWebhookUrlPlaceholder: "https://discord.com/api/webhooks/...",
@@ -146,11 +146,11 @@ descriptionChannelsServices: "កំណត់រចនាសម្ព័ន្�
   signalNumberPlaceholder: "+1234567890",
   signalApiEndpointPlaceholder: "https://your-signal-api.com/v2/send",
   googleChatWebhookUrlPlaceholder: "https://chat.googleapis.com/v1/spaces/...",
-  emailAddressPlaceholder: "notifications@example.com",
-  emailSenderNamePlaceholder: "ប្រព័ន្ធជូនដំណឹងព្រមាន",
+  email添加ressPlaceholder: "notifications@example.com",
+  emailSender名称Placeholder: "ប្រព័ន្ធជូនដំណឹងព្រមាន",
   smtpServerPlaceholder: "smtp.gmail.com",
   smtpPortPlaceholder: "587",
-  smtpPasswordPlaceholder: "បញ្ចូលពាក្យសម្ងាត់ SMTP របស់អ្នក",
+  smtp密码Placeholder: "បញ្ចូលពាក្យសម្ងាត់ SMTP របស់អ្នក",
   ntfyEndpointPlaceholder: "https://ntfy.sh/your-topic",
   apiTokenPlaceholder: "បញ្ចូល token API",
   pushoverUserKeyPlaceholder: "កូនសោអ្នកប្រើ Pushover របស់អ្នក",
@@ -161,11 +161,11 @@ descriptionChannelsServices: "កំណត់រចនាសម្ព័ន្�
   matrixRoomIdPlaceholder: "!roomid:matrix.org",
   matrixAccessTokenPlaceholder: "syt_...",
 
-  // DataRetentionSettings.tsx
+  // DataRetention设置.tsx
   permissionNoticeDataRetention: "ជាអ្នកប្រើប្រាស់អ្នកគ្រប់គ្រង អ្នកមិនមានសិទ្ធចូលដំណើរការការកំណត់រក្សាទុកទិន្នន័យទេ។ ការកំណត់ទាំងនេះអាចត្រូវបានចូលដំណើរការនិងកែប្រែដោយតែអ្នកគ្រប់គ្រងដ៏ខ្ពស់ប៉ុណ្ណោះ។",
-  loadingRetentionSettings: "កំពុងផ្ទុកការកំណត់រក្សាទុក...",
+  loadingRetention设置: "កំពុងផ្ទុកការកំណត់រក្សាទុក...",
   dataRetention: "ការកំណត់រក្សាទុកទិន្នន័យ",
-  dataRetentionDescription: "កំណត់រចនាសម្ព័ន្ធពេលវេលាដែលទិន្នន័យត្រួតពិនិត្យត្រូវបានរក្សាទុកនៅក្នុងប្រព័ន្ធ",
+  dataRetention描述: "កំណត់រចនាសម្ព័ន្ធពេលវេលាដែលទិន្នន័យត្រួតពិនិត្យត្រូវបានរក្សាទុកនៅក្នុងប្រព័ន្ធ",
   uptimeRetentionLabel: "ការរក្សាទុកការតាមដានពេលដំណើរការ (ចំនួនថ្ងៃ)",
   uptimeRetentionHelp: "ទិន្នន័យពេលដំណើរការសេវាកម្ម និងឧប្បត្តិហេតុយូរជាងនេះនឹងត្រូវលុបដោយស្វ័យប្រវត្តិ។",
   serverRetentionLabel: "ការរក្សាទុកការតាមដានម៉ាស៊ីនមេ (ចំនួនថ្ងៃ)",

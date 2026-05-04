@@ -1,4 +1,4 @@
 
-import NotificationSettings from "./NotificationSettings";
+import Notification设置 from "./Notification设置";
 
-export { NotificationSettings };
+export { Notification设置 };

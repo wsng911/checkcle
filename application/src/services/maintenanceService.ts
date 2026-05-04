@@ -1,6 +1,6 @@
 
 import { pb, getCurrentEndpoint } from '@/lib/pocketbase';
-import { MaintenanceItem, CreateMaintenanceInput } from './types/maintenance.types';
+import { MaintenanceItem, 创建MaintenanceInput } from './types/maintenance.types';
 
 // Helper function to get the API URL
 const getApiUrl = (): string => {
@@ -114,11 +114,11 @@ const getCompletedMaintenance = async (): Promise<MaintenanceItem[]> => {
   }
 };
 
-const updateMaintenanceStatus = async (id: string, status: string): Promise<void> => {
+const updateMaintenance状态 = async (id: string, status: string): Promise<void> => {
   try {
     // Ensure proper case for the status value
-    const formattedStatus = status.charAt(0).toUpperCase() + status.slice(1);
-    await pb.collection('maintenance').update(id, { status: formattedStatus });
+    const formatted状态 = status.charAt(0).toUpperCase() + status.slice(1);
+    await pb.collection('maintenance').update(id, { status: formatted状态 });
   } catch (error) {
     console.error('Error updating maintenance status:', error);
     throw error;
@@ -134,7 +134,7 @@ const deleteMaintenance = async (id: string): Promise<void> => {
   }
 };
 
-const createMaintenance = async (data: CreateMaintenanceInput): Promise<void> => {
+const createMaintenance = async (data: 创建MaintenanceInput): Promise<void> => {
   try {
     // Validate that all required fields are present
     if (!data.title || !data.description || !data.start_time || !data.end_time || 
@@ -174,7 +174,7 @@ export const maintenanceService = {
   getUpcomingMaintenance,
   getOngoingMaintenance,
   getCompletedMaintenance,
-  updateMaintenanceStatus,
+  updateMaintenance状态,
   deleteMaintenance,
   createMaintenance,
 };

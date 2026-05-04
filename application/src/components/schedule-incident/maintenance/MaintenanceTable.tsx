@@ -4,8 +4,8 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import { format } from 'date-fns';
-import { MaintenanceStatusDropdown } from './MaintenanceStatusDropdown';
-import { MaintenanceActionsMenu } from './MaintenanceActionsMenu';
+import { Maintenance状态Dropdown } from './Maintenance状态Dropdown';
+import { Maintenance操作Menu } from './Maintenance操作Menu';
 import { MaintenanceDetailDialog } from './detail-dialog/MaintenanceDetailDialog';
 import { MaintenanceItem } from '@/services/types/maintenance.types';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -48,21 +48,21 @@ export const MaintenanceTable = ({ data, isLoading = false, onMaintenanceUpdated
             <TableHead>{t('status')}</TableHead>
             <TableHead>{t('scheduledStart')}</TableHead>
             <TableHead>{t('scheduledEnd')}</TableHead>
-            <TableHead>{t('affectedServices')}</TableHead>
+            <TableHead>{t('affected服务')}</TableHead>
             <TableHead>{t('impact')}</TableHead>
-            <TableHead className="w-[80px]">{t('actions')}</TableHead>
+            <TableHead class名称="w-[80px]">{t('actions')}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {[1, 2, 3].map(i => (
             <TableRow key={`skeleton-${i}`}>
-              <TableCell><Skeleton className="h-6 w-28" /></TableCell>
-              <TableCell><Skeleton className="h-6 w-20" /></TableCell>
-              <TableCell><Skeleton className="h-6 w-32" /></TableCell>
-              <TableCell><Skeleton className="h-6 w-32" /></TableCell>
-              <TableCell><Skeleton className="h-6 w-24" /></TableCell>
-              <TableCell><Skeleton className="h-6 w-16" /></TableCell>
-              <TableCell><Skeleton className="h-6 w-8" /></TableCell>
+              <TableCell><Skeleton class名称="h-6 w-28" /></TableCell>
+              <TableCell><Skeleton class名称="h-6 w-20" /></TableCell>
+              <TableCell><Skeleton class名称="h-6 w-32" /></TableCell>
+              <TableCell><Skeleton class名称="h-6 w-32" /></TableCell>
+              <TableCell><Skeleton class名称="h-6 w-24" /></TableCell>
+              <TableCell><Skeleton class名称="h-6 w-16" /></TableCell>
+              <TableCell><Skeleton class名称="h-6 w-8" /></TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -92,22 +92,22 @@ export const MaintenanceTable = ({ data, isLoading = false, onMaintenanceUpdated
             <TableHead>{t('status')}</TableHead>
             <TableHead>{t('scheduledStart')}</TableHead>
             <TableHead>{t('scheduledEnd')}</TableHead>
-            <TableHead>{t('affectedServices')}</TableHead>
+            <TableHead>{t('affected服务')}</TableHead>
             <TableHead>{t('impact')}</TableHead>
-            <TableHead className="w-[80px]">{t('actions')}</TableHead>
+            <TableHead class名称="w-[80px]">{t('actions')}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {data.map((item) => (
-            <TableRow key={item.id} className="cursor-pointer hover:bg-muted/40">
-              <TableCell className="font-medium" onClick={() => handleViewMaintenance(item)}>
+            <TableRow key={item.id} class名称="cursor-pointer hover:bg-muted/40">
+              <TableCell class名称="font-medium" onClick={() => handleViewMaintenance(item)}>
                 {item.title || '-'}
               </TableCell>
               <TableCell onClick={(e) => e.stopPropagation()}>
-                <MaintenanceStatusDropdown 
+                <Maintenance状态Dropdown 
                   status={item.status} 
                   id={item.id} 
-                  onStatusUpdated={onMaintenanceUpdated} 
+                  on状态Updated={onMaintenanceUpdated} 
                 />
               </TableCell>
               <TableCell onClick={() => handleViewMaintenance(item)}>
@@ -117,7 +117,7 @@ export const MaintenanceTable = ({ data, isLoading = false, onMaintenanceUpdated
                 {formatDate(item.end_time)}
               </TableCell>
               <TableCell onClick={() => handleViewMaintenance(item)}>
-                <div className="flex flex-wrap gap-1">
+                <div class名称="flex flex-wrap gap-1">
                   {item.affected ? item.affected.split(',').slice(0, 2).map((service, index) => (
                     <Badge key={index} variant="outline">{service.trim()}</Badge>
                   )) : '-'}
@@ -132,7 +132,7 @@ export const MaintenanceTable = ({ data, isLoading = false, onMaintenanceUpdated
                 </Badge>
               </TableCell>
               <TableCell onClick={(e) => e.stopPropagation()}>
-                <MaintenanceActionsMenu 
+                <Maintenance操作Menu 
                   item={item} 
                   onMaintenanceUpdated={onMaintenanceUpdated} 
                 />

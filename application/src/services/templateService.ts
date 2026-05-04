@@ -2,32 +2,32 @@ import { pb } from "@/lib/pocketbase";
 import { 
   serverNotificationTemplateService, 
   ServerNotificationTemplate,
-  CreateUpdateServerNotificationTemplateData 
+  创建UpdateServerNotificationTemplateData 
 } from "./serverNotificationTemplateService";
 import { 
   serviceNotificationTemplateService, 
   ServiceNotificationTemplate,
-  CreateUpdateServiceNotificationTemplateData 
+  创建UpdateServiceNotificationTemplateData 
 } from "./serviceNotificationTemplateService";
 import { 
   sslNotificationTemplateService, 
   SslNotificationTemplate,
-  CreateUpdateSslNotificationTemplateData 
+  创建UpdateSslNotificationTemplateData 
 } from "./sslNotificationTemplateService";
 import { 
   serverThresholdService, 
   ServerThreshold,
-  CreateUpdateServerThresholdData 
+  创建UpdateServerThresholdData 
 } from "./serverThresholdService";
 
 export type TemplateType = 'server' | 'service' | 'ssl' | 'server_threshold';
 
 export type AnyTemplate = ServerNotificationTemplate | ServiceNotificationTemplate | SslNotificationTemplate | ServerThreshold;
-export type AnyTemplateData = CreateUpdateServerNotificationTemplateData | CreateUpdateServiceNotificationTemplateData | CreateUpdateSslNotificationTemplateData | CreateUpdateServerThresholdData;
+export type AnyTemplateData = 创建UpdateServerNotificationTemplateData | 创建UpdateServiceNotificationTemplateData | 创建UpdateSslNotificationTemplateData | 创建UpdateServerThresholdData;
 
 // Export individual template types
 export type { ServerNotificationTemplate, ServiceNotificationTemplate, SslNotificationTemplate, ServerThreshold };
-export type { CreateUpdateServerNotificationTemplateData, CreateUpdateServiceNotificationTemplateData, CreateUpdateSslNotificationTemplateData, CreateUpdateServerThresholdData };
+export type { 创建UpdateServerNotificationTemplateData, 创建UpdateServiceNotificationTemplateData, 创建UpdateSslNotificationTemplateData, 创建UpdateServerThresholdData };
 
 export const templateService = {
   async getTemplates(type: TemplateType): Promise<AnyTemplate[]> {
@@ -63,13 +63,13 @@ export const templateService = {
   async createTemplate(data: AnyTemplateData, type: TemplateType): Promise<AnyTemplate> {
     switch (type) {
       case 'server':
-        return serverNotificationTemplateService.createTemplate(data as CreateUpdateServerNotificationTemplateData);
+        return serverNotificationTemplateService.createTemplate(data as 创建UpdateServerNotificationTemplateData);
       case 'service':
-        return serviceNotificationTemplateService.createTemplate(data as CreateUpdateServiceNotificationTemplateData);
+        return serviceNotificationTemplateService.createTemplate(data as 创建UpdateServiceNotificationTemplateData);
       case 'ssl':
-        return sslNotificationTemplateService.createTemplate(data as CreateUpdateSslNotificationTemplateData);
+        return sslNotificationTemplateService.createTemplate(data as 创建UpdateSslNotificationTemplateData);
       case 'server_threshold':
-        return serverThresholdService.createServerThreshold(data as CreateUpdateServerThresholdData);
+        return serverThresholdService.createServerThreshold(data as 创建UpdateServerThresholdData);
       default:
         throw new Error(`Unknown template type: ${type}`);
     }
@@ -78,13 +78,13 @@ export const templateService = {
   async updateTemplate(id: string, data: Partial<AnyTemplateData>, type: TemplateType): Promise<AnyTemplate> {
     switch (type) {
       case 'server':
-        return serverNotificationTemplateService.updateTemplate(id, data as Partial<CreateUpdateServerNotificationTemplateData>);
+        return serverNotificationTemplateService.updateTemplate(id, data as Partial<创建UpdateServerNotificationTemplateData>);
       case 'service':
-        return serviceNotificationTemplateService.updateTemplate(id, data as Partial<CreateUpdateServiceNotificationTemplateData>);
+        return serviceNotificationTemplateService.updateTemplate(id, data as Partial<创建UpdateServiceNotificationTemplateData>);
       case 'ssl':
-        return sslNotificationTemplateService.updateTemplate(id, data as Partial<CreateUpdateSslNotificationTemplateData>);
+        return sslNotificationTemplateService.updateTemplate(id, data as Partial<创建UpdateSslNotificationTemplateData>);
       case 'server_threshold':
-        return serverThresholdService.updateServerThreshold(id, data as Partial<CreateUpdateServerThresholdData>);
+        return serverThresholdService.updateServerThreshold(id, data as Partial<创建UpdateServerThresholdData>);
       default:
         throw new Error(`Unknown template type: ${type}`);
     }
@@ -109,7 +109,7 @@ export const templateService = {
 // Template type configurations
 export const templateTypeConfigs = {
   server: {
-    label: 'Server Monitoring',
+    label: 'Server 监控ing',
     description: 'Templates for server resource monitoring alerts',
     placeholders: [
       '${server_name}', '${cpu_usage}', '${ram_usage}', '${disk_usage}', 

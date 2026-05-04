@@ -3,7 +3,7 @@ import { pb } from "@/lib/pocketbase";
 import { DockerContainer, DockerMetrics, DockerStats } from "@/types/docker.types";
 
 class DockerService {
-  async getContainers(): Promise<DockerContainer[]> {
+  async get容器(): Promise<DockerContainer[]> {
     try {
     //  console.log('Fetching all Docker containers...');
       const records = await pb.collection('dockers').getFullList({
@@ -17,7 +17,7 @@ class DockerService {
     }
   }
 
-  async getContainersByServerId(serverId: string): Promise<DockerContainer[]> {
+  async get容器ByServerId(serverId: string): Promise<DockerContainer[]> {
     try {
     //  console.log('Fetching Docker containers for server ID:', serverId);
       
@@ -57,10 +57,10 @@ class DockerService {
       // If no containers found with filters, get all and log for debugging
       if (containers.length === 0) {
       //  console.log('No containers found with filters, fetching all for debugging...');
-        const allContainers = await pb.collection('dockers').getFullList({
+        const all容器 = await pb.collection('dockers').getFullList({
           sort: '-created',
         });
-      //  console.log('All available Docker containers:', allContainers);
+      //  console.log('All available Docker containers:', all容器);
       //  console.log('Looking for containers that might match server:', {
       ////    serverId,
        //   serverHostname: server.hostname,
@@ -133,12 +133,12 @@ class DockerService {
   parseMetricValue(value: string): number {
     if (!value || value === 'N/A') return 0;
     
-    // Remove units and convert to number
+    // 移除 units and convert to number
     const numericValue = parseFloat(value.toString().replace(/[^\d.]/g, ''));
     return isNaN(numericValue) ? 0 : numericValue;
   }
 
-  getStatusFromDockerStatus(status: string): 'running' | 'stopped' | 'warning' {
+  get状态FromDocker状态(status: string): 'running' | 'stopped' | 'warning' {
     const statusLower = status?.toLowerCase() || '';
     
     if (statusLower.includes('up') && !statusLower.includes('exited')) {

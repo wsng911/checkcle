@@ -1,6 +1,6 @@
 
 import React from "react";
-import { FormField, FormItem, FormLabel, FormControl, FormMessage, FormDescription } from "@/components/ui/form";
+import { FormField, FormItem, FormLabel, FormControl, FormMessage, Form描述 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Control } from "react-hook-form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,25 +11,25 @@ interface PlaceholdersTabContentProps {
 
 export const PlaceholdersTabContent: React.FC<PlaceholdersTabContentProps> = ({ control }) => {
   return (
-    <div className="space-y-6">
+    <div class名称="space-y-6">
       <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-sm font-medium">Template Placeholders</CardTitle>
+        <CardHeader class名称="pb-3">
+          <CardTitle class名称="text-sm font-medium">Template Placeholders</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class名称="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField
               control={control}
               name="service_name_placeholder"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Service Name Placeholder</FormLabel>
+                  <FormLabel>Service 名称 Placeholder</FormLabel>
                   <FormControl>
                     <Input placeholder="${service_name}" {...field} />
                   </FormControl>
-                  <FormDescription className="text-xs">
+                  <Form描述 class名称="text-xs">
                     Used for service name in messages
-                  </FormDescription>
+                  </Form描述>
                   <FormMessage />
                 </FormItem>
               )}
@@ -44,9 +44,9 @@ export const PlaceholdersTabContent: React.FC<PlaceholdersTabContentProps> = ({ 
                   <FormControl>
                     <Input placeholder="${response_time}" {...field} />
                   </FormControl>
-                  <FormDescription className="text-xs">
+                  <Form描述 class名称="text-xs">
                     Used for response time in milliseconds
-                  </FormDescription>
+                  </Form描述>
                   <FormMessage />
                 </FormItem>
               )}
@@ -57,13 +57,13 @@ export const PlaceholdersTabContent: React.FC<PlaceholdersTabContentProps> = ({ 
               name="status_placeholder"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Status Placeholder</FormLabel>
+                  <FormLabel>状态 Placeholder</FormLabel>
                   <FormControl>
                     <Input placeholder="${status}" {...field} />
                   </FormControl>
-                  <FormDescription className="text-xs">
+                  <Form描述 class名称="text-xs">
                     Used for service status (UP, DOWN, etc.)
-                  </FormDescription>
+                  </Form描述>
                   <FormMessage />
                 </FormItem>
               )}
@@ -78,9 +78,9 @@ export const PlaceholdersTabContent: React.FC<PlaceholdersTabContentProps> = ({ 
                   <FormControl>
                     <Input placeholder="${url}" {...field} />
                   </FormControl>
-                  <FormDescription className="text-xs">
+                  <Form描述 class名称="text-xs">
                     Used for service URL
-                  </FormDescription>
+                  </Form描述>
                   <FormMessage />
                 </FormItem>
               )}
@@ -95,9 +95,9 @@ export const PlaceholdersTabContent: React.FC<PlaceholdersTabContentProps> = ({ 
                   <FormControl>
                     <Input placeholder="${host}" {...field} />
                   </FormControl>
-                  <FormDescription className="text-xs">
+                  <Form描述 class名称="text-xs">
                     Used for service host or IP address
-                  </FormDescription>
+                  </Form描述>
                   <FormMessage />
                 </FormItem>
               )}
@@ -112,9 +112,9 @@ export const PlaceholdersTabContent: React.FC<PlaceholdersTabContentProps> = ({ 
                   <FormControl>
                     <Input placeholder="${service_type}" {...field} />
                   </FormControl>
-                  <FormDescription className="text-xs">
+                  <Form描述 class名称="text-xs">
                     Used for service type (HTTP, PING, TCP, DNS)
-                  </FormDescription>
+                  </Form描述>
                   <FormMessage />
                 </FormItem>
               )}
@@ -129,9 +129,9 @@ export const PlaceholdersTabContent: React.FC<PlaceholdersTabContentProps> = ({ 
                   <FormControl>
                     <Input placeholder="${port}" {...field} />
                   </FormControl>
-                  <FormDescription className="text-xs">
+                  <Form描述 class名称="text-xs">
                     Used for service port number
-                  </FormDescription>
+                  </Form描述>
                   <FormMessage />
                 </FormItem>
               )}
@@ -146,9 +146,9 @@ export const PlaceholdersTabContent: React.FC<PlaceholdersTabContentProps> = ({ 
                   <FormControl>
                     <Input placeholder="${domain}" {...field} />
                   </FormControl>
-                  <FormDescription className="text-xs">
+                  <Form描述 class名称="text-xs">
                     Used for domain name (DNS services)
-                  </FormDescription>
+                  </Form描述>
                   <FormMessage />
                 </FormItem>
               )}
@@ -159,13 +159,13 @@ export const PlaceholdersTabContent: React.FC<PlaceholdersTabContentProps> = ({ 
               name="region_name_placeholder"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Region Name Placeholder</FormLabel>
+                  <FormLabel>Region 名称 Placeholder</FormLabel>
                   <FormControl>
                     <Input placeholder="${region_name}" {...field} />
                   </FormControl>
-                  <FormDescription className="text-xs">
+                  <Form描述 class名称="text-xs">
                     Used for regional agent name
-                  </FormDescription>
+                  </Form描述>
                   <FormMessage />
                 </FormItem>
               )}
@@ -180,9 +180,9 @@ export const PlaceholdersTabContent: React.FC<PlaceholdersTabContentProps> = ({ 
                   <FormControl>
                     <Input placeholder="${agent_id}" {...field} />
                   </FormControl>
-                  <FormDescription className="text-xs">
+                  <Form描述 class名称="text-xs">
                     Used for regional agent ID
-                  </FormDescription>
+                  </Form描述>
                   <FormMessage />
                 </FormItem>
               )}
@@ -197,9 +197,9 @@ export const PlaceholdersTabContent: React.FC<PlaceholdersTabContentProps> = ({ 
                   <FormControl>
                     <Input placeholder="${uptime}" {...field} />
                   </FormControl>
-                  <FormDescription className="text-xs">
+                  <Form描述 class名称="text-xs">
                     Used for service uptime percentage
-                  </FormDescription>
+                  </Form描述>
                   <FormMessage />
                 </FormItem>
               )}
@@ -214,9 +214,9 @@ export const PlaceholdersTabContent: React.FC<PlaceholdersTabContentProps> = ({ 
                   <FormControl>
                     <Input placeholder="${time}" {...field} />
                   </FormControl>
-                  <FormDescription className="text-xs">
+                  <Form描述 class名称="text-xs">
                     Used for current date and time
-                  </FormDescription>
+                  </Form描述>
                   <FormMessage />
                 </FormItem>
               )}
@@ -231,9 +231,9 @@ export const PlaceholdersTabContent: React.FC<PlaceholdersTabContentProps> = ({ 
                   <FormControl>
                     <Input placeholder="${error_message}" {...field} />
                   </FormControl>
-                  <FormDescription className="text-xs">
+                  <Form描述 class名称="text-xs">
                     Used for error details when service is down
-                  </FormDescription>
+                  </Form描述>
                   <FormMessage />
                 </FormItem>
               )}
@@ -243,66 +243,66 @@ export const PlaceholdersTabContent: React.FC<PlaceholdersTabContentProps> = ({ 
       </Card>
       
       <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-sm font-medium">Placeholder Usage Guide</CardTitle>
+        <CardHeader class名称="pb-3">
+          <CardTitle class名称="text-sm font-medium">Placeholder Usage Guide</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground mb-3">
+          <p class名称="text-sm text-muted-foreground mb-3">
             These placeholders will be replaced with actual values when notifications are sent:
           </p>
-          <div className="space-y-2 text-sm">
-            <div className="grid grid-cols-2 gap-2">
-              <div className="bg-muted/30 p-2 rounded">
-                <code className="text-xs">${"{service_name}"}</code>
-                <p className="text-xs text-muted-foreground mt-1">The name of the service</p>
+          <div class名称="space-y-2 text-sm">
+            <div class名称="grid grid-cols-2 gap-2">
+              <div class名称="bg-muted/30 p-2 rounded">
+                <code class名称="text-xs">${"{service_name}"}</code>
+                <p class名称="text-xs text-muted-foreground mt-1">The name of the service</p>
               </div>
-              <div className="bg-muted/30 p-2 rounded">
-                <code className="text-xs">${"{response_time}"}</code>
-                <p className="text-xs text-muted-foreground mt-1">Response time in milliseconds</p>
+              <div class名称="bg-muted/30 p-2 rounded">
+                <code class名称="text-xs">${"{response_time}"}</code>
+                <p class名称="text-xs text-muted-foreground mt-1">Response time in milliseconds</p>
               </div>
-              <div className="bg-muted/30 p-2 rounded">
-                <code className="text-xs">${"{status}"}</code>
-                <p className="text-xs text-muted-foreground mt-1">Service status (UP, DOWN)</p>
+              <div class名称="bg-muted/30 p-2 rounded">
+                <code class名称="text-xs">${"{status}"}</code>
+                <p class名称="text-xs text-muted-foreground mt-1">Service status (UP, DOWN)</p>
               </div>
-              <div className="bg-muted/30 p-2 rounded">
-                <code className="text-xs">${"{url}"}</code>
-                <p className="text-xs text-muted-foreground mt-1">Service URL</p>
+              <div class名称="bg-muted/30 p-2 rounded">
+                <code class名称="text-xs">${"{url}"}</code>
+                <p class名称="text-xs text-muted-foreground mt-1">Service URL</p>
               </div>
-              <div className="bg-muted/30 p-2 rounded">
-                <code className="text-xs">${"{host}"}</code>
-                <p className="text-xs text-muted-foreground mt-1">Service host or IP address</p>
+              <div class名称="bg-muted/30 p-2 rounded">
+                <code class名称="text-xs">${"{host}"}</code>
+                <p class名称="text-xs text-muted-foreground mt-1">Service host or IP address</p>
               </div>
-              <div className="bg-muted/30 p-2 rounded">
-                <code className="text-xs">${"{service_type}"}</code>
-                <p className="text-xs text-muted-foreground mt-1">Service type (HTTP, PING, TCP, DNS)</p>
+              <div class名称="bg-muted/30 p-2 rounded">
+                <code class名称="text-xs">${"{service_type}"}</code>
+                <p class名称="text-xs text-muted-foreground mt-1">Service type (HTTP, PING, TCP, DNS)</p>
               </div>
-              <div className="bg-muted/30 p-2 rounded">
-                <code className="text-xs">${"{port}"}</code>
-                <p className="text-xs text-muted-foreground mt-1">Service port number</p>
+              <div class名称="bg-muted/30 p-2 rounded">
+                <code class名称="text-xs">${"{port}"}</code>
+                <p class名称="text-xs text-muted-foreground mt-1">Service port number</p>
               </div>
-              <div className="bg-muted/30 p-2 rounded">
-                <code className="text-xs">${"{domain}"}</code>
-                <p className="text-xs text-muted-foreground mt-1">Domain name (DNS services)</p>
+              <div class名称="bg-muted/30 p-2 rounded">
+                <code class名称="text-xs">${"{domain}"}</code>
+                <p class名称="text-xs text-muted-foreground mt-1">Domain name (DNS services)</p>
               </div>
-              <div className="bg-muted/30 p-2 rounded">
-                <code className="text-xs">${"{region_name}"}</code>
-                <p className="text-xs text-muted-foreground mt-1">Regional agent name</p>
+              <div class名称="bg-muted/30 p-2 rounded">
+                <code class名称="text-xs">${"{region_name}"}</code>
+                <p class名称="text-xs text-muted-foreground mt-1">Regional agent name</p>
               </div>
-              <div className="bg-muted/30 p-2 rounded">
-                <code className="text-xs">${"{agent_id}"}</code>
-                <p className="text-xs text-muted-foreground mt-1">Regional agent ID</p>
+              <div class名称="bg-muted/30 p-2 rounded">
+                <code class名称="text-xs">${"{agent_id}"}</code>
+                <p class名称="text-xs text-muted-foreground mt-1">Regional agent ID</p>
               </div>
-              <div className="bg-muted/30 p-2 rounded">
-                <code className="text-xs">${"{uptime}"}</code>
-                <p className="text-xs text-muted-foreground mt-1">Service uptime percentage</p>
+              <div class名称="bg-muted/30 p-2 rounded">
+                <code class名称="text-xs">${"{uptime}"}</code>
+                <p class名称="text-xs text-muted-foreground mt-1">Service uptime percentage</p>
               </div>
-              <div className="bg-muted/30 p-2 rounded">
-                <code className="text-xs">${"{time}"}</code>
-                <p className="text-xs text-muted-foreground mt-1">Current date and time</p>
+              <div class名称="bg-muted/30 p-2 rounded">
+                <code class名称="text-xs">${"{time}"}</code>
+                <p class名称="text-xs text-muted-foreground mt-1">Current date and time</p>
               </div>
-              <div className="bg-muted/30 p-2 rounded">
-                <code className="text-xs">${"{error_message}"}</code>
-                <p className="text-xs text-muted-foreground mt-1">Error details when service is down</p>
+              <div class名称="bg-muted/30 p-2 rounded">
+                <code class名称="text-xs">${"{error_message}"}</code>
+                <p class名称="text-xs text-muted-foreground mt-1">Error details when service is down</p>
               </div>
             </div>
           </div>

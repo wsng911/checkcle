@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Server, Monitor, Cpu, HardDrive, DatabaseIcon, InfoIcon } from "lucide-react";
+import { Server, 监控, Cpu, HardDrive, DatabaseIcon, InfoIcon } from "lucide-react";
 import { Server as ServerType } from "@/types/server.types";
 
 interface ServerSystemInfoCardProps {
@@ -54,8 +54,8 @@ export function ServerSystemInfoCard({ server }: ServerSystemInfoCardProps) {
     parts.push(server.os_type || 'Unknown OS');
     
     // Parse additional info from system_info if available
-    if (systemInfo.OSName) {
-      parts.push(systemInfo.OSName + (systemInfo.OSVersion ? ` ${systemInfo.OSVersion}` : ''));
+    if (systemInfo.OS名称) {
+      parts.push(systemInfo.OS名称 + (systemInfo.OSVersion ? ` ${systemInfo.OSVersion}` : ''));
     }
     
     if (systemInfo.Architecture) {
@@ -80,8 +80,8 @@ export function ServerSystemInfoCard({ server }: ServerSystemInfoCardProps) {
       parts.push(`| Go ${systemInfo.GoVersion}`);
     }
     
-    if (systemInfo.IPAddress && systemInfo.IPAddress !== server.ip_address) {
-      parts.push(`| IP: ${systemInfo.IPAddress}`);
+    if (systemInfo.IP添加ress && systemInfo.IP添加ress !== server.ip_address) {
+      parts.push(`| IP: ${systemInfo.IP添加ress}`);
     }
     
     // Check for Docker info
@@ -94,16 +94,16 @@ export function ServerSystemInfoCard({ server }: ServerSystemInfoCardProps) {
   };
 
   return (
-    <Card className="bg-card/50 backdrop-blur-sm border-border/50 max-w-md">
-      <CardContent className="p-4">
-        <div className="flex items-center gap-2 mb-3">
-          <div className="h-6 w-6 rounded bg-primary/10 flex items-center justify-center">
-            <InfoIcon className="h-3 w-3 text-primary" />
+    <Card class名称="bg-card/50 backdrop-blur-sm border-border/50 max-w-md">
+      <CardContent class名称="p-4">
+        <div class名称="flex items-center gap-2 mb-3">
+          <div class名称="h-6 w-6 rounded bg-primary/10 flex items-center justify-center">
+            <InfoIcon class名称="h-3 w-3 text-primary" />
           </div>
-          <h3 className="text-sm font-medium">System Information</h3>
+          <h3 class名称="text-sm font-medium">System Information</h3>
         </div>
         
-        <div className="text-xs text-muted-foreground leading-relaxed break-all">
+        <div class名称="text-xs text-muted-foreground leading-relaxed break-all">
           {getDetailedSystemInfo()}
         </div>
       </CardContent>

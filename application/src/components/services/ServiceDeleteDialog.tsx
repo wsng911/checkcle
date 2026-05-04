@@ -2,9 +2,9 @@
 import {
   AlertDialog,
   AlertDialogAction,
-  AlertDialogCancel,
+  AlertDialog取消,
   AlertDialogContent,
-  AlertDialogDescription,
+  AlertDialog描述,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
@@ -13,61 +13,61 @@ import { Service } from "@/types/service.types";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Loader2 } from "lucide-react";
 
-interface ServiceDeleteDialogProps {
+interface Service删除DialogProps {
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
   selectedService: Service | null;
-  onConfirmDelete: () => Promise<void>;
+  on确认删除: () => Promise<void>;
   isDeleting?: boolean;
 }
 
-export const ServiceDeleteDialog = ({
+export const Service删除Dialog = ({
   isOpen,
   onOpenChange,
   selectedService,
-  onConfirmDelete,
+  on确认删除,
   isDeleting = false,
-}: ServiceDeleteDialogProps) => {
+}: Service删除DialogProps) => {
   const { theme } = useTheme();
   
-  const handleConfirm = async () => {
+  const handle确认 = async () => {
     if (!isDeleting) {
-      await onConfirmDelete();
+      await on确认删除();
     }
   };
   
   return (
     <AlertDialog open={isOpen} onOpenChange={onOpenChange}>
-      <AlertDialogContent className={`${theme === 'dark' ? 'bg-gray-900 text-white border-gray-800' : 'bg-background text-foreground border-border'}`}>
+      <AlertDialogContent class名称={`${theme === 'dark' ? 'bg-gray-900 text-white border-gray-800' : 'bg-background text-foreground border-border'}`}>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you sure you want to delete this service?</AlertDialogTitle>
-          <AlertDialogDescription className={theme === 'dark' ? 'text-gray-400' : 'text-muted-foreground'}>
+          <AlertDialog描述 class名称={theme === 'dark' ? 'text-gray-400' : 'text-muted-foreground'}>
             This action cannot be undone. This will permanently delete{' '}
-            <span className={theme === 'dark' ? 'font-semibold text-white' : 'font-semibold text-foreground'}>
+            <span class名称={theme === 'dark' ? 'font-semibold text-white' : 'font-semibold text-foreground'}>
               {selectedService?.name}
             </span>{' '}
             and all of its uptime records.
-          </AlertDialogDescription>
+          </AlertDialog描述>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel 
-            className={theme === 'dark' ? 'bg-gray-800 text-white border-gray-700 hover:bg-gray-700' : 'bg-secondary'}
+          <AlertDialog取消 
+            class名称={theme === 'dark' ? 'bg-gray-800 text-white border-gray-700 hover:bg-gray-700' : 'bg-secondary'}
             disabled={isDeleting}
           >
-            Cancel
-          </AlertDialogCancel>
+            取消
+          </AlertDialog取消>
           <AlertDialogAction
-            onClick={handleConfirm}
+            onClick={handle确认}
             disabled={isDeleting}
-            className={theme === 'dark' ? 'bg-red-900 text-white hover:bg-red-800' : 'bg-red-600 text-white hover:bg-red-700'}
+            class名称={theme === 'dark' ? 'bg-red-900 text-white hover:bg-red-800' : 'bg-red-600 text-white hover:bg-red-700'}
           >
             {isDeleting ? (
               <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                <Loader2 class名称="mr-2 h-4 w-4 animate-spin" />
                 Deleting...
               </>
             ) : (
-              'Delete'
+              '删除'
             )}
           </AlertDialogAction>
         </AlertDialogFooter>

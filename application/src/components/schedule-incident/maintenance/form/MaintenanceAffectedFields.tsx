@@ -22,12 +22,12 @@ export const MaintenanceAffectedFields: React.FC = () => {
       name="affected"
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{t('affectedServices')}</FormLabel>
+          <FormLabel>{t('affected服务')}</FormLabel>
           <FormControl>
-            <Input placeholder={t('enterAffectedServices')} {...field} />
+            <Input placeholder={t('enterAffected服务')} {...field} />
           </FormControl>
           <FormMessage />
-          <p className="text-sm text-muted-foreground">{t('separateServicesWithComma')}</p>
+          <p class名称="text-sm text-muted-foreground">{t('separate服务WithComma')}</p>
         </FormItem>
       )}
     />

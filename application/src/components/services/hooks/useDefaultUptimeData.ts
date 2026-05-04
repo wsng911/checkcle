@@ -76,7 +76,7 @@ export const useDefaultUptimeData = ({ serviceId, serviceType, status, interval 
       
       if (!timestampMap.has(exactTimestamp)) {
         timestampMap.set(exactTimestamp, record);
-      //  console.log(`✓ Added unique default record: ${record.id} - ${exactTimestamp}`);
+      //  console.log(`✓ 添加ed unique default record: ${record.id} - ${exactTimestamp}`);
       } else {
       //  console.log(`✗ REJECTED absolute duplicate timestamp: ${record.id} - ${exactTimestamp} (exact timestamp match)`);
       }
@@ -125,7 +125,7 @@ export const useDefaultUptimeData = ({ serviceId, serviceType, status, interval 
     // If we have fewer than 20 items, pad with older placeholder data
     if (items.length < 20) {
       const lastItem = items.length > 0 ? items[items.length - 1] : null;
-      const lastStatus = lastItem ? lastItem.status : 
+      const last状态 = lastItem ? lastItem.status : 
                         (status === "up" || status === "down" || status === "warning" || status === "paused") ? 
                         status as "up" | "down" | "warning" | "paused" : "paused";
       
@@ -139,7 +139,7 @@ export const useDefaultUptimeData = ({ serviceId, serviceType, status, interval 
           service_id: serviceId || "",
           serviceId: serviceId || "",
           timestamp: new Date(baseTime - timeOffset).toISOString(),
-          status: lastStatus,
+          status: last状态,
           responseTime: 0
         };
       });

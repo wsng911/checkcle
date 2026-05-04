@@ -1,6 +1,6 @@
 
 import React from "react";
-import { FormField, FormItem, FormLabel, FormControl, FormMessage, FormDescription } from "@/components/ui/form";
+import { FormField, FormItem, FormLabel, FormControl, FormMessage, Form描述 } from "@/components/ui/form";
 import { Switch } from "@/components/ui/switch";
 import { Control } from "react-hook-form";
 
@@ -17,12 +17,12 @@ const UserToggleField = ({ control, name, label, description }: UserToggleFieldP
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3">
-          <div className="space-y-0.5">
+        <FormItem class名称="flex flex-row items-center justify-between rounded-lg border p-3">
+          <div class名称="space-y-0.5">
             <FormLabel>{label}</FormLabel>
-            <FormDescription>
+            <Form描述>
               {description}
-            </FormDescription>
+            </Form描述>
           </div>
           <FormControl>
             <Switch

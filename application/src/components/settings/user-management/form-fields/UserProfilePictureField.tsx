@@ -38,31 +38,31 @@ const UserProfilePictureField = ({ control }: UserProfilePictureFieldProps) => {
           <RadioGroup
             onValueChange={field.onChange}
             value={field.value}
-            className="grid grid-cols-3 gap-4"
+            class名称="grid grid-cols-3 gap-4"
           >
             {localProfileImages.map((avatar) => (
-              <FormItem key={avatar.url} className="flex flex-col items-center justify-center space-y-1">
+              <FormItem key={avatar.url} class名称="flex flex-col items-center justify-center space-y-1">
                 <FormControl>
                   <RadioGroupItem
                     value={avatar.url}
                     id={`new-${avatar.url}`}
-                    className="sr-only"
+                    class名称="sr-only"
                   />
                 </FormControl>
                 <label
                   htmlFor={`new-${avatar.url}`}
-                  className={`cursor-pointer rounded-md p-1 ${
+                  class名称={`cursor-pointer rounded-md p-1 ${
                     field.value === avatar.url
                       ? "ring-2 ring-primary ring-offset-2"
                       : ""
                   }`}
                 >
-                  <Avatar className="h-16 w-16">
+                  <Avatar class名称="h-16 w-16">
                     <AvatarImage src={avatar.url} alt={avatar.label} />
                     <AvatarFallback>?</AvatarFallback>
                   </Avatar>
                 </label>
-                <div className="text-xs text-center">{avatar.label}</div>
+                <div class名称="text-xs text-center">{avatar.label}</div>
               </FormItem>
             ))}
           </RadioGroup>

@@ -1,16 +1,16 @@
 
 import { pb } from "@/lib/pocketbase";
-import type { AddSSLCertificateDto, SSLCertificate } from "./types";
-import { determineSSLStatus } from "./sslStatusUtils";
+import type { 添加SSLCertificateDto, SSLCertificate } from "./types";
+import { determineSSL状态 } from "./ssl状态Utils";
 import { checkCertificateAndNotify } from "./notification"; // Import notification service
 import { toast } from "sonner";
 
 /**
- * Add a new SSL certificate to monitor
+ * 添加 a new SSL certificate to monitor
  * Note: SSL checking is now handled by the Go service
  */
 export const addSSLCertificate = async (
-  certificateData: AddSSLCertificateDto
+  certificateData: 添加SSLCertificateDto
 ): Promise<SSLCertificate> => {
   try {
     const currentTime = new Date().toISOString();
@@ -38,7 +38,7 @@ export const addSSLCertificate = async (
       check_at: currentTime, // Set to current time to trigger immediate check
     };
 
-    // Save to database
+    // 保存 to database
     const record = await pb.collection("ssl_certificates").create(data);
 
     return record as unknown as SSLCertificate;
@@ -95,7 +95,7 @@ export const triggerImmediateCheck = async (certificateId: string): Promise<void
 };
 
 /**
- * Delete an SSL certificate from monitoring
+ * 删除 an SSL certificate from monitoring
  */
 export const deleteSSLCertificate = async (id: string): Promise<boolean> => {
   try {

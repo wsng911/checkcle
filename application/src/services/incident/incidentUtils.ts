@@ -24,6 +24,6 @@ export const normalizeFetchedItem = (item: any): IncidentItem => {
 };
 
 // Format status with first letter capitalized
-export const formatStatus = (status: string): string => {
+export const format状态 = (status: string): string => {
   return status.charAt(0).toUpperCase() + status.slice(1);
 };

@@ -17,15 +17,15 @@ export const AssignmentSection: React.FC<AssignmentSectionProps> = ({ incident, 
   if (!incident) return null;
   
   return (
-    <div className="space-y-2">
-      <h3 className="font-semibold text-lg">{t('assignment')}</h3>
+    <div class名称="space-y-2">
+      <h3 class名称="font-semibold text-lg">{t('assignment')}</h3>
       
       <div>
-        <h4 className="text-sm font-medium text-muted-foreground">{t('assignedTo')}</h4>
-        <div className="mt-1">
+        <h4 class名称="text-sm font-medium text-muted-foreground">{t('assignedTo')}</h4>
+        <div class名称="mt-1">
           {assignedUser ? (
-            <div className="flex items-center gap-2">
-              <Avatar className="h-6 w-6">
+            <div class名称="flex items-center gap-2">
+              <Avatar class名称="h-6 w-6">
                 <AvatarImage src={assignedUser.avatar} alt={assignedUser.full_name || assignedUser.username} />
                 <AvatarFallback>{getUserInitials(assignedUser)}</AvatarFallback>
               </Avatar>
@@ -34,7 +34,7 @@ export const AssignmentSection: React.FC<AssignmentSectionProps> = ({ incident, 
           ) : (incident.assigned_users || incident.assigned_to) ? (
            <span>{incident.assigned_users || incident.assigned_to}</span>
           ) : (
-            <span className="text-muted-foreground italic">{t('unassigned')}</span>
+            <span class名称="text-muted-foreground italic">{t('unassigned')}</span>
           )}
         </div>
       </div>

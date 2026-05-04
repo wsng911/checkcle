@@ -1,13 +1,13 @@
-import { ServicesTranslations } from '../types/services';
+import { 服务Translations } from '../types/services';
 
-export const servicesTranslations: ServicesTranslations = {
+export const servicesTranslations: 服务Translations = {
   // Service Table
-  serviceStatus: "Dienststatus",
+  service状态: "Dienststatus",
   responseTime: "Antwortzeit",
   uptime: "Betriebszeit",
   lastChecked: "Zuletzt überprüft",
-  noServices: "Keine Dienste entsprechen Ihren Filterkriterien.",
-  currentlyMonitoring: "Derzeit überwacht",
+  no服务: "Keine Dienste entsprechen Ihren Filterkriterien.",
+  currently监控ing: "Derzeit überwacht",
   retry: "Wiederholen",
   overview: "Überblick",
   newService: "Neuer Dienst",
@@ -18,8 +18,8 @@ export const servicesTranslations: ServicesTranslations = {
   createNewServiceDesc: "Geben Sie detaillierte Informationen ein, um einen neuen zu erstellen, den Sie überwachen möchten.",
 
   // ServiceBasicFields.tsx
-  serviceName: "Dienstname",
-  serviceNameDesc: "Geben Sie einen aussagekräftigen Namen für Ihren Service ein",
+  service名称: "Dienstname",
+  service名称Desc: "Geben Sie einen aussagekräftigen 名称n für Ihren Service ein",
 
   // ServiceConfigFields.tsx
   checkInterval: "Prüfintervall",
@@ -63,8 +63,8 @@ export const servicesTranslations: ServicesTranslations = {
   serviceTypeDNSDesc: "DNS-Auflösung überwachen",
 
   // ServiceRegionalFields.tsx
-  regionalMonitoring: "Regionale Überwachung",
-  regionalMonitoringDesc: "Diesen Dienst regionalen Überwachungsagenten für verteilte Überwachung zuweisen",
+  regional监控ing: "Regionale Überwachung",
+  regional监控ingDesc: "Diesen Dienst regionalen Überwachungsagenten für verteilte Überwachung zuweisen",
   regionalAgents: "Regionale Agenten",
   regionalAgentsLoading: "Lade Agenten...",
   regionalAgentsAvailablePlaceholder: "Zusätzliche regionale Agenten auswählen...",
@@ -86,13 +86,13 @@ export const servicesTranslations: ServicesTranslations = {
   targetDefaultPlaceholder: "URL oder Hostname eingeben",
 
   // types.ts
-  serviceNameRequired: "Dienstname ist erforderlich",
+  service名称Required: "Dienstname ist erforderlich",
   urlDomainHostRequired: "URL/Domain/Host ist erforderlich",
   enterValidUrlHostnameDomain: "Bitte eine gültige URL, einen Hostnamen oder eine Domain eingeben",
 
-  // Dashboard
-  upServices: "DIENSTE ONLINE",
-  downServices: "DIENSTE OFFLINE",
-  pausedServices: "DIENSTE PAUSIERT",
-  warningServices: "DIENSTE MIT WARNUNG",
+  // 仪表盘
+  up服务: "DIENSTE ONLINE",
+  down服务: "DIENSTE OFFLINE",
+  paused服务: "DIENSTE PAUSIERT",
+  warning服务: "DIENSTE MIT WARNUNG",
 };

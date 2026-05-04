@@ -5,25 +5,25 @@ import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { SettingsTabProps } from "./types";
-import TestEmailDialog, { TestEmailData } from "./TestEmailDialog";
+import { 设置TabProps } from "./types";
+import Test邮箱Dialog, { Test邮箱Data } from "./Test邮箱Dialog";
 import { Mail } from "lucide-react";
 
-interface MailSettingsTabProps extends SettingsTabProps {
-  // Remove handleTestConnection and isTestingConnection props since we're removing the test connection button
+interface Mail设置TabProps extends 设置TabProps {
+  // 移除 handleTestConnection and isTestingConnection props since we're removing the test connection button
 }
 
-const MailSettingsTab: React.FC<MailSettingsTabProps> = ({
+const Mail设置Tab: React.FC<Mail设置TabProps> = ({
   form,
-  isEditing
+  is编辑ing
 }) => {
   const { t } = useLanguage();
-  const [showTestEmailDialog, setShowTestEmailDialog] = useState(false);
-  const [isTestingEmail, setIsTestingEmail] = useState(false);
+  const [showTest邮箱Dialog, setShowTest邮箱Dialog] = useState(false);
+  const [isTesting邮箱, setIsTesting邮箱] = useState(false);
 
-  const handleTestEmail = async (data: TestEmailData) => {
+  const handleTest邮箱 = async (data: Test邮箱Data) => {
     try {
-      setIsTestingEmail(true);
+      setIsTesting邮箱(true);
       console.log('Testing email with data:', data);
       
       const response = await fetch('/api/settings/test/email', {
@@ -53,23 +53,23 @@ const MailSettingsTab: React.FC<MailSettingsTabProps> = ({
       console.error('Error sending test email:', error);
       throw error; // Re-throw to let the dialog handle the error display
     } finally {
-      setIsTestingEmail(false);
+      setIsTesting邮箱(false);
     }
   };
 
   return (
-    <div className="space-y-4">
+    <div class名称="space-y-4">
       <div>
         <FormField
           control={form.control}
-          name="meta.senderName"
+          name="meta.sender名称"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t("senderName", "settings")}</FormLabel>
+              <FormLabel>{t("sender名称", "settings")}</FormLabel>
               <FormControl>
                 <Input 
                   {...field} 
-                  disabled={!isEditing}
+                  disabled={!is编辑ing}
                   placeholder="Support"
                 />
               </FormControl>
@@ -81,14 +81,14 @@ const MailSettingsTab: React.FC<MailSettingsTabProps> = ({
       <div>
         <FormField
           control={form.control}
-          name="meta.senderAddress"
+          name="meta.sender添加ress"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t("senderEmail", "settings")}</FormLabel>
+              <FormLabel>{t("sender邮箱", "settings")}</FormLabel>
               <FormControl>
                 <Input 
                   {...field} 
-                  disabled={!isEditing}
+                  disabled={!is编辑ing}
                   placeholder="support@example.com"
                   type="email"
                 />
@@ -98,26 +98,26 @@ const MailSettingsTab: React.FC<MailSettingsTabProps> = ({
         />
       </div>
     
-      <div className="flex items-center space-x-2 mb-4">
+      <div class名称="flex items-center space-x-2 mb-4">
         <FormField
           control={form.control}
           name="smtp.enabled"
           render={({ field }) => (
-            <FormItem className="flex flex-row items-center space-x-3 space-y-0">
+            <FormItem class名称="flex flex-row items-center space-x-3 space-y-0">
               <FormControl>
                 <Switch 
                   checked={field.value}
                   onCheckedChange={field.onChange}
-                  disabled={!isEditing}
+                  disabled={!is编辑ing}
                 />
               </FormControl>
-              <FormLabel className="mt-0">{t("smtpEnabled", "settings")}</FormLabel>
+              <FormLabel class名称="mt-0">{t("smtpEnabled", "settings")}</FormLabel>
             </FormItem>
           )}
         />
       </div>
       
-      <div className={!form.watch('smtp.enabled') ? 'opacity-50' : ''}>
+      <div class名称={!form.watch('smtp.enabled') ? 'opacity-50' : ''}>
         <div>
           <FormField
             control={form.control}
@@ -128,7 +128,7 @@ const MailSettingsTab: React.FC<MailSettingsTabProps> = ({
                 <FormControl>
                   <Input 
                     {...field} 
-                    disabled={!isEditing || !form.watch('smtp.enabled')}
+                    disabled={!is编辑ing || !form.watch('smtp.enabled')}
                     placeholder="smtp.example.com"
                   />
                 </FormControl>
@@ -137,7 +137,7 @@ const MailSettingsTab: React.FC<MailSettingsTabProps> = ({
           />
         </div>
         
-        <div className="mt-4">
+        <div class名称="mt-4">
           <FormField
             control={form.control}
             name="smtp.port"
@@ -149,7 +149,7 @@ const MailSettingsTab: React.FC<MailSettingsTabProps> = ({
                     type="number"
                     {...field}
                     onChange={e => field.onChange(parseInt(e.target.value) || 587)} 
-                    disabled={!isEditing || !form.watch('smtp.enabled')}
+                    disabled={!is编辑ing || !form.watch('smtp.enabled')}
                     placeholder="587"
                   />
                 </FormControl>
@@ -158,17 +158,17 @@ const MailSettingsTab: React.FC<MailSettingsTabProps> = ({
           />
         </div>
         
-        <div className="mt-4">
+        <div class名称="mt-4">
           <FormField
             control={form.control}
             name="smtp.username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t("smtpUsername", "settings")}</FormLabel>
+                <FormLabel>{t("smtp用户名", "settings")}</FormLabel>
                 <FormControl>
                   <Input 
                     {...field} 
-                    disabled={!isEditing || !form.watch('smtp.enabled')}
+                    disabled={!is编辑ing || !form.watch('smtp.enabled')}
                     placeholder="user@example.com"
                   />
                 </FormControl>
@@ -177,18 +177,18 @@ const MailSettingsTab: React.FC<MailSettingsTabProps> = ({
           />
         </div>
         
-        <div className="mt-4">
+        <div class名称="mt-4">
           <FormField
             control={form.control}
             name="smtp.password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t("smtpPassword", "settings")}</FormLabel>
+                <FormLabel>{t("smtp密码", "settings")}</FormLabel>
                 <FormControl>
                   <Input 
                     {...field} 
                     type="password"
-                    disabled={!isEditing || !form.watch('smtp.enabled')}
+                    disabled={!is编辑ing || !form.watch('smtp.enabled')}
                     placeholder="••••••••"
                   />
                 </FormControl>
@@ -197,7 +197,7 @@ const MailSettingsTab: React.FC<MailSettingsTabProps> = ({
           />
         </div>
         
-        <div className="mt-4">
+        <div class名称="mt-4">
           <FormField
             control={form.control}
             name="smtp.authMethod"
@@ -207,7 +207,7 @@ const MailSettingsTab: React.FC<MailSettingsTabProps> = ({
                 <FormControl>
                   <Input 
                     {...field} 
-                    disabled={!isEditing || !form.watch('smtp.enabled')}
+                    disabled={!is编辑ing || !form.watch('smtp.enabled')}
                     placeholder="Login"
                   />
                 </FormControl>
@@ -216,36 +216,36 @@ const MailSettingsTab: React.FC<MailSettingsTabProps> = ({
           />
         </div>
         
-        <div className="flex items-center space-x-2 mt-4">
+        <div class名称="flex items-center space-x-2 mt-4">
           <FormField
             control={form.control}
             name="smtp.tls"
             render={({ field }) => (
-              <FormItem className="flex flex-row items-center space-x-3 space-y-0">
+              <FormItem class名称="flex flex-row items-center space-x-3 space-y-0">
                 <FormControl>
                   <Switch 
                     checked={field.value}
                     onCheckedChange={field.onChange}
-                    disabled={!isEditing || !form.watch('smtp.enabled')}
+                    disabled={!is编辑ing || !form.watch('smtp.enabled')}
                   />
                 </FormControl>
-                <FormLabel className="mt-0">{t("enableTLS", "settings")}</FormLabel>
+                <FormLabel class名称="mt-0">{t("enableTLS", "settings")}</FormLabel>
               </FormItem>
             )}
           />
         </div>
         
-        <div className="mt-4">
+        <div class名称="mt-4">
           <FormField
             control={form.control}
-            name="smtp.localName"
+            name="smtp.local名称"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t("localName", "settings")}</FormLabel>
+                <FormLabel>{t("local名称", "settings")}</FormLabel>
                 <FormControl>
                   <Input 
                     {...field} 
-                    disabled={!isEditing || !form.watch('smtp.enabled')}
+                    disabled={!is编辑ing || !form.watch('smtp.enabled')}
                     placeholder="localhost"
                   />
                 </FormControl>
@@ -255,36 +255,36 @@ const MailSettingsTab: React.FC<MailSettingsTabProps> = ({
         </div>
       </div>
 
-      {/* Test Email button - outside the form area and always visible when SMTP is enabled */}
+      {/* Test 邮箱 button - outside the form area and always visible when SMTP is enabled */}
       {form.watch('smtp.enabled') && (
-        <div className="mt-6 pt-4 border-t border-border">
-          <div className="flex items-center justify-between mb-4">
+        <div class名称="mt-6 pt-4 border-t border-border">
+          <div class名称="flex items-center justify-between mb-4">
             <div>
-              <h3 className="text-lg font-medium">{t("testEmailSettings", "settings")}</h3>
-              <p className="text-sm text-muted-foreground">{t("testEmailDescription", "settings")}</p>
+              <h3 class名称="text-lg font-medium">{t("test邮箱设置", "settings")}</h3>
+              <p class名称="text-sm text-muted-foreground">{t("test邮箱描述", "settings")}</p>
             </div>
             <Button 
               type="button" 
               variant="outline" 
-              onClick={() => setShowTestEmailDialog(true)}
-              disabled={isTestingEmail}
-              className="flex items-center gap-2"
+              onClick={() => setShowTest邮箱Dialog(true)}
+              disabled={isTesting邮箱}
+              class名称="flex items-center gap-2"
             >
-              <Mail className="h-4 w-4" />
-              {t("testEmail", "settings")}
+              <Mail class名称="h-4 w-4" />
+              {t("test邮箱", "settings")}
             </Button>
           </div>
         </div>
       )}
 
-      <TestEmailDialog
-        open={showTestEmailDialog}
-        onOpenChange={setShowTestEmailDialog}
-        onSendTest={handleTestEmail}
-        isTesting={isTestingEmail}
+      <Test邮箱Dialog
+        open={showTest邮箱Dialog}
+        onOpenChange={setShowTest邮箱Dialog}
+        onSendTest={handleTest邮箱}
+        isTesting={isTesting邮箱}
       />
     </div>
   );
 };
 
-export default MailSettingsTab;
+export default Mail设置Tab;

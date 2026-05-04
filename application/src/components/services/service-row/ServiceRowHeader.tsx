@@ -54,17 +54,17 @@ export const ServiceRowHeader = ({ service }: ServiceRowHeaderProps) => {
   const serviceSubtitle = getServiceSubtitle();
 
   return (
-    <div className="flex items-center gap-2">
+    <div class名称="flex items-center gap-2">
       <div>
-        <div className="text-base font-medium">{service.name}</div>
+        <div class名称="text-base font-medium">{service.name}</div>
         {serviceSubtitle && (
-          <div className="text-sm text-gray-500 mt-1">{serviceSubtitle}</div>
+          <div class名称="text-sm text-gray-500 mt-1">{serviceSubtitle}</div>
         )}
       </div>
-      {/* Add a visual indicator if alerts are muted for this service */}
+      {/* 添加 a visual indicator if alerts are muted for this service */}
       {alertsMuted && (
-        <div className="ml-1" title="Alerts muted">
-          <BellOff className="h-4 w-4 text-gray-400" />
+        <div class名称="ml-1" title="Alerts muted">
+          <BellOff class名称="h-4 w-4 text-gray-400" />
         </div>
       )}
     </div>

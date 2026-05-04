@@ -86,7 +86,7 @@ export const useIncidentData = ({ refreshTrigger = 0 }: UseIncidentDataProps) =>
     // Update last refresh trigger ref
     lastRefreshTriggerRef.current = refreshTrigger;
     
-    // Create an abort controller for cleanup
+    // 创建 an abort controller for cleanup
     const abortController = new AbortController();
     let isMounted = true;
     

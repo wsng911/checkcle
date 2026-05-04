@@ -10,30 +10,30 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
-import { MoreHorizontal, Eye, Edit, Trash, Check } from 'lucide-react';
+import { MoreHorizontal, Eye, 编辑, Trash, Check } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { updateIncidentStatus, deleteIncident } from '@/services/incident/incidentOperations';
+import { updateIncident状态, deleteIncident } from '@/services/incident/incidentOperations';
 import { IncidentItem } from '@/services/incident/types';
 
-interface IncidentActionsMenuProps {
+interface Incident操作MenuProps {
   item: IncidentItem;
   onIncidentUpdated: () => void;
   onViewDetails?: (incident: IncidentItem) => void;
-  onEditIncident?: (incident: IncidentItem) => void;
+  on编辑Incident?: (incident: IncidentItem) => void;
 }
 
-export const IncidentActionsMenu = ({ 
+export const Incident操作Menu = ({ 
   item, 
   onIncidentUpdated,
   onViewDetails,
-  onEditIncident
-}: IncidentActionsMenuProps) => {
+  on编辑Incident
+}: Incident操作MenuProps) => {
   const { t } = useLanguage();
   const { toast } = useToast();
 
   const handleResolveIncident = async () => {
     try {
-      await updateIncidentStatus(item.id, 'resolved');
+      await updateIncident状态(item.id, 'resolved');
       toast({
         title: t('success'),
         description: t('incidentResolved'),
@@ -49,12 +49,12 @@ export const IncidentActionsMenu = ({
     }
   };
 
-  const handleDeleteIncident = async () => {
+  const handle删除Incident = async () => {
     try {
       await deleteIncident(item.id);
       toast({
         title: t('success'),
-        description: t('incidentDeleted'),
+        description: t('incident删除d'),
       });
       onIncidentUpdated();
     } catch (error) {
@@ -67,45 +67,45 @@ export const IncidentActionsMenu = ({
     }
   };
 
-  const handleEditClick = () => {
-    if (onEditIncident) {
-      onEditIncident(item);
+  const handle编辑Click = () => {
+    if (on编辑Incident) {
+      on编辑Incident(item);
     } else {
-      console.log(`Edit incident ${item.id}`);
+      console.log(`编辑 incident ${item.id}`);
     }
   };
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="h-8 w-8 p-0">
-          <span className="sr-only">{t('actions')}</span>
-          <MoreHorizontal className="h-4 w-4" />
+        <Button variant="ghost" class名称="h-8 w-8 p-0">
+          <span class名称="sr-only">{t('actions')}</span>
+          <MoreHorizontal class名称="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="bg-background">
+      <DropdownMenuContent align="end" class名称="bg-background">
         <DropdownMenuLabel>{t('actions')}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {onViewDetails && (
           <DropdownMenuItem onClick={() => onViewDetails(item)}>
-            <Eye className="mr-2 h-4 w-4" />
+            <Eye class名称="mr-2 h-4 w-4" />
             {t('view')}
           </DropdownMenuItem>
         )}
-        <DropdownMenuItem onClick={handleEditClick}>
-          <Edit className="mr-2 h-4 w-4" />
+        <DropdownMenuItem onClick={handle编辑Click}>
+          <编辑 class名称="mr-2 h-4 w-4" />
           {t('edit')}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={handleResolveIncident}>
-          <Check className="mr-2 h-4 w-4" />
+          <Check class名称="mr-2 h-4 w-4" />
           {t('resolve')}
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem
-          onClick={handleDeleteIncident}
-          className="text-red-600 focus:text-red-600"
+          onClick={handle删除Incident}
+          class名称="text-red-600 focus:text-red-600"
         >
-          <Trash className="mr-2 h-4 w-4" />
+          <Trash class名称="mr-2 h-4 w-4" />
           {t('delete')}
         </DropdownMenuItem>
       </DropdownMenuContent>

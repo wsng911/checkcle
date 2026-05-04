@@ -124,7 +124,7 @@ export const useMaintenanceData = ({ refreshTrigger = 0 }: UseMaintenanceDataPro
       mountedRef.current = false;
       currentRequestRef.current = null;
     };
-  }, []); // Remove fetchMaintenanceData from dependencies to prevent re-runs
+  }, []); // 移除 fetchMaintenanceData from dependencies to prevent re-runs
 
   // Handle refresh trigger changes - ONLY when explicitly triggered
   useEffect(() => {

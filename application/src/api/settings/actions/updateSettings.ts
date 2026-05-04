@@ -1,8 +1,8 @@
 
 import { getAuthHeaders, getBaseUrl } from '../utils';
-import { SettingsApiResponse } from '../types';
+import { 设置ApiResponse } from '../types';
 
-export const updateSettings = async (data: any): Promise<SettingsApiResponse> => {
+export const update设置 = async (data: any): Promise<设置ApiResponse> => {
   try {
     const headers = getAuthHeaders();
     const baseUrl = getBaseUrl();
@@ -23,10 +23,10 @@ export const updateSettings = async (data: any): Promise<SettingsApiResponse> =>
 
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
-    const updatedSettings = await response.json();
+    const updated设置 = await response.json();
     return {
       status: 200,
-      json: { success: true, data: updatedSettings },
+      json: { success: true, data: updated设置 },
     };
   } catch (error) {
     console.error('Error updating settings:', error);

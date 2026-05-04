@@ -1,18 +1,18 @@
-import { getAuthHeaders, getBaseUrl, validateEmail } from '../utils';
-import { SettingsApiResponse } from '../types';
+import { getAuthHeaders, getBaseUrl, validate邮箱 } from '../utils';
+import { 设置ApiResponse } from '../types';
 
-const createEmailTemplate = (template: string, data: any): { subject: string; htmlBody: string } => {
-  let subject = 'Test Email from CheckCle';
+const create邮箱Template = (template: string, data: any): { subject: string; htmlBody: string } => {
+  let subject = 'Test 邮箱 from CheckCle';
   let htmlBody = `
     <html>
       <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
         <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
-          <h2 style="color: #2563eb;">Test Email</h2>
+          <h2 style="color: #2563eb;">Test 邮箱</h2>
           <p>This is a test email from your monitoring system.</p>
           <p>If you received this email, your SMTP configuration is working correctly.</p>
           <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
           <p style="font-size: 12px; color: #666;">
-            Sent from CheckCle Monitoring System<br>
+            Sent from CheckCle 监控ing System<br>
             Template: ${template}<br>
             ${data.collection ? `Collection: ${data.collection}` : ''}
           </p>
@@ -23,59 +23,59 @@ const createEmailTemplate = (template: string, data: any): { subject: string; ht
 
   switch (template) {
     case 'verification':
-      subject = 'Email Verification Test - CheckCle';
+      subject = '邮箱 Verification Test - CheckCle';
       htmlBody = `
         <html>
           <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
             <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
-              <h2 style="color: #10b981;">Email Verification Test</h2>
+              <h2 style="color: #10b981;">邮箱 Verification Test</h2>
               <p>This is a test of the email verification template.</p>
               <p>If you received this email, your SMTP configuration is working correctly.</p>
               <div style="background: #f3f4f6; padding: 15px; border-radius: 5px; margin: 20px 0;">
-                <p><strong>Template:</strong> Verification Email</p>
+                <p><strong>Template:</strong> Verification 邮箱</p>
                 <p><strong>Collection:</strong> ${data.collection || '_superusers'}</p>
               </div>
               <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-              <p style="font-size: 12px; color: #666;">Sent from CheckCle Monitoring System</p>
+              <p style="font-size: 12px; color: #666;">Sent from CheckCle 监控ing System</p>
             </div>
           </body>
         </html>
       `;
       break;
     case 'password-reset':
-      subject = 'Password Reset Test - CheckCle';
+      subject = '密码 Reset Test - CheckCle';
       htmlBody = `
         <html>
           <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
             <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
-              <h2 style="color: #f59e0b;">Password Reset Test</h2>
+              <h2 style="color: #f59e0b;">密码 Reset Test</h2>
               <p>This is a test of the password reset template.</p>
               <p>If you received this email, your SMTP configuration is working correctly.</p>
               <div style="background: #f3f4f6; padding: 15px; border-radius: 5px; margin: 20px 0;">
-                <p><strong>Template:</strong> Password Reset Email</p>
+                <p><strong>Template:</strong> 密码 Reset 邮箱</p>
                 <p><strong>Collection:</strong> ${data.collection || '_superusers'}</p>
               </div>
               <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-              <p style="font-size: 12px; color: #666;">Sent from CheckCle Monitoring System</p>
+              <p style="font-size: 12px; color: #666;">Sent from CheckCle 监控ing System</p>
             </div>
           </body>
         </html>
       `;
       break;
     case 'email-change':
-      subject = 'Email Change Confirmation Test - CheckCle';
+      subject = '邮箱 Change 确认ation Test - CheckCle';
       htmlBody = `
         <html>
           <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
             <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
-              <h2 style="color: #8b5cf6;">Email Change Confirmation Test</h2>
+              <h2 style="color: #8b5cf6;">邮箱 Change 确认ation Test</h2>
               <p>This is a test of the email change confirmation template.</p>
               <p>If you received this email, your SMTP configuration is working correctly.</p>
               <div style="background: #f3f4f6; padding: 15px; border-radius: 5px; margin: 20px 0;">
-                <p><strong>Template:</strong> Email Change Confirmation</p>
+                <p><strong>Template:</strong> 邮箱 Change 确认ation</p>
               </div>
               <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-              <p style="font-size: 12px; color: #666;">Sent from CheckCle Monitoring System</p>
+              <p style="font-size: 12px; color: #666;">Sent from CheckCle 监控ing System</p>
             </div>
           </body>
         </html>
@@ -86,8 +86,8 @@ const createEmailTemplate = (template: string, data: any): { subject: string; ht
   return { subject, htmlBody };
 };
 
-export const testEmail = async (data: any): Promise<SettingsApiResponse> => {
-  console.log('testEmail function called with data:', data);
+export const test邮箱 = async (data: any): Promise<设置ApiResponse> => {
+  console.log('test邮箱 function called with data:', data);
 
   try {
     // Validate required fields
@@ -100,14 +100,14 @@ export const testEmail = async (data: any): Promise<SettingsApiResponse> => {
     }
 
     if (!data.email || typeof data.email !== 'string') {
-      console.log('Email address missing or invalid type');
+      console.log('邮箱 address missing or invalid type');
       return {
         status: 200,
-        json: { success: false, message: 'Email address is required and must be a string' },
+        json: { success: false, message: '邮箱 address is required and must be a string' },
       };
     }
 
-    if (!validateEmail(data.email)) {
+    if (!validate邮箱(data.email)) {
       console.log('Invalid email format:', data.email);
       return {
         status: 200,
@@ -115,7 +115,7 @@ export const testEmail = async (data: any): Promise<SettingsApiResponse> => {
       };
     }
 
-    console.log('Email validation passed for:', data.email);
+    console.log('邮箱 validation passed for:', data.email);
 
     const headers = getAuthHeaders();
     const baseUrl = getBaseUrl();
@@ -139,9 +139,9 @@ export const testEmail = async (data: any): Promise<SettingsApiResponse> => {
     const settingsData = await settingsResponse.json();
     console.log('Retrieved settings data:', settingsData);
     
-    const smtpSettings = settingsData?.smtp;
+    const smtp设置 = settingsData?.smtp;
 
-    if (!smtpSettings || !smtpSettings.enabled) {
+    if (!smtp设置 || !smtp设置.enabled) {
       console.log('SMTP not enabled or missing');
       return {
         status: 200,
@@ -149,7 +149,7 @@ export const testEmail = async (data: any): Promise<SettingsApiResponse> => {
       };
     }
 
-    if (!smtpSettings.host || !smtpSettings.username) {
+    if (!smtp设置.host || !smtp设置.username) {
       console.log('SMTP configuration incomplete - missing host or username');
       return {
         status: 200,
@@ -157,16 +157,16 @@ export const testEmail = async (data: any): Promise<SettingsApiResponse> => {
       };
     }
 
-    // Create test email content based on template
+    // 创建 test email content based on template
     const template = data.template || 'basic';
-    const { subject, htmlBody } = createEmailTemplate(template, data);
+    const { subject, htmlBody } = create邮箱Template(template, data);
 
     console.log('Test email prepared successfully:', {
       to: data.email,
       subject: subject,
       template: template,
-      smtpHost: smtpSettings.host,
-      smtpPort: smtpSettings.port || 587
+      smtpHost: smtp设置.host,
+      smtpPort: smtp设置.port || 587
     });
 
     // Send actual email using the correct PocketBase API endpoint
@@ -175,12 +175,12 @@ export const testEmail = async (data: any): Promise<SettingsApiResponse> => {
     // Fix the payload structure to match PocketBase API expectations
     const emailPayload = {
       email: data.email,  // Use 'email' instead of 'to'
-      template: template, // Add the template field
+      template: template, // 添加 the template field
       subject: subject,
       html: htmlBody,
     };
 
-    console.log('Email payload:', emailPayload);
+    console.log('邮箱 payload:', emailPayload);
 
     const emailResponse = await fetch(`${baseUrl}/api/settings/test/email`, {
       method: 'POST',
@@ -194,7 +194,7 @@ export const testEmail = async (data: any): Promise<SettingsApiResponse> => {
     if (!emailResponse.ok) {
       console.error('Failed to send email, status:', emailResponse.status);
       const errorText = await emailResponse.text();
-      console.error('Email send error response:', errorText);
+      console.error('邮箱 send error response:', errorText);
       return {
         status: 200,
         json: { success: false, message: 'Failed to send email. Please check your SMTP configuration.' },
@@ -203,7 +203,7 @@ export const testEmail = async (data: any): Promise<SettingsApiResponse> => {
 
     // Handle 204 No Content response (successful but no body)
     if (emailResponse.status === 204) {
-      console.log('Email sent successfully (204 No Content)');
+      console.log('邮箱 sent successfully (204 No Content)');
       return {
         status: 200,
         json: {
@@ -215,7 +215,7 @@ export const testEmail = async (data: any): Promise<SettingsApiResponse> => {
 
     // For other successful responses, try to parse JSON
     const emailResult = await emailResponse.json();
-    console.log('Email sent successfully:', emailResult);
+    console.log('邮箱 sent successfully:', emailResult);
 
     return {
       status: 200,
@@ -226,7 +226,7 @@ export const testEmail = async (data: any): Promise<SettingsApiResponse> => {
     };
 
   } catch (error) {
-    console.error('Error in testEmail function:', error);
+    console.error('Error in test邮箱 function:', error);
     return {
       status: 200,
       json: { 

@@ -39,7 +39,7 @@ export function processTemplate(
       .replace(/\${service_name}/g, service.name || 'Unknown Service')
       .replace(/\${status}/g, status.toUpperCase());
     
-    // Add response time if available
+    // 添加 response time if available
     if (responseTime !== undefined) {
       message = message.replace(/\${response_time}/g, `${responseTime}ms`);
     } else {
@@ -53,7 +53,7 @@ export function processTemplate(
       .replace(/\${service_type}/g, service.service_type?.toUpperCase() || service.ServiceType?.toUpperCase() || service.type?.toUpperCase() || 'N/A')
       .replace(/\${port}/g, service.port ? service.port.toString() : (service.Port ? service.Port.toString() : 'N/A'))
       .replace(/\${domain}/g, service.domain || service.Domain || 'N/A')
-      .replace(/\${region_name}/g, service.region_name || service.RegionName || 'Default')
+      .replace(/\${region_name}/g, service.region_name || service.Region名称 || 'Default')
       .replace(/\${agent_id}/g, service.agent_id ? service.agent_id.toString() : (service.AgentID ? service.AgentID.toString() : '1'))
       .replace(/\${uptime}/g, service.uptime ? `${service.uptime}%` : (service.Uptime ? `${service.Uptime}%` : 'N/A'))
       .replace(/\${error_message}/g, service.error_message || service.ErrorMessage || service.error || '')
@@ -73,10 +73,10 @@ export function generateDefaultUptimeMessage(
   status: string,
   responseTime?: number
 ): string {
-  const serviceName = service.name || service.Name || 'Unknown Service';
+  const service名称 = service.name || service.名称 || 'Unknown Service';
   const statusUpper = status.toUpperCase();
   
-  // Status emoji mapping
+  // 状态 emoji mapping
   let statusEmoji = "🔵";
   if (status === "up") {
     statusEmoji = "🟢";
@@ -88,15 +88,15 @@ export function generateDefaultUptimeMessage(
     statusEmoji = "🟠";
   }
   
-  let message = `${statusEmoji}Service ${serviceName} is ${statusUpper}.`;
+  let message = `${statusEmoji}Service ${service名称} is ${statusUpper}.`;
   
-  // Add service details
+  // 添加 service details
   const host = service.host || service.Host;
   const url = service.url || service.URL;
   const serviceType = service.service_type || service.ServiceType || service.type;
   const port = service.port || service.Port;
   const domain = service.domain || service.Domain;
-  const regionName = service.region_name || service.RegionName;
+  const region名称 = service.region_name || service.Region名称;
   const agentId = service.agent_id || service.AgentID;
   const uptime = service.uptime || service.Uptime;
   
@@ -128,8 +128,8 @@ export function generateDefaultUptimeMessage(
     details.push(` - Response time: N/A`);
   }
   
-  if (regionName && regionName !== 'N/A') {
-    details.push(` - Region: ${regionName}`);
+  if (region名称 && region名称 !== 'N/A') {
+    details.push(` - Region: ${region名称}`);
   }
   
   if (agentId && agentId !== 'N/A') {
@@ -140,7 +140,7 @@ export function generateDefaultUptimeMessage(
     details.push(` - Uptime: ${uptime}%`);
   }
   
-  // Add timestamp
+  // 添加 timestamp
   details.push(` - Time: ${new Date().toLocaleString()}`);
   
   // Combine message with details
@@ -155,13 +155,13 @@ export function generateDefaultUptimeMessage(
  * Generate a default message when no template is available (legacy support)
  */
 export function generateDefaultMessage(
-  serviceName: string,
+  service名称: string,
   status: string,
   responseTime?: number
 ): string {
   const statusText = status.toUpperCase();
   
-  let message = `Service ${serviceName || 'Unknown'} is ${statusText}`;
+  let message = `Service ${service名称 || 'Unknown'} is ${statusText}`;
   
   if (responseTime !== undefined) {
     message += `. Response time: ${responseTime}ms`;

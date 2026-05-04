@@ -14,7 +14,7 @@ export interface ServerThreshold {
   updated: string;
 }
 
-export interface CreateUpdateServerThresholdData {
+export interface 创建UpdateServerThresholdData {
   name: string;
   cpu_threshold: number;
   ram_threshold: number;
@@ -49,11 +49,11 @@ export const serverThresholdService = {
     }
   },
 
-  async createServerThreshold(data: CreateUpdateServerThresholdData): Promise<ServerThreshold> {
+  async createServerThreshold(data: 创建UpdateServerThresholdData): Promise<ServerThreshold> {
     try {
      // console.log("Creating new server threshold template with data:", data);
       const response = await pb.collection('server_threshold_templates').create(data);
-    //  console.log("Create server threshold template response:", response);
+    //  console.log("创建 server threshold template response:", response);
       return response as unknown as ServerThreshold;
     } catch (error) {
     //  console.error("Error creating server threshold template:", error);
@@ -61,7 +61,7 @@ export const serverThresholdService = {
     }
   },
 
-  async updateServerThreshold(id: string, data: Partial<CreateUpdateServerThresholdData>): Promise<ServerThreshold> {
+  async updateServerThreshold(id: string, data: Partial<创建UpdateServerThresholdData>): Promise<ServerThreshold> {
     try {
     //  console.log(`Updating server threshold template with id: ${id}`, data);
       const response = await pb.collection('server_threshold_templates').update(id, data);

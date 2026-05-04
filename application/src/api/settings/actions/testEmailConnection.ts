@@ -1,8 +1,8 @@
 
 import { getAuthHeaders, getBaseUrl } from '../utils';
-import { SettingsApiResponse } from '../types';
+import { 设置ApiResponse } from '../types';
 
-export const testEmailConnection = async (data: any): Promise<SettingsApiResponse> => {
+export const test邮箱Connection = async (data: any): Promise<设置ApiResponse> => {
   try {
     const response = await fetch(`${getBaseUrl()}/api/settings/test-email`, {
       method: 'POST',

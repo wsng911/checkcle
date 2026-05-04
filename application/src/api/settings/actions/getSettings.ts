@@ -1,8 +1,8 @@
 
 import { getAuthHeaders, getBaseUrl } from '../utils';
-import { SettingsApiResponse } from '../types';
+import { 设置ApiResponse } from '../types';
 
-export const getSettings = async (): Promise<SettingsApiResponse> => {
+export const get设置 = async (): Promise<设置ApiResponse> => {
   try {
     const response = await fetch(`${getBaseUrl()}/api/settings`, {
       method: 'GET',

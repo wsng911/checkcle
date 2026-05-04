@@ -2,23 +2,23 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, Dialog描述, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Form, FormControl, Form描述, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
 import { useUpdateOperationalPage } from '@/hooks/useOperationalPage';
-import { useCreateStatusPageComponent, useStatusPageComponentsByOperationalId, useDeleteStatusPageComponent } from '@/hooks/useStatusPageComponents';
+import { use创建状态PageComponent, use状态PageComponentsByOperationalId, use删除状态PageComponent } from '@/hooks/use状态PageComponents';
 import { ComponentsSelector } from './ComponentsSelector';
 import { OperationalPageRecord } from '@/types/operational.types';
-import { StatusPageComponentRecord } from '@/types/statusPageComponents.types';
+import { 状态PageComponentRecord } from '@/types/statusPageComponents.types';
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const formSchema = z.object({
   title: z.string().min(1, 'Title is required'),
-  description: z.string().min(1, 'Description is required'),
+  description: z.string().min(1, '描述 is required'),
   slug: z.string().min(1, 'Slug is required'),
   theme: z.string().min(1, 'Theme is required'),
   status: z.enum(['operational', 'degraded', 'maintenance', 'major_outage']),
@@ -31,24 +31,24 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-interface EditOperationalPageDialogProps {
+interface 编辑OperationalPageDialogProps {
   page: OperationalPageRecord | null;
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
 
-export const EditOperationalPageDialog = ({ page, open, onOpenChange }: EditOperationalPageDialogProps) => {
+export const 编辑OperationalPageDialog = ({ page, open, onOpenChange }: 编辑OperationalPageDialogProps) => {
   const { t } = useLanguage();
-  const [selectedComponents, setSelectedComponents] = useState<Partial<StatusPageComponentRecord>[]>([]);
-  const [isFormSubmitting, setIsFormSubmitting] = useState(false);
+  const [selectedComponents, setSelectedComponents] = useState<Partial<状态PageComponentRecord>[]>([]);
+  const [isForm提交ting, setIsForm提交ting] = useState(false);
   const [componentsLoaded, setComponentsLoaded] = useState(false);
   
   const updateMutation = useUpdateOperationalPage();
-  const createComponentMutation = useCreateStatusPageComponent();
-  const deleteComponentMutation = useDeleteStatusPageComponent();
+  const createComponentMutation = use创建状态PageComponent();
+  const deleteComponentMutation = use删除状态PageComponent();
   
   // Fetch existing components for this operational page
-  const { data: components = [] } = useStatusPageComponentsByOperationalId(page?.id || '');
+  const { data: components = [] } = use状态PageComponentsByOperationalId(page?.id || '');
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -125,7 +125,7 @@ export const EditOperationalPageDialog = ({ page, open, onOpenChange }: EditOper
     }
   }, [open]);
 
-  const handleComponentDelete = useCallback(async (componentId: string) => {
+  const handleComponent删除 = useCallback(async (componentId: string) => {
     try {
    //   console.log('Deleting component:', componentId);
       await deleteComponentMutation.mutateAsync(componentId);
@@ -137,11 +137,11 @@ export const EditOperationalPageDialog = ({ page, open, onOpenChange }: EditOper
     }
   }, [deleteComponentMutation]);
 
-  const onSubmit = async (data: FormData) => {
+  const on提交 = async (data: FormData) => {
     if (!page) return;
 
     try {
-      setIsFormSubmitting(true);
+      setIsForm提交ting(true);
       
       const payload = {
         title: data.title,
@@ -161,17 +161,17 @@ export const EditOperationalPageDialog = ({ page, open, onOpenChange }: EditOper
       
       // Handle component changes
       const currentComponentIds = components.map(c => c.id);
-      const newComponentsToCreate = selectedComponents.filter(comp => !comp.id);
-      const componentsToDelete = components.filter(comp => !selectedComponents.some(selected => selected.id === comp.id));
+      const newComponentsTo创建 = selectedComponents.filter(comp => !comp.id);
+      const componentsTo删除 = components.filter(comp => !selectedComponents.some(selected => selected.id === comp.id));
 
-      // Delete removed components
-      for (const component of componentsToDelete) {
+      // 删除 removed components
+      for (const component of componentsTo删除) {
     //    console.log('Deleting component during save:', component.id);
         await deleteComponentMutation.mutateAsync(component.id);
       }
 
-      // Create new components
-      for (const component of newComponentsToCreate) {
+      // 创建 new components
+      for (const component of newComponentsTo创建) {
         const componentPayload = {
           operational_status_id: page.id,
           name: component.name || '',
@@ -189,23 +189,23 @@ export const EditOperationalPageDialog = ({ page, open, onOpenChange }: EditOper
     } catch (error) {
     //  console.error('Error updating operational page:', error);
     } finally {
-      setIsFormSubmitting(false);
+      setIsForm提交ting(false);
     }
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[800px] max-h-[90vh] overflow-y-auto">
+      <DialogContent class名称="sm:max-w-[800px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>{t('editOperationalPage')}</DialogTitle>
-          <DialogDescription>
+          <Dialog描述>
             {t('updateYourOperationalPage')}
-          </DialogDescription>
+          </Dialog描述>
         </DialogHeader>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <div className="grid grid-cols-2 gap-4">
+          <form on提交={form.handle提交(on提交)} class名称="space-y-6">
+            <div class名称="grid grid-cols-2 gap-4">
               <FormField
                 control={form.control}
                 name="title"
@@ -213,7 +213,7 @@ export const EditOperationalPageDialog = ({ page, open, onOpenChange }: EditOper
                   <FormItem>
                     <FormLabel>{t('title')}</FormLabel>
                     <FormControl>
-                      <Input placeholder={t('myServiceStatusPlaceholder')} {...field} />
+                      <Input placeholder={t('myService状态Placeholder')} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -227,7 +227,7 @@ export const EditOperationalPageDialog = ({ page, open, onOpenChange }: EditOper
                   <FormItem>
                     <FormLabel>{t('slug')}</FormLabel>
                     <FormControl>
-                      <Input placeholder={t('myServiceStatusSlugPlaceholder')} {...field} />
+                      <Input placeholder={t('myService状态SlugPlaceholder')} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -243,8 +243,8 @@ export const EditOperationalPageDialog = ({ page, open, onOpenChange }: EditOper
                   <FormLabel>{t('description')}</FormLabel>
                   <FormControl>
                     <Textarea 
-                      placeholder={t('operationalPageDescriptionPlaceholder')} 
-                      className="min-h-[80px]"
+                      placeholder={t('operationalPage描述Placeholder')} 
+                      class名称="min-h-[80px]"
                       {...field} 
                     />
                   </FormControl>
@@ -253,7 +253,7 @@ export const EditOperationalPageDialog = ({ page, open, onOpenChange }: EditOper
               )}
             />
 
-            <div className="grid grid-cols-2 gap-4">
+            <div class名称="grid grid-cols-2 gap-4">
               <FormField
                 control={form.control}
                 name="theme"
@@ -286,7 +286,7 @@ export const EditOperationalPageDialog = ({ page, open, onOpenChange }: EditOper
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder={t('selectStatus')} />
+                          <SelectValue placeholder={t('select状态')} />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -306,12 +306,12 @@ export const EditOperationalPageDialog = ({ page, open, onOpenChange }: EditOper
               control={form.control}
               name="is_public"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
-                  <div className="space-y-0.5">
+                <FormItem class名称="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
+                  <div class名称="space-y-0.5">
                     <FormLabel>{t('publicPage')}</FormLabel>
-                    <FormDescription>
+                    <Form描述>
                       {t('makePagePublic')}
-                    </FormDescription>
+                    </Form描述>
                   </div>
                   <FormControl>
                     <Switch
@@ -332,9 +332,9 @@ export const EditOperationalPageDialog = ({ page, open, onOpenChange }: EditOper
                   <FormControl>
                     <Input placeholder={t('customDomainPlaceholder')} {...field} />
                   </FormControl>
-                  <FormDescription>
-                    {t('customDomainDescription')}
-                  </FormDescription>
+                  <Form描述>
+                    {t('customDomain描述')}
+                  </Form描述>
                   <FormMessage />
                 </FormItem>
               )}
@@ -343,10 +343,10 @@ export const EditOperationalPageDialog = ({ page, open, onOpenChange }: EditOper
             <ComponentsSelector
               selectedComponents={selectedComponents}
               onComponentsChange={setSelectedComponents}
-              onComponentDelete={handleComponentDelete}
+              onComponent删除={handleComponent删除}
             />
 
-            <div className="flex justify-end gap-2 pt-4">
+            <div class名称="flex justify-end gap-2 pt-4">
               <Button 
                 type="button" 
                 variant="outline" 
@@ -356,9 +356,9 @@ export const EditOperationalPageDialog = ({ page, open, onOpenChange }: EditOper
               </Button>
               <Button 
                 type="submit" 
-                disabled={isFormSubmitting || updateMutation.isPending || createComponentMutation.isPending}
+                disabled={isForm提交ting || updateMutation.isPending || createComponentMutation.isPending}
               >
-                {isFormSubmitting || updateMutation.isPending || createComponentMutation.isPending ? t('updating') : t('updatePage')}
+                {isForm提交ting || updateMutation.isPending || createComponentMutation.isPending ? t('updating') : t('updatePage')}
               </Button>
             </div>
           </form>

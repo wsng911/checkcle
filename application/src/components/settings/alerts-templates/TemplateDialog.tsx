@@ -37,10 +37,10 @@ export const TemplateDialog: React.FC<TemplateDialogProps> = ({
   
   const {
     form,
-    isEditMode,
+    is编辑Mode,
     isLoadingTemplate,
-    isSubmitting,
-    onSubmit
+    is提交ting,
+    on提交
   } = useTemplateForm({
     templateId,
     templateType: selectedTemplateType,
@@ -53,14 +53,14 @@ export const TemplateDialog: React.FC<TemplateDialogProps> = ({
   useEffect(() => {
     if (initialTemplateType) {
       setSelectedTemplateType(initialTemplateType);
-    } else if (open && !isEditMode) {
+    } else if (open && !is编辑Mode) {
       setSelectedTemplateType('service');
     }
-  }, [initialTemplateType, open, isEditMode]);
+  }, [initialTemplateType, open, is编辑Mode]);
 
   // Handle template type change
   const handleTemplateTypeChange = (newType: TemplateType) => {
-    if (!isEditMode) {
+    if (!is编辑Mode) {
       setSelectedTemplateType(newType);
       form.setValue('templateType', newType);
     }
@@ -88,17 +88,17 @@ export const TemplateDialog: React.FC<TemplateDialogProps> = ({
 
     return (
       <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-sm font-medium">Available Placeholders</CardTitle>
+        <CardHeader class名称="pb-3">
+          <CardTitle class名称="text-sm font-medium">Available Placeholders</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground mb-3">
+          <p class名称="text-sm text-muted-foreground mb-3">
             {config.description}. Use these placeholders in your messages:
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm">
+          <div class名称="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm">
             {config.placeholders.map((placeholder) => (
-              <div key={placeholder} className="bg-muted/30 p-2 rounded">
-                <code className="text-xs">{placeholder}</code>
+              <div key={placeholder} class名称="bg-muted/30 p-2 rounded">
+                <code class名称="text-xs">{placeholder}</code>
               </div>
             ))}
           </div>
@@ -109,30 +109,30 @@ export const TemplateDialog: React.FC<TemplateDialogProps> = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl max-h-[90vh] flex flex-col overflow-hidden">
+      <DialogContent class名称="max-w-4xl max-h-[90vh] flex flex-col overflow-hidden">
         <DialogHeader>
-          <DialogTitle>{isEditMode ? "Edit Template" : "Add Template"}</DialogTitle>
+          <DialogTitle>{is编辑Mode ? "编辑 Template" : "添加 Template"}</DialogTitle>
         </DialogHeader>
         
         {isLoadingTemplate ? (
-          <div className="flex items-center justify-center py-8">
-            <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            <span className="ml-2">Loading template data...</span>
+          <div class名称="flex items-center justify-center py-8">
+            <Loader2 class名称="h-8 w-8 animate-spin text-primary" />
+            <span class名称="ml-2">Loading template data...</span>
           </div>
         ) : (
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1 flex flex-col">
-              <div className="relative flex-1">
-                <ScrollArea className="pr-4 overflow-auto" style={{ height: "calc(80vh - 180px)" }}>
-                  <div className="space-y-6 pb-6 pr-4">
+            <form on提交={form.handle提交(on提交)} class名称="space-y-6 flex-1 flex flex-col">
+              <div class名称="relative flex-1">
+                <ScrollArea class名称="pr-4 overflow-auto" style={{ height: "calc(80vh - 180px)" }}>
+                  <div class名称="space-y-6 pb-6 pr-4">
                     {/* Basic Fields */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class名称="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <FormField
                         control={form.control}
                         name="name"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Template Name</FormLabel>
+                            <FormLabel>Template 名称</FormLabel>
                             <FormControl>
                               <Input 
                                 placeholder="Enter template name" 
@@ -154,13 +154,13 @@ export const TemplateDialog: React.FC<TemplateDialogProps> = ({
                               <Select 
                                 onValueChange={handleTemplateTypeChange}
                                 value={selectedTemplateType}
-                                disabled={isEditMode}
+                                disabled={is编辑Mode}
                               >
                                 <SelectTrigger>
                                   <SelectValue placeholder="Select template type" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                  <SelectItem value="server">Server Monitoring</SelectItem>
+                                  <SelectItem value="server">Server 监控ing</SelectItem>
                                   <SelectItem value="service">Service Uptime</SelectItem>
                                   <SelectItem value="ssl">SSL Certificate</SelectItem>
                                   <SelectItem value="server_threshold">Server Threshold</SelectItem>
@@ -193,46 +193,46 @@ export const TemplateDialog: React.FC<TemplateDialogProps> = ({
                     </div>
                     
                     <Tabs defaultValue="messages">
-                      <TabsList className="grid w-full grid-cols-2">
+                      <TabsList class名称="grid w-full grid-cols-2">
                         <TabsTrigger value="messages">{selectedTemplateType === 'server_threshold' ? 'Thresholds' : 'Messages'}</TabsTrigger>
                         <TabsTrigger value="placeholders">Placeholders</TabsTrigger>
                       </TabsList>
                       
-                      <TabsContent value="messages" className="pt-4">
+                      <TabsContent value="messages" class名称="pt-4">
                         {renderTemplateFields()}
                       </TabsContent>
                       
-                      <TabsContent value="placeholders" className="pt-4">
+                      <TabsContent value="placeholders" class名称="pt-4">
                         {renderPlaceholderGuide()}
                       </TabsContent>
                     </Tabs>
                   </div>
                 </ScrollArea>
-                <div className="absolute bottom-2 right-4 text-muted-foreground opacity-60">
-                  <ChevronDown className="h-4 w-4 animate-bounce" />
+                <div class名称="absolute bottom-2 right-4 text-muted-foreground opacity-60">
+                  <ChevronDown class名称="h-4 w-4 animate-bounce" />
                 </div>
               </div>
               
-              <DialogFooter className="mt-2 pt-2 border-t border-border">
+              <DialogFooter class名称="mt-2 pt-2 border-t border-border">
                 <Button 
                   type="button" 
                   variant="outline" 
                   onClick={() => onOpenChange(false)} 
-                  disabled={isSubmitting}
+                  disabled={is提交ting}
                 >
-                  Cancel
+                  取消
                 </Button>
                 <Button 
                   type="submit" 
-                  disabled={isSubmitting || isLoadingTemplate}
-                  className="relative"
+                  disabled={is提交ting || isLoadingTemplate}
+                  class名称="relative"
                 >
-                  {isSubmitting && (
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  {is提交ting && (
+                    <Loader2 class名称="mr-2 h-4 w-4 animate-spin" />
                   )}
-                  {isSubmitting 
-                    ? (isEditMode ? "Updating..." : "Creating...") 
-                    : (isEditMode ? "Update Template" : "Create Template")}
+                  {is提交ting 
+                    ? (is编辑Mode ? "Updating..." : "Creating...") 
+                    : (is编辑Mode ? "Update Template" : "创建 Template")}
                 </Button>
               </DialogFooter>
             </form>

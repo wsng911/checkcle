@@ -1,4 +1,4 @@
 
-import GeneralSettingsPanel from './general/GeneralSettingsPanel';
+import General设置Panel from './general/General设置Panel';
 
-export default GeneralSettingsPanel;
+export default General设置Panel;

@@ -49,11 +49,11 @@ export const ServerStatsCards = ({ stats }: ServerStatsCardsProps) => {
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 w-full">
+    <div class名称="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 w-full">
       {cards.map((card, index) => (
         <Card 
           key={index}
-          className={`border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 ${
+          class名称={`border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 ${
             theme === 'dark' ? 'dark-card' : ''
           } relative z-10`}
           style={{
@@ -61,8 +61,8 @@ export const ServerStatsCards = ({ stats }: ServerStatsCardsProps) => {
           }}
         >
           {/* Grid Pattern Overlay */}
-          <div className="absolute inset-0 z-0 opacity-10">
-            <div className="w-full h-full" 
+          <div class名称="absolute inset-0 z-0 opacity-10">
+            <div class名称="w-full h-full" 
               style={{ 
                 backgroundImage: `linear-gradient(#000 1px, transparent 1px), 
                                   linear-gradient(90deg, #fff 1px, transparent 1px)`,
@@ -70,13 +70,13 @@ export const ServerStatsCards = ({ stats }: ServerStatsCardsProps) => {
               }}
             ></div>
           </div>
-          <CardHeader className="pb-2 relative z-10">
-            <CardTitle className="text-sm font-medium text-white">{card.title}</CardTitle>
+          <CardHeader class名称="pb-2 relative z-10">
+            <CardTitle class名称="text-sm font-medium text-white">{card.title}</CardTitle>
           </CardHeader>
-          <CardContent className="flex items-center justify-between relative z-10">
-            <span className="text-5xl font-bold text-white">{card.value}</span>
-            <div className="rounded-full p-3 bg-white/25 backdrop-blur-sm">
-              <card.icon className="h-6 w-6 text-white" />
+          <CardContent class名称="flex items-center justify-between relative z-10">
+            <span class名称="text-5xl font-bold text-white">{card.value}</span>
+            <div class名称="rounded-full p-3 bg-white/25 backdrop-blur-sm">
+              <card.icon class名称="h-6 w-6 text-white" />
             </div>
           </CardContent>
         </Card>

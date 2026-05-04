@@ -4,7 +4,7 @@ import { pb } from "@/lib/pocketbase";
 export interface ServiceNotificationTemplate {
   id: string;
   collectionId: string;
-  collectionName: string;
+  collection名称: string;
   name: string;
   up_message: string;
   down_message: string;
@@ -17,7 +17,7 @@ export interface ServiceNotificationTemplate {
   updated: string;
 }
 
-export interface CreateUpdateServiceNotificationTemplateData {
+export interface 创建UpdateServiceNotificationTemplateData {
   name: string;
   up_message: string;
   down_message: string;
@@ -55,11 +55,11 @@ export const serviceNotificationTemplateService = {
     }
   },
 
-  async createTemplate(data: CreateUpdateServiceNotificationTemplateData): Promise<ServiceNotificationTemplate> {
+  async createTemplate(data: 创建UpdateServiceNotificationTemplateData): Promise<ServiceNotificationTemplate> {
     try {
      // console.log("Creating new service notification template with data:", data);
       const response = await pb.collection('service_notification_templates').create(data);
-     // console.log("Create service notification template response:", response);
+     // console.log("创建 service notification template response:", response);
       return response as unknown as ServiceNotificationTemplate;
     } catch (error) {
     //  console.error("Error creating service notification template:", error);
@@ -67,7 +67,7 @@ export const serviceNotificationTemplateService = {
     }
   },
 
-  async updateTemplate(id: string, data: Partial<CreateUpdateServiceNotificationTemplateData>): Promise<ServiceNotificationTemplate> {
+  async updateTemplate(id: string, data: Partial<创建UpdateServiceNotificationTemplateData>): Promise<ServiceNotificationTemplate> {
     try {
      // console.log(`Updating service notification template with id: ${id}`, data);
       const response = await pb.collection('service_notification_templates').update(id, data);

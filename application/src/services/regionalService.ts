@@ -1,5 +1,5 @@
 import { pb } from '@/lib/pocketbase';
-import { RegionalService, CreateRegionalServiceParams, InstallCommand } from '@/types/regional.types';
+import { RegionalService, 创建RegionalServiceParams, InstallCommand } from '@/types/regional.types';
 
 // Generate a random token
 const generateToken = (): string => {
@@ -12,7 +12,7 @@ const generateAgentId = (): string => {
 };
 
 export const regionalService = {
-  async getRegionalServices(): Promise<RegionalService[]> {
+  async getRegional服务(): Promise<RegionalService[]> {
     try {
       const response = await pb.collection('regional_service').getFullList({
         sort: '-created',
@@ -35,7 +35,7 @@ export const regionalService = {
     }
   },
 
-  async createRegionalService(params: CreateRegionalServiceParams): Promise<{ service: RegionalService; installCommand: InstallCommand }> {
+  async createRegionalService(params: 创建RegionalServiceParams): Promise<{ service: RegionalService; installCommand: InstallCommand }> {
     try {
       const token = generateToken();
       const agentId = generateAgentId();
@@ -86,26 +86,26 @@ export const regionalService = {
     }
   },
 
-  generateAutomaticInstallScript(token: string, agentId: string, apiEndpoint: string, agentIp: string, regionName: string): string {
+  generateAutomaticInstallScript(token: string, agentId: string, apiEndpoint: string, agentIp: string, region名称: string): string {
     return `#!/bin/bash
 
-# CheckCle Regional Monitoring Agent - Automatic Installation Script
+# CheckCle Regional 监控ing Agent - Automatic Installation Script
 # Generated on: $(date)
 # This script will automatically detect architecture, download, install, configure and start the regional monitoring agent
 
-echo "🚀 CheckCle Regional Monitoring Agent - Automatic Installation"
+echo "🚀 CheckCle Regional 监控ing Agent - Automatic Installation"
 echo "=============================================================="
 echo ""
 
 # Configuration variables
-REGION_NAME="${regionName}"
+REGION_NAME="${region名称}"
 AGENT_ID="${agentId}"
 AGENT_IP_ADDRESS="${agentIp}"
 AGENT_TOKEN="${token}"
 POCKETBASE_URL="${apiEndpoint}"
 
 # Base package information
-BASE_PACKAGE_URL="https://github.com/operacle/Distributed-Regional-Monitoring/releases/download/V1.0.0"
+BASE_PACKAGE_URL="https://github.com/operacle/Distributed-Regional-监控ing/releases/download/V1.0.0"
 PACKAGE_VERSION="1.0.0"
 SERVICE_NAME="regional-check-agent"
 
@@ -160,19 +160,19 @@ PACKAGE_NAME="distributed-regional-check-agent_\${PACKAGE_VERSION}_\${PKG_ARCH}.
 
 echo ""
 echo "📋 Installation Configuration:"
-echo "   Region Name: $REGION_NAME"
+echo "   Region 名称: $REGION_NAME"
 echo "   Agent ID: $AGENT_ID"
 echo "   Agent IP: $AGENT_IP_ADDRESS"
 echo "   PocketBase URL: $POCKETBASE_URL"
 echo "   Package URL: $PACKAGE_URL"
 echo ""
 
-# Create temporary directory
+# 创建 temporary directory
 TEMP_DIR=$(mktemp -d)
-echo "📁 Created temporary directory: $TEMP_DIR"
+echo "📁 创建d temporary directory: $TEMP_DIR"
 
 # Download the .deb package
-echo "📥 Downloading Regional Monitoring Agent package for $PKG_ARCH..."
+echo "📥 Downloading Regional 监控ing Agent package for $PKG_ARCH..."
 cd "$TEMP_DIR"
 
 # Test if package exists first
@@ -210,7 +210,7 @@ if [ "$DOWNLOAD_SUCCESS" = false ]; then
     echo "   Please check:"
     echo "   - Internet connection"
     echo "   - Package availability for $PKG_ARCH architecture"
-    echo "   - GitHub repository access: https://github.com/operacle/Distributed-Regional-Monitoring/releases"
+    echo "   - GitHub repository access: https://github.com/operacle/Distributed-Regional-监控ing/releases"
     echo "   - Firewall/proxy settings"
     rm -rf "$TEMP_DIR"
     exit 1
@@ -229,7 +229,7 @@ fi
 
 # Install the package
 echo ""
-echo "📦 Installing Regional Monitoring Agent package..."
+echo "📦 Installing Regional 监控ing Agent package..."
 if dpkg -i "$PACKAGE_NAME"; then
     echo "✅ Package installed successfully"
 else
@@ -249,12 +249,12 @@ fi
 
 # Configure the agent
 echo ""
-echo "⚙️  Configuring Regional Monitoring Agent..."
+echo "⚙️  Configuring Regional 监控ing Agent..."
 
 # Ensure configuration directory exists
 mkdir -p /etc/regional-check-agent
 
-# Create the environment configuration file
+# 创建 the environment configuration file
 cat > /etc/regional-check-agent/regional-check-agent.env << EOF
 # Distributed Regional Check Agent Configuration
 # Auto-generated on $(date)
@@ -281,7 +281,7 @@ AGENT_ID=$AGENT_ID
 AGENT_IP_ADDRESS=$AGENT_IP_ADDRESS
 AGENT_TOKEN=$AGENT_TOKEN
 
-# Monitoring configuration
+# 监控ing configuration
 CHECK_INTERVAL=30s
 MAX_RETRIES=3
 REQUEST_TIMEOUT=10s
@@ -301,7 +301,7 @@ fi
 
 # Enable and start the service
 echo ""
-echo "🔧 Starting Regional Monitoring Agent service..."
+echo "🔧 Starting Regional 监控ing Agent service..."
 
 # Reload systemd daemon
 systemctl daemon-reload
@@ -331,7 +331,7 @@ sleep 3
 
 # Check service status
 echo ""
-echo "📊 Service Status:"
+echo "📊 Service 状态:"
 systemctl status $SERVICE_NAME --no-pager -l
 
 # Test health endpoint
@@ -346,13 +346,13 @@ fi
 # Cleanup
 rm -rf "$TEMP_DIR"
 echo ""
-echo "🎉 Regional Monitoring Agent Installation Complete!"
+echo "🎉 Regional 监控ing Agent Installation Complete!"
 echo ""
 echo "📋 Installation Summary:"
 echo "   Agent ID: $AGENT_ID"
 echo "   Region: $REGION_NAME"
 echo "   Architecture: $PKG_ARCH"
-echo "   Status: $(systemctl is-active $SERVICE_NAME)"
+echo "   状态: $(systemctl is-active $SERVICE_NAME)"
 echo "   Health URL: http://localhost:8091/health"
 echo "   Service endpoint: http://localhost:8091/operation"
 echo ""

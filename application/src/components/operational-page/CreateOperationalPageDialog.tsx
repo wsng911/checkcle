@@ -2,23 +2,23 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, Dialog描述, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Form, FormControl, Form描述, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
-import { useCreateOperationalPage } from '@/hooks/useOperationalPage';
-import { useCreateStatusPageComponent } from '@/hooks/useStatusPageComponents';
+import { use创建OperationalPage } from '@/hooks/useOperationalPage';
+import { use创建状态PageComponent } from '@/hooks/use状态PageComponents';
 import { ComponentsSelector } from './ComponentsSelector';
 import { Plus } from 'lucide-react';
-import { StatusPageComponentRecord } from '@/types/statusPageComponents.types';
+import { 状态PageComponentRecord } from '@/types/statusPageComponents.types';
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const formSchema = z.object({
   title: z.string().min(1, 'Title is required'),
-  description: z.string().min(1, 'Description is required'),
+  description: z.string().min(1, '描述 is required'),
   slug: z.string().min(1, 'Slug is required'),
   theme: z.string().min(1, 'Theme is required'),
   status: z.enum(['operational', 'degraded', 'maintenance', 'major_outage']),
@@ -31,12 +31,12 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-export const CreateOperationalPageDialog = () => {
+export const 创建OperationalPageDialog = () => {
   const { t } = useLanguage();
   const [open, setOpen] = useState(false);
-  const [selectedComponents, setSelectedComponents] = useState<Partial<StatusPageComponentRecord>[]>([]);
-  const createMutation = useCreateOperationalPage();
-  const createComponentMutation = useCreateStatusPageComponent();
+  const [selectedComponents, setSelectedComponents] = useState<Partial<状态PageComponentRecord>[]>([]);
+  const createMutation = use创建OperationalPage();
+  const createComponentMutation = use创建状态PageComponent();
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -54,7 +54,7 @@ export const CreateOperationalPageDialog = () => {
     },
   });
 
-  const onSubmit = async (data: FormData) => {
+  const on提交 = async (data: FormData) => {
     try {
       const payload = {
         title: data.title,
@@ -71,9 +71,9 @@ export const CreateOperationalPageDialog = () => {
       
      // console.log('Creating operational page with payload:', payload);
       const createdPage = await createMutation.mutateAsync(payload);
-     // console.log('Created page:', createdPage);
+     // console.log('创建d page:', createdPage);
       
-      // Create components after page is created
+      // 创建 components after page is created
       if (selectedComponents.length > 0) {
       //  console.log('Creating components for page:', createdPage.id);
         for (const component of selectedComponents) {
@@ -102,22 +102,22 @@ export const CreateOperationalPageDialog = () => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="gap-2">
-          <Plus className="h-4 w-4" />
+        <Button class名称="gap-2">
+          <Plus class名称="h-4 w-4" />
           {t('createPage')}
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[800px] max-h-[90vh] overflow-y-auto">
+      <DialogContent class名称="sm:max-w-[800px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>{t('createOperationalPage')}</DialogTitle>
-          <DialogDescription>
+          <Dialog描述>
             {t('createOperationalPageDesc')}
-          </DialogDescription>
+          </Dialog描述>
         </DialogHeader>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <div className="grid grid-cols-2 gap-4">
+          <form on提交={form.handle提交(on提交)} class名称="space-y-6">
+            <div class名称="grid grid-cols-2 gap-4">
               <FormField
                 control={form.control}
                 name="title"
@@ -125,7 +125,7 @@ export const CreateOperationalPageDialog = () => {
                   <FormItem>
                     <FormLabel>{t('title')}</FormLabel>
                     <FormControl>
-                      <Input placeholder={t('myServiceStatusPlaceholder')} {...field} />
+                      <Input placeholder={t('myService状态Placeholder')} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -139,7 +139,7 @@ export const CreateOperationalPageDialog = () => {
                   <FormItem>
                     <FormLabel>{t('slug')}</FormLabel>
                     <FormControl>
-                      <Input placeholder={t('myServiceStatusSlugPlaceholder')} {...field} />
+                      <Input placeholder={t('myService状态SlugPlaceholder')} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -155,8 +155,8 @@ export const CreateOperationalPageDialog = () => {
                   <FormLabel>{t('description')}</FormLabel>
                   <FormControl>
                     <Textarea 
-                      placeholder={t('operationalPageDescriptionPlaceholder')} 
-                      className="min-h-[80px]"
+                      placeholder={t('operationalPage描述Placeholder')} 
+                      class名称="min-h-[80px]"
                       {...field} 
                     />
                   </FormControl>
@@ -165,7 +165,7 @@ export const CreateOperationalPageDialog = () => {
               )}
             />
 
-            <div className="grid grid-cols-2 gap-4">
+            <div class名称="grid grid-cols-2 gap-4">
               <FormField
                 control={form.control}
                 name="theme"
@@ -194,11 +194,11 @@ export const CreateOperationalPageDialog = () => {
                 name="status"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t('initialStatus')}</FormLabel>
+                    <FormLabel>{t('initial状态')}</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder={t('selectStatus')} />
+                          <SelectValue placeholder={t('select状态')} />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -218,12 +218,12 @@ export const CreateOperationalPageDialog = () => {
               control={form.control}
               name="is_public"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
-                  <div className="space-y-0.5">
+                <FormItem class名称="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
+                  <div class名称="space-y-0.5">
                     <FormLabel>{t('publicPage')}</FormLabel>
-                    <FormDescription>
+                    <Form描述>
                       {t('makePagePublic')}
-                    </FormDescription>
+                    </Form描述>
                   </div>
                   <FormControl>
                     <Switch
@@ -244,9 +244,9 @@ export const CreateOperationalPageDialog = () => {
                   <FormControl>
                     <Input placeholder={t('customDomainPlaceholder')} {...field} />
                   </FormControl>
-                  <FormDescription>
-                    {t('customDomainDescription')}
-                  </FormDescription>
+                  <Form描述>
+                    {t('customDomain描述')}
+                  </Form描述>
                   <FormMessage />
                 </FormItem>
               )}
@@ -257,7 +257,7 @@ export const CreateOperationalPageDialog = () => {
               onComponentsChange={setSelectedComponents}
             />
 
-            <div className="flex justify-end gap-2 pt-4">
+            <div class名称="flex justify-end gap-2 pt-4">
               <Button 
                 type="button" 
                 variant="outline" 

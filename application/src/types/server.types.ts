@@ -1,7 +1,7 @@
 
 export interface Server {
   collectionId: string;
-  collectionName: string;
+  collection名称: string;
   id: string;
   server_id: string;
   name: string;

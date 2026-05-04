@@ -10,7 +10,7 @@ export interface AuthUser {
   email: string;
   name?: string;
   avatar?: string;
-  role?: string;  // Added role property
+  role?: string;  // 添加ed role property
 }
 
 export const authService = {
@@ -19,7 +19,7 @@ export const authService = {
       // First try to login as a regular admin user
       try {
       //  console.log("Attempting to login as admin user");
-        const authData = await pb.collection('users').authWithPassword(email, password);
+        const authData = await pb.collection('users').authWith密码(email, password);
         
         return {
           id: authData.record.id,
@@ -32,7 +32,7 @@ export const authService = {
       //  console.log("Failed to login as admin, trying as superadmin", error);
         
         // If regular user login fails, try superadmin
-        const authData = await pb.collection('_superusers').authWithPassword(email, password);
+        const authData = await pb.collection('_superusers').authWith密码(email, password);
         
         return {
           id: authData.record.id,
@@ -65,7 +65,7 @@ export const authService = {
     //console.log("Raw user data from authStore:", userData);
     
     // Determine if this is a superadmin by checking the collection name
-    const isSuperAdmin = userData.collectionName === '_superusers';
+    const isSuperAdmin = userData.collection名称 === '_superusers';
     
     // The avatar will be kept as is - either the full path from Pocketbase
     // or we'll handle display in the UI components

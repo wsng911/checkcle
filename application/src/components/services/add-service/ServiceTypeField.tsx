@@ -15,15 +15,15 @@ export function ServiceTypeField({ form }: ServiceTypeFieldProps) {
   const getServiceIcon = (type: string) => {
     switch (type) {
       case "http":
-        return <Globe className="w-4 h-4" />;
+        return <Globe class名称="w-4 h-4" />;
       case "ping":
-        return <Wifi className="w-4 h-4" />;
+        return <Wifi class名称="w-4 h-4" />;
       case "tcp":
-        return <Server className="w-4 h-4" />;
+        return <Server class名称="w-4 h-4" />;
       case "dns":
-        return <Globe2 className="w-4 h-4" />;
+        return <Globe2 class名称="w-4 h-4" />;
       default:
-        return <Globe className="w-4 h-4" />;
+        return <Globe class名称="w-4 h-4" />;
     }
   };
 
@@ -42,7 +42,7 @@ export function ServiceTypeField({ form }: ServiceTypeFieldProps) {
               <SelectTrigger>
                 <SelectValue>
                   {field.value && (
-                    <div className="flex items-center gap-2">
+                    <div class名称="flex items-center gap-2">
                       {getServiceIcon(field.value)}
                       <span>{field.value.toUpperCase()}</span>
                     </div>
@@ -52,45 +52,45 @@ export function ServiceTypeField({ form }: ServiceTypeFieldProps) {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="http">
-                  <div className="flex flex-col">
-                    <div className="flex items-center gap-2">
-                      <Globe className="w-4 h-4" />
+                  <div class名称="flex flex-col">
+                    <div class名称="flex items-center gap-2">
+                      <Globe class名称="w-4 h-4" />
                       <span>HTTP/S</span>
                     </div>
-                    <p className="text-xs text-muted-foreground mt-1">
+                    <p class名称="text-xs text-muted-foreground mt-1">
 	                    {t("serviceTypeHTTPDesc")}
                     </p>
                   </div>
                 </SelectItem>
                 <SelectItem value="ping">
-                  <div className="flex flex-col">
-                    <div className="flex items-center gap-2">
-                      <Wifi className="w-4 h-4" />
+                  <div class名称="flex flex-col">
+                    <div class名称="flex items-center gap-2">
+                      <Wifi class名称="w-4 h-4" />
                       <span>PING</span>
                     </div>
-                    <p className="text-xs text-muted-foreground mt-1">
+                    <p class名称="text-xs text-muted-foreground mt-1">
 	                    {t("serviceTypePINGDesc")}
                     </p>
                   </div>
                 </SelectItem>
                 <SelectItem value="tcp">
-                  <div className="flex flex-col">
-                    <div className="flex items-center gap-2">
-                      <Server className="w-4 h-4" />
+                  <div class名称="flex flex-col">
+                    <div class名称="flex items-center gap-2">
+                      <Server class名称="w-4 h-4" />
                       <span>TCP</span>
                     </div>
-                    <p className="text-xs text-muted-foreground mt-1">
+                    <p class名称="text-xs text-muted-foreground mt-1">
 	                    {t("serviceTypeTCPDesc")}
                     </p>
                   </div>
                 </SelectItem>
                 <SelectItem value="dns">
-                  <div className="flex flex-col">
-                    <div className="flex items-center gap-2">
-                      <Globe2 className="w-4 h-4" />
+                  <div class名称="flex flex-col">
+                    <div class名称="flex items-center gap-2">
+                      <Globe2 class名称="w-4 h-4" />
                       <span>DNS</span>
                     </div>
-                    <p className="text-xs text-muted-foreground mt-1">
+                    <p class名称="text-xs text-muted-foreground mt-1">
 	                    {t("serviceTypeDNSDesc")}
                     </p>
                   </div>

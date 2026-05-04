@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useTheme } from "@/contexts/ThemeContext";
 
-interface OverviewCardProps {
+interface 概览CardProps {
   title: string;
   value: string | number;
   description?: string;
@@ -14,29 +14,29 @@ interface OverviewCardProps {
     value: number;
     isPositive: boolean;
   };
-  className?: string;
-  valueClassName?: string;
+  class名称?: string;
+  valueClass名称?: string;
   isLoading?: boolean;
   color?: string;
   gradient?: string;
 }
 
-export const OverviewCard = ({
+export const 概览Card = ({
   title,
   value,
   description,
   icon,
   trend,
-  className,
-  valueClassName,
+  class名称,
+  valueClass名称,
   isLoading = false,
   color = "blue",
   gradient,
-}: OverviewCardProps) => {
+}: 概览CardProps) => {
   const { theme } = useTheme();
   
   // Map color prop to gradient colors
-  const getGradientBackground = () => {
+  const getGradient返回ground = () => {
     if (gradient) {
       return gradient;
     }
@@ -66,17 +66,17 @@ export const OverviewCard = ({
 
   return (
     <Card 
-      className={cn(
+      class名称={cn(
         "border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 relative z-10", 
-        className
+        class名称
       )}
       style={{
-        background: getGradientBackground()
+        background: getGradient返回ground()
       }}
     >
       {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 z-0 opacity-10">
-        <div className="w-full h-full" 
+      <div class名称="absolute inset-0 z-0 opacity-10">
+        <div class名称="w-full h-full" 
           style={{ 
             backgroundImage: `linear-gradient(#fff 1px, transparent 1px), 
                               linear-gradient(90deg, #fff 1px, transparent 1px)`,
@@ -85,29 +85,29 @@ export const OverviewCard = ({
         ></div>
       </div>
       
-      <CardContent className="p-6 relative z-10">
-        <div className="flex items-center justify-between">
+      <CardContent class名称="p-6 relative z-10">
+        <div class名称="flex items-center justify-between">
           <div>
-            <p className="text-sm font-medium text-white/90 mb-1">{title}</p>
+            <p class名称="text-sm font-medium text-white/90 mb-1">{title}</p>
             {isLoading ? (
-              <Skeleton className="h-8 w-16 bg-white/20" />
+              <Skeleton class名称="h-8 w-16 bg-white/20" />
             ) : (
-              <h3 className={cn("text-3xl font-bold text-white", valueClassName)}>{value}</h3>
+              <h3 class名称={cn("text-3xl font-bold text-white", valueClass名称)}>{value}</h3>
             )}
             {description && (
-              <p className="text-sm text-white/80 mt-1">{description}</p>
+              <p class名称="text-sm text-white/80 mt-1">{description}</p>
             )}
             {trend && (
-              <div className={`flex items-center mt-2 text-sm ${trend.isPositive ? 'text-green-100' : 'text-red-100'}`}>
-                <span className="mr-1">
+              <div class名称={`flex items-center mt-2 text-sm ${trend.isPositive ? 'text-green-100' : 'text-red-100'}`}>
+                <span class名称="mr-1">
                   {trend.isPositive ? '↑' : '↓'}
                 </span>
                 <span>{Math.abs(trend.value)}%</span>
-                <span className="ml-1 text-white/70">vs last month</span>
+                <span class名称="ml-1 text-white/70">vs last month</span>
               </div>
             )}
           </div>
-          <div className="rounded-full p-3 bg-white/25 backdrop-blur-sm">
+          <div class名称="rounded-full p-3 bg-white/25 backdrop-blur-sm">
             {icon}
           </div>
         </div>

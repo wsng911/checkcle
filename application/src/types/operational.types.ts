@@ -1,7 +1,7 @@
 
 export interface OperationalPageRecord {
   collectionId: string;
-  collectionName: string;
+  collection名称: string;
   id: string;
   title: string;
   description: string;

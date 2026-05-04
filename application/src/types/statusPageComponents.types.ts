@@ -1,7 +1,7 @@
 
-export interface StatusPageComponentRecord {
+export interface 状态PageComponentRecord {
   collectionId: string;
-  collectionName: string;
+  collection名称: string;
   id: string;
   operational_status_id: string;
   name: string;
@@ -13,8 +13,8 @@ export interface StatusPageComponentRecord {
   updated: string;
 }
 
-export interface StatusPageComponentState {
-  data: StatusPageComponentRecord[] | null;
+export interface 状态PageComponentState {
+  data: 状态PageComponentRecord[] | null;
   loading: boolean;
   error: string | null;
 }

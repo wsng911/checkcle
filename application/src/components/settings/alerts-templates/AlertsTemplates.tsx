@@ -14,8 +14,8 @@ export const AlertsTemplates = () => {
   const { toast } = useToast();
   const [activeTab, setActiveTab] = useState<TemplateType>('service');
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [editingTemplate, setEditingTemplate] = useState<string | null>(null);
-  const [editingTemplateType, setEditingTemplateType] = useState<TemplateType | null>(null);
+  const [editingTemplate, set编辑ingTemplate] = useState<string | null>(null);
+  const [editingTemplateType, set编辑ingTemplateType] = useState<TemplateType | null>(null);
 
   const {
     data: templates = [],
@@ -27,15 +27,15 @@ export const AlertsTemplates = () => {
     queryFn: () => templateService.getTemplates(activeTab),
   });
 
-  const handleAddTemplate = (templateType: TemplateType) => {
-    setEditingTemplate(null);
-    setEditingTemplateType(templateType);
+  const handle添加Template = (templateType: TemplateType) => {
+    set编辑ingTemplate(null);
+    set编辑ingTemplateType(templateType);
     setIsDialogOpen(true);
   };
 
-  const handleEditTemplate = (id: string, templateType: TemplateType) => {
-    setEditingTemplate(id);
-    setEditingTemplateType(templateType);
+  const handle编辑Template = (id: string, templateType: TemplateType) => {
+    set编辑ingTemplate(id);
+    set编辑ingTemplateType(templateType);
     setIsDialogOpen(true);
   };
 
@@ -48,33 +48,33 @@ export const AlertsTemplates = () => {
   };
 
   return (
-    <Card className="w-full">
-      <CardHeader className="flex flex-row items-center justify-between">
+    <Card class名称="w-full">
+      <CardHeader class名称="flex flex-row items-center justify-between">
         <CardTitle>Alert Templates</CardTitle>
-        <div className="flex space-x-2">
+        <div class名称="flex space-x-2">
           <Button variant="outline" onClick={handleRefresh} disabled={isLoading}>
-            <RefreshCcw className="h-4 w-4 mr-2" />
+            <RefreshCcw class名称="h-4 w-4 mr-2" />
             Refresh
           </Button>
-          <Button onClick={() => handleAddTemplate(activeTab)}>
-            <Plus className="h-4 w-4 mr-2" />
-            Add Template
+          <Button onClick={() => handle添加Template(activeTab)}>
+            <Plus class名称="h-4 w-4 mr-2" />
+            添加 Template
           </Button>
         </div>
       </CardHeader>
       <CardContent>
         <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as TemplateType)}>
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList class名称="grid w-full grid-cols-4">
             <TabsTrigger value="service">Service Uptime</TabsTrigger>
-            <TabsTrigger value="server">Server Monitoring</TabsTrigger>
+            <TabsTrigger value="server">Server 监控ing</TabsTrigger>
             <TabsTrigger value="ssl">SSL Certificate</TabsTrigger>
             <TabsTrigger value="server_threshold">Server Threshold</TabsTrigger>
           </TabsList>
           
-          <TabsContent value="service" className="mt-4">
+          <TabsContent value="service" class名称="mt-4">
             {error ? (
-              <div className="text-center p-6">
-                <p className="text-destructive mb-4">Error loading service templates</p>
+              <div class名称="text-center p-6">
+                <p class名称="text-destructive mb-4">Error loading service templates</p>
                 <Button variant="outline" onClick={() => refetch()}>
                   Try Again
                 </Button>
@@ -83,17 +83,17 @@ export const AlertsTemplates = () => {
               <TemplateList 
                 templates={templates} 
                 isLoading={isLoading} 
-                onEdit={(id) => handleEditTemplate(id, 'service')}
+                on编辑={(id) => handle编辑Template(id, 'service')}
                 refetchTemplates={refetch}
                 templateType="service"
               />
             )}
           </TabsContent>
           
-          <TabsContent value="server" className="mt-4">
+          <TabsContent value="server" class名称="mt-4">
             {error ? (
-              <div className="text-center p-6">
-                <p className="text-destructive mb-4">Error loading server templates</p>
+              <div class名称="text-center p-6">
+                <p class名称="text-destructive mb-4">Error loading server templates</p>
                 <Button variant="outline" onClick={() => refetch()}>
                   Try Again
                 </Button>
@@ -102,17 +102,17 @@ export const AlertsTemplates = () => {
               <TemplateList 
                 templates={templates} 
                 isLoading={isLoading} 
-                onEdit={(id) => handleEditTemplate(id, 'server')}
+                on编辑={(id) => handle编辑Template(id, 'server')}
                 refetchTemplates={refetch}
                 templateType="server"
               />
             )}
           </TabsContent>
           
-          <TabsContent value="ssl" className="mt-4">
+          <TabsContent value="ssl" class名称="mt-4">
             {error ? (
-              <div className="text-center p-6">
-                <p className="text-destructive mb-4">Error loading SSL templates</p>
+              <div class名称="text-center p-6">
+                <p class名称="text-destructive mb-4">Error loading SSL templates</p>
                 <Button variant="outline" onClick={() => refetch()}>
                   Try Again
                 </Button>
@@ -121,17 +121,17 @@ export const AlertsTemplates = () => {
               <TemplateList 
                 templates={templates} 
                 isLoading={isLoading} 
-                onEdit={(id) => handleEditTemplate(id, 'ssl')}
+                on编辑={(id) => handle编辑Template(id, 'ssl')}
                 refetchTemplates={refetch}
                 templateType="ssl"
               />
             )}
           </TabsContent>
           
-          <TabsContent value="server_threshold" className="mt-4">
+          <TabsContent value="server_threshold" class名称="mt-4">
             {error ? (
-              <div className="text-center p-6">
-                <p className="text-destructive mb-4">Error loading server threshold templates</p>
+              <div class名称="text-center p-6">
+                <p class名称="text-destructive mb-4">Error loading server threshold templates</p>
                 <Button variant="outline" onClick={() => refetch()}>
                   Try Again
                 </Button>
@@ -140,7 +140,7 @@ export const AlertsTemplates = () => {
               <TemplateList 
                 templates={templates} 
                 isLoading={isLoading} 
-                onEdit={(id) => handleEditTemplate(id, 'server_threshold')}
+                on编辑={(id) => handle编辑Template(id, 'server_threshold')}
                 refetchTemplates={refetch}
                 templateType="server_threshold"
               />

@@ -12,7 +12,7 @@ interface RegionalAgentFilterProps {
 export function RegionalAgentFilter({ selectedAgent, onAgentChange }: RegionalAgentFilterProps) {
   const { data: regionalAgents = [], isLoading } = useQuery({
     queryKey: ['regional-services'],
-    queryFn: regionalService.getRegionalServices,
+    queryFn: regionalService.getRegional服务,
   });
 
   // Filter only online agents
@@ -20,10 +20,10 @@ export function RegionalAgentFilter({ selectedAgent, onAgentChange }: RegionalAg
 
   const getCurrentAgentDisplay = () => {
     if (!selectedAgent || selectedAgent === "all") {
-      return "All Monitoring";
+      return "All 监控ing";
     }
     
-    const [regionName] = selectedAgent.split("|");
+    const [region名称] = selectedAgent.split("|");
     const agent = onlineAgents.find(agent => 
       `${agent.region_name}|${agent.agent_id}` === selectedAgent
     );
@@ -32,14 +32,14 @@ export function RegionalAgentFilter({ selectedAgent, onAgentChange }: RegionalAg
       return `${agent.region_name} (${agent.agent_ip_address})`;
     }
     
-    return regionName || "All Monitoring";
+    return region名称 || "All 监控ing";
   };
 
   return (
-    <div className="w-64">
-      <label className="text-sm font-medium flex items-center gap-2 mb-2">
-        <MapPin className="h-4 w-4" />
-        Monitoring Source
+    <div class名称="w-64">
+      <label class名称="text-sm font-medium flex items-center gap-2 mb-2">
+        <MapPin class名称="h-4 w-4" />
+        监控ing Source
       </label>
       <Select 
         onValueChange={onAgentChange} 
@@ -56,25 +56,25 @@ export function RegionalAgentFilter({ selectedAgent, onAgentChange }: RegionalAg
         <SelectContent>
           {isLoading ? (
             <SelectItem value="loading" disabled>
-              <div className="flex items-center gap-2">
-                <Loader2 className="h-4 w-4 animate-spin" />
+              <div class名称="flex items-center gap-2">
+                <Loader2 class名称="h-4 w-4 animate-spin" />
                 Loading agents...
               </div>
             </SelectItem>
           ) : (
             <>
               <SelectItem value="all">
-                <div className="flex items-center gap-2">
-                  <BarChart3 className="h-4 w-4 text-purple-500" />
-                  <span className="font-medium">All Monitoring</span>
+                <div class名称="flex items-center gap-2">
+                  <BarChart3 class名称="h-4 w-4 text-purple-500" />
+                  <span class名称="font-medium">All 监控ing</span>
                 </div>
               </SelectItem>
               {onlineAgents.length > 0 && onlineAgents.map((agent) => (
                 <SelectItem key={agent.id} value={`${agent.region_name}|${agent.agent_id}`}>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="font-medium">{agent.region_name}</span>
-                    <span className="text-muted-foreground">({agent.agent_ip_address})</span>
+                  <div class名称="flex items-center gap-2">
+                    <div class名称="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <span class名称="font-medium">{agent.region_name}</span>
+                    <span class名称="text-muted-foreground">({agent.agent_ip_address})</span>
                   </div>
                 </SelectItem>
               ))}
@@ -83,7 +83,7 @@ export function RegionalAgentFilter({ selectedAgent, onAgentChange }: RegionalAg
         </SelectContent>
       </Select>
       {onlineAgents.length === 0 && !isLoading && (
-        <p className="text-xs text-amber-600 mt-1">
+        <p class名称="text-xs text-amber-600 mt-1">
           No regional agents available. Using default monitoring only.
         </p>
       )}

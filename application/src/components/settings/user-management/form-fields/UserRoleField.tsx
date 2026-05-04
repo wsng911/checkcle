@@ -26,7 +26,7 @@ const UserRoleField = ({ control, name, label, disabled = false }: UserRoleField
               onValueChange={field.onChange}
               disabled={disabled}
             >
-              <SelectTrigger className="w-full">
+              <SelectTrigger class名称="w-full">
                 <SelectValue placeholder="Select role" />
               </SelectTrigger>
               <SelectContent>

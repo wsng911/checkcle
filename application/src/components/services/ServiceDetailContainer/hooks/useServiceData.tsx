@@ -20,26 +20,26 @@ export const useServiceData = (serviceId: string | undefined, startDate: Date, e
   // Get regional agents for "all" monitoring with optimized caching
   const { data: regionalAgents = [] } = useQuery({
     queryKey: ['regional-services'],
-    queryFn: regionalService.getRegionalServices,
+    queryFn: regionalService.getRegional服务,
     enabled: selectedRegionalAgent === "all",
     staleTime: 5 * 60 * 1000, // Cache for 5 minutes
     gcTime: 10 * 60 * 1000, // Keep in cache for 10 minutes
     refetchOnWindowFocus: false,
   });
 
-  const handleStatusChange = useCallback(async (newStatus: "up" | "down" | "paused" | "warning") => {
+  const handle状态Change = useCallback(async (new状态: "up" | "down" | "paused" | "warning") => {
     if (!service || !serviceId) return;
 
     try {
-      setService({ ...service, status: newStatus as Service["status"] });
+      setService({ ...service, status: new状态 as Service["status"] });
       
       await pb.collection('services').update(serviceId, {
-        status: newStatus
+        status: new状态
       });
       
       toast({
-        title: "Status updated",
-        description: `Service status changed to ${newStatus}`,
+        title: "状态 updated",
+        description: `Service status changed to ${new状态}`,
       });
     } catch (error) {
     //  console.error("Failed to update service status:", error);
@@ -124,9 +124,9 @@ export const useServiceData = (serviceId: string | undefined, startDate: Date, e
         
       } else {
         // Fetch regional agent specific data
-        const [regionName, agentId] = currentAgent.split("|");
-       // console.log(`Fetching regional agent data for region: ${regionName}, agent: ${agentId} from ${service.type} collection`);
-        history = await uptimeService.getUptimeHistoryByRegionalAgent(serviceId, limit, start, end, service.type, regionName, agentId);
+        const [region名称, agentId] = currentAgent.split("|");
+       // console.log(`Fetching regional agent data for region: ${region名称}, agent: ${agentId} from ${service.type} collection`);
+        history = await uptimeService.getUptimeHistoryByRegionalAgent(serviceId, limit, start, end, service.type, region名称, agentId);
        // console.log(`Retrieved ${history.length} regional monitoring records`);
       }
       
@@ -240,9 +240,9 @@ export const useServiceData = (serviceId: string | undefined, startDate: Date, e
     uptimeData,
     setUptimeData,
     isLoading,
-    handleStatusChange,
+    handle状态Change,
     fetchUptimeData,
     selectedRegionalAgent,
     handleRegionalAgentChange
-  }), [service, uptimeData, isLoading, handleStatusChange, fetchUptimeData, selectedRegionalAgent, handleRegionalAgentChange]);
+  }), [service, uptimeData, isLoading, handle状态Change, fetchUptimeData, selectedRegionalAgent, handleRegionalAgentChange]);
 };

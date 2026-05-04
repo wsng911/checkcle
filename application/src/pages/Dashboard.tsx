@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Header } from "@/components/dashboard/Header";
 import { Sidebar } from "@/components/dashboard/Sidebar";
-import { DashboardContent } from "@/components/dashboard/DashboardContent";
+import { 仪表盘Content } from "@/components/dashboard/仪表盘Content";
 import { serviceService } from "@/services/serviceService";
 import { authService } from "@/services/authService";
 import { useNavigate } from "react-router-dom";
 import { LoadingState } from "@/components/services/LoadingState";
 import { useSidebar } from "@/contexts/SidebarContext";
 
-const Dashboard = () => {
+const 仪表盘 = () => {
   const currentUser = authService.getCurrentUser();
   const navigate = useNavigate();
   
@@ -20,15 +20,15 @@ const Dashboard = () => {
 
   const { data: services = [], isLoading, error } = useQuery({
     queryKey: ['services'],
-    queryFn: serviceService.getServices,
+    queryFn: serviceService.get服务,
     refetchInterval: 60000,
   });
 
   useEffect(() => {
-    const startActiveServices = async () => {
-      await serviceService.startAllActiveServices();
+    const startActive服务 = async () => {
+      await serviceService.startAllActive服务();
     };
-    const timeoutId = setTimeout(startActiveServices, 2000);
+    const timeoutId = setTimeout(startActive服务, 2000);
     return () => clearTimeout(timeoutId);
   }, []);
 
@@ -37,14 +37,14 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="flex h-screen overflow-hidden bg-background text-foreground">
+    <div class名称="flex h-screen overflow-hidden bg-background text-foreground">
       <Sidebar />
-      <div className="flex flex-col flex-1 min-w-0">
+      <div class名称="flex flex-col flex-1 min-w-0">
         <Header 
           currentUser={currentUser} 
           onLogout={handleLogout} 
         />
-        <DashboardContent 
+        <仪表盘Content 
           services={services}
           isLoading={isLoading}
           error={error as Error}
@@ -54,4 +54,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default 仪表盘;

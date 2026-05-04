@@ -16,7 +16,7 @@ import { templateService, ServerNotificationTemplate } from "@/services/template
 import { serverThresholdService, ServerThreshold } from "@/services/serverThresholdService";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-interface EditServerDialogProps {
+interface 编辑ServerDialogProps {
   server: Server | null;
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -41,7 +41,7 @@ interface ThresholdFormData {
   network_threshold: number;
 }
 
-export const EditServerDialog: React.FC<EditServerDialogProps> = ({
+export const 编辑ServerDialog: React.FC<编辑ServerDialogProps> = ({
   server,
   open,
   onOpenChange,
@@ -66,7 +66,7 @@ export const EditServerDialog: React.FC<EditServerDialogProps> = ({
     network_threshold: 80,
   });
   
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [is提交ting, setIs提交ting] = useState(false);
   const [alertConfigs, setAlertConfigs] = useState<AlertConfiguration[]>([]);
   const [templates, setTemplates] = useState<ServerNotificationTemplate[]>([]);
   const [thresholds, setThresholds] = useState<ServerThreshold[]>([]);
@@ -224,12 +224,12 @@ export const EditServerDialog: React.FC<EditServerDialogProps> = ({
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handle提交 = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!server || isSubmitting) return;
+    if (!server || is提交ting) return;
 
     try {
-      setIsSubmitting(true);
+      setIs提交ting(true);
 
       // Convert notification channels array to comma-separated string
       const notificationChannelsString = formData.notification_channels.join(',');
@@ -297,11 +297,11 @@ export const EditServerDialog: React.FC<EditServerDialogProps> = ({
         description: t('failedToUpdateServer', 'instance'),
       });
     } finally {
-      setIsSubmitting(false);
+      setIs提交ting(false);
     }
   };
 
-  const handleCancel = () => {
+  const handle取消 = () => {
     if (server) {
       const notificationChannels = server.notification_id 
         ? server.notification_id.split(',').map(id => id.trim()).filter(id => id)
@@ -323,25 +323,25 @@ export const EditServerDialog: React.FC<EditServerDialogProps> = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[700px] max-h-[80vh] overflow-y-auto">
+      <DialogContent class名称="sm:max-w-[700px] max-h-[80vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>{t('editServerConfiguration', 'instance')}</DialogTitle>
         </DialogHeader>
         
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="serverName">{t('serverNameLabel', 'instance')}</Label>
+        <form on提交={handle提交} class名称="space-y-6">
+          <div class名称="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class名称="space-y-2">
+              <Label htmlFor="server名称">{t('server名称Label', 'instance')}</Label>
               <Input
-                id="serverName"
+                id="server名称"
                 value={formData.name}
                 onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                placeholder={t('serverNamePlaceholder', 'instance')}
+                placeholder={t('server名称Placeholder', 'instance')}
                 required
               />
             </div>
 
-            <div className="space-y-2">
+            <div class名称="space-y-2">
               <Label htmlFor="checkInterval">{t('checkIntervalLabel', 'instance')}</Label>
               <Select
                 value={formData.check_interval.toString()}
@@ -360,7 +360,7 @@ export const EditServerDialog: React.FC<EditServerDialogProps> = ({
               </Select>
             </div>
 
-            <div className="space-y-2">
+            <div class名称="space-y-2">
               <Label htmlFor="maxRetries">{t('maxRetriesLabel', 'instance')}</Label>
               <Select
                 value={formData.max_retries.toString()}
@@ -379,55 +379,55 @@ export const EditServerDialog: React.FC<EditServerDialogProps> = ({
               </Select>
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="dockerMonitoring">{t('dockerMonitoring', 'instance')}</Label>
-              <div className="flex items-center space-x-2">
+            <div class名称="space-y-2">
+              <Label htmlFor="docker监控ing">{t('docker监控ing', 'instance')}</Label>
+              <div class名称="flex items-center space-x-2">
                 <Switch
-                  id="dockerMonitoring"
+                  id="docker监控ing"
                   checked={formData.docker_monitoring}
                   onCheckedChange={(checked) => setFormData(prev => ({ 
                     ...prev, 
                     docker_monitoring: checked
                   }))}
                 />
-                <Label htmlFor="dockerMonitoring" className="text-sm text-muted-foreground">
+                <Label htmlFor="docker监控ing" class名称="text-sm text-muted-foreground">
                   {formData.docker_monitoring ? t('enabled', 'instance') : t('disabled', 'instance')}
                 </Label>
               </div>
             </div>
           </div>
 
-          {/* Notification Status Toggle */}
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2">
+          {/* Notification 状态 Toggle */}
+          <div class名称="space-y-4">
+            <div class名称="flex items-center space-x-2">
               <Switch
                 id="notificationEnabled"
                 checked={formData.notification_enabled}
                 onCheckedChange={(checked) => setFormData(prev => ({ 
                   ...prev, 
                   notification_enabled: checked
-                  // Remove the automatic clearing of notification_channels, threshold_id, and template_id
+                  // 移除 the automatic clearing of notification_channels, threshold_id, and template_id
                 }))}
               />
               <Label htmlFor="notificationEnabled">{t('enableNotifications', 'instance')}</Label>
             </div>
             
-            {/* Expanded Notification Settings */}
+            {/* Expanded Notification 设置 */}
             {formData.notification_enabled && (
-              <Card className="border-l-4 border-l-blue-500">
+              <Card class名称="border-l-4 border-l-blue-500">
                 <CardHeader>
-                  <CardTitle className="text-lg">{t('notificationSettings', 'instance')}</CardTitle>
+                  <CardTitle class名称="text-lg">{t('notification设置', 'instance')}</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent class名称="space-y-4">
                   {/* Multiple Notification Channels Selection */}
-                  <div className="space-y-2">
+                  <div class名称="space-y-2">
                     <Label>{t('notificationChannels', 'instance')}</Label>
-                    <div className="space-y-2 max-h-40 overflow-y-auto border rounded-md p-3">
+                    <div class名称="space-y-2 max-h-40 overflow-y-auto border rounded-md p-3">
                       {loadingAlertConfigs ? (
-                        <div className="text-sm text-muted-foreground">{t('loadingChannels', 'instance')}</div>
+                        <div class名称="text-sm text-muted-foreground">{t('loadingChannels', 'instance')}</div>
                       ) : alertConfigs.length > 0 ? (
                         alertConfigs.map((config) => (
-                          <div key={config.id} className="flex items-center space-x-2">
+                          <div key={config.id} class名称="flex items-center space-x-2">
                             <Checkbox
                               id={`channel-${config.id}`}
                               checked={formData.notification_channels.includes(config.id || "")}
@@ -437,38 +437,38 @@ export const EditServerDialog: React.FC<EditServerDialogProps> = ({
                             />
                             <Label 
                               htmlFor={`channel-${config.id}`} 
-                              className="flex-1 text-sm cursor-pointer"
+                              class名称="flex-1 text-sm cursor-pointer"
                             >
                               {config.notify_name} ({config.notification_type})
                             </Label>
                           </div>
                         ))
                       ) : (
-                        <div className="text-sm text-muted-foreground">{t('noChannelsAvailable', 'instance')}</div>
+                        <div class名称="text-sm text-muted-foreground">{t('noChannelsAvailable', 'instance')}</div>
                       )}
                     </div>
                     
                     {/* Selected Channels Display */}
                     {formData.notification_channels.length > 0 && (
-                      <div className="space-y-2">
-                        <Label className="text-sm font-medium">{t('selectedChannels', 'instance')}</Label>
-                        <div className="flex flex-wrap gap-2">
+                      <div class名称="space-y-2">
+                        <Label class名称="text-sm font-medium">{t('selectedChannels', 'instance')}</Label>
+                        <div class名称="flex flex-wrap gap-2">
                           {formData.notification_channels.map((channelId) => {
                             const channel = alertConfigs.find(c => c.id === channelId);
                             return (
                               <div 
                                 key={channelId}
-                                className="flex items-center gap-1 bg-secondary text-secondary-foreground px-2 py-1 rounded-md text-sm"
+                                class名称="flex items-center gap-1 bg-secondary text-secondary-foreground px-2 py-1 rounded-md text-sm"
                               >
                                 <span>{channel?.notify_name || channelId}</span>
                                 <Button
                                   type="button"
                                   variant="ghost"
                                   size="sm"
-                                  className="h-4 w-4 p-0 hover:bg-destructive hover:text-destructive-foreground"
+                                  class名称="h-4 w-4 p-0 hover:bg-destructive hover:text-destructive-foreground"
                                   onClick={() => removeNotificationChannel(channelId)}
                                 >
-                                  <X className="h-3 w-3" />
+                                  <X class名称="h-3 w-3" />
                                 </Button>
                               </div>
                             );
@@ -479,7 +479,7 @@ export const EditServerDialog: React.FC<EditServerDialogProps> = ({
                   </div>
 
                   {/* Server Set Threshold Selection */}
-                  <div className="space-y-2">
+                  <div class名称="space-y-2">
                     <Label htmlFor="thresholdId">{t('serverSetThreshold', 'instance')}</Label>
                     <Select
                       value={formData.threshold_id}
@@ -500,16 +500,16 @@ export const EditServerDialog: React.FC<EditServerDialogProps> = ({
                     </Select>
                   </div>
 
-                  {/* Editable Threshold Details */}
+                  {/* 编辑able Threshold Details */}
                   {selectedThreshold && (
-                    <Card className="bg-muted/50">
+                    <Card class名称="bg-muted/50">
                       <CardHeader>
-                        <CardTitle className="text-base">{t('thresholdDetails', 'instance')}: {selectedThreshold.name}</CardTitle>
+                        <CardTitle class名称="text-base">{t('thresholdDetails', 'instance')}: {selectedThreshold.name}</CardTitle>
                       </CardHeader>
-                      <CardContent className="space-y-3">
-                        <div className="grid grid-cols-2 gap-3 text-sm">
+                      <CardContent class名称="space-y-3">
+                        <div class名称="grid grid-cols-2 gap-3 text-sm">
                           <div>
-                            <Label className="text-xs font-medium text-muted-foreground">{t('cpuThresholdPct', 'instance')}</Label>
+                            <Label class名称="text-xs font-medium text-muted-foreground">{t('cpuThresholdPct', 'instance')}</Label>
                             <Input
                               type="number"
                               min="0"
@@ -519,11 +519,11 @@ export const EditServerDialog: React.FC<EditServerDialogProps> = ({
                                 ...prev, 
                                 cpu_threshold: parseInt(e.target.value) || 0 
                               }))}
-                              className="mt-1"
+                              class名称="mt-1"
                             />
                           </div>
                           <div>
-                            <Label className="text-xs font-medium text-muted-foreground">{t('ramThresholdPct', 'instance')}</Label>
+                            <Label class名称="text-xs font-medium text-muted-foreground">{t('ramThresholdPct', 'instance')}</Label>
                             <Input
                               type="number"
                               min="0"
@@ -533,11 +533,11 @@ export const EditServerDialog: React.FC<EditServerDialogProps> = ({
                                 ...prev, 
                                 ram_threshold: parseInt(e.target.value) || 0 
                               }))}
-                              className="mt-1"
+                              class名称="mt-1"
                             />
                           </div>
                           <div>
-                            <Label className="text-xs font-medium text-muted-foreground">{t('diskThresholdPct', 'instance')}</Label>
+                            <Label class名称="text-xs font-medium text-muted-foreground">{t('diskThresholdPct', 'instance')}</Label>
                             <Input
                               type="number"
                               min="0"
@@ -547,11 +547,11 @@ export const EditServerDialog: React.FC<EditServerDialogProps> = ({
                                 ...prev, 
                                 disk_threshold: parseInt(e.target.value) || 0 
                               }))}
-                              className="mt-1"
+                              class名称="mt-1"
                             />
                           </div>
                           <div>
-                            <Label className="text-xs font-medium text-muted-foreground">{t('networkThresholdPct', 'instance')}</Label>
+                            <Label class名称="text-xs font-medium text-muted-foreground">{t('networkThresholdPct', 'instance')}</Label>
                             <Input
                               type="number"
                               min="0"
@@ -561,7 +561,7 @@ export const EditServerDialog: React.FC<EditServerDialogProps> = ({
                                 ...prev, 
                                 network_threshold: parseInt(e.target.value) || 0 
                               }))}
-                              className="mt-1"
+                              class名称="mt-1"
                             />
                           </div>
                         </div>
@@ -570,7 +570,7 @@ export const EditServerDialog: React.FC<EditServerDialogProps> = ({
                   )}
 
                   {/* Server Template Selection */}
-                  <div className="space-y-2">
+                  <div class名称="space-y-2">
                     <Label htmlFor="templateId">{t('serverTemplate', 'instance')}</Label>
                     <Select
                       value={formData.template_id}
@@ -593,45 +593,45 @@ export const EditServerDialog: React.FC<EditServerDialogProps> = ({
 
                   {/* Template Details */}
                   {selectedTemplate && (
-                    <Card className="bg-muted/50">
+                    <Card class名称="bg-muted/50">
                       <CardHeader>
-                        <CardTitle className="text-base">{t('templateDetails', 'instance')}: {selectedTemplate.name}</CardTitle>
+                        <CardTitle class名称="text-base">{t('templateDetails', 'instance')}: {selectedTemplate.name}</CardTitle>
                       </CardHeader>
-                      <CardContent className="space-y-3">
-                        <div className="grid grid-cols-1 gap-3 text-sm">
+                      <CardContent class名称="space-y-3">
+                        <div class名称="grid grid-cols-1 gap-3 text-sm">
                           <div>
-                            <Label className="text-xs font-medium text-muted-foreground">{t('ramMessage', 'instance')}</Label>
-                            <p className="text-sm bg-background p-2 rounded border">
+                            <Label class名称="text-xs font-medium text-muted-foreground">{t('ramMessage', 'instance')}</Label>
+                            <p class名称="text-sm bg-background p-2 rounded border">
                               {selectedTemplate.ram_message || t('noMessageDefined', 'instance', { name: 'RAM' })}
                             </p>
                           </div>
                           <div>
-                            <Label className="text-xs font-medium text-muted-foreground">{t('cpuMessage', 'instance')}</Label>
-                            <p className="text-sm bg-background p-2 rounded border">
+                            <Label class名称="text-xs font-medium text-muted-foreground">{t('cpuMessage', 'instance')}</Label>
+                            <p class名称="text-sm bg-background p-2 rounded border">
                               {selectedTemplate.cpu_message || t('noMessageDefined', 'instance', { name: 'CPU' })}
                             </p>
                           </div>
                           <div>
-                            <Label className="text-xs font-medium text-muted-foreground">{t('diskMessage', 'instance')}</Label>
-                            <p className="text-sm bg-background p-2 rounded border">
+                            <Label class名称="text-xs font-medium text-muted-foreground">{t('diskMessage', 'instance')}</Label>
+                            <p class名称="text-sm bg-background p-2 rounded border">
                               {selectedTemplate.disk_message || t('noMessageDefined', 'instance', { name: 'disk' })}
                             </p>
                           </div>
                           <div>
-                            <Label className="text-xs font-medium text-muted-foreground">{t('networkMessage', 'instance')}</Label>
-                            <p className="text-sm bg-background p-2 rounded border">
+                            <Label class名称="text-xs font-medium text-muted-foreground">{t('networkMessage', 'instance')}</Label>
+                            <p class名称="text-sm bg-background p-2 rounded border">
                               {selectedTemplate.network_message || t('noMessageDefined', 'instance', { name: 'network' })}
                             </p>
                           </div>
                           <div>
-                            <Label className="text-xs font-medium text-muted-foreground">{t('upMessage', 'instance')}</Label>
-                            <p className="text-sm bg-background p-2 rounded border">
+                            <Label class名称="text-xs font-medium text-muted-foreground">{t('upMessage', 'instance')}</Label>
+                            <p class名称="text-sm bg-background p-2 rounded border">
                               {selectedTemplate.up_message || t('noMessageDefined', 'instance', { name: 'up' })}
                             </p>
                           </div>
                           <div>
-                            <Label className="text-xs font-medium text-muted-foreground">{t('downMessage', 'instance')}</Label>
-                            <p className="text-sm bg-background p-2 rounded border">
+                            <Label class名称="text-xs font-medium text-muted-foreground">{t('downMessage', 'instance')}</Label>
+                            <p class名称="text-sm bg-background p-2 rounded border">
                               {selectedTemplate.down_message || t('noMessageDefined', 'instance', { name: 'down' })}
                             </p>
                           </div>
@@ -644,19 +644,19 @@ export const EditServerDialog: React.FC<EditServerDialogProps> = ({
             )}
           </div>
 
-          <div className="flex justify-end space-x-2 pt-4">
+          <div class名称="flex justify-end space-x-2 pt-4">
             <Button
               type="button"
               variant="outline"
-              onClick={handleCancel}
-              disabled={isSubmitting}
+              onClick={handle取消}
+              disabled={is提交ting}
             >
               {t('cancel', 'instance')}
             </Button>
-            <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? (
+            <Button type="submit" disabled={is提交ting}>
+              {is提交ting ? (
                 <>
-                  <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
+                  <RefreshCw class名称="mr-2 h-4 w-4 animate-spin" />
                   {t('updating', 'instance')}
                 </>
               ) : (
@@ -670,4 +670,4 @@ export const EditServerDialog: React.FC<EditServerDialogProps> = ({
   );
 };
 
-export default EditServerDialog;
+export default 编辑ServerDialog;

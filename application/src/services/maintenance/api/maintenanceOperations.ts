@@ -1,12 +1,12 @@
 
 import { pb } from '@/lib/pocketbase';
-import { MaintenanceItem, CreateMaintenanceInput } from '../../types/maintenance.types';
+import { MaintenanceItem, 创建MaintenanceInput } from '../../types/maintenance.types';
 import { clearCache } from './maintenanceCache';
 
 /**
  * Update the status of a maintenance record
  */
-export const updateMaintenanceStatus = async (id: string, status: string): Promise<void> => {
+export const updateMaintenance状态 = async (id: string, status: string): Promise<void> => {
   try {
     await pb.collection('maintenance').update(id, { status });
     clearCache();
@@ -42,7 +42,7 @@ export const updateMaintenance = async (id: string, data: Partial<MaintenanceIte
 };
 
 /**
- * Delete a maintenance record
+ * 删除 a maintenance record
  */
 export const deleteMaintenance = async (id: string): Promise<void> => {
   try {
@@ -55,9 +55,9 @@ export const deleteMaintenance = async (id: string): Promise<void> => {
 };
 
 /**
- * Create a new maintenance record
+ * 创建 a new maintenance record
  */
-export const createMaintenance = async (data: CreateMaintenanceInput): Promise<void> => {
+export const createMaintenance = async (data: 创建MaintenanceInput): Promise<void> => {
   try {
     // Format data for submission
     const formattedData = { ...data };

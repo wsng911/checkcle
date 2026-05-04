@@ -1,6 +1,6 @@
 /// <reference path="../pb_data/types.d.ts" />
 migrate((app) => {
-  const collection = app.findCollectionByNameOrId("pbc_1938176441")
+  const collection = app.findCollectionBy名称OrId("pbc_1938176441")
 
   // add matrix_homeserver field
   collection.fields.addAt(collection.fields.length, new Field({
@@ -51,20 +51,20 @@ migrate((app) => {
   }))
 
   // add "matrix" to the notification_type select field values
-  const notifTypeField = collection.fields.getByName("notification_type")
+  const notifTypeField = collection.fields.getBy名称("notification_type")
   if (notifTypeField && notifTypeField.values) {
     notifTypeField.values.push("matrix")
   }
 
   return app.save(collection)
 }, (app) => {
-  const collection = app.findCollectionByNameOrId("pbc_1938176441")
+  const collection = app.findCollectionBy名称OrId("pbc_1938176441")
 
   collection.fields.removeById("text_matrix_homeserver")
   collection.fields.removeById("text_matrix_room_id")
   collection.fields.removeById("text_matrix_access_token")
 
-  const notifTypeField = collection.fields.getByName("notification_type")
+  const notifTypeField = collection.fields.getBy名称("notification_type")
   if (notifTypeField && notifTypeField.values) {
     notifTypeField.values = notifTypeField.values.filter(v => v !== "matrix")
   }

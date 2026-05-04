@@ -9,29 +9,29 @@ import { UserToggleField } from "./";
 import { UserRoleField } from "./";
 import { DialogFooter } from "@/components/ui/dialog";
 
-interface AddUserFormProps {
+interface 添加UserFormProps {
   form: UseFormReturn<any>;
-  onSubmit: (data: any) => void;
-  isSubmitting: boolean;
+  on提交: (data: any) => void;
+  is提交ting: boolean;
 }
 
-const AddUserForm = ({ form, onSubmit, isSubmitting }: AddUserFormProps) => {
+const 添加UserForm = ({ form, on提交, is提交ting }: 添加UserFormProps) => {
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form on提交={form.handle提交(on提交)} class名称="space-y-4">
         
-        <div className="grid grid-cols-2 gap-4">
+        <div class名称="grid grid-cols-2 gap-4">
           <UserTextField
             control={form.control}
             name="full_name"
-            label="Full Name"
+            label="Full 名称"
             placeholder="Enter full name"
           />
           
           <UserTextField
             control={form.control}
             name="email"
-            label="Email"
+            label="邮箱"
             placeholder="Enter email"
             type="email"
           />
@@ -39,7 +39,7 @@ const AddUserForm = ({ form, onSubmit, isSubmitting }: AddUserFormProps) => {
           <UserTextField
             control={form.control}
             name="username"
-            label="Username"
+            label="用户名"
             placeholder="Enter username"
           />
           
@@ -52,16 +52,16 @@ const AddUserForm = ({ form, onSubmit, isSubmitting }: AddUserFormProps) => {
           <UserTextField
             control={form.control}
             name="password"
-            label="Password"
+            label="密码"
             placeholder="Enter password"
             type="password"
           />
           
           <UserTextField
             control={form.control}
-            name="passwordConfirm"
-            label="Confirm Password"
-            placeholder="Confirm password"
+            name="password确认"
+            label="确认 密码"
+            placeholder="确认 password"
             type="password"
           />
         </div>
@@ -69,19 +69,19 @@ const AddUserForm = ({ form, onSubmit, isSubmitting }: AddUserFormProps) => {
         <UserToggleField
           control={form.control}
           name="isActive"
-          label="Active Status"
+          label="Active 状态"
           description="User will be able to access the system"
         />
 
-        <DialogFooter className="pt-4">
-          <Button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? (
+        <DialogFooter class名称="pt-4">
+          <Button type="submit" disabled={is提交ting}>
+            {is提交ting ? (
               <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                <Loader2 class名称="mr-2 h-4 w-4 animate-spin" />
                 Creating...
               </>
             ) : (
-              "Create User"
+              "创建 User"
             )}
           </Button>
         </DialogFooter>
@@ -90,4 +90,4 @@ const AddUserForm = ({ form, onSubmit, isSubmitting }: AddUserFormProps) => {
   );
 };
 
-export default AddUserForm;
+export default 添加UserForm;

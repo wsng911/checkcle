@@ -4,11 +4,11 @@ import { Server } from "@/types/server.types";
 import { Cpu, HardDrive, MemoryStick, Clock, Activity, Info } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 
-interface ServerMetricsOverviewProps {
+interface ServerMetrics概览Props {
   server: Server;
 }
 
-export const ServerMetricsOverview = ({ server }: ServerMetricsOverviewProps) => {
+export const ServerMetrics概览 = ({ server }: ServerMetrics概览Props) => {
   const { theme } = useTheme();
 
   const formatBytes = (bytes: number) => {
@@ -19,7 +19,7 @@ export const ServerMetricsOverview = ({ server }: ServerMetricsOverviewProps) =>
     return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
   };
 
-  const getStatusColor = (status: string) => {
+  const get状态Color = (status: string) => {
     switch (status) {
       case 'up':
         return 'text-green-500';
@@ -48,13 +48,13 @@ export const ServerMetricsOverview = ({ server }: ServerMetricsOverviewProps) =>
     additionalInfo?: string;
   }) => (
     <Card 
-      className="border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 relative"
+      class名称="border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 relative"
       style={{ background: gradient }}
     >
       {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 z-0 opacity-10">
+      <div class名称="absolute inset-0 z-0 opacity-10">
         <div 
-          className="w-full h-full" 
+          class名称="w-full h-full" 
           style={{ 
             backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), 
                               linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
@@ -63,53 +63,53 @@ export const ServerMetricsOverview = ({ server }: ServerMetricsOverviewProps) =>
         />
       </div>
       
-      <CardHeader className="pb-3 relative z-10">
-        <CardTitle className="flex items-center justify-between text-sm font-semibold">
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-white/20 backdrop-blur-sm shadow-sm transition-all duration-300 group-hover:scale-110">
-              <Icon className="h-4 w-4 text-white" />
+      <CardHeader class名称="pb-3 relative z-10">
+        <CardTitle class名称="flex items-center justify-between text-sm font-semibold">
+          <div class名称="flex items-center gap-3">
+            <div class名称="p-2.5 rounded-xl bg-white/20 backdrop-blur-sm shadow-sm transition-all duration-300 group-hover:scale-110">
+              <Icon class名称="h-4 w-4 text-white" />
             </div>
-            <span className="text-white">{title}</span>
+            <span class名称="text-white">{title}</span>
           </div>
-          <div className="text-xs font-mono font-bold px-2 py-1 rounded-md bg-white/20 backdrop-blur-sm text-white border border-white/30">
+          <div class名称="text-xs font-mono font-bold px-2 py-1 rounded-md bg-white/20 backdrop-blur-sm text-white border border-white/30">
             {percentage.toFixed(1)}%
           </div>
         </CardTitle>
       </CardHeader>
       
-      <CardContent className="space-y-4 relative z-10">
-        <div className="grid grid-cols-2 gap-4 text-xs">
-          <div className="space-y-1">
-            <div className="flex justify-between">
-              <span className="text-white/70">Used:</span>
-              <span className="font-mono font-semibold text-white">{used}</span>
+      <CardContent class名称="space-y-4 relative z-10">
+        <div class名称="grid grid-cols-2 gap-4 text-xs">
+          <div class名称="space-y-1">
+            <div class名称="flex justify-between">
+              <span class名称="text-white/70">Used:</span>
+              <span class名称="font-mono font-semibold text-white">{used}</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-white/70">Free:</span>
-              <span className="font-mono font-semibold text-white">{free}</span>
+            <div class名称="flex justify-between">
+              <span class名称="text-white/70">Free:</span>
+              <span class名称="font-mono font-semibold text-white">{free}</span>
             </div>
           </div>
-          <div className="space-y-1">
-            <div className="flex justify-between">
-              <span className="text-white/70">Total:</span>
-              <span className="font-mono font-semibold text-white">{total}</span>
+          <div class名称="space-y-1">
+            <div class名称="flex justify-between">
+              <span class名称="text-white/70">Total:</span>
+              <span class名称="font-mono font-semibold text-white">{total}</span>
             </div>
             {additionalInfo && (
-              <div className="flex justify-between">
-                <span className="text-white/70">Cores:</span>
-                <span className="font-mono font-semibold text-white">{additionalInfo}</span>
+              <div class名称="flex justify-between">
+                <span class名称="text-white/70">Cores:</span>
+                <span class名称="font-mono font-semibold text-white">{additionalInfo}</span>
               </div>
             )}
           </div>
         </div>
         
-        <div className="w-full bg-white/20 rounded-full h-3 overflow-hidden shadow-inner backdrop-blur-sm">
+        <div class名称="w-full bg-white/20 rounded-full h-3 overflow-hidden shadow-inner backdrop-blur-sm">
           <div 
-            className="h-3 rounded-full transition-all duration-700 ease-out relative overflow-hidden bg-white/80"
+            class名称="h-3 rounded-full transition-all duration-700 ease-out relative overflow-hidden bg-white/80"
             style={{ width: `${Math.min(percentage, 100)}%` }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-white/10" />
+            <div class名称="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse" />
+            <div class名称="absolute inset-0 bg-gradient-to-t from-black/10 to-white/10" />
           </div>
         </div>
       </CardContent>
@@ -117,10 +117,10 @@ export const ServerMetricsOverview = ({ server }: ServerMetricsOverviewProps) =>
   );
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-      {/* Status Card */}
+    <div class名称="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+      {/* 状态 Card */}
       <Card 
-        className="border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 relative"
+        class名称="border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 relative"
         style={{
           background: theme === 'dark' 
             ? "linear-gradient(135deg, rgba(65, 59, 55, 0.8) 0%, rgba(59, 130, 246, 0.6) 100%)" 
@@ -128,9 +128,9 @@ export const ServerMetricsOverview = ({ server }: ServerMetricsOverviewProps) =>
         }}
       >
         {/* Grid Pattern Overlay */}
-        <div className="absolute inset-0 z-0 opacity-10">
+        <div class名称="absolute inset-0 z-0 opacity-10">
           <div 
-            className="w-full h-full" 
+            class名称="w-full h-full" 
             style={{ 
               backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), 
                                 linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
@@ -139,28 +139,28 @@ export const ServerMetricsOverview = ({ server }: ServerMetricsOverviewProps) =>
           />
         </div>
         
-        <CardHeader className="pb-3 relative z-10">
-          <CardTitle className="flex items-center gap-3 text-sm font-semibold">
-            <div className="p-2.5 rounded-xl bg-white/20 backdrop-blur-sm shadow-sm transition-all duration-300 group-hover:scale-110">
-              <Activity className="h-4 w-4 text-white" />
+        <CardHeader class名称="pb-3 relative z-10">
+          <CardTitle class名称="flex items-center gap-3 text-sm font-semibold">
+            <div class名称="p-2.5 rounded-xl bg-white/20 backdrop-blur-sm shadow-sm transition-all duration-300 group-hover:scale-110">
+              <Activity class名称="h-4 w-4 text-white" />
             </div>
-            <span className="text-white">Status</span>
+            <span class名称="text-white">状态</span>
           </CardTitle>
         </CardHeader>
         
-        <CardContent className="space-y-4 relative z-10">
-          <div className={`text-lg font-bold capitalize flex items-center gap-3 text-white`}>
-            <div className={`w-3 h-3 rounded-full ${server.status === 'up' ? 'bg-green-400' : server.status === 'down' ? 'bg-red-400' : 'bg-yellow-400'} animate-pulse shadow-sm`} />
+        <CardContent class名称="space-y-4 relative z-10">
+          <div class名称={`text-lg font-bold capitalize flex items-center gap-3 text-white`}>
+            <div class名称={`w-3 h-3 rounded-full ${server.status === 'up' ? 'bg-green-400' : server.status === 'down' ? 'bg-red-400' : 'bg-yellow-400'} animate-pulse shadow-sm`} />
             {server.status}
           </div>
-          <div className="space-y-2 text-xs">
-            <div className="flex justify-between py-1">
-              <span className="text-white/70">Agent:</span>
-              <span className="font-semibold text-white">{server.agent_status}</span>
+          <div class名称="space-y-2 text-xs">
+            <div class名称="flex justify-between py-1">
+              <span class名称="text-white/70">Agent:</span>
+              <span class名称="font-semibold text-white">{server.agent_status}</span>
             </div>
-            <div className="flex justify-between py-1">
-              <span className="text-white/70">Connection:</span>
-              <span className="font-semibold text-white">{server.connection}</span>
+            <div class名称="flex justify-between py-1">
+              <span class名称="text-white/70">Connection:</span>
+              <span class名称="font-semibold text-white">{server.connection}</span>
             </div>
           </div>
         </CardContent>
@@ -168,7 +168,7 @@ export const ServerMetricsOverview = ({ server }: ServerMetricsOverviewProps) =>
 
       {/* Uptime Card */}
       <Card 
-        className="border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 relative"
+        class名称="border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 relative"
         style={{
           background: theme === 'dark' 
             ? "linear-gradient(135deg, rgba(65, 59, 55, 0.8) 0%, rgba(34, 197, 94, 0.6) 100%)" 
@@ -176,9 +176,9 @@ export const ServerMetricsOverview = ({ server }: ServerMetricsOverviewProps) =>
         }}
       >
         {/* Grid Pattern Overlay */}
-        <div className="absolute inset-0 z-0 opacity-10">
+        <div class名称="absolute inset-0 z-0 opacity-10">
           <div 
-            className="w-full h-full" 
+            class名称="w-full h-full" 
             style={{ 
               backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), 
                                 linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
@@ -187,22 +187,22 @@ export const ServerMetricsOverview = ({ server }: ServerMetricsOverviewProps) =>
           />
         </div>
         
-        <CardHeader className="pb-3 relative z-10">
-          <CardTitle className="flex items-center gap-3 text-sm font-semibold">
-            <div className="p-2.5 rounded-xl bg-white/20 backdrop-blur-sm shadow-sm transition-all duration-300 group-hover:scale-110">
-              <Clock className="h-4 w-4 text-white" />
+        <CardHeader class名称="pb-3 relative z-10">
+          <CardTitle class名称="flex items-center gap-3 text-sm font-semibold">
+            <div class名称="p-2.5 rounded-xl bg-white/20 backdrop-blur-sm shadow-sm transition-all duration-300 group-hover:scale-110">
+              <Clock class名称="h-4 w-4 text-white" />
             </div>
-            <span className="text-white">Uptime</span>
+            <span class名称="text-white">Uptime</span>
           </CardTitle>
         </CardHeader>
         
-        <CardContent className="space-y-4 relative z-10">
-          <div className="text-lg font-bold text-white">
+        <CardContent class名称="space-y-4 relative z-10">
+          <div class名称="text-lg font-bold text-white">
             {server.uptime}
           </div>
-          <div className="text-xs text-white/70 space-y-1">
+          <div class名称="text-xs text-white/70 space-y-1">
             <div>Last Check:</div>
-            <div className="font-mono text-[10px] text-white/90 bg-white/10 px-2 py-1 rounded backdrop-blur-sm">
+            <div class名称="font-mono text-[10px] text-white/90 bg-white/10 px-2 py-1 rounded backdrop-blur-sm">
               {new Date(server.last_checked).toLocaleString()}
             </div>
           </div>

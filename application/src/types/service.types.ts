@@ -4,7 +4,7 @@ export interface Service {
   url?: string;
   host?: string; // Make host optional since it's not always required
   port?: number;
-  domain?: string; // Add domain field for DNS services
+  domain?: string; // 添加 domain field for DNS services
   type: "http" | "https" | "tcp" | "ping" | "icmp" | "dns";
   status: "up" | "down" | "paused" | "warning";
   responseTime: number;
@@ -17,7 +17,7 @@ export interface Service {
   updated?: string;
   notification_channel?: string;
   notificationChannel?: string; // Keep for backward compatibility
-  notification_status?: "enabled" | "disabled"; // Add notification_status field
+  notification_status?: "enabled" | "disabled"; // 添加 notification_status field
   alertTemplate?: string;
   alerts?: "muted" | "unmuted"; // Make sure alerts is properly typed as union
   muteAlerts?: boolean; // Keep this to avoid breaking existing code
@@ -35,25 +35,25 @@ export interface Service {
   // Regional monitoring fields
   region_name?: string;
   agent_id?: string;
-  regional_status?: "enabled" | "disabled"; // Add regional_status field
+  regional_status?: "enabled" | "disabled"; // 添加 regional_status field
   regional_monitoring_enabled?: boolean;
 }
 
-export interface CreateServiceParams {
+export interface 创建ServiceParams {
   name: string;
   url?: string;
-  host?: string; // Add host field for PING and TCP services
-  port?: number; // Add port field for TCP services
-  domain?: string; // Add domain field for DNS services
+  host?: string; // 添加 host field for PING and TCP services
+  port?: number; // 添加 port field for TCP services
+  domain?: string; // 添加 domain field for DNS services
   type: string;
   interval: number;
   retries: number;
   notificationChannel?: string;
   alertTemplate?: string;
   // Regional monitoring params
-  regionalMonitoringEnabled?: boolean;
-  regionalStatus?: "enabled" | "disabled"; // Add regionalStatus field
-  regionName?: string;
+  regional监控ingEnabled?: boolean;
+  regional状态?: "enabled" | "disabled"; // 添加 regional状态 field
+  region名称?: string;
   agentId?: string;
 }
 

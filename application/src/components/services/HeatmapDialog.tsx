@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
+  Dialog描述,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
@@ -16,14 +16,14 @@ import { addMonths, subMonths, format } from "date-fns";
 interface HeatmapDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  serviceName: string;
+  service名称: string;
   uptimeData: UptimeData[];
 }
 
 export const HeatmapDialog = ({
   open,
   onOpenChange,
-  serviceName,
+  service名称,
   uptimeData
 }: HeatmapDialogProps) => {
   const [selectedMonth, setSelectedMonth] = useState(new Date());
@@ -42,26 +42,26 @@ export const HeatmapDialog = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-slate-900 border-slate-700">
-        <DialogHeader className="pb-4">
-          <DialogTitle className="text-xl font-semibold text-white">
-            Health Heatmap - {serviceName}
+      <DialogContent class名称="max-w-2xl max-h-[90vh] overflow-y-auto bg-slate-900 border-slate-700">
+        <DialogHeader class名称="pb-4">
+          <DialogTitle class名称="text-xl font-semibold text-white">
+            Health Heatmap - {service名称}
           </DialogTitle>
-          <DialogDescription className="text-gray-400">
+          <Dialog描述 class名称="text-gray-400">
             Monthly overview of service health status with daily breakdown
-          </DialogDescription>
+          </Dialog描述>
         </DialogHeader>
         
-        <div className="space-y-6">
+        <div class名称="space-y-6">
           {/* Month Navigation */}
-          <div className="flex items-center justify-between">
+          <div class名称="flex items-center justify-between">
             <Button
               variant="outline"
               size="sm"
               onClick={handlePreviousMonth}
-              className="flex items-center gap-2 bg-slate-800 border-slate-600 text-white hover:bg-slate-700"
+              class名称="flex items-center gap-2 bg-slate-800 border-slate-600 text-white hover:bg-slate-700"
             >
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeft class名称="h-4 w-4" />
               Previous
             </Button>
             
@@ -69,7 +69,7 @@ export const HeatmapDialog = ({
               variant="secondary"
               size="sm"
               onClick={handleCurrentMonth}
-              className="bg-slate-700 text-white hover:bg-slate-600"
+              class名称="bg-slate-700 text-white hover:bg-slate-600"
             >
               Current Month
             </Button>
@@ -78,10 +78,10 @@ export const HeatmapDialog = ({
               variant="outline"
               size="sm"
               onClick={handleNextMonth}
-              className="flex items-center gap-2 bg-slate-800 border-slate-600 text-white hover:bg-slate-700"
+              class名称="flex items-center gap-2 bg-slate-800 border-slate-600 text-white hover:bg-slate-700"
             >
               Next
-              <ChevronRight className="h-4 w-4" />
+              <ChevronRight class名称="h-4 w-4" />
             </Button>
           </div>
           

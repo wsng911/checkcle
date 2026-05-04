@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { userService, User, UpdateUserData, CreateUserData } from "@/services/userService";
+import { userService, User, UpdateUserData, 创建UserData } from "@/services/userService";
 import { UserFormValues, NewUserFormValues } from "../userForms";
 import { avatarOptions } from "../avatarOptions";
 import { authService } from "@/services/authService";
@@ -9,8 +9,8 @@ import { useNavigate } from "react-router-dom";
 export const useUserOperations = (
   fetchUsers: () => Promise<void>,
   setIsDialogOpen: (isOpen: boolean) => void,
-  setIsAddUserDialogOpen: (isOpen: boolean) => void,
-  setIsSubmitting: (isSubmitting: boolean) => void,
+  setIs添加UserDialogOpen: (isOpen: boolean) => void,
+  setIs提交ting: (is提交ting: boolean) => void,
   setIsDeleting: (isDeleting: boolean) => void,
   setUpdateError: (error: string | null) => void,
   newUserFormReset: (values: any) => void
@@ -18,15 +18,15 @@ export const useUserOperations = (
   const { toast } = useToast();
   const navigate = useNavigate();
 
-  const handleDeleteUser = async (userToDelete: User | null) => {
-    if (!userToDelete) return;
+  const handle删除User = async (userTo删除: User | null) => {
+    if (!userTo删除) return;
 
     try {
-      const success = await userService.deleteUser(userToDelete.id);
+      const success = await userService.deleteUser(userTo删除.id);
       if (success) {
         toast({
           title: "User deleted",
-          description: `${userToDelete.full_name || userToDelete.username} has been deleted.`,
+          description: `${userTo删除.full_name || userTo删除.username} has been deleted.`,
         });
         fetchUsers();
       } else {
@@ -43,18 +43,18 @@ export const useUserOperations = (
     }
   };
 
-  const onSubmit = async (data: UserFormValues, currentUser: User | null) => {
+  const on提交 = async (data: UserFormValues, currentUser: User | null) => {
     if (!currentUser) return;
-    setIsSubmitting(true);
+    setIs提交ting(true);
     setUpdateError(null);
 
     try {
       // Get current logged-in user to check if we're editing ourselves
       const loggedInUser = authService.getCurrentUser();
-      const isEditingSelf = loggedInUser?.id === currentUser.id;
-      const isEmailChanged = data.email !== currentUser.email;
+      const is编辑ingSelf = loggedInUser?.id === currentUser.id;
+      const is邮箱Changed = data.email !== currentUser.email;
       
-      // Create update object with only the fields we want to update
+      // 创建 update object with only the fields we want to update
       const updateData: UpdateUserData = {
         full_name: data.full_name,
         email: data.email,
@@ -68,14 +68,14 @@ export const useUserOperations = (
         updateData.avatar = data.avatar;
       }
 
-      console.log("Submitting user update with data:", updateData);
+      console.log("提交ting user update with data:", updateData);
       
       await userService.updateUser(currentUser.id, updateData);
       
       // Handle email change for current user
-      if (isEditingSelf && isEmailChanged) {
+      if (is编辑ingSelf && is邮箱Changed) {
         toast({
-          title: "Email changed successfully",
+          title: "邮箱 changed successfully",
           description: "You will be logged out for security reasons. Please log in again with your new email.",
           variant: "default",
         });
@@ -116,7 +116,7 @@ export const useUserOperations = (
         variant: "destructive",
       });
     } finally {
-      setIsSubmitting(false);
+      setIs提交ting(false);
     }
   };
 
@@ -152,14 +152,14 @@ export const useUserOperations = (
     }
   };
 
-  const onAddUser = async (data: NewUserFormValues) => {
-    setIsSubmitting(true);
+  const on添加User = async (data: NewUserFormValues) => {
+    setIs提交ting(true);
     try {
-      const newUserData: CreateUserData = {
+      const newUserData: 创建UserData = {
         username: data.username,
         email: data.email,
         password: data.password,
-        passwordConfirm: data.passwordConfirm,
+        password确认: data.password确认,
         full_name: data.full_name,
         role: data.role,
         isActive: data.isActive,
@@ -174,13 +174,13 @@ export const useUserOperations = (
         description: `${data.full_name || data.username} has been added successfully.`,
       });
       
-      setIsAddUserDialogOpen(false);
+      setIs添加UserDialogOpen(false);
       newUserFormReset({
         full_name: "",
         email: "",
         username: "",
         password: "",
-        passwordConfirm: "",
+        password确认: "",
         isActive: true,
         role: "user",
         avatar: avatarOptions[0].url,
@@ -201,14 +201,14 @@ export const useUserOperations = (
         variant: "destructive",
       });
     } finally {
-      setIsSubmitting(false);
+      setIs提交ting(false);
     }
   };
 
   return {
-    handleDeleteUser,
-    onSubmit,
+    handle删除User,
+    on提交,
     onImpersonate,
-    onAddUser,
+    on添加User,
   };
 };

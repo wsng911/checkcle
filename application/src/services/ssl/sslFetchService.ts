@@ -20,7 +20,7 @@ export const fetchSSLCertificates = async (): Promise<SSLCertificate[]> => {
     };
     
     // Convert params to query string
-    const queryString = new URLSearchParams(params as any).toString();
+    const queryString = new URL搜索Params(params as any).toString();
     const fullEndpoint = `${endpoint}?${queryString}`;
     
   //  console.log("Fetching SSL certificates from:", fullEndpoint);

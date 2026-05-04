@@ -33,7 +33,7 @@ export const ServiceDetailContainer = () => {
     service,
     uptimeData,
     isLoading,
-    handleStatusChange,
+    handle状态Change,
     fetchUptimeData,
     setService,
     setUptimeData,
@@ -71,7 +71,7 @@ export const ServiceDetailContainer = () => {
           service={service}
           uptimeData={uptimeData}
           onDateRangeChange={handleDateRangeChange}
-          onStatusChange={handleStatusChange}
+          on状态Change={handle状态Change}
           selectedDateOption={selectedRange}
           selectedRegionalAgent={selectedRegionalAgent}
           onRegionalAgentChange={handleRegionalAgentChange}

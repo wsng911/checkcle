@@ -1,5 +1,5 @@
 
-export interface GeneralSettings {
+export interface General设置 {
   id?: string;
   created?: string;
   updated?: string;
@@ -25,10 +25,10 @@ export interface GeneralSettings {
   
   // New fields for additional settings
   meta?: {
-    appName?: string;
+    app名称?: string;
     appURL?: string;
-    senderName?: string;
-    senderAddress?: string;
+    sender名称?: string;
+    sender添加ress?: string;
     hideControls?: boolean;
   };
   smtp?: {
@@ -39,12 +39,12 @@ export interface GeneralSettings {
     password?: string;
     authMethod?: string;
     tls?: boolean;
-    localName?: string;
+    local名称?: string;
   };
 }
 
 export const settingsService = {
-  async getGeneralSettings(): Promise<GeneralSettings | null> {
+  async getGeneral设置(): Promise<General设置 | null> {
     try {
       console.log('Fetching settings from /api/settings endpoint...');
       const response = await fetch('/api/settings', {
@@ -52,7 +52,7 @@ export const settingsService = {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ action: 'getSettings' })
+        body: JSON.stringify({ action: 'get设置' })
       });
 
       if (!response.ok) {
@@ -60,7 +60,7 @@ export const settingsService = {
       }
 
       const result = await response.json();
-      console.log('Settings API response:', result);
+      console.log('设置 API response:', result);
       
       return result.success ? result.data : null;
     } catch (error) {
@@ -69,11 +69,11 @@ export const settingsService = {
     }
   },
   
-  async updateGeneralSettings(data: Partial<GeneralSettings>): Promise<GeneralSettings | null> {
+  async updateGeneral设置(data: Partial<General设置>): Promise<General设置 | null> {
     try {
       console.log('Updating settings via /api/settings:', data);
       
-      // Remove id and timestamp fields for settings update
+      // 移除 id and timestamp fields for settings update
       const { id, created, updated, ...updateData } = data;
       
       const response = await fetch('/api/settings', {
@@ -82,7 +82,7 @@ export const settingsService = {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ 
-          action: 'updateSettings',
+          action: 'update设置',
           data: updateData
         })
       });
@@ -92,7 +92,7 @@ export const settingsService = {
       }
 
       const result = await response.json();
-      console.log('Settings update response:', result);
+      console.log('设置 update response:', result);
       
       return result.success ? result.data : null;
     } catch (error) {
@@ -101,7 +101,7 @@ export const settingsService = {
     }
   },
   
-  async testEmailConnection(smtpConfig: any): Promise<boolean> {
+  async test邮箱Connection(smtpConfig: any): Promise<boolean> {
     try {
       console.log('Testing email connection via /api/settings:', smtpConfig);
       const response = await fetch('/api/settings', {
@@ -110,7 +110,7 @@ export const settingsService = {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ 
-          action: 'testEmailConnection',
+          action: 'test邮箱Connection',
           data: smtpConfig
         })
       });

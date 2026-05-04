@@ -4,43 +4,43 @@ import { Loader2 } from "lucide-react";
 import { MouseEvent } from "react";
 import {useLanguage} from "@/contexts/LanguageContext.tsx";
 
-interface ServiceFormActionsProps {
-  isSubmitting: boolean;
-  onCancel: () => void;
+interface ServiceForm操作Props {
+  is提交ting: boolean;
+  on取消: () => void;
   submitLabel?: string;
 }
 
-export function ServiceFormActions({ 
-  isSubmitting, 
-  onCancel,
-  submitLabel = "Create Service"
-}: ServiceFormActionsProps) {
+export function ServiceForm操作({ 
+  is提交ting, 
+  on取消,
+  submitLabel = "创建 Service"
+}: ServiceForm操作Props) {
 
 	const {t} = useLanguage();
-  const handleCancel = (e: MouseEvent<HTMLButtonElement>) => {
+  const handle取消 = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if (!isSubmitting) {
-      onCancel();
+    if (!is提交ting) {
+      on取消();
     }
   };
 
   return (
-    <div className="flex justify-end gap-3 pt-2">
+    <div class名称="flex justify-end gap-3 pt-2">
       <Button 
         type="button" 
-        onClick={handleCancel}
+        onClick={handle取消}
         variant="outline"
-        disabled={isSubmitting}
+        disabled={is提交ting}
       >
 	      {t("cancel")}
       </Button>
       <Button 
         type="submit" 
-        disabled={isSubmitting}
+        disabled={is提交ting}
       >
-        {isSubmitting ? (
+        {is提交ting ? (
           <>
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            <Loader2 class名称="mr-2 h-4 w-4 animate-spin" />
 	          {t("processing")}...
           </>
         ) : (

@@ -3,7 +3,7 @@ import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { 
   PriorityField,
-  StatusField,
+  状态Field,
   ImpactLevelField,
   AssignedUsersField
 } from './config';
@@ -12,19 +12,19 @@ export const MaintenanceConfigFields = () => {
   const { t } = useLanguage();
   
   return (
-    <div className="space-y-6">
-      <div className="text-sm font-medium">{t('configurationSettings')}</div>
+    <div class名称="space-y-6">
+      <div class名称="text-sm font-medium">{t('configuration设置')}</div>
       
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div class名称="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <PriorityField />
-        <StatusField />
+        <状态Field />
       </div>
 
-      <div className="grid grid-cols-1 gap-4">
+      <div class名称="grid grid-cols-1 gap-4">
         <ImpactLevelField />
       </div>
       
-      <div className="grid grid-cols-1 gap-6 mt-4">
+      <div class名称="grid grid-cols-1 gap-6 mt-4">
         <AssignedUsersField />
       </div>
     </div>

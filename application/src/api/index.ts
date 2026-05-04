@@ -58,7 +58,7 @@ window.fetch = async (url, options = {}) => {
       
       const result = await api.handleRequest(url, options.method || 'GET', body);
       
-      // Create a proper Response object
+      // 创建 a proper Response object
       return new Response(JSON.stringify(result.json), {
         status: result.status,
         headers: {

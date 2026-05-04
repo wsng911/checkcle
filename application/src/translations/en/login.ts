@@ -2,13 +2,13 @@
 import { LoginTranslations } from '../types/login';
 
 export const loginTranslations: LoginTranslations = {
-  signInToYourAccount: "Sign in to your account",
+  signInToYourAccount: "登录 to your account",
   dontHaveAccount: "Don't have an account?",
-  createOne: "Create one",
-  signInWithGoogle: "Sign in with Google",
+  createOne: "创建 one",
+  signInWithGoogle: "登录 with Google",
   orContinueWith: "OR",
-  email: "Email",
-  password: "Password",
+  email: "邮箱",
+  password: "密码",
   forgot: "Forgot?",
   signIn: "Sign In",
   signingIn: "Signing in...",

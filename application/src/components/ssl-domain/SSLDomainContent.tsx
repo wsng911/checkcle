@@ -5,20 +5,20 @@ import { Plus, RefreshCw } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { toast } from "sonner";
 
-import { SSLCertificateStatusCards } from "./SSLCertificateStatusCards";
+import { SSLCertificate状态Cards } from "./SSLCertificate状态Cards";
 import { SSLCertificatesTable } from "./SSLCertificatesTable";
 import { LoadingState } from "@/components/services/LoadingState";
 import { fetchSSLCertificates, addSSLCertificate, checkAndUpdateCertificate, refreshAllCertificates, deleteSSLCertificate } from "@/services/ssl";
-import { AddSSLCertificateForm } from "./AddSSLCertificateForm";
-import { EditSSLCertificateForm } from "./EditSSLCertificateForm";
-import type { AddSSLCertificateDto, SSLCertificate } from "@/types/ssl.types";
+import { 添加SSLCertificateForm } from "./添加SSLCertificateForm";
+import { 编辑SSLCertificateForm } from "./编辑SSLCertificateForm";
+import type { 添加SSLCertificateDto, SSLCertificate } from "@/types/ssl.types";
 import { pb } from "@/lib/pocketbase";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export const SSLDomainContent = () => {
   const { t } = useLanguage();
-  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
-  const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
+  const [is添加DialogOpen, setIs添加DialogOpen] = useState(false);
+  const [is编辑DialogOpen, setIs编辑DialogOpen] = useState(false);
   const [refreshingId, setRefreshingId] = useState<string | null>(null);
   const [isRefreshingAll, setIsRefreshingAll] = useState(false);
   const [selectedCertificate, setSelectedCertificate] = useState<SSLCertificate | null>(null);
@@ -40,24 +40,24 @@ export const SSLDomainContent = () => {
     refetchInterval: 300000, // Refresh every 5 minutes
   });
 
-  // Add certificate mutation
+  // 添加 certificate mutation
   const addMutation = useMutation({
     mutationFn: addSSLCertificate,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['ssl-certificates'] });
-      setIsAddDialogOpen(false);
-      toast.success(t('sslCertificateAdded'));
+      setIs添加DialogOpen(false);
+      toast.success(t('sslCertificate添加ed'));
     },
     onError: (error) => {
-      toast.error(error instanceof Error ? error.message : t('failedToAddCertificate'));
+      toast.error(error instanceof Error ? error.message : t('failedTo添加Certificate'));
     }
   });
 
-  // Edit certificate mutation - Updated to include notification_id and template_id
+  // 编辑 certificate mutation - Updated to include notification_id and template_id
   const editMutation = useMutation({
     mutationFn: async (certificate: SSLCertificate) => {
       
-      // Create the update data object with new fields
+      // 创建 the update data object with new fields
       const updateData = {
         warning_threshold: Number(certificate.warning_threshold),
         expiry_threshold: Number(certificate.expiry_threshold),
@@ -79,7 +79,7 @@ export const SSLDomainContent = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['ssl-certificates'] });
-      setIsEditDialogOpen(false);
+      setIs编辑DialogOpen(false);
       setSelectedCertificate(null);
       toast.success(t('sslCertificateUpdated'));
     },
@@ -88,15 +88,15 @@ export const SSLDomainContent = () => {
     }
   });
 
-  // Delete certificate mutation
+  // 删除 certificate mutation
   const deleteMutation = useMutation({
     mutationFn: deleteSSLCertificate,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['ssl-certificates'] });
-      toast.success(t('sslCertificateDeleted'));
+      toast.success(t('sslCertificate删除d'));
     },
     onError: (error) => {
-      toast.error(error instanceof Error ? error.message : t('failedToDeleteCertificate'));
+      toast.error(error instanceof Error ? error.message : t('failedTo删除Certificate'));
     }
   });
 
@@ -106,14 +106,14 @@ export const SSLDomainContent = () => {
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['ssl-certificates'] });
       setRefreshingId(null);
-      // Removed individual success toast notification
+      // 移除d individual success toast notification
     },
     onError: (error) => {
       setRefreshingId(null);
       
       // Still refresh the data to show any partial information that was saved
       queryClient.invalidateQueries({ queryKey: ['ssl-certificates'] });
-      // Removed individual error toast notification
+      // 移除d individual error toast notification
     }
   });
   
@@ -141,7 +141,7 @@ export const SSLDomainContent = () => {
     }
   });
 
-  const handleAddCertificate = async (data: AddSSLCertificateDto) => {
+  const handle添加Certificate = async (data: 添加SSLCertificateDto) => {
     addMutation.mutate(data);
   };
 
@@ -151,16 +151,16 @@ export const SSLDomainContent = () => {
     refreshMutation.mutate(id);
   };
 
-  const handleEditCertificate = (certificate: SSLCertificate) => {
+  const handle编辑Certificate = (certificate: SSLCertificate) => {
     setSelectedCertificate(certificate);
-    setIsEditDialogOpen(true);
+    setIs编辑DialogOpen(true);
   };
 
   const handleUpdateCertificate = (certificate: SSLCertificate) => {
     editMutation.mutate(certificate);
   };
 
-  const handleDeleteCertificate = (certificate: SSLCertificate) => {
+  const handle删除Certificate = (certificate: SSLCertificate) => {
     deleteMutation.mutate(certificate.id);
   };
 
@@ -181,7 +181,7 @@ export const SSLDomainContent = () => {
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center h-full gap-4 text-foreground">
+      <div class名称="flex flex-col items-center justify-center h-full gap-4 text-foreground">
         <p>{t('failedToLoadCertificates')}</p>
         <Button onClick={() => queryClient.invalidateQueries({ queryKey: ['ssl-certificates'] })}>
           {t('check')}
@@ -191,71 +191,71 @@ export const SSLDomainContent = () => {
   }
 
   return (
-    <main className="flex-1 flex flex-col overflow-auto bg-background p-6 pb-0">
-      <div className="flex flex-col flex-1">
-        <div className="flex justify-between items-center mb-6">
+    <main class名称="flex-1 flex flex-col overflow-auto bg-background p-6 pb-0">
+      <div class名称="flex flex-col flex-1">
+        <div class名称="flex justify-between items-center mb-6">
           <div>
-            <h2 className="text-2xl font-bold text-foreground">{t('sslDomainManagement')}</h2>
-            <p className="text-sm text-muted-foreground mt-1">{t('monitorSSLCertificates')}</p>
+            <h2 class名称="text-2xl font-bold text-foreground">{t('sslDomainManagement')}</h2>
+            <p class名称="text-sm text-muted-foreground mt-1">{t('monitorSSLCertificates')}</p>
           </div>
-          <div className="flex gap-2">
+          <div class名称="flex gap-2">
             <Button 
               variant="outline"
               onClick={handleRefreshAll}
               disabled={isRefreshingAll || refreshingId !== null}
-              className="relative"
+              class名称="relative"
             >
-              <RefreshCw className={`w-4 h-4 mr-2 ${isRefreshingAll ? 'animate-spin' : ''}`} /> 
+              <RefreshCw class名称={`w-4 h-4 mr-2 ${isRefreshingAll ? 'animate-spin' : ''}`} /> 
               {t('refreshAll')}
               {isRefreshingAll && (
-                <span className="absolute top-0 right-0 -mt-2 -mr-2 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                <span class名称="absolute top-0 right-0 -mt-2 -mr-2 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                   ...
                 </span>
               )}
             </Button>
             <Button 
-              className="text-primary-foreground"
-              onClick={() => setIsAddDialogOpen(true)}
+              class名称="text-primary-foreground"
+              onClick={() => setIs添加DialogOpen(true)}
             >
-              <Plus className="w-4 h-4 mr-2" /> {t('addDomain')}
+              <Plus class名称="w-4 h-4 mr-2" /> {t('addDomain')}
             </Button>
           </div>
         </div>
         
-        <SSLCertificateStatusCards certificates={certificates} />
+        <SSLCertificate状态Cards certificates={certificates} />
         
-        <div className="mt-6 flex-1 flex flex-col pb-6">
+        <div class名称="mt-6 flex-1 flex flex-col pb-6">
           <SSLCertificatesTable />
         </div>
       </div>
 
-      <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
+      <Dialog open={is添加DialogOpen} onOpenChange={setIs添加DialogOpen}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>{t('addSSLCertificate')}</DialogTitle>
           </DialogHeader>
-          <AddSSLCertificateForm 
-            onSubmit={handleAddCertificate} 
-            onCancel={() => setIsAddDialogOpen(false)} 
+          <添加SSLCertificateForm 
+            on提交={handle添加Certificate} 
+            on取消={() => setIs添加DialogOpen(false)} 
             isPending={addMutation.isPending}
           />
         </DialogContent>
       </Dialog>
 
       {selectedCertificate && (
-        <Dialog open={isEditDialogOpen} onOpenChange={(open) => {
-          setIsEditDialogOpen(open);
+        <Dialog open={is编辑DialogOpen} onOpenChange={(open) => {
+          setIs编辑DialogOpen(open);
           if (!open) setSelectedCertificate(null);
         }}>
           <DialogContent>
             <DialogHeader>
               <DialogTitle>{t('editSSLCertificate')}</DialogTitle>
             </DialogHeader>
-            <EditSSLCertificateForm 
+            <编辑SSLCertificateForm 
               certificate={selectedCertificate}
-              onSubmit={handleUpdateCertificate}
-              onCancel={() => {
-                setIsEditDialogOpen(false);
+              on提交={handleUpdateCertificate}
+              on取消={() => {
+                setIs编辑DialogOpen(false);
                 setSelectedCertificate(null);
               }}
               isPending={editMutation.isPending}

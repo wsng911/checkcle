@@ -1,9 +1,9 @@
 
 export interface InstanceTranslations {
 
-  // InstanceMonitoring.tsx
-  instanceMonitoring: string;
-  describeMonitorInstance: string;
+  // Instance监控ing.tsx
+  instance监控ing: string;
+  describe监控Instance: string;
   addServerAgent: string;
   errorLoadingServers: string;
   unableToFetchServerData: string;
@@ -15,16 +15,16 @@ export interface InstanceTranslations {
   searchServersPlaceholder: string;
   noServersFound: string;
   deleteSelected: string;
-  deleteSelectedConfirmTitle: string;
-  deleteSelectedConfirmDesc: string;
+  deleteSelected确认Title: string;
+  deleteSelected确认Desc: string;
   selectedCount: string;
-  serversDeleted: string;
-  serversDeletedDesc: string;
+  servers删除d: string;
+  servers删除dDesc: string;
   partialSuccess: string;
   name: string;
   status: string;
   OS: string;
-  IPAddress: string;
+  IP添加ress: string;
   CPU: string;
   memory: string;
   disk: string;
@@ -32,18 +32,18 @@ export interface InstanceTranslations {
   lastChecked: string;
   actions: string;
   viewServerDetail: string;
-  containerMonitoring: string;
-  resumeMonitoring: string;
-  pauseMonitoring: string;
+  container监控ing: string;
+  resume监控ing: string;
+  pause监控ing: string;
   editServer: string;
   deleteServer: string;
-  deleteServerConfirmTitle: string;
-  deleteServerConfirmDesc: string;
+  deleteServer确认Title: string;
+  deleteServer确认Desc: string;
   cancel: string;
   deleting: string;
   delete: string;
-  serverDeleted: string;
-  serverDeletedDesc: string;
+  server删除d: string;
+  server删除dDesc: string;
   error: string;
   deleteServerError: string;
   serverPaused: string;
@@ -59,8 +59,8 @@ export interface InstanceTranslations {
   offlineServers: string;
   warningServers: string;
 
-  // AddServerAgentDialog.tsx
-  addServerMonitoringAgent: string;
+  // 添加ServerAgentDialog.tsx
+  addServer监控ingAgent: string;
   configureAgentDesc: string;
   configureAgent: string;
   oneClickInstall: string;
@@ -68,14 +68,14 @@ export interface InstanceTranslations {
   manualInstallation: string;
   validationError: string;
   fillRequiredFields: string;
-  serverAgentCreated: string;
-  serverAgentCreatedDesc: string;
-  failedToCreateAgent: string;
+  serverAgent创建d: string;
+  serverAgent创建dDesc: string;
+  failedTo创建Agent: string;
 
   // ServerAgentConfigForm.tsx
-  serverName: string;
-  serverNamePlaceholder: string;
-  serverNameDesc: string;
+  server名称: string;
+  server名称Placeholder: string;
+  server名称Desc: string;
   serverAgentId: string;
   serverAgentIdDesc: string;
   operatingSystem: string;
@@ -100,10 +100,10 @@ export interface InstanceTranslations {
   creatingAgent: string;
   createServerAgent: string;
 
-  // EditServerDialog.tsx
+  // 编辑ServerDialog.tsx
   editServerConfiguration: string;
-  serverNameLabel: string;
-  enterServerNamePlaceholder: string;
+  server名称Label: string;
+  enterServer名称Placeholder: string;
   checkIntervalLabel: string;
   // selectInterval: string;
   interval10m: string;
@@ -114,11 +114,11 @@ export interface InstanceTranslations {
   retry3: string;
   retry5: string;
   retry10: string;
-  dockerMonitoring: string;
+  docker监控ing: string;
   enabled: string;
   disabled: string;
   enableNotifications: string;
-  notificationSettings: string;
+  notification设置: string;
   notificationChannels: string;
   loadingChannels: string;
   noChannelsAvailable: string;

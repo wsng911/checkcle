@@ -16,11 +16,11 @@ export const PrintButton: React.FC<PrintButtonProps> = ({ maintenance }) => {
   
   return (
     <Button
-      className="flex items-center gap-2"
+      class名称="flex items-center gap-2"
       onClick={() => handlePrint(maintenance)}
       variant="default"
     >
-      <Printer className="h-4 w-4" />
+      <Printer class名称="h-4 w-4" />
       {t('print')}
     </Button>
   );

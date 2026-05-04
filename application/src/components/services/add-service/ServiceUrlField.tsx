@@ -1,5 +1,5 @@
 
-import { FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from "@/components/ui/form";
+import { FormControl, FormField, FormItem, FormLabel, FormMessage, Form描述 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { UseFormReturn } from "react-hook-form";
 import { ServiceFormData } from "./types";
@@ -28,7 +28,7 @@ export function ServiceUrlField({ form }: ServiceUrlFieldProps) {
     }
   };
 
-  const getDescription = () => {
+  const get描述 = () => {
     switch (serviceType) {
       case "http":
         return t("targetHTTPDesc");
@@ -57,7 +57,7 @@ export function ServiceUrlField({ form }: ServiceUrlFieldProps) {
   };
 
   return (
-    <div className="space-y-4">
+    <div class名称="space-y-4">
       <FormField
         control={form.control}
         name="url"
@@ -74,9 +74,9 @@ export function ServiceUrlField({ form }: ServiceUrlFieldProps) {
                 }}
               />
             </FormControl>
-            <FormDescription className="text-xs">
-              {getDescription()}
-            </FormDescription>
+            <Form描述 class名称="text-xs">
+              {get描述()}
+            </Form描述>
             <FormMessage />
           </FormItem>
         )}
@@ -100,9 +100,9 @@ export function ServiceUrlField({ form }: ServiceUrlFieldProps) {
                   }}
                 />
               </FormControl>
-              <FormDescription className="text-xs">
+              <Form描述 class名称="text-xs">
 	              {t("targetTCPPortDesc")}
-              </FormDescription>
+              </Form描述>
               <FormMessage />
             </FormItem>
           )}

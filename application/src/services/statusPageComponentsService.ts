@@ -1,9 +1,9 @@
 
 import { pb, getCurrentEndpoint } from '@/lib/pocketbase';
-import { StatusPageComponentRecord } from '@/types/statusPageComponents.types';
+import { 状态PageComponentRecord } from '@/types/statusPageComponents.types';
 
 export const statusPageComponentsService = {
-  async getStatusPageComponents(): Promise<StatusPageComponentRecord[]> {
+  async get状态PageComponents(): Promise<状态PageComponentRecord[]> {
     try {
       const authToken = pb.authStore.token;
       const headers: Record<string, string> = {
@@ -32,7 +32,7 @@ export const statusPageComponentsService = {
     }
   },
 
-  async getStatusPageComponentsByOperationalId(operationalStatusId: string): Promise<StatusPageComponentRecord[]> {
+  async get状态PageComponentsByOperationalId(operational状态Id: string): Promise<状态PageComponentRecord[]> {
     try {
       const authToken = pb.authStore.token;
       const headers: Record<string, string> = {
@@ -44,7 +44,7 @@ export const statusPageComponentsService = {
       }
 
       const baseUrl = getCurrentEndpoint();
-      const response = await fetch(`${baseUrl}/api/collections/status_page_components/records?filter=(operational_status_id='${operationalStatusId}')`, {
+      const response = await fetch(`${baseUrl}/api/collections/status_page_components/records?filter=(operational_status_id='${operational状态Id}')`, {
         method: 'GET',
         headers,
       });
@@ -61,14 +61,14 @@ export const statusPageComponentsService = {
     }
   },
 
-  async createStatusPageComponent(data: {
+  async create状态PageComponent(data: {
     operational_status_id: string;
     name: string;
     description: string;
     service_id: string;
     server_id: string;
     display_order: number;
-  }): Promise<StatusPageComponentRecord> {
+  }): Promise<状态PageComponentRecord> {
     try {
       const authToken = pb.authStore.token;
       const headers: Record<string, string> = {
@@ -95,7 +95,7 @@ export const statusPageComponentsService = {
       }
 
       const result = await response.json();
-     // console.log('Created component:', result);
+     // console.log('创建d component:', result);
       return result;
     } catch (error) {
      // console.error('Error creating status page component:', error);
@@ -103,7 +103,7 @@ export const statusPageComponentsService = {
     }
   },
 
-  async deleteStatusPageComponent(id: string): Promise<void> {
+  async delete状态PageComponent(id: string): Promise<void> {
     try {
       const authToken = pb.authStore.token;
       const headers: Record<string, string> = {

@@ -12,14 +12,14 @@ export interface User {
   avatar?: string;
   role?: string;
   isActive?: boolean;
-  status?: string; // Added this field to support the backend status
+  status?: string; // 添加ed this field to support the backend status
 }
 
-export interface CreateUserData {
+export interface 创建UserData {
   username: string;
   email: string;
   password: string;
-  passwordConfirm: string;
+  password确认: string;
   full_name?: string;
   avatar?: string;
   role?: string;
@@ -121,7 +121,7 @@ export const userService = {
   
   async updateUser(id: string, data: UpdateUserData): Promise<User | null> {
     try {
-      // Create a clean update object - remove undefined and empty string values
+      // 创建 a clean update object - remove undefined and empty string values
       const cleanData: Record<string, any> = {};
       Object.entries(data).forEach(([key, value]) => {
         // Skip undefined values and empty strings for non-required fields
@@ -143,14 +143,14 @@ export const userService = {
       const roleChange = cleanData.role !== undefined;
       const targetRole = roleChange ? cleanData.role : null;
       
-      // Remove role from regular update if it's being changed
+      // 移除 role from regular update if it's being changed
       if (roleChange) {
         delete cleanData.role;
       }
 
       // Handle email updates with proper error handling
-      const hasEmailChange = cleanData.email !== undefined;
-      const emailToUpdate = hasEmailChange ? cleanData.email : null;
+      const has邮箱Change = cleanData.email !== undefined;
+      const emailToUpdate = has邮箱Change ? cleanData.email : null;
       
       let updatedUser: User | null = null;
       
@@ -185,15 +185,15 @@ export const userService = {
         
         try {
           if (targetRole === "superadmin") {
-            // Create in superadmin collection
+            // 创建 in superadmin collection
             const newSuperUser = await pb.collection('_superusers').create(transferData);
-            // Delete from regular users
+            // 删除 from regular users
             await pb.collection('users').delete(id);
             updatedUser = convertToUserType(newSuperUser, "superadmin");
           } else {
-            // Create in regular users collection
+            // 创建 in regular users collection
             const newRegularUser = await pb.collection('users').create(transferData);
-            // Delete from superadmin
+            // 删除 from superadmin
             await pb.collection('_superusers').delete(id);
             updatedUser = convertToUserType(newRegularUser, "admin");
           }
@@ -217,17 +217,17 @@ export const userService = {
         //    console.log("PocketBase update response:", updatedUser);
             
             // If email was updated successfully, show success message
-            if (hasEmailChange) {
-         //     console.log("Email updated successfully to:", emailToUpdate);
+            if (has邮箱Change) {
+         //     console.log("邮箱 updated successfully to:", emailToUpdate);
             }
             
           } catch (error) {
           //  console.error("Error updating user:", error);
             
             // Provide more specific error messages for email issues
-            if (hasEmailChange && error instanceof Error) {
+            if (has邮箱Change && error instanceof Error) {
               if (error.message.includes("email")) {
-                throw new Error("Email update failed. The email address may already be in use or invalid.");
+                throw new Error("邮箱 update failed. The email address may already be in use or invalid.");
               }
             }
             
@@ -270,13 +270,13 @@ export const userService = {
     }
   },
 
-  async createUser(data: CreateUserData): Promise<User | null> {
+  async createUser(data: 创建UserData): Promise<User | null> {
     try {
-      // Create a clean data object without avatar field if it's a URL
+      // 创建 a clean data object without avatar field if it's a URL
       // PocketBase requires actual file uploads for avatar, not URLs
       const cleanData = { ...data };
       
-      // Remove avatar if it's a URL (we'll handle this differently in the future)
+      // 移除 avatar if it's a URL (we'll handle this differently in the future)
       if (cleanData.avatar && typeof cleanData.avatar === 'string') {
         // Check if it's an external URL (not a file reference)
         if (cleanData.avatar.startsWith('http') || 
@@ -294,10 +294,10 @@ export const userService = {
     ///  console.log(`Creating new user in ${collection} collection with data:`, {
     //    ...cleanData,
      //   password: "[REDACTED]",
-    //    passwordConfirm: "[REDACTED]"
+    //    password确认: "[REDACTED]"
     //  });
       
-      // Create the user in the appropriate collection
+      // 创建 the user in the appropriate collection
       const result = await pb.collection(collection).create(cleanData);
       
       return convertToUserType(result, isSuperAdmin ? "superadmin" : "admin");

@@ -11,7 +11,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ServerAgentConfigFormProps {
   formData: {
-    serverName: string;
+    server名称: string;
     description: string;
     osType: string;
     checkInterval: string;
@@ -20,7 +20,7 @@ interface ServerAgentConfigFormProps {
     notificationEnabled: boolean;
   };
   setFormData: React.Dispatch<React.SetStateAction<{
-    serverName: string;
+    server名称: string;
     description: string;
     osType: string;
     checkInterval: string;
@@ -31,8 +31,8 @@ interface ServerAgentConfigFormProps {
   serverId: string;
   serverToken: string;
   currentPocketBaseUrl: string;
-  isSubmitting: boolean;
-  onSubmit: (e: React.FormEvent) => void;
+  is提交ting: boolean;
+  on提交: (e: React.FormEvent) => void;
 }
 
 export const ServerAgentConfigForm: React.FC<ServerAgentConfigFormProps> = ({
@@ -41,34 +41,34 @@ export const ServerAgentConfigForm: React.FC<ServerAgentConfigFormProps> = ({
   serverId,
   serverToken,
   currentPocketBaseUrl,
-  isSubmitting,
-  onSubmit,
+  is提交ting,
+  on提交,
 }) => {
   const { t } = useLanguage();
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
-      <div className="grid grid-cols-2 gap-4">
-        <div className="space-y-2">
-          <Label htmlFor="serverName">{t('serverName')} *</Label>
+    <form on提交={on提交} class名称="space-y-4">
+      <div class名称="grid grid-cols-2 gap-4">
+        <div class名称="space-y-2">
+          <Label htmlFor="server名称">{t('server名称')} *</Label>
           <Input
-            id="serverName"
-            placeholder={t('serverNamePlaceholder')}
-            value={formData.serverName}
-            onChange={(e) => setFormData(prev => ({ ...prev, serverName: e.target.value }))}
+            id="server名称"
+            placeholder={t('server名称Placeholder')}
+            value={formData.server名称}
+            onChange={(e) => setFormData(prev => ({ ...prev, server名称: e.target.value }))}
             required
           />
-          <p className="text-xs text-muted-foreground">{t('serverNameDesc')}</p>
+          <p class名称="text-xs text-muted-foreground">{t('server名称Desc')}</p>
         </div>
         
-        <div className="space-y-2">
+        <div class名称="space-y-2">
           <Label htmlFor="serverId">{t('serverAgentId')}</Label>
-          <div className="flex gap-2">
+          <div class名称="flex gap-2">
             <Input
               id="serverId"
               value={serverId}
               readOnly
-              className="font-mono text-sm bg-muted"
+              class名称="font-mono text-sm bg-muted"
             />
             <Button
               type="button"
@@ -76,15 +76,15 @@ export const ServerAgentConfigForm: React.FC<ServerAgentConfigFormProps> = ({
               size="icon"
               onClick={() => copyToClipboard(serverId)}
             >
-              <Copy className="h-4 w-4" />
+              <Copy class名称="h-4 w-4" />
             </Button>
           </div>
-          <p className="text-xs text-muted-foreground">{t('serverAgentIdDesc')}</p>
+          <p class名称="text-xs text-muted-foreground">{t('serverAgentIdDesc')}</p>
         </div>
       </div>
       
-      <div className="grid grid-cols-2 gap-4">
-        <div className="space-y-2">
+      <div class名称="grid grid-cols-2 gap-4">
+        <div class名称="space-y-2">
           <Label>{t('operatingSystem')} *</Label>
           <OSSelector
             value={formData.osType}
@@ -92,8 +92,8 @@ export const ServerAgentConfigForm: React.FC<ServerAgentConfigFormProps> = ({
           />
         </div>
 
-        <div className="space-y-4">
-          <div className="space-y-2">
+        <div class名称="space-y-4">
+          <div class名称="space-y-2">
             <Label htmlFor="checkInterval">{t('checkInterval')}</Label>
             <Select
               value={formData.checkInterval}
@@ -109,10 +109,10 @@ export const ServerAgentConfigForm: React.FC<ServerAgentConfigFormProps> = ({
                 <SelectItem value="300">{t('interval5m')}</SelectItem>
               </SelectContent>
             </Select>
-            <p className="text-xs text-muted-foreground">{t('checkIntervalDesc')}</p>
+            <p class名称="text-xs text-muted-foreground">{t('checkIntervalDesc')}</p>
           </div>
 
-          <div className="space-y-2">
+          <div class名称="space-y-2">
             <Label htmlFor="retryAttempt">{t('retryAttempts')}</Label>
             <Select
               value={formData.retryAttempt}
@@ -128,46 +128,46 @@ export const ServerAgentConfigForm: React.FC<ServerAgentConfigFormProps> = ({
                 <SelectItem value="5">{t('attempt5')}</SelectItem>
               </SelectContent>
             </Select>
-            <p className="text-xs text-muted-foreground">{t('retryAttemptsDesc')}</p>
+            <p class名称="text-xs text-muted-foreground">{t('retryAttemptsDesc')}</p>
           </div>
 
-          <div className="space-y-2">
+          <div class名称="space-y-2">
             <Label>{t('serverToken')}</Label>
-            <div className="flex gap-2">
-              <Input value={serverToken} readOnly className="font-mono text-sm bg-muted" />
+            <div class名称="flex gap-2">
+              <Input value={serverToken} readOnly class名称="font-mono text-sm bg-muted" />
               <Button
                 type="button"
                 variant="outline"
                 size="icon"
                 onClick={() => copyToClipboard(serverToken)}
               >
-                <Copy className="h-4 w-4" />
+                <Copy class名称="h-4 w-4" />
               </Button>
             </div>
-            <p className="text-xs text-muted-foreground">{t('serverTokenDesc')}</p>
+            <p class名称="text-xs text-muted-foreground">{t('serverTokenDesc')}</p>
           </div>
 
-          <div className="space-y-2">
+          <div class名称="space-y-2">
             <Label>{t('systemUrl')}</Label>
-            <div className="flex gap-2">
-              <Input value={currentPocketBaseUrl} readOnly className="font-mono text-sm bg-muted" />
+            <div class名称="flex gap-2">
+              <Input value={currentPocketBaseUrl} readOnly class名称="font-mono text-sm bg-muted" />
               <Button
                 type="button"
                 variant="outline"
                 size="icon"
                 onClick={() => copyToClipboard(currentPocketBaseUrl)}
               >
-                <Copy className="h-4 w-4" />
+                <Copy class名称="h-4 w-4" />
               </Button>
             </div>
-            <p className="text-xs text-muted-foreground">{t('systemUrlDesc')}</p>
+            <p class名称="text-xs text-muted-foreground">{t('systemUrlDesc')}</p>
           </div>
         </div>
       </div>
      
-      <div className="pt-4">
-        <Button type="submit" disabled={isSubmitting} className="w-full">
-          {isSubmitting ? t('creatingAgent') : t('createServerAgent')}
+      <div class名称="pt-4">
+        <Button type="submit" disabled={is提交ting} class名称="w-full">
+          {is提交ting ? t('creatingAgent') : t('createServerAgent')}
         </Button>
       </div>
     </form>

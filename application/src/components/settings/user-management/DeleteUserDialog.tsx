@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import {
   AlertDialog,
   AlertDialogAction,
-  AlertDialogCancel,
+  AlertDialog取消,
   AlertDialogContent,
-  AlertDialogDescription,
+  AlertDialog描述,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
@@ -13,32 +13,32 @@ import {
 import { User } from "@/services/userService";
 import { Loader2 } from "lucide-react";
 
-interface DeleteUserDialogProps {
+interface 删除UserDialogProps {
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
   user: User | null;
-  onDelete: () => void;
+  on删除: () => void;
   isDeleting?: boolean;
 }
 
-const DeleteUserDialog = ({
+const 删除UserDialog = ({
   isOpen,
   setIsOpen,
   user,
-  onDelete,
+  on删除,
   isDeleting = false,
-}: DeleteUserDialogProps) => {
+}: 删除UserDialogProps) => {
   if (!user) return null;
 
-  const handleCancel = () => {
+  const handle取消 = () => {
     if (!isDeleting) {
       setIsOpen(false);
     }
   };
 
-  const handleConfirm = () => {
+  const handle确认 = () => {
     if (!isDeleting) {
-      onDelete();
+      on删除();
     }
   };
 
@@ -51,25 +51,25 @@ const DeleteUserDialog = ({
     }}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Delete user</AlertDialogTitle>
-          <AlertDialogDescription>
+          <AlertDialogTitle>删除 user</AlertDialogTitle>
+          <AlertDialog描述>
             Are you sure you want to delete {user.full_name || user.username}? This action cannot be undone.
-          </AlertDialogDescription>
+          </AlertDialog描述>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel onClick={handleCancel} disabled={isDeleting}>Cancel</AlertDialogCancel>
+          <AlertDialog取消 onClick={handle取消} disabled={isDeleting}>取消</AlertDialog取消>
           <AlertDialogAction
-            onClick={handleConfirm}
+            onClick={handle确认}
             disabled={isDeleting}
-            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            class名称="bg-destructive text-destructive-foreground hover:bg-destructive/90"
           >
             {isDeleting ? (
               <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                <Loader2 class名称="mr-2 h-4 w-4 animate-spin" />
                 Deleting...
               </>
             ) : (
-              'Delete'
+              '删除'
             )}
           </AlertDialogAction>
         </AlertDialogFooter>
@@ -78,4 +78,4 @@ const DeleteUserDialog = ({
   );
 };
 
-export default DeleteUserDialog;
+export default 删除UserDialog;

@@ -4,7 +4,7 @@ import { pb } from "@/lib/pocketbase";
 export interface SslNotificationTemplate {
   id: string;
   collectionId: string;
-  collectionName: string;
+  collection名称: string;
   name: string;
   expired: string;
   exiring_soon: string;
@@ -14,7 +14,7 @@ export interface SslNotificationTemplate {
   updated: string;
 }
 
-export interface CreateUpdateSslNotificationTemplateData {
+export interface 创建UpdateSslNotificationTemplateData {
   name: string;
   expired: string;
   exiring_soon: string;
@@ -49,11 +49,11 @@ export const sslNotificationTemplateService = {
     }
   },
 
-  async createTemplate(data: CreateUpdateSslNotificationTemplateData): Promise<SslNotificationTemplate> {
+  async createTemplate(data: 创建UpdateSslNotificationTemplateData): Promise<SslNotificationTemplate> {
     try {
      // console.log("Creating new SSL notification template with data:", data);
       const response = await pb.collection('ssl_notification_templates').create(data);
-     // console.log("Create SSL notification template response:", response);
+     // console.log("创建 SSL notification template response:", response);
       return response as unknown as SslNotificationTemplate;
     } catch (error) {
      // console.error("Error creating SSL notification template:", error);
@@ -61,7 +61,7 @@ export const sslNotificationTemplateService = {
     }
   },
 
-  async updateTemplate(id: string, data: Partial<CreateUpdateSslNotificationTemplateData>): Promise<SslNotificationTemplate> {
+  async updateTemplate(id: string, data: Partial<创建UpdateSslNotificationTemplateData>): Promise<SslNotificationTemplate> {
     try {
     //  console.log(`Updating SSL notification template with id: ${id}`, data);
       const response = await pb.collection('ssl_notification_templates').update(id, data);

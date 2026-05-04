@@ -4,37 +4,37 @@ import { IncidentItem } from '../types';
 import { fonts } from './utils';
 
 /**
- * Add the PDF header with title and metadata
+ * 添加 the PDF header with title and metadata
  */
 export const addHeader = (doc: jsPDF, incident: IncidentItem): number => {
   // Set initial y position
   let yPos = 15;
   
-  // Add header with title
+  // 添加 header with title
   doc.setFont(fonts.bold);
   doc.setFontSize(18);
   doc.setTextColor(0, 0, 0);
   doc.text('INCIDENT REPORT', 105, yPos, { align: 'center' });
   
-  // Add incident title
+  // 添加 incident title
   yPos += 8;
   doc.setFontSize(14);
   const title = incident.title || `Incident Report #${incident.id}`;
   doc.text(title, 105, yPos, { align: 'center' });
   
-  // Add current date
+  // 添加 current date
   yPos += 8;
   doc.setFont(fonts.normal);
   doc.setFontSize(10);
   doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 105, yPos, { align: 'center' });
   
-  // Add CheckCle logo or text
+  // 添加 CheckCle logo or text
   yPos += 8;
   doc.setFontSize(12);
   doc.setFont(fonts.italic);
   doc.text('CheckCle Incident Management', 105, yPos, { align: 'center' });
   
-  // Add horizontal line
+  // 添加 horizontal line
   yPos += 5;
   doc.setLineWidth(0.5);
   doc.line(15, yPos, 195, yPos);
@@ -44,7 +44,7 @@ export const addHeader = (doc: jsPDF, incident: IncidentItem): number => {
 };
 
 /**
- * Add footer to all pages
+ * 添加 footer to all pages
  */
 export const addFooter = (doc: jsPDF): void => {
   const pageCount = doc.getNumberOfPages();

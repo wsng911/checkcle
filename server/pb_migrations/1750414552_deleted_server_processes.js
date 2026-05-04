@@ -1,7 +1,7 @@
 /// <reference path="../pb_data/types.d.ts" />
 migrate((app) => {
   try {
-    const collection = app.findCollectionByNameOrId("pbc_2018671343");
+    const collection = app.findCollectionBy名称OrId("pbc_2018671343");
     return app.delete(collection);
   } catch (e) {
     console.warn("Skip delete (server_processes):", e?.message);
@@ -110,7 +110,7 @@ migrate((app) => {
           "hidden": false,
           "id": "autodate2990389176",
           "name": "created",
-          "onCreate": true,
+          "on创建": true,
           "onUpdate": false,
           "presentable": false,
           "system": false,
@@ -120,7 +120,7 @@ migrate((app) => {
           "hidden": false,
           "id": "autodate3332085495",
           "name": "updated",
-          "onCreate": true,
+          "on创建": true,
           "onUpdate": true,
           "presentable": false,
           "system": false,

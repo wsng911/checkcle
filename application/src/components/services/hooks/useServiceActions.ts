@@ -5,10 +5,10 @@ import { useQueryClient } from "@tanstack/react-query";
 import { pb } from "@/lib/pocketbase";
 import { Service } from "@/types/service.types";
 import { serviceService } from "@/services/serviceService";
-import { recordMuteStatusChange } from "@/services/monitoring/utils/notificationUtils";
+import { recordMute状态Change } from "@/services/monitoring/utils/notificationUtils";
 
-export function useServiceActions(initialServices: Service[]) {
-  const [services, setServices] = useState<Service[]>(initialServices);
+export function useService操作(initial服务: Service[]) {
+  const [services, set服务] = useState<Service[]>(initial服务);
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
   const { toast } = useToast();
@@ -16,9 +16,9 @@ export function useServiceActions(initialServices: Service[]) {
   const queryClient = useQueryClient();
 
   // Update services state when props change
-  const updateServices = (newServices: Service[]) => {
-    if (JSON.stringify(services) !== JSON.stringify(newServices)) {
-      setServices(newServices);
+  const update服务 = (new服务: Service[]) => {
+    if (JSON.stringify(services) !== JSON.stringify(new服务)) {
+      set服务(new服务);
     }
   };
 
@@ -31,27 +31,27 @@ export function useServiceActions(initialServices: Service[]) {
     try {
       if (service.status === "paused") {
         // Resume monitoring
-        await serviceService.startMonitoringService(service.id);
+        await serviceService.start监控ingService(service.id);
         toast({
           title: "Service resumed",
           description: `${service.name} monitoring has been resumed successfully.`,
         });
         
         // Update local state - ensure status is properly typed as "up"
-        const updatedServices = services.map(s => 
+        const updated服务 = services.map(s => 
           s.id === service.id ? { ...s, status: "up" as const } : s
         );
-        setServices(updatedServices);
+        set服务(updated服务);
       } else {
         // Pause monitoring
-        await serviceService.pauseMonitoring(service.id);
+        await serviceService.pause监控ing(service.id);
         
         // Get the pause time and update local state
         const pauseTime = new Date().toISOString();
-        const updatedServices = services.map(s => 
+        const updated服务 = services.map(s => 
           s.id === service.id ? { ...s, status: "paused" as const, lastChecked: pauseTime } : s
         );
-        setServices(updatedServices);
+        set服务(updated服务);
         
         toast({
           title: "Service paused",
@@ -71,18 +71,18 @@ export function useServiceActions(initialServices: Service[]) {
     }
   };
   
-  const handleEdit = (service: Service) => {
-    setSelectedService({...service}); // Create a copy to avoid reference issues
+  const handle编辑 = (service: Service) => {
+    setSelectedService({...service}); // 创建 a copy to avoid reference issues
     return service;
   };
   
-  const handleDelete = (service: Service) => {
+  const handle删除 = (service: Service) => {
     setSelectedService(service);
     return service;
   };
   
   // Modified to return Promise<void> instead of Promise<boolean>
-  const confirmDelete = async (): Promise<void> => {
+  const confirm删除 = async (): Promise<void> => {
     if (!selectedService || isDeleting) return;
     
     try {
@@ -90,12 +90,12 @@ export function useServiceActions(initialServices: Service[]) {
       
       // First try to pause monitoring for this service to prevent any concurrency issues
       if (selectedService.status !== "paused") {
-        await serviceService.pauseMonitoring(selectedService.id);
+        await serviceService.pause监控ing(selectedService.id);
       }
       
       // Set a timeout to prevent hanging UI
       const timeoutPromise = new Promise<never>((_, reject) => {
-        setTimeout(() => reject(new Error("Delete request timed out")), 10000);
+        setTimeout(() => reject(new Error("删除 request timed out")), 10000);
       });
       
       const deletePromise = pb.collection('services').delete(selectedService.id);
@@ -107,8 +107,8 @@ export function useServiceActions(initialServices: Service[]) {
       });
       
       // Update local state
-      const updatedServices = services.filter(s => s.id !== selectedService.id);
-      setServices(updatedServices);
+      const updated服务 = services.filter(s => s.id !== selectedService.id);
+      set服务(updated服务);
       
       // Invalidate the services query to trigger a refetch
       queryClient.invalidateQueries({ queryKey: ["services"] });
@@ -132,32 +132,32 @@ export function useServiceActions(initialServices: Service[]) {
       const isMuted = service.alerts === "muted" || service.muteAlerts === true;
       
       // Toggle the mute alerts status for this specific service
-      const newMuteStatus = !isMuted;
+      const newMute状态 = !isMuted;
       
-     // console.log(`${newMuteStatus ? "Muting" : "Unmuting"} alerts for service ${service.id} (${service.name})`);
+     // console.log(`${newMute状态 ? "Muting" : "Unmuting"} alerts for service ${service.id} (${service.name})`);
       
       // First update the local state immediately for better UI responsiveness
       // Using proper type casting to ensure TypeScript knows we're creating valid Service objects
-      const updatedServices = services.map(s => {
+      const updated服务 = services.map(s => {
         if (s.id === service.id) {
           return {
             ...s,
-            muteAlerts: newMuteStatus,
-            alerts: newMuteStatus ? "muted" as const : "unmuted" as const
+            muteAlerts: newMute状态,
+            alerts: newMute状态 ? "muted" as const : "unmuted" as const
           };
         }
         return s;
       });
       
-      setServices(updatedServices);
+      set服务(updated服务);
       
       // Record the mute status change (this will also update the service record)
-      await recordMuteStatusChange(service.id, service.name, newMuteStatus);
+      await recordMute状态Change(service.id, service.name, newMute状态);
       
       // Show a toast message
       toast({
-        title: newMuteStatus ? "Alerts muted" : "Alerts unmuted",
-        description: `Notifications for ${service.name} are now ${newMuteStatus ? "muted" : "enabled"}.`,
+        title: newMute状态 ? "Alerts muted" : "Alerts unmuted",
+        description: `Notifications for ${service.name} are now ${newMute状态 ? "muted" : "enabled"}.`,
       });
       
       // Immediately invalidate the services query to trigger a refetch
@@ -168,7 +168,7 @@ export function useServiceActions(initialServices: Service[]) {
     //  console.error("Error updating alert settings:", error);
       
       // Revert the local state change if the server update failed
-      const revertedServices = services.map(s => {
+      const reverted服务 = services.map(s => {
         if (s.id === service.id) {
           return {
             ...s,
@@ -179,7 +179,7 @@ export function useServiceActions(initialServices: Service[]) {
         return s;
       });
       
-      setServices(revertedServices);
+      set服务(reverted服务);
       
       toast({
         variant: "destructive",
@@ -194,12 +194,12 @@ export function useServiceActions(initialServices: Service[]) {
     selectedService,
     isDeleting,
     setSelectedService,
-    updateServices,
+    update服务,
     handleViewDetail,
     handlePauseResume,
-    handleEdit,
-    handleDelete,
-    confirmDelete,
+    handle编辑,
+    handle删除,
+    confirm删除,
     handleMuteAlerts
   };
 }

@@ -1,11 +1,11 @@
 
-export interface ServicesTranslations {
+export interface 服务Translations {
 
-    serviceStatus: string;
+    service状态: string;
 	uptime: string;
 	lastChecked: string;
-	noServices: string;
-	currentlyMonitoring: string;
+	no服务: string;
+	currently监控ing: string;
 	retry: string;
 	overview: string;
 	newService: string;
@@ -16,8 +16,8 @@ export interface ServicesTranslations {
 	createNewServiceDesc: string;
 
 	// ServiceBasicFields.tsx
-	serviceName: string;
-	serviceNameDesc: string;
+	service名称: string;
+	service名称Desc: string;
 
 	// ServiceConfigFields.tsx
 	checkInterval: string;
@@ -61,8 +61,8 @@ export interface ServicesTranslations {
 	serviceTypeDNSDesc: string;
 
 	// ServiceRegionalFields.tsx
-	regionalMonitoring: string;
-	regionalMonitoringDesc: string;
+	regional监控ing: string;
+	regional监控ingDesc: string;
 	regionalAgents: string;
 	regionalAgentsLoading: string;
 	regionalAgentsAvailablePlaceholder: string;
@@ -84,21 +84,21 @@ export interface ServicesTranslations {
 	targetDefaultPlaceholder: string;
 
 	// types.ts
-	serviceNameRequired: string;
+	service名称Required: string;
 	urlDomainHostRequired: string;
 	enterValidUrlHostnameDomain: string;
 	spacesNotAllowed: string;
 
-	// Dashboard
-	upServices: string;
-	downServices: string;
-	pausedServices: string;
-	warningServices: string;
+	// 仪表盘
+	up服务: string;
+	down服务: string;
+	paused服务: string;
+	warning服务: string;
 
-	// ServiceRowActions.tsx
+	// ServiceRow操作.tsx
 	viewDetail: string;
-	resumeMonitoring: string;
-	pauseMonitoring: string;
+	resume监控ing: string;
+	pause监控ing: string;
 	unmuteAlerts: string;
 	muteAlerts: string;
 
@@ -114,7 +114,7 @@ export interface ServicesTranslations {
 	monitoringPaused: string;
 	noAutomaticChecks: string;
 
-	//ServiveEditDialog.tsx
+	//Servive编辑Dialog.tsx
 	editService: string;
 	editServiceDesc: string;
 
@@ -125,11 +125,11 @@ export interface ServicesTranslations {
 	basedOnlastChecksCount: string;
 	totalUptime: string;
 	totalDowntime: string;
-	monitoringSettings: string;
-	monitoringSettingsInterval: string;
-	monitoringSettingsType: string;
-	upStatusDuration: string;
-	downStatusDuration: string;
+	monitoring设置: string;
+	monitoring设置Interval: string;
+	monitoring设置Type: string;
+	up状态Duration: string;
+	down状态Duration: string;
 
 	incidentHistory: string;
 	processing: string;
@@ -167,7 +167,7 @@ export interface ServicesTranslations {
 	// ManualInstallTab.tsx
 	manualInstallTitle: string;
 	manualInstallDesc: string;
-	serverName: string;
+	server名称: string;
 	agentId: string;
 	osType: string;
 	downloadScript: string;
@@ -189,12 +189,12 @@ export interface ServicesTranslations {
 	monitorServerMetrics: string;
 	serverHostnameIpOs: string;
 
-	// ContainerMonitoring.tsx
-	errorLoadingContainers: string;
+	// Container监控ing.tsx
+	errorLoading容器: string;
 	unableToFetchContainerData: string;
 	errorUnknown: string;
-	containerMonitoring: string;
-	monitorAndManageContainers: string;
+	container监控ing: string;
+	monitorAndManage容器: string;
 	serverIdLabel: string;
 
 	

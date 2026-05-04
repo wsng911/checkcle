@@ -6,10 +6,10 @@ import { maintenanceService, MaintenanceItem } from '@/services/maintenance';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { maintenanceFormSchema, MaintenanceFormValues } from './useMaintenanceForm';
 
-export const useMaintenanceEditForm = (
+export const useMaintenance编辑Form = (
   maintenance: MaintenanceItem,
   onSuccess: () => void,
-  onClose: () => void
+  on关闭: () => void
 ) => {
   const { t } = useLanguage();
   const { toast } = useToast();
@@ -75,9 +75,9 @@ export const useMaintenanceEditForm = (
   // Clean up user IDs by removing quotes, brackets, etc.
   const cleanUserIds = (userIds: string[]): string[] => {
     return userIds.map(id => {
-      // Remove surrounding quotes if present
+      // 移除 surrounding quotes if present
       let cleanId = id.replace(/^["']|["']$/g, '');
-      // Remove any remaining JSON artifacts
+      // 移除 any remaining JSON artifacts
       cleanId = cleanId.replace(/[\[\]"'\\]/g, '');
       return cleanId;
     }).filter(Boolean);
@@ -124,7 +124,7 @@ export const useMaintenanceEditForm = (
     },
   });
 
-  const onSubmit = async (data: MaintenanceFormValues) => {
+  const on提交 = async (data: MaintenanceFormValues) => {
     try {
       console.log("Form data before submission:", data);
       console.log("Assigned users to be submitted:", data.assigned_users);
@@ -173,7 +173,7 @@ export const useMaintenanceEditForm = (
         description: t('maintenanceUpdatedDesc'),
       });
       
-      onClose();
+      on关闭();
       onSuccess();
     } catch (error) {
       console.error('Error updating maintenance:', error);
@@ -196,6 +196,6 @@ export const useMaintenanceEditForm = (
 
   return {
     form,
-    onSubmit,
+    on提交,
   };
 };

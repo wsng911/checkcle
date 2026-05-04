@@ -12,32 +12,32 @@ export const useUserManagement = () => {
   const {
     isDialogOpen,
     setIsDialogOpen,
-    isAddUserDialogOpen,
-    setIsAddUserDialogOpen,
+    is添加UserDialogOpen,
+    setIs添加UserDialogOpen,
     isDeleting,
     setIsDeleting,
-    isSubmitting,
-    setIsSubmitting,
+    is提交ting,
+    setIs提交ting,
     updateError,
     setUpdateError,
     currentUser,
     setCurrentUser,
-    userToDelete,
-    setUserToDelete,
-    handleEditUser: baseHandleEditUser,
-    handleDeletePrompt,
+    userTo删除,
+    setUserTo删除,
+    handle编辑User: baseHandle编辑User,
+    handle删除Prompt,
   } = useUserDialogs();
 
   const {
-    handleDeleteUser: baseHandleDeleteUser,
-    onSubmit: baseOnSubmit,
-    onAddUser: baseOnAddUser,
+    handle删除User: baseHandle删除User,
+    on提交: baseOn提交,
+    on添加User: baseOn添加User,
     onImpersonate: baseOnImpersonate,
   } = useUserOperations(
     fetchUsers,
     setIsDialogOpen,
-    setIsAddUserDialogOpen,
-    setIsSubmitting,
+    setIs添加UserDialogOpen,
+    setIs提交ting,
     setIsDeleting,
     setUpdateError,
     newUserForm.reset
@@ -47,17 +47,17 @@ export const useUserManagement = () => {
   const [isImpersonationTokenDialogOpen, setIsImpersonationTokenDialogOpen] = useState(false);
 
   // Wrapper functions to provide the needed arguments
-  const handleEditUser = (user: User) => {
-    baseHandleEditUser(user, form);
+  const handle编辑User = (user: User) => {
+    baseHandle编辑User(user, form);
   };
 
-  const handleDeleteUser = async () => {
-    await baseHandleDeleteUser(userToDelete);
-    setUserToDelete(null);
+  const handle删除User = async () => {
+    await baseHandle删除User(userTo删除);
+    setUserTo删除(null);
   };
 
-  const onSubmit = (data: UserFormValues) => {
-    baseOnSubmit(data, currentUser);
+  const on提交 = (data: UserFormValues) => {
+    baseOn提交(data, currentUser);
   };
 
   const onImpersonate = async (data: UserFormValues) => {
@@ -69,8 +69,8 @@ export const useUserManagement = () => {
     }
   };
 
-  const onAddUser = (data: NewUserFormValues) => {
-    baseOnAddUser(data);
+  const on添加User = (data: NewUserFormValues) => {
+    baseOn添加User(data);
   };
 
   return {
@@ -79,23 +79,23 @@ export const useUserManagement = () => {
     error,
     isDialogOpen,
     setIsDialogOpen,
-    isAddUserDialogOpen,
-    setIsAddUserDialogOpen,
+    is添加UserDialogOpen,
+    setIs添加UserDialogOpen,
     isDeleting,
     setIsDeleting,
-    isSubmitting,
+    is提交ting,
     updateError,
     form,
     newUserForm,
     currentUser,
-    userToDelete,
+    userTo删除,
     fetchUsers,
-    handleEditUser,
-    handleDeletePrompt,
-    handleDeleteUser,
-    onSubmit,
+    handle编辑User,
+    handle删除Prompt,
+    handle删除User,
+    on提交,
     onImpersonate,
-    onAddUser,
+    on添加User,
     impersonationToken,
     isImpersonationTokenDialogOpen,
     setIsImpersonationTokenDialogOpen,

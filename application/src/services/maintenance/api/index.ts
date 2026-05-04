@@ -3,7 +3,7 @@
 export { clearCache as clearMaintenanceCache } from './maintenanceCache';
 export { fetchAllMaintenanceRecords } from './maintenanceFetch';
 export { 
-  updateMaintenanceStatus,
+  updateMaintenance状态,
   updateMaintenance,
   deleteMaintenance,
   createMaintenance

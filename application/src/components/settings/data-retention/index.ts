@@ -1,5 +1,5 @@
 
-import DataRetentionSettings from './DataRetentionSettings';
+import DataRetention设置 from './DataRetention设置';
 
-export default DataRetentionSettings;
-export { DataRetentionSettings };
+export default DataRetention设置;
+export { DataRetention设置 };

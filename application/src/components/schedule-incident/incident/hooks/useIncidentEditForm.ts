@@ -6,10 +6,10 @@ import { incidentService, IncidentItem } from '@/services/incident';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { incidentFormSchema, IncidentFormValues } from './useIncidentForm';
 
-export const useIncidentEditForm = (
+export const useIncident编辑Form = (
   incident: IncidentItem,
   onSuccess: () => void,
-  onClose: () => void
+  on关闭: () => void
 ) => {
   const { t } = useLanguage();
   const { toast } = useToast();
@@ -32,7 +32,7 @@ export const useIncidentEditForm = (
     },
   });
 
-  const onSubmit = async (data: IncidentFormValues) => {
+  const on提交 = async (data: IncidentFormValues) => {
     try {
       console.log("Form data for update:", data);
       console.log("Assigned user ID for update:", data.assigned_to);
@@ -59,7 +59,7 @@ export const useIncidentEditForm = (
         description: t('incidentUpdatedDesc'),
       });
       
-      onClose();
+      on关闭();
       onSuccess();
     } catch (error) {
       console.error('Error updating incident:', error);
@@ -82,6 +82,6 @@ export const useIncidentEditForm = (
 
   return {
     form,
-    onSubmit: form.handleSubmit(onSubmit),
+    on提交: form.handle提交(on提交),
   };
 };

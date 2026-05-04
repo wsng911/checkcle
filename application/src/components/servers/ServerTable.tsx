@@ -7,12 +7,12 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
-import { RefreshCw, Search, Eye, Activity, MoreHorizontal, Pause, Play, Edit, Trash2 } from "lucide-react";
+import { AlertDialog, AlertDialogAction, AlertDialog取消, AlertDialogContent, AlertDialog描述, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
+import { RefreshCw, 搜索, Eye, Activity, MoreHorizontal, Pause, Play, 编辑, Trash2 } from "lucide-react";
 import { Server } from "@/types/server.types";
-import { ServerStatusBadge } from "./ServerStatusBadge";
+import { Server状态Badge } from "./Server状态Badge";
 import { OSTypeIcon } from "./OSTypeIcon";
-import { EditServerDialog } from "./EditServerDialog";
+import { 编辑ServerDialog } from "./编辑ServerDialog";
 import { serverService } from "@/services/serverService";
 import { useToast } from "@/hooks/use-toast";
 import { pb } from "@/lib/pocketbase";
@@ -28,14 +28,14 @@ interface ServerTableProps {
 export const ServerTable = ({ servers, isLoading, onRefresh }: ServerTableProps) => {
   const { t } = useLanguage();
   const { theme } = useTheme();
-  const [searchTerm, setSearchTerm] = useState("");
-  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
-  const [editDialogOpen, setEditDialogOpen] = useState(false);
+  const [searchTerm, set搜索Term] = useState("");
+  const [deleteDialogOpen, set删除DialogOpen] = useState(false);
+  const [editDialogOpen, set编辑DialogOpen] = useState(false);
   const [selectedServer, setSelectedServer] = useState<Server | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
   const [pausingServers, setPausingServers] = useState<Set<string>>(new Set());
   const [selectedServerIds, setSelectedServerIds] = useState<Set<string>>(new Set());
-  const [bulkDeleteDialogOpen, setBulkDeleteDialogOpen] = useState(false);
+  const [bulk删除DialogOpen, setBulk删除DialogOpen] = useState(false);
   const [isBulkDeleting, setIsBulkDeleting] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -69,7 +69,7 @@ export const ServerTable = ({ servers, isLoading, onRefresh }: ServerTableProps)
     navigate(`/server-detail/${serverId}`);
   };
 
-  const handleViewContainers = (serverId: string) => {
+  const handleView容器 = (serverId: string) => {
     navigate(`/container-monitoring/${serverId}`);
   };
 
@@ -118,23 +118,23 @@ export const ServerTable = ({ servers, isLoading, onRefresh }: ServerTableProps)
     }
   };
 
-  const handleEdit = (server: Server) => {
+  const handle编辑 = (server: Server) => {
     setSelectedServer(server);
-    setEditDialogOpen(true);
+    set编辑DialogOpen(true);
   };
 
-  const handleDelete = (server: Server) => {
+  const handle删除 = (server: Server) => {
     setSelectedServer(server);
-    setDeleteDialogOpen(true);
+    set删除DialogOpen(true);
   };
 
-  const confirmDelete = async () => {
+  const confirm删除 = async () => {
     if (!selectedServer || isDeleting) return;
 
     try {
       setIsDeleting(true);
       
-      // Delete the server from the database
+      // 删除 the server from the database
       await pb.collection('servers').delete(selectedServer.id);
       
       toast({
@@ -145,8 +145,8 @@ export const ServerTable = ({ servers, isLoading, onRefresh }: ServerTableProps)
       // Refresh the server list
       onRefresh();
       
-      // Close the dialog
-      setDeleteDialogOpen(false);
+      // 关闭 the dialog
+      set删除DialogOpen(false);
       setSelectedServer(null);
       
     } catch (error) {
@@ -161,7 +161,7 @@ export const ServerTable = ({ servers, isLoading, onRefresh }: ServerTableProps)
     }
   };
 
-  const confirmBulkDelete = async () => {
+  const confirmBulk删除 = async () => {
     if (selectedServerIds.size === 0 || isBulkDeleting) return;
     try {
       setIsBulkDeleting(true);
@@ -175,12 +175,12 @@ export const ServerTable = ({ servers, isLoading, onRefresh }: ServerTableProps)
       } else if (failed === ids.length) {
         toast({ variant: "destructive", title: "Error", description: "Failed to delete selected servers. Please try again." });
       } else {
-        toast({ variant: "destructive", title: "Partial success", description: `Deleted ${ids.length - failed}, failed ${failed}.` });
+        toast({ variant: "destructive", title: "Partial success", description: `删除d ${ids.length - failed}, failed ${failed}.` });
       }
 
       onRefresh();
       setSelectedServerIds(new Set());
-      setBulkDeleteDialogOpen(false);
+      setBulk删除DialogOpen(false);
     } catch (_e) {
       toast({ variant: "destructive", title: "Error", description: "Failed to delete selected servers. Please try again." });
     } finally {
@@ -227,23 +227,23 @@ export const ServerTable = ({ servers, isLoading, onRefresh }: ServerTableProps)
     };
 
     return (
-      <div className="space-y-2 min-w-[120px]">
-        <div className="flex justify-between items-center">
-          <span className={`text-sm font-semibold ${getTextColor(value)}`}>
+      <div class名称="space-y-2 min-w-[120px]">
+        <div class名称="flex justify-between items-center">
+          <span class名称={`text-sm font-semibold ${getTextColor(value)}`}>
             {label}
           </span>
-          <span className="text-xs text-muted-foreground">
+          <span class名称="text-xs text-muted-foreground">
             {subtitle}
           </span>
         </div>
-        <div className="relative">
-          <div className="w-full h-3 bg-muted/30 rounded-full overflow-hidden shadow-inner">
+        <div class名称="relative">
+          <div class名称="w-full h-3 bg-muted/30 rounded-full overflow-hidden shadow-inner">
             <div 
-              className={`h-full bg-gradient-to-r ${getGradientColors(type, value)} rounded-full transition-all duration-700 ease-out relative overflow-hidden`}
+              class名称={`h-full bg-gradient-to-r ${getGradientColors(type, value)} rounded-full transition-all duration-700 ease-out relative overflow-hidden`}
               style={{ width: `${Math.min(value, 100)}%` }}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse opacity-60" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-white/10" />
+              <div class名称="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse opacity-60" />
+              <div class名称="absolute inset-0 bg-gradient-to-t from-black/10 to-white/10" />
             </div>
           </div>
           
@@ -254,14 +254,14 @@ export const ServerTable = ({ servers, isLoading, onRefresh }: ServerTableProps)
 
   if (isLoading) {
     return (
-      <Card className="flex-1 flex flex-col">
-        <CardHeader className="flex-shrink-0">
+      <Card class名称="flex-1 flex flex-col">
+        <CardHeader class名称="flex-shrink-0">
           <CardTitle>{t('servers')}</CardTitle>
         </CardHeader>
-        <CardContent className="flex-1 flex items-center justify-center">
-          <div className="flex items-center justify-center h-32">
-            <RefreshCw className="h-6 w-6 animate-spin" />
-            <span className="ml-2">{t('loadingServers')}</span>
+        <CardContent class名称="flex-1 flex items-center justify-center">
+          <div class名称="flex items-center justify-center h-32">
+            <RefreshCw class名称="h-6 w-6 animate-spin" />
+            <span class名称="ml-2">{t('loadingServers')}</span>
           </div>
         </CardContent>
       </Card>
@@ -270,49 +270,49 @@ export const ServerTable = ({ servers, isLoading, onRefresh }: ServerTableProps)
 
   return (
     <>
-      <Card className="bg-transparent border-0 shadow-none">
-        <CardHeader className="pb-4 px-0">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <CardTitle className="text-xl font-semibold">{t('servers')}</CardTitle>
-            <div className="flex items-center gap-2">
-              <div className="relative flex-1 sm:w-64">
-                <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+      <Card class名称="bg-transparent border-0 shadow-none">
+        <CardHeader class名称="pb-4 px-0">
+          <div class名称="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <CardTitle class名称="text-xl font-semibold">{t('servers')}</CardTitle>
+            <div class名称="flex items-center gap-2">
+              <div class名称="relative flex-1 sm:w-64">
+                <搜索 class名称="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
                 <Input
                   placeholder={t('searchServersPlaceholder')}
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-8"
+                  onChange={(e) => set搜索Term(e.target.value)}
+                  class名称="pl-8"
                 />
               </div>
               {selectedServerIds.size > 0 && (
-                <div className="hidden sm:block text-sm text-muted-foreground mr-2">
+                <div class名称="hidden sm:block text-sm text-muted-foreground mr-2">
                   {selectedServerIds.size} selected
                 </div>
               )}
               <Button
-                onClick={() => setBulkDeleteDialogOpen(true)}
+                onClick={() => setBulk删除DialogOpen(true)}
                 variant="destructive"
                 disabled={selectedServerIds.size === 0}
               >
-                Delete Selected
+                删除 Selected
               </Button>
               <Button onClick={onRefresh} variant="outline" size="icon">
-                <RefreshCw className="h-4 w-4" />
+                <RefreshCw class名称="h-4 w-4" />
               </Button>
             </div>
           </div>
         </CardHeader>
-        <CardContent className="p-0">
+        <CardContent class名称="p-0">
           {filteredServers.length === 0 ? (
-            <div className="flex items-center justify-center p-8">
-              <p className="text-muted-foreground">{t('noServersFound')}</p>
+            <div class名称="flex items-center justify-center p-8">
+              <p class名称="text-muted-foreground">{t('noServersFound')}</p>
             </div>
           ) : (
-            <div className={`${theme === 'dark' ? 'bg-gray-900' : 'bg-white'} rounded-lg border border-border shadow-sm`}>
+            <div class名称={`${theme === 'dark' ? 'bg-gray-900' : 'bg-white'} rounded-lg border border-border shadow-sm`}>
               <Table>
-                <TableHeader className={`${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-50'}`}>
-                  <TableRow className={`${theme === 'dark' ? 'border-gray-700 hover:bg-gray-800' : 'border-gray-200 hover:bg-gray-100'}`}>
-                    <TableHead className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} w-10`}>
+                <TableHeader class名称={`${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-50'}`}>
+                  <TableRow class名称={`${theme === 'dark' ? 'border-gray-700 hover:bg-gray-800' : 'border-gray-200 hover:bg-gray-100'}`}>
+                    <TableHead class名称={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} w-10`}>
                       <div onClick={(e) => e.stopPropagation()}>
                         <Checkbox
                           checked={allVisibleSelected}
@@ -322,16 +322,16 @@ export const ServerTable = ({ servers, isLoading, onRefresh }: ServerTableProps)
                         />
                       </div>
                     </TableHead>
-                    <TableHead className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} font-medium text-base py-4`}>{t('name')}</TableHead>
-                    <TableHead className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} font-medium text-base py-4`}>{t('status')}</TableHead>
-                    <TableHead className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} font-medium text-base py-4`}>{t('OS')}</TableHead>
-                    <TableHead className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} font-medium text-base py-4`}>{t('IPAddress')}</TableHead>
-                    <TableHead className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} font-medium text-base py-4`}>{t('CPU')}</TableHead>
-                    <TableHead className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} font-medium text-base py-4`}>{t('memory')}</TableHead>
-                    <TableHead className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} font-medium text-base py-4`}>{t('disk')}</TableHead>
-                    <TableHead className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} font-medium text-base py-4`}>{t('uptime')}</TableHead>
-                    <TableHead className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} font-medium text-base py-4`}>{t('lastChecked')}</TableHead>
-                    <TableHead className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} font-medium text-base py-4 text-right`}>{t('actions')}</TableHead>
+                    <TableHead class名称={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} font-medium text-base py-4`}>{t('name')}</TableHead>
+                    <TableHead class名称={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} font-medium text-base py-4`}>{t('status')}</TableHead>
+                    <TableHead class名称={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} font-medium text-base py-4`}>{t('OS')}</TableHead>
+                    <TableHead class名称={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} font-medium text-base py-4`}>{t('IP添加ress')}</TableHead>
+                    <TableHead class名称={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} font-medium text-base py-4`}>{t('CPU')}</TableHead>
+                    <TableHead class名称={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} font-medium text-base py-4`}>{t('memory')}</TableHead>
+                    <TableHead class名称={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} font-medium text-base py-4`}>{t('disk')}</TableHead>
+                    <TableHead class名称={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} font-medium text-base py-4`}>{t('uptime')}</TableHead>
+                    <TableHead class名称={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} font-medium text-base py-4`}>{t('lastChecked')}</TableHead>
+                    <TableHead class名称={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} font-medium text-base py-4 text-right`}>{t('actions')}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -346,7 +346,7 @@ export const ServerTable = ({ servers, isLoading, onRefresh }: ServerTableProps)
                     return (
                       <TableRow 
                         key={server.id} 
-                        className={`hover:bg-muted/50 cursor-pointer ${isSelected ? 'bg-muted/30' : ''}`}
+                        class名称={`hover:bg-muted/50 cursor-pointer ${isSelected ? 'bg-muted/30' : ''}`}
                         onClick={() => handleViewDetails(server.id)}
                       >
                         <TableCell onClick={(e) => e.stopPropagation()}>
@@ -356,24 +356,24 @@ export const ServerTable = ({ servers, isLoading, onRefresh }: ServerTableProps)
                             aria-label={`Select ${server.name}`}
                           />
                         </TableCell>
-                        <TableCell className="font-medium">
-                          <div className="truncate" title={server.name}>
+                        <TableCell class名称="font-medium">
+                          <div class名称="truncate" title={server.name}>
                             {server.name}
                           </div>
                         </TableCell>
                         <TableCell>
-                          <ServerStatusBadge status={server.status} />
+                          <Server状态Badge status={server.status} />
                         </TableCell>
                         <TableCell>
-                          <div className="flex items-center gap-2">
+                          <div class名称="flex items-center gap-2">
                             <OSTypeIcon osType={server.os_type} />
-                            <span className="text-sm truncate" title={server.os_type}>
+                            <span class名称="text-sm truncate" title={server.os_type}>
                               {server.os_type}
                             </span>
                           </div>
                         </TableCell>
                         <TableCell>
-                          <code className="text-sm bg-muted px-1 py-0.5 rounded text-xs">
+                          <code class名称="text-sm bg-muted px-1 py-0.5 rounded text-xs">
                             {server.ip_address}
                           </code>
                         </TableCell>
@@ -402,36 +402,36 @@ export const ServerTable = ({ servers, isLoading, onRefresh }: ServerTableProps)
                           />
                         </TableCell>
                         <TableCell>
-                          <div className="text-sm truncate" title={server.uptime}>
+                          <div class名称="text-sm truncate" title={server.uptime}>
                             {server.uptime}
                           </div>
                         </TableCell>
                         <TableCell>
-                          <div className="text-sm text-muted-foreground text-xs">
+                          <div class名称="text-sm text-muted-foreground text-xs">
                             {new Date(server.last_checked).toLocaleString()}
                           </div>
                         </TableCell>
-                        <TableCell className="text-right" onClick={(e) => e.stopPropagation()}>
+                        <TableCell class名称="text-right" onClick={(e) => e.stopPropagation()}>
                           <DropdownMenu>
                             <DropdownMenuTrigger asChild>
-                              <Button variant="ghost" className="h-8 w-8 p-0" disabled={isProcessing}>
-                                <span className="sr-only">{t('openMenu')}</span>
+                              <Button variant="ghost" class名称="h-8 w-8 p-0" disabled={isProcessing}>
+                                <span class名称="sr-only">{t('openMenu')}</span>
                                 {isProcessing ? (
-                                  <RefreshCw className="h-4 w-4 animate-spin" />
+                                  <RefreshCw class名称="h-4 w-4 animate-spin" />
                                 ) : (
-                                  <MoreHorizontal className="h-4 w-4" />
+                                  <MoreHorizontal class名称="h-4 w-4" />
                                 )}
                               </Button>
                             </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end" className="w-[200px]">
+                            <DropdownMenuContent align="end" class名称="w-[200px]">
                               <DropdownMenuItem onClick={(e) => { e.stopPropagation(); handleViewDetails(server.id); }}>
-                                <Eye className="mr-2 h-4 w-4" />
+                                <Eye class名称="mr-2 h-4 w-4" />
                                 {t('viewServerDetail')}
                               </DropdownMenuItem>
                               {server.docker === 'true' && (
-                                <DropdownMenuItem onClick={(e) => { e.stopPropagation(); handleViewContainers(server.id); }}>
-                                  <Activity className="mr-2 h-4 w-4" />
-                                  {t('containerMonitoring')}
+                                <DropdownMenuItem onClick={(e) => { e.stopPropagation(); handleView容器(server.id); }}>
+                                  <Activity class名称="mr-2 h-4 w-4" />
+                                  {t('container监控ing')}
                                 </DropdownMenuItem>
                               )}
                               <DropdownMenuSeparator />
@@ -441,26 +441,26 @@ export const ServerTable = ({ servers, isLoading, onRefresh }: ServerTableProps)
                               >
                                 {isPaused ? (
                                   <>
-                                    <Play className="mr-2 h-4 w-4" />
-                                    {t('resumeMonitoring')}
+                                    <Play class名称="mr-2 h-4 w-4" />
+                                    {t('resume监控ing')}
                                   </>
                                 ) : (
                                   <>
-                                    <Pause className="mr-2 h-4 w-4" />
-                                    {t('pauseMonitoring')}
+                                    <Pause class名称="mr-2 h-4 w-4" />
+                                    {t('pause监控ing')}
                                   </>
                                 )}
                               </DropdownMenuItem>
                               <DropdownMenuSeparator />
-                              <DropdownMenuItem onClick={(e) => { e.stopPropagation(); handleEdit(server); }}>
-                                <Edit className="mr-2 h-4 w-4" />
+                              <DropdownMenuItem onClick={(e) => { e.stopPropagation(); handle编辑(server); }}>
+                                <编辑 class名称="mr-2 h-4 w-4" />
                                 {t('editServer')}
                               </DropdownMenuItem>
                               <DropdownMenuItem 
-                                onClick={(e) => { e.stopPropagation(); handleDelete(server); }}
-                                className="text-red-600 focus:text-red-600"
+                                onClick={(e) => { e.stopPropagation(); handle删除(server); }}
+                                class名称="text-red-600 focus:text-red-600"
                               >
-                                <Trash2 className="mr-2 h-4 w-4" />
+                                <Trash2 class名称="mr-2 h-4 w-4" />
                                 {t('deleteServer')}
                               </DropdownMenuItem>
                             </DropdownMenuContent>
@@ -476,31 +476,31 @@ export const ServerTable = ({ servers, isLoading, onRefresh }: ServerTableProps)
         </CardContent>
       </Card>
 
-      {/* Edit Server Dialog */}
-      <EditServerDialog
+      {/* 编辑 Server Dialog */}
+      <编辑ServerDialog
         server={selectedServer}
         open={editDialogOpen}
-        onOpenChange={setEditDialogOpen}
+        onOpenChange={set编辑DialogOpen}
         onServerUpdated={onRefresh}
       />
 
-      {/* Delete Confirmation Dialog */}
-      <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+      {/* 删除 确认ation Dialog */}
+      <AlertDialog open={deleteDialogOpen} onOpenChange={set删除DialogOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>{t('deleteServerConfirmTitle')}</AlertDialogTitle>
-            <AlertDialogDescription>
-              {t('deleteServerConfirmDesc').replace('{name}', selectedServer?.name ?? '')}
-            </AlertDialogDescription>
+            <AlertDialogTitle>{t('deleteServer确认Title')}</AlertDialogTitle>
+            <AlertDialog描述>
+              {t('deleteServer确认Desc').replace('{name}', selectedServer?.name ?? '')}
+            </AlertDialog描述>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel disabled={isDeleting}>
+            <AlertDialog取消 disabled={isDeleting}>
               {t('cancel')}
-            </AlertDialogCancel>
+            </AlertDialog取消>
             <AlertDialogAction
-              onClick={confirmDelete}
+              onClick={confirm删除}
               disabled={isDeleting}
-              className="bg-red-600 text-white hover:bg-red-700"
+              class名称="bg-red-600 text-white hover:bg-red-700"
             >
               {isDeleting ? t('deleting') : t('delete')}
             </AlertDialogAction>
@@ -508,25 +508,25 @@ export const ServerTable = ({ servers, isLoading, onRefresh }: ServerTableProps)
         </AlertDialogContent>
       </AlertDialog>
 
-      {/* Bulk Delete Confirmation Dialog */}
-      <AlertDialog open={bulkDeleteDialogOpen} onOpenChange={setBulkDeleteDialogOpen}>
+      {/* Bulk 删除 确认ation Dialog */}
+      <AlertDialog open={bulk删除DialogOpen} onOpenChange={setBulk删除DialogOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Delete selected servers?</AlertDialogTitle>
-            <AlertDialogDescription>
+            <AlertDialogTitle>删除 selected servers?</AlertDialogTitle>
+            <AlertDialog描述>
               This action cannot be undone. This will permanently delete {selectedServerIds.size} server(s) and all of their monitoring data.
-            </AlertDialogDescription>
+            </AlertDialog描述>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel disabled={isBulkDeleting}>
+            <AlertDialog取消 disabled={isBulkDeleting}>
               {t('cancel')}
-            </AlertDialogCancel>
+            </AlertDialog取消>
             <AlertDialogAction
-              onClick={confirmBulkDelete}
+              onClick={confirmBulk删除}
               disabled={isBulkDeleting}
-              className="bg-red-600 text-white hover:bg-red-700"
+              class名称="bg-red-600 text-white hover:bg-red-700"
             >
-              {isBulkDeleting ? t('deleting') : 'Delete Selected'}
+              {isBulkDeleting ? t('deleting') : '删除 Selected'}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

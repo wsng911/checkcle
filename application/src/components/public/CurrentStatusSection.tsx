@@ -3,17 +3,17 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Shield, Clock, CheckCircle, AlertTriangle, XCircle, Wrench } from 'lucide-react';
 import { format } from 'date-fns';
 import { OperationalPageRecord } from '@/types/operational.types';
-import { StatusPageComponentRecord } from '@/types/statusPageComponents.types';
+import { 状态PageComponentRecord } from '@/types/statusPageComponents.types';
 import { Service } from '@/types/service.types';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-interface CurrentStatusSectionProps {
+interface Current状态SectionProps {
   page: OperationalPageRecord;
-  components: StatusPageComponentRecord[];
+  components: 状态PageComponentRecord[];
   services: Service[];
 }
 
-const getActualStatus = (components: StatusPageComponentRecord[], services: Service[]) => {
+const getActual状态 = (components: 状态PageComponentRecord[], services: Service[]) => {
   if (components.length === 0) {
     return 'operational'; // Default if no components
   }
@@ -46,7 +46,7 @@ const getActualStatus = (components: StatusPageComponentRecord[], services: Serv
   return 'operational';
 };
 
-const getStatusMessage = (status: OperationalPageRecord['status'], t: (k: string, m?: string) => string) => {
+const get状态Message = (status: OperationalPageRecord['status'], t: (k: string, m?: string) => string) => {
   switch (status) {
     case 'operational':
       return t('allOperational', 'public');
@@ -61,7 +61,7 @@ const getStatusMessage = (status: OperationalPageRecord['status'], t: (k: string
   }
 };
 
-const getStatusColor = (status: OperationalPageRecord['status']) => {
+const get状态Color = (status: OperationalPageRecord['status']) => {
   switch (status) {
     case 'operational':
       return 'text-green-600 dark:text-green-400';
@@ -76,22 +76,22 @@ const getStatusColor = (status: OperationalPageRecord['status']) => {
   }
 };
 
-const getStatusIcon = (status: OperationalPageRecord['status']) => {
+const get状态Icon = (status: OperationalPageRecord['status']) => {
   switch (status) {
     case 'operational':
-      return <CheckCircle className="h-6 w-6 text-green-500" />;
+      return <CheckCircle class名称="h-6 w-6 text-green-500" />;
     case 'degraded':
-      return <AlertTriangle className="h-6 w-6 text-yellow-500" />;
+      return <AlertTriangle class名称="h-6 w-6 text-yellow-500" />;
     case 'maintenance':
-      return <Wrench className="h-6 w-6 text-blue-500" />;
+      return <Wrench class名称="h-6 w-6 text-blue-500" />;
     case 'major_outage':
-      return <XCircle className="h-6 w-6 text-red-500" />;
+      return <XCircle class名称="h-6 w-6 text-red-500" />;
     default:
-      return <Shield className="h-6 w-6 text-muted-foreground" />;
+      return <Shield class名称="h-6 w-6 text-muted-foreground" />;
   }
 };
 
-const getStatusBackground = (status: OperationalPageRecord['status']) => {
+const get状态返回ground = (status: OperationalPageRecord['status']) => {
   switch (status) {
     case 'operational':
       return 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800';
@@ -106,52 +106,52 @@ const getStatusBackground = (status: OperationalPageRecord['status']) => {
   }
 };
 
-export const CurrentStatusSection = ({ page, components, services }: CurrentStatusSectionProps) => {
+export const Current状态Section = ({ page, components, services }: Current状态SectionProps) => {
   const { t } = useLanguage();
-  const actualStatus = getActualStatus(components, services);
-  const displayStatus = actualStatus; // Use actual status for real-time accuracy
+  const actual状态 = getActual状态(components, services);
+  const display状态 = actual状态; // Use actual status for real-time accuracy
   
   return (
-    <Card className={`mb-8 border-2 ${getStatusBackground(displayStatus)}`}>
+    <Card class名称={`mb-8 border-2 ${get状态返回ground(display状态)}`}>
       <CardHeader>
-        <CardTitle className="flex items-center gap-3 text-card-foreground text-xl">
-          <Shield className="h-6 w-6" />
-          {t('systemStatus', 'public')}
+        <CardTitle class名称="flex items-center gap-3 text-card-foreground text-xl">
+          <Shield class名称="h-6 w-6" />
+          {t('system状态', 'public')}
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-6">
-        <div className={`flex items-center justify-between p-6 rounded-lg border-2 ${getStatusBackground(displayStatus)}`}>
-          <div className="flex items-center gap-4">
-            {getStatusIcon(displayStatus)}
+      <CardContent class名称="space-y-6">
+        <div class名称={`flex items-center justify-between p-6 rounded-lg border-2 ${get状态返回ground(display状态)}`}>
+          <div class名称="flex items-center gap-4">
+            {get状态Icon(display状态)}
             <div>
-              <h3 className={`text-2xl font-bold ${getStatusColor(displayStatus)}`}>
-                {getStatusMessage(displayStatus, t)}
+              <h3 class名称={`text-2xl font-bold ${get状态Color(display状态)}`}>
+                {get状态Message(display状态, t)}
               </h3>
-              <p className="text-sm text-muted-foreground mt-1">
+              <p class名称="text-sm text-muted-foreground mt-1">
                 {t('autoUpdatedByHealth', 'public')}
               </p>
             </div>
           </div>
-          <div className={`px-4 py-2 rounded-full text-sm font-medium ${
-            displayStatus === 'operational' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
-            displayStatus === 'degraded' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' :
-            displayStatus === 'maintenance' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' :
+          <div class名称={`px-4 py-2 rounded-full text-sm font-medium ${
+            display状态 === 'operational' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
+            display状态 === 'degraded' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' :
+            display状态 === 'maintenance' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' :
             'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
           }`}>
-            {displayStatus === 'operational' ? t('allOperational', 'public') :
-             displayStatus === 'degraded' ? t('degradedPerformance', 'public') :
-             displayStatus === 'maintenance' ? t('underMaintenance', 'public') : t('majorOutage', 'public')}
+            {display状态 === 'operational' ? t('allOperational', 'public') :
+             display状态 === 'degraded' ? t('degradedPerformance', 'public') :
+             display状态 === 'maintenance' ? t('underMaintenance', 'public') : t('majorOutage', 'public')}
           </div>
         </div>
         
-        <div className="flex items-center justify-between text-sm text-muted-foreground border-t pt-4">
-          <div className="flex items-center gap-2">
-            <Clock className="h-4 w-4" />
+        <div class名称="flex items-center justify-between text-sm text-muted-foreground border-t pt-4">
+          <div class名称="flex items-center gap-2">
+            <Clock class名称="h-4 w-4" />
             <span>{t('lastUpdatedAt', 'public', { time: format(new Date(), 'MMM dd, yyyy HH:mm') })}</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="h-2 w-2 bg-green-500 rounded-full animate-pulse"></div>
-            <span>{t('liveStatusMonitoring', 'public')}</span>
+          <div class名称="flex items-center gap-2">
+            <div class名称="h-2 w-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span>{t('live状态监控ing', 'public')}</span>
           </div>
         </div>
       </CardContent>

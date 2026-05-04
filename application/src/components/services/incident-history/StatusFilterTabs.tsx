@@ -1,63 +1,63 @@
 
 import { Activity, AlertTriangle, CheckCircle, Pause, X } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { StatusFilter } from "./types";
+import { 状态Filter } from "./types";
 import { useTheme } from "@/contexts/ThemeContext";
 
-interface StatusFilterTabsProps {
-  statusFilter: StatusFilter;
-  onStatusFilterChange: (value: StatusFilter) => void;
+interface 状态FilterTabsProps {
+  statusFilter: 状态Filter;
+  on状态FilterChange: (value: 状态Filter) => void;
 }
 
-export function StatusFilterTabs({
+export function 状态FilterTabs({
   statusFilter,
-  onStatusFilterChange
-}: StatusFilterTabsProps) {
+  on状态FilterChange
+}: 状态FilterTabsProps) {
   // Get current theme to apply appropriate styling
   const { theme } = useTheme();
   
   return (
     <Tabs 
       value={statusFilter} 
-      onValueChange={value => onStatusFilterChange(value as StatusFilter)} 
-      className="w-full"
+      onValueChange={value => on状态FilterChange(value as 状态Filter)} 
+      class名称="w-full"
     >
-      <TabsList className={`grid grid-cols-5 w-full max-w-md rounded-full ${
+      <TabsList class名称={`grid grid-cols-5 w-full max-w-md rounded-full ${
         theme === 'dark' ? 'bg-secondary' : 'bg-slate-100'
       }`}>
         <TabsTrigger 
           value="all" 
-          className="rounded-full flex items-center gap-1 data-[state=active]:bg-[#1A1F2C] data-[state=active]:text-[#D6BCFA] text-[#8E9196]"
+          class名称="rounded-full flex items-center gap-1 data-[state=active]:bg-[#1A1F2C] data-[state=active]:text-[#D6BCFA] text-[#8E9196]"
         >
-          <Activity className="h-4 w-4" />
+          <Activity class名称="h-4 w-4" />
           <span>All</span>
         </TabsTrigger>
         <TabsTrigger 
           value="up" 
-          className="rounded-full flex items-center gap-1 data-[state=active]:bg-[#1A1F2C] data-[state=active]:text-[#D6BCFA] text-[#8E9196]"
+          class名称="rounded-full flex items-center gap-1 data-[state=active]:bg-[#1A1F2C] data-[state=active]:text-[#D6BCFA] text-[#8E9196]"
         >
-          <CheckCircle className="h-4 w-4" />
+          <CheckCircle class名称="h-4 w-4" />
           <span>Up</span>
         </TabsTrigger>
         <TabsTrigger 
           value="down" 
-          className="rounded-full flex items-center gap-1 data-[state=active]:bg-[#1A1F2C] data-[state=active]:text-[#D6BCFA] text-[#8E9196]"
+          class名称="rounded-full flex items-center gap-1 data-[state=active]:bg-[#1A1F2C] data-[state=active]:text-[#D6BCFA] text-[#8E9196]"
         >
-          <X className="h-4 w-4" />
+          <X class名称="h-4 w-4" />
           <span>Down</span>
         </TabsTrigger>
         <TabsTrigger 
           value="warning" 
-          className="rounded-full flex items-center gap-1 data-[state=active]:bg-[#1A1F2C] data-[state=active]:text-[#D6BCFA] text-[#8E9196]"
+          class名称="rounded-full flex items-center gap-1 data-[state=active]:bg-[#1A1F2C] data-[state=active]:text-[#D6BCFA] text-[#8E9196]"
         >
-          <AlertTriangle className="h-4 w-4" />
+          <AlertTriangle class名称="h-4 w-4" />
           <span>Warning</span>
         </TabsTrigger>
         <TabsTrigger 
           value="paused" 
-          className="rounded-full flex items-center gap-1 data-[state=active]:bg-[#1A1F2C] data-[state=active]:text-[#D6BCFA] text-[#8E9196]"
+          class名称="rounded-full flex items-center gap-1 data-[state=active]:bg-[#1A1F2C] data-[state=active]:text-[#D6BCFA] text-[#8E9196]"
         >
-          <Pause className="h-4 w-4" />
+          <Pause class名称="h-4 w-4" />
           <span>Paused</span>
         </TabsTrigger>
       </TabsList>

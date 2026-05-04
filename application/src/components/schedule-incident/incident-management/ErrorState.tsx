@@ -20,16 +20,16 @@ export const ErrorState: React.FC<ErrorStateProps> = ({
   if (!error) return null;
 
   return (
-    <div className="text-center py-8">
-      <p className="text-muted-foreground mb-4">{error}</p>
+    <div class名称="text-center py-8">
+      <p class名称="text-muted-foreground mb-4">{error}</p>
       <Button 
         variant="outline" 
         size="sm" 
         onClick={onRefresh}
-        className="flex items-center gap-2"
+        class名称="flex items-center gap-2"
         disabled={isRefreshing}
       >
-        <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
+        <RefreshCw class名称={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
         {t('tryAgain')}
       </Button>
     </div>

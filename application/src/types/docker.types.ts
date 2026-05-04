@@ -1,7 +1,7 @@
 
 export interface DockerContainer {
   collectionId: string;
-  collectionName: string;
+  collection名称: string;
   id: string;
   docker_id: string;
   name: string;
@@ -26,7 +26,7 @@ export interface DockerContainer {
 
 export interface DockerMetrics {
   collectionId: string;
-  collectionName: string;
+  collection名称: string;
   id: string;
   docker_id: string;
   timestamp: string;

@@ -16,13 +16,13 @@ import { userService } from '@/services/userService';
 
 interface IncidentDetailContentProps {
   incident: IncidentItem;
-  onClose: () => void;
+  on关闭: () => void;
   assignedUser: any | null;
 }
 
 export const IncidentDetailContent = ({ 
   incident, 
-  onClose, 
+  on关闭, 
   assignedUser 
 }: IncidentDetailContentProps) => {
   // Fetch assigned user details if none was provided; prefer server field
@@ -46,30 +46,30 @@ export const IncidentDetailContent = ({
   const userToDisplay = assignedUser || fetchedUser;
 
   return (
-    <ScrollArea className="h-[80vh] print:h-auto print:overflow-visible">
-      <div className="px-6 py-6">
-        <div className="print-section header-print">
+    <ScrollArea class名称="h-[80vh] print:h-auto print:overflow-visible">
+      <div class名称="px-6 py-6">
+        <div class名称="print-section header-print">
           <IncidentDetailHeader incident={incident} />
         </div>
 
-        <div className="space-y-8 print-compact-spacing">
-          <div className="print-section">
+        <div class名称="space-y-8 print-compact-spacing">
+          <div class名称="print-section">
             <BasicInfoSection incident={incident} assignedUser={userToDisplay} />
           </div>
-          <Separator className="print:border-blue-200" />
-          <div className="print-section">
+          <Separator class名称="print:border-blue-200" />
+          <div class名称="print-section">
             <TimelineSection incident={incident} assignedUser={userToDisplay} />
           </div>
-          <Separator className="print:border-blue-200" />
-          <div className="print-section">
+          <Separator class名称="print:border-blue-200" />
+          <div class名称="print-section">
             <AffectedSystemsSection incident={incident} assignedUser={userToDisplay} />
           </div>
-          <Separator className="print:border-blue-200" />
-          <div className="print-section">
+          <Separator class名称="print:border-blue-200" />
+          <div class名称="print-section">
             <ResolutionSection incident={incident} assignedUser={userToDisplay} />
           </div>
 
-          <IncidentDetailFooter onClose={onClose} incident={incident} />
+          <IncidentDetailFooter on关闭={on关闭} incident={incident} />
         </div>
       </div>
     </ScrollArea>

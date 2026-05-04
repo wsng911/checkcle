@@ -5,13 +5,13 @@ import { MaintenanceItem } from '../../types/maintenance.types';
 import { formatDate, calculateDuration } from './utils';
 
 /**
- * Add description section to the PDF
+ * 添加 description section to the PDF
  */
-export const addDescriptionSection = (doc: jsPDF, maintenance: MaintenanceItem, yPos: number): number => {
-  // Add section title
+export const add描述Section = (doc: jsPDF, maintenance: MaintenanceItem, yPos: number): number => {
+  // 添加 section title
   doc.setFontSize(14);
   doc.setTextColor(30, 64, 175); // Blue-800 color for headings
-  doc.text('Description', 15, yPos);
+  doc.text('描述', 15, yPos);
   
   // Draw a line under the heading
   doc.setDrawColor(30, 64, 175); // Blue-800
@@ -20,22 +20,22 @@ export const addDescriptionSection = (doc: jsPDF, maintenance: MaintenanceItem, 
   
   // Handle multi-line description with word wrapping
   const description = maintenance.description || 'No description provided';
-  const splitDescription = doc.splitTextToSize(description, 180);
+  const split描述 = doc.splitTextToSize(description, 180);
   
-  // Add description text
+  // 添加 description text
   doc.setFontSize(10);
   doc.setTextColor(0, 0, 0); // Reset text color
-  doc.text(splitDescription, 15, yPos + 10);
+  doc.text(split描述, 15, yPos + 10);
   
   // Return new Y position after the description text
-  return yPos + 15 + (splitDescription.length * 5);
+  return yPos + 15 + (split描述.length * 5);
 };
 
 /**
- * Add schedule information section to the PDF
+ * 添加 schedule information section to the PDF
  */
 export const addScheduleSection = (doc: jsPDF, maintenance: MaintenanceItem, yPos: number): number => {
-  // Add section title
+  // 添加 section title
   doc.setFontSize(14);
   doc.setTextColor(30, 64, 175); // Blue-800
   doc.text('Schedule Information', 15, yPos);
@@ -45,7 +45,7 @@ export const addScheduleSection = (doc: jsPDF, maintenance: MaintenanceItem, yPo
   doc.setLineWidth(0.5);
   doc.line(15, yPos + 2, 195, yPos + 2);
   
-  // Create schedule data table
+  // 创建 schedule data table
   autoTable(doc, {
     startY: yPos + 10,
     head: [['Start Time', 'End Time', 'Duration']],
@@ -70,13 +70,13 @@ export const addScheduleSection = (doc: jsPDF, maintenance: MaintenanceItem, yPo
 };
 
 /**
- * Add affected services section to the PDF
+ * 添加 affected services section to the PDF
  */
-export const addAffectedServicesSection = (doc: jsPDF, maintenance: MaintenanceItem, yPos: number): number => {
-  // Add section title
+export const addAffected服务Section = (doc: jsPDF, maintenance: MaintenanceItem, yPos: number): number => {
+  // 添加 section title
   doc.setFontSize(14);
   doc.setTextColor(30, 64, 175); // Blue-800
-  doc.text('Affected Services', 15, yPos);
+  doc.text('Affected 服务', 15, yPos);
   
   // Draw a line under the heading
   doc.setDrawColor(30, 64, 175); // Blue-800
@@ -84,15 +84,15 @@ export const addAffectedServicesSection = (doc: jsPDF, maintenance: MaintenanceI
   doc.line(15, yPos + 2, 195, yPos + 2);
   
   // Safely handle affected services string
-  const affectedServices = typeof maintenance.affected === 'string' && maintenance.affected.trim() !== ''
+  const affected服务 = typeof maintenance.affected === 'string' && maintenance.affected.trim() !== ''
     ? maintenance.affected.split(',').map(item => [item.trim()])
     : [];
   
-  if (affectedServices.length > 0) {
+  if (affected服务.length > 0) {
     autoTable(doc, {
       startY: yPos + 10,
-      head: [['Service Name']],
-      body: affectedServices,
+      head: [['Service 名称']],
+      body: affected服务,
       theme: 'striped',
       headStyles: {
         fillColor: [30, 64, 175], // Blue-800
@@ -111,10 +111,10 @@ export const addAffectedServicesSection = (doc: jsPDF, maintenance: MaintenanceI
 };
 
 /**
- * Add personnel information section to the PDF
+ * 添加 personnel information section to the PDF
  */
 export const addPersonnelSection = (doc: jsPDF, maintenance: MaintenanceItem, yPos: number): number => {
-  // Add section title
+  // 添加 section title
   doc.setFontSize(14);
   doc.setTextColor(30, 64, 175); // Blue-800
   doc.text('Personnel Information', 15, yPos);
@@ -139,10 +139,10 @@ export const addPersonnelSection = (doc: jsPDF, maintenance: MaintenanceItem, yP
       : 'None';
   }
   
-  // Create personnel data table
+  // 创建 personnel data table
   autoTable(doc, {
     startY: yPos + 10,
-    head: [['Created By', 'Assigned Personnel', 'Notifications']],
+    head: [['创建d By', 'Assigned Personnel', 'Notifications']],
     body: [
       [
         maintenance.created_by || 'Not specified',

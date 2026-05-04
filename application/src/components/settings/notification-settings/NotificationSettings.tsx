@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, Card描述, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Plus, Loader2 } from "lucide-react";
@@ -18,14 +18,14 @@ interface CombinedChannel extends Partial<AlertConfiguration> {
   description?: string;
 }
 
-const NotificationSettings = () => {
+const Notification设置 = () => {
   const { t } = useLanguage();
   const [isLoading, setIsLoading] = useState(true);
   const [alertConfigs, setAlertConfigs] = useState<AlertConfiguration[]>([]);
   const [webhookConfigs, setWebhookConfigs] = useState<WebhookConfiguration[]>([]);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [currentTab, setCurrentTab] = useState<string>("all");
-  const [editingConfig, setEditingConfig] = useState<AlertConfiguration | null>(null);
+  const [editingConfig, set编辑ingConfig] = useState<AlertConfiguration | null>(null);
 
   const fetchNotificationChannels = async () => {
     setIsLoading(true);
@@ -50,17 +50,17 @@ const NotificationSettings = () => {
     fetchNotificationChannels();
   }, []);
 
-  const handleAddNew = () => {
-    setEditingConfig(null);
+  const handle添加New = () => {
+    set编辑ingConfig(null);
     setDialogOpen(true);
   };
 
-  const handleEdit = (config: AlertConfiguration) => {
-    setEditingConfig(config);
+  const handle编辑 = (config: AlertConfiguration) => {
+    set编辑ingConfig(config);
     setDialogOpen(true);
   };
 
-  const handleDelete = async (id: string) => {
+  const handle删除 = async (id: string) => {
     // Check if it's a webhook first
     const isWebhook = webhookConfigs.find(w => w.id === id);
     
@@ -83,7 +83,7 @@ const NotificationSettings = () => {
     }
   };
 
-  const handleDialogClose = (refreshList: boolean) => {
+  const handleDialog关闭 = (refreshList: boolean) => {
     setDialogOpen(false);
     if (refreshList) {
       fetchNotificationChannels();
@@ -93,12 +93,12 @@ const NotificationSettings = () => {
   const getCombinedChannels = (): CombinedChannel[] => {
     const combined: CombinedChannel[] = [];
     
-    // Add alert configurations
+    // 添加 alert configurations
     alertConfigs.forEach(config => {
       combined.push(config);
     });
     
-    // Add webhooks as notification channels
+    // 添加 webhooks as notification channels
     webhookConfigs.forEach(webhook => {
       combined.push({
         id: webhook.id,
@@ -124,17 +124,17 @@ const NotificationSettings = () => {
   };
 
   return (
-    <Card className="w-full">
+    <Card class名称="w-full">
       <CardHeader>
-        <div className="flex items-center justify-between">
+        <div class名称="flex items-center justify-between">
           <div>
             <CardTitle>{t("titleNotification")}</CardTitle>
-            <CardDescription>
-              {t("descriptionChannelsServices")}
-            </CardDescription>
+            <Card描述>
+              {t("descriptionChannels服务")}
+            </Card描述>
           </div>
-          <Button onClick={handleAddNew}>
-            <Plus className="mr-2 h-4 w-4" /> {t("addChannel")}
+          <Button onClick={handle添加New}>
+            <Plus class名称="mr-2 h-4 w-4" /> {t("addChannel")}
           </Button>
         </div>
       </CardHeader>
@@ -143,9 +143,9 @@ const NotificationSettings = () => {
           defaultValue="all" 
           value={currentTab}
           onValueChange={setCurrentTab}
-          className="w-full"
+          class名称="w-full"
         >
-          <TabsList className="mb-4">
+          <TabsList class名称="mb-4">
             <TabsTrigger value="all">{t("all")}</TabsTrigger>
             <TabsTrigger value="telegram">{t("telegram")}</TabsTrigger>
             <TabsTrigger value="discord">{t("discord")}</TabsTrigger>
@@ -157,16 +157,16 @@ const NotificationSettings = () => {
             <TabsTrigger value="matrix">{t("matrix")}</TabsTrigger>
           </TabsList>
           
-          <TabsContent value={currentTab} className="mt-0">
+          <TabsContent value={currentTab} class名称="mt-0">
             {isLoading ? (
-              <div className="flex items-center justify-center py-8">
-                <Loader2 className="h-8 w-8 animate-spin text-primary" />
+              <div class名称="flex items-center justify-center py-8">
+                <Loader2 class名称="h-8 w-8 animate-spin text-primary" />
               </div>
             ) : (
               <NotificationChannelList 
                 channels={getFilteredConfigs()} 
-                onEdit={handleEdit}
-                onDelete={handleDelete}
+                on编辑={handle编辑}
+                on删除={handle删除}
               />
             )}
           </TabsContent>
@@ -175,11 +175,11 @@ const NotificationSettings = () => {
 
       <NotificationChannelDialog 
         open={dialogOpen} 
-        onClose={handleDialogClose} 
+        on关闭={handleDialog关闭} 
         editingConfig={editingConfig}
       />
     </Card>
   );
 };
 
-export default NotificationSettings;
+export default Notification设置;

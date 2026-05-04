@@ -1,10 +1,10 @@
 
 import { getCurrentEndpoint } from '@/lib/pocketbase';
-import { MaintenanceItem, CreateMaintenanceInput } from '../types/maintenance.types';
+import { MaintenanceItem, 创建MaintenanceInput } from '../types/maintenance.types';
 import { categorizeMaintenance } from './maintenanceUtils';
 import { 
   fetchAllMaintenanceRecords, 
-  updateMaintenanceStatus,
+  updateMaintenance状态,
   updateMaintenance,
   deleteMaintenance,
   createMaintenance as createMaintenanceRecord,
@@ -57,8 +57,8 @@ const getCompletedMaintenance = async (): Promise<MaintenanceItem[]> => {
   }
 };
 
-// Create a new maintenance record
-const createMaintenance = async (data: CreateMaintenanceInput): Promise<void> => {
+// 创建 a new maintenance record
+const createMaintenance = async (data: 创建MaintenanceInput): Promise<void> => {
   await createMaintenanceRecord(data);
   clearMaintenanceCache(); // Force cache refresh after creation
 };
@@ -81,7 +81,7 @@ export const maintenanceService = {
   getUpcomingMaintenance,
   getOngoingMaintenance,
   getCompletedMaintenance,
-  updateMaintenanceStatus,
+  updateMaintenance状态,
   updateMaintenance: updateMaintenanceRecord,
   deleteMaintenance,
   createMaintenance,
@@ -89,4 +89,4 @@ export const maintenanceService = {
 };
 
 // Re-export types for convenience
-export type { MaintenanceItem, CreateMaintenanceInput };
+export type { MaintenanceItem, 创建MaintenanceInput };

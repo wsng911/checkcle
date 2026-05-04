@@ -21,9 +21,9 @@ export const ServiceDetailWrapper = ({
   handleLogout
 }: ServiceDetailWrapperProps) => {
   return (
-    <div className="flex h-screen w-full overflow-hidden bg-background text-foreground">
+    <div class名称="flex h-screen w-full overflow-hidden bg-background text-foreground">
       <Sidebar />
-      <div className="flex flex-col flex-1 min-w-0">
+      <div class名称="flex flex-col flex-1 min-w-0">
         <Header 
           currentUser={currentUser} 
           onLogout={handleLogout} 
@@ -34,7 +34,7 @@ export const ServiceDetailWrapper = ({
         ) : !service ? (
           <ServiceNotFound />
         ) : (
-          <div className="flex-1 overflow-auto">
+          <div class名称="flex-1 overflow-auto">
             {children}
           </div>
         )}

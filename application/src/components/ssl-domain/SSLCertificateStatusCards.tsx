@@ -5,11 +5,11 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Shield, ShieldAlert, ShieldX } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 
-interface SSLCertificateStatusCardsProps {
+interface SSLCertificate状态CardsProps {
   certificates: SSLCertificate[];
 }
 
-export const SSLCertificateStatusCards = ({ certificates }: SSLCertificateStatusCardsProps) => {
+export const SSLCertificate状态Cards = ({ certificates }: SSLCertificate状态CardsProps) => {
   const { t } = useLanguage();
   const { theme } = useTheme();
 
@@ -19,10 +19,10 @@ export const SSLCertificateStatusCards = ({ certificates }: SSLCertificateStatus
   const expiredCount = certificates.filter(cert => cert.status === "expired").length;
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 w-full">
+    <div class名称="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 w-full">
       {/* Valid Certificates */}
       <Card
-        className="border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 relative z-10"
+        class名称="border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 relative z-10"
         style={{
           background:
             theme === "dark"
@@ -30,9 +30,9 @@ export const SSLCertificateStatusCards = ({ certificates }: SSLCertificateStatus
               : "linear-gradient(135deg, rgba(65,59,55,0.8) 0%, #22c55e 100%)",
         }}
       >
-        <div className="absolute inset-0 z-0 opacity-10">
+        <div class名称="absolute inset-0 z-0 opacity-10">
           <div
-            className="w-full h-full"
+            class名称="w-full h-full"
             style={{
               backgroundImage: `linear-gradient(#000 1px, transparent 1px),
                                 linear-gradient(90deg, #fff 1px, transparent 1px)`,
@@ -40,22 +40,22 @@ export const SSLCertificateStatusCards = ({ certificates }: SSLCertificateStatus
             }}
           />
         </div>
-        <CardHeader className="pb-2 relative z-10">
-          <CardTitle className="text-sm font-medium text-white">
+        <CardHeader class名称="pb-2 relative z-10">
+          <CardTitle class名称="text-sm font-medium text-white">
             {t("validCertificates")}
           </CardTitle>
         </CardHeader>
-        <CardContent className="flex items-center justify-between relative z-10">
-          <span className="text-5xl font-bold text-white">{validCount}</span>
-          <div className="rounded-full p-3 bg-white/25 backdrop-blur-sm">
-            <Shield className="h-6 w-6 text-white" />
+        <CardContent class名称="flex items-center justify-between relative z-10">
+          <span class名称="text-5xl font-bold text-white">{validCount}</span>
+          <div class名称="rounded-full p-3 bg-white/25 backdrop-blur-sm">
+            <Shield class名称="h-6 w-6 text-white" />
           </div>
         </CardContent>
       </Card>
 
       {/* Expiring Soon */}
       <Card
-        className="border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 relative z-10"
+        class名称="border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 relative z-10"
         style={{
           background:
             theme === "dark"
@@ -63,9 +63,9 @@ export const SSLCertificateStatusCards = ({ certificates }: SSLCertificateStatus
               : "linear-gradient(135deg, rgba(65,59,55,0.8) 0%, #fbbf24 100%)",
         }}
       >
-        <div className="absolute inset-0 z-0 opacity-10">
+        <div class名称="absolute inset-0 z-0 opacity-10">
           <div
-            className="w-full h-full"
+            class名称="w-full h-full"
             style={{
               backgroundImage: `linear-gradient(#000 1px, transparent 1px),
                                 linear-gradient(90deg, #fff 1px, transparent 1px)`,
@@ -73,22 +73,22 @@ export const SSLCertificateStatusCards = ({ certificates }: SSLCertificateStatus
             }}
           />
         </div>
-        <CardHeader className="pb-2 relative z-10">
-          <CardTitle className="text-sm font-medium text-white">
+        <CardHeader class名称="pb-2 relative z-10">
+          <CardTitle class名称="text-sm font-medium text-white">
             {t("expiringSoon")}
           </CardTitle>
         </CardHeader>
-        <CardContent className="flex items-center justify-between relative z-10">
-          <span className="text-5xl font-bold text-white">{expiringCount}</span>
-          <div className="rounded-full p-3 bg-white/25 backdrop-blur-sm">
-            <ShieldAlert className="h-6 w-6 text-white" />
+        <CardContent class名称="flex items-center justify-between relative z-10">
+          <span class名称="text-5xl font-bold text-white">{expiringCount}</span>
+          <div class名称="rounded-full p-3 bg-white/25 backdrop-blur-sm">
+            <ShieldAlert class名称="h-6 w-6 text-white" />
           </div>
         </CardContent>
       </Card>
 
       {/* Expired */}
       <Card
-        className="border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 relative z-10"
+        class名称="border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 relative z-10"
         style={{
           background:
             theme === "dark"
@@ -96,9 +96,9 @@ export const SSLCertificateStatusCards = ({ certificates }: SSLCertificateStatus
               : "linear-gradient(135deg, rgba(65,59,55,0.8) 0%, #ef4444 100%)",
         }}
       >
-        <div className="absolute inset-0 z-0 opacity-10">
+        <div class名称="absolute inset-0 z-0 opacity-10">
           <div
-            className="w-full h-full"
+            class名称="w-full h-full"
             style={{
               backgroundImage: `linear-gradient(#000 1px, transparent 1px),
                                 linear-gradient(90deg, #fff 1px, transparent 1px)`,
@@ -106,15 +106,15 @@ export const SSLCertificateStatusCards = ({ certificates }: SSLCertificateStatus
             }}
           />
         </div>
-        <CardHeader className="pb-2 relative z-10">
-          <CardTitle className="text-sm font-medium text-white">
+        <CardHeader class名称="pb-2 relative z-10">
+          <CardTitle class名称="text-sm font-medium text-white">
             {t("expired")}
           </CardTitle>
         </CardHeader>
-        <CardContent className="flex items-center justify-between relative z-10">
-          <span className="text-5xl font-bold text-white">{expiredCount}</span>
-          <div className="rounded-full p-3 bg-white/25 backdrop-blur-sm">
-            <ShieldX className="h-6 w-6 text-white" />
+        <CardContent class名称="flex items-center justify-between relative z-10">
+          <span class名称="text-5xl font-bold text-white">{expiredCount}</span>
+          <div class名称="rounded-full p-3 bg-white/25 backdrop-blur-sm">
+            <ShieldX class名称="h-6 w-6 text-white" />
           </div>
         </CardContent>
       </Card>

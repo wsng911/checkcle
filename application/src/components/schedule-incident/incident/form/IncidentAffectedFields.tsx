@@ -18,7 +18,7 @@ export const IncidentAffectedFields: React.FC = () => {
   const { control } = useFormContext<IncidentFormValues>();
 
   return (
-    <div className="space-y-4">
+    <div class名称="space-y-4">
       <FormField
         control={control}
         name="affected_systems"
@@ -29,7 +29,7 @@ export const IncidentAffectedFields: React.FC = () => {
               <Input placeholder={t('enterAffectedSystems')} {...field} />
             </FormControl>
             <FormMessage />
-            <p className="text-sm text-muted-foreground">{t('separateSystemsWithComma')}</p>
+            <p class名称="text-sm text-muted-foreground">{t('separateSystemsWithComma')}</p>
           </FormItem>
         )}
       />
@@ -43,7 +43,7 @@ export const IncidentAffectedFields: React.FC = () => {
             <FormControl>
               <Textarea 
                 placeholder={t('enterRootCause')}
-                className="min-h-[80px]"
+                class名称="min-h-[80px]"
                 {...field} 
               />
             </FormControl>

@@ -1,12 +1,12 @@
 
-import { ServicesTranslations } from '../types/services';
+import { 服务Translations } from '../types/services';
 
-export const servicesTranslations: ServicesTranslations = {
-  serviceStatus: "服务状态",
+export const servicesTranslations: 服务Translations = {
+  service状态: "服务状态",
   uptime: "在线时间",
   lastChecked: "最后检查时间",
-  noServices: "没有符合您筛选条件的服务。",
-  currentlyMonitoring: "当前监控",
+  no服务: "没有符合您筛选条件的服务。",
+  currently监控ing: "当前监控",
   retry: "重试",
   overview: "概览",
   newService: "新增服务",
@@ -17,8 +17,8 @@ export const servicesTranslations: ServicesTranslations = {
   createNewServiceDesc: "填写详细信息以创建要监控的新服务。",
 
 	// ServiceBasicFields.tsx
-	serviceName: "服务名称",
-	serviceNameDesc: "为你的服务输入一个描述性名称",
+	service名称: "服务名称",
+	service名称Desc: "为你的服务输入一个描述性名称",
 
 	// ServiceConfigFields.tsx
 	checkInterval: "检查间隔",
@@ -62,8 +62,8 @@ export const servicesTranslations: ServicesTranslations = {
 	serviceTypeDNSDesc: "监控 DNS 解析",
 
 	// ServiceRegionalFields.tsx
-	regionalMonitoring: "区域监控",
-	regionalMonitoringDesc: "将此服务分配给区域监控代理以进行分布式监控",
+	regional监控ing: "区域监控",
+	regional监控ingDesc: "将此服务分配给区域监控代理以进行分布式监控",
 	regionalAgents: "区域代理",
 	regionalAgentsLoading: "加载代理中...",
 	regionalAgentsAvailablePlaceholder: "选择额外的区域代理...",
@@ -85,20 +85,20 @@ export const servicesTranslations: ServicesTranslations = {
 	targetDefaultPlaceholder: "输入 URL 或主机名",
 
 	// types.ts
-	serviceNameRequired: "服务名称是必填项",
+	service名称Required: "服务名称是必填项",
 	urlDomainHostRequired: "URL/域名/主机名是必填项",
 	enterValidUrlHostnameDomain: "请输入有效的URL、主机名或域名",
 
-	// Dashboard
-	upServices: "在线服务",
-	downServices: "下线服务",
-	pausedServices: "暂停服务",
-	warningServices: "告警服务",
+	// 仪表盘
+	up服务: "在线服务",
+	down服务: "下线服务",
+	paused服务: "暂停服务",
+	warning服务: "告警服务",
 
-	// ServiceRowActions.tsx
+	// ServiceRow操作.tsx
 	viewDetail: "查看详情",
-	resumeMonitoring: "恢复监控",
-	pauseMonitoring: "暂停监控",
+	resume监控ing: "恢复监控",
+	pause监控ing: "暂停监控",
 	unmuteAlerts: "取消静音警报",
 	muteAlerts: "静音警报",
 
@@ -114,7 +114,7 @@ export const servicesTranslations: ServicesTranslations = {
 	monitoringPaused: "监控已暂停",
 	noAutomaticChecks: "无自动检查",
 
-	//ServiveEditDialog.tsx
+	//Servive编辑Dialog.tsx
 	editService: "编辑服务",
 	editServiceDesc: "更新您所监控服务的详细信息。",
 
@@ -125,11 +125,11 @@ export const servicesTranslations: ServicesTranslations = {
 	basedOnlastChecksCount: "基于最近的 {count} 次检查",
 	totalUptime: "总在线时间",
 	totalDowntime: "总宕机时间",
-	monitoringSettings: "监控设置",
-	monitoringSettingsInterval: "每 {interval} 秒检查一次",
-	monitoringSettingsType: "监控",
-	upStatusDuration: "已在线 {duration}",
-	downStatusDuration: "已宕机 {duration}",
+	monitoring设置: "监控设置",
+	monitoring设置Interval: "每 {interval} 秒检查一次",
+	monitoring设置Type: "监控",
+	up状态Duration: "已在线 {duration}",
+	down状态Duration: "已宕机 {duration}",
 
 	incidentHistory: "事件历史",
 	processing: "处理中",

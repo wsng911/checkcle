@@ -16,7 +16,7 @@ interface MaintenanceDetailHeaderProps {
 export const MaintenanceDetailHeader = ({ maintenance }: MaintenanceDetailHeaderProps) => {
   const { t } = useLanguage();
 
-  const getStatusColor = (status: string) => {
+  const get状态Color = (status: string) => {
     switch (status.toLowerCase()) {
       case 'scheduled':
         return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300';
@@ -61,19 +61,19 @@ export const MaintenanceDetailHeader = ({ maintenance }: MaintenanceDetailHeader
   };
 
   return (
-    <DialogHeader className="print:mb-6">
-      <div className="flex items-center gap-2 mb-1">
-        <CalendarClock className="h-5 w-5 text-blue-500 print:hidden" />
-        <DialogTitle className="text-xl">{maintenance.title}</DialogTitle>
+    <DialogHeader class名称="print:mb-6">
+      <div class名称="flex items-center gap-2 mb-1">
+        <CalendarClock class名称="h-5 w-5 text-blue-500 print:hidden" />
+        <DialogTitle class名称="text-xl">{maintenance.title}</DialogTitle>
       </div>
-      <div className="flex flex-wrap gap-2 mt-2">
-        <Badge className={getStatusColor(maintenance.status)}>
+      <div class名称="flex flex-wrap gap-2 mt-2">
+        <Badge class名称={get状态Color(maintenance.status)}>
           {maintenance.status}
         </Badge>
-        <Badge className={getImpactColor(maintenance.field)}>
+        <Badge class名称={getImpactColor(maintenance.field)}>
           {maintenance.field} {t('impact')}
         </Badge>
-        <Badge className={getPriorityColor(maintenance.priority)}>
+        <Badge class名称={getPriorityColor(maintenance.priority)}>
           {maintenance.priority} {t('priority')}
         </Badge>
       </div>

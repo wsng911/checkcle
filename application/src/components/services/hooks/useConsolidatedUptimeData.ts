@@ -80,7 +80,7 @@ export const useConsolidatedUptimeData = ({ serviceId, serviceType, status, inte
     
    // console.log(`Processing ${data.length} uptime records for consolidation`);
     
-    // Create a map to group records by normalized timestamp (minute precision)
+    // 创建 a map to group records by normalized timestamp (minute precision)
     const timeSlotMap = new Map<string, Array<UptimeData & { source: string; isDefault: boolean }>>();
     
     data.forEach(record => {
@@ -88,26 +88,26 @@ export const useConsolidatedUptimeData = ({ serviceId, serviceType, status, inte
       const normalizedTimestamp = normalizeTimestamp(record.timestamp);
       
       // Safely extract region and agent information
-      const regionName = getFieldValue(record.region_name);
+      const region名称 = getFieldValue(record.region_name);
       const agentId = getFieldValue(record.agent_id);
       
       // Determine the source name and whether it's default monitoring
-      let sourceName: string;
+      let source名称: string;
       let isDefault: boolean;
       
-      if (regionName && agentId) {
+      if (region名称 && agentId) {
         // Regional monitoring data
-        sourceName = `${regionName} (Agent ${agentId})`;
+        source名称 = `${region名称} (Agent ${agentId})`;
         isDefault = false;
-    //    console.log(`Found regional data: ${sourceName} for normalized timestamp ${normalizedTimestamp}`);
-      } else if (agentId && !regionName) {
+    //    console.log(`Found regional data: ${source名称} for normalized timestamp ${normalizedTimestamp}`);
+      } else if (agentId && !region名称) {
         // Default monitoring with specific agent
-        sourceName = `Default (Agent ${agentId})`;
+        source名称 = `Default (Agent ${agentId})`;
         isDefault = true;
-     //   console.log(`Found default monitoring: ${sourceName} for normalized timestamp ${normalizedTimestamp}`);
+     //   console.log(`Found default monitoring: ${source名称} for normalized timestamp ${normalizedTimestamp}`);
       } else {
         // Default monitoring fallback
-        sourceName = 'Default (Agent 1)';
+        source名称 = 'Default (Agent 1)';
         isDefault = true;
      //   console.log(`Using fallback default monitoring for normalized timestamp ${normalizedTimestamp}`);
       }
@@ -119,20 +119,20 @@ export const useConsolidatedUptimeData = ({ serviceId, serviceType, status, inte
       
       // Check if we already have an entry from this source for this time slot
       const existingItems = timeSlotMap.get(normalizedTimestamp)!;
-      const existingFromSource = existingItems.find(item => item.source === sourceName);
+      const existingFromSource = existingItems.find(item => item.source === source名称);
       
       if (!existingFromSource) {
-        // Add the record with source information only if we don't already have one from this source
+        // 添加 the record with source information only if we don't already have one from this source
         timeSlotMap.get(normalizedTimestamp)!.push({
           ...record,
           timestamp: normalizedTimestamp, // Use normalized timestamp
-          source: sourceName,
+          source: source名称,
           isDefault
         });
         
-       // console.log(`Added record to normalized timestamp ${normalizedTimestamp}: Source=${sourceName}, Status=${record.status}, IsDefault=${isDefault}, ResponseTime=${record.responseTime}ms`);
+       // console.log(`添加ed record to normalized timestamp ${normalizedTimestamp}: Source=${source名称}, 状态=${record.status}, IsDefault=${isDefault}, ResponseTime=${record.responseTime}ms`);
       } else {
-      //  console.log(`Skipping duplicate record for source ${sourceName} at timestamp ${normalizedTimestamp}`);
+      //  console.log(`Skipping duplicate record for source ${source名称} at timestamp ${normalizedTimestamp}`);
       }
     });
     
@@ -150,11 +150,11 @@ export const useConsolidatedUptimeData = ({ serviceId, serviceType, status, inte
       .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
       .slice(0, 20); // Take the most recent 20 time slots
     
-    // console.log(`Created ${consolidatedTimeline.length} consolidated time slots with normalized timestamps`);
+    // console.log(`创建d ${consolidatedTimeline.length} consolidated time slots with normalized timestamps`);
     // consolidatedTimeline.forEach((slot, index) => {
     //   console.log(`Slot ${index} - Normalized Timestamp: ${slot.timestamp}, Items: ${slot.items.length}`);
     //   slot.items.forEach((item, itemIndex) => {
-    //     console.log(`  Item ${itemIndex}: Source=${item.source}, Status=${item.status}, ResponseTime=${item.responseTime}ms, IsDefault=${item.isDefault}`);
+    //     console.log(`  Item ${itemIndex}: Source=${item.source}, 状态=${item.status}, ResponseTime=${item.responseTime}ms, IsDefault=${item.isDefault}`);
     //   });
     // });
     
@@ -171,7 +171,7 @@ export const useConsolidatedUptimeData = ({ serviceId, serviceType, status, inte
       if (status === "paused" && processedData.length > 0) {
        // console.log(`Service ${serviceId} is paused, overriding latest bar with paused status`);
         
-        // Create a paused entry for the latest timestamp
+        // 创建 a paused entry for the latest timestamp
         const latestTimestamp = new Date();
         latestTimestamp.setSeconds(0, 0); // Normalize to minute precision
         
@@ -202,13 +202,13 @@ export const useConsolidatedUptimeData = ({ serviceId, serviceType, status, inte
           slot.items.some(item => item.status === "paused")
         );
         
-        // Create a map of existing paused timestamps for quick lookup
+        // 创建 a map of existing paused timestamps for quick lookup
         const pausedTimestamps = new Set(existingPausedBars.map(slot => slot.timestamp));
         
         // Merge processed data with existing paused bars
         const mergedData = [...processedData];
         
-        // Add back any paused bars that don't conflict with new data
+        // 添加 back any paused bars that don't conflict with new data
         existingPausedBars.forEach(pausedSlot => {
           const hasConflict = processedData.some(slot => slot.timestamp === pausedSlot.timestamp);
           if (!hasConflict) {

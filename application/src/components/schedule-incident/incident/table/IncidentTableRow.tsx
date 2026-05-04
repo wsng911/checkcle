@@ -4,8 +4,8 @@ import { TableRow, TableCell } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Eye } from 'lucide-react';
-import { IncidentStatusDropdown } from '../IncidentStatusDropdown';
-import { IncidentActionsMenu } from '../IncidentActionsMenu';
+import { Incident状态Dropdown } from '../Incident状态Dropdown';
+import { Incident操作Menu } from '../Incident操作Menu';
 import { IncidentItem } from '@/services/incident';
 import { AssignedUserCell } from './IncidentTableUtils';
 
@@ -14,7 +14,7 @@ interface IncidentTableRowProps {
   formatDate: (date: string | undefined) => string;
   getAffectedSystemsArray: (systems: string | undefined) => string[];
   onViewDetails?: (incident: IncidentItem) => void;
-  onEditIncident?: (incident: IncidentItem) => void;
+  on编辑Incident?: (incident: IncidentItem) => void;
   onIncidentUpdated: () => void;
   t: (key: string) => string;
 }
@@ -24,7 +24,7 @@ export const IncidentTableRow = memo(({
   formatDate, 
   getAffectedSystemsArray, 
   onViewDetails, 
-  onEditIncident,
+  on编辑Incident,
   onIncidentUpdated, 
   t
 }: IncidentTableRowProps) => {
@@ -37,25 +37,25 @@ export const IncidentTableRow = memo(({
   }, [item]);
   
   // Handle status updates locally
-  const handleStatusUpdated = () => {
-    console.log("Status updated in TableRow, calling onIncidentUpdated");
+  const handle状态Updated = () => {
+    console.log("状态 updated in TableRow, calling onIncidentUpdated");
     onIncidentUpdated();
   };
   
   return (
     <TableRow 
       key={localItem.id} 
-      className="hover:bg-muted/40 cursor-pointer"
+      class名称="hover:bg-muted/40 cursor-pointer"
       onClick={() => onViewDetails && onViewDetails(localItem)}
     >
-      <TableCell className="font-medium max-w-[200px] truncate">
+      <TableCell class名称="font-medium max-w-[200px] truncate">
         {localItem.title || localItem.description || '-'}
       </TableCell>
       <TableCell onClick={(e) => e.stopPropagation()}>
-        <IncidentStatusDropdown
+        <Incident状态Dropdown
           status={localItem.impact_status || localItem.status || 'investigating'}
           id={localItem.id}
-          onStatusUpdated={handleStatusUpdated}
+          on状态Updated={handle状态Updated}
         />
       </TableCell>
       <TableCell>
@@ -69,7 +69,7 @@ export const IncidentTableRow = memo(({
       </TableCell>
       <TableCell>{formatDate(localItem.created)}</TableCell>
       <TableCell>
-        <div className="flex flex-wrap gap-1">
+        <div class名称="flex flex-wrap gap-1">
           {getAffectedSystemsArray(localItem.affected_systems).map((system, idx) => (
             <Badge key={`${localItem.id}-system-${idx}`} variant="outline">{system}</Badge>
           ))}
@@ -88,8 +88,8 @@ export const IncidentTableRow = memo(({
       <TableCell>
         <AssignedUserCell userId={localItem.assigned_users || localItem.assigned_to} />
       </TableCell>
-      <TableCell className="text-right" onClick={(e) => e.stopPropagation()}>
-        <div className="flex justify-end items-center space-x-2">
+      <TableCell class名称="text-right" onClick={(e) => e.stopPropagation()}>
+        <div class名称="flex justify-end items-center space-x-2">
           {onViewDetails && (
             <Button 
               variant="ghost" 
@@ -98,17 +98,17 @@ export const IncidentTableRow = memo(({
                 e.stopPropagation();
                 onViewDetails(localItem);
               }}
-              className="h-8 w-8 p-0"
+              class名称="h-8 w-8 p-0"
             >
-              <Eye className="h-4 w-4" />
-              <span className="sr-only">{t('view')}</span>
+              <Eye class名称="h-4 w-4" />
+              <span class名称="sr-only">{t('view')}</span>
             </Button>
           )}
-          <IncidentActionsMenu 
+          <Incident操作Menu 
             item={localItem} 
             onIncidentUpdated={onIncidentUpdated}
             onViewDetails={onViewDetails}
-            onEditIncident={onEditIncident}
+            on编辑Incident={on编辑Incident}
           />
         </div>
       </TableCell>
@@ -116,4 +116,4 @@ export const IncidentTableRow = memo(({
   );
 });
 
-IncidentTableRow.displayName = 'IncidentTableRow';
+IncidentTableRow.display名称 = 'IncidentTableRow';

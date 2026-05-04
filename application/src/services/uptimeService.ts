@@ -31,10 +31,10 @@ const getCollectionForServiceType = (serviceType: string): string => {
 export const uptimeService = {
   async recordUptimeData(data: UptimeData): Promise<void> {
     try {
-   //   console.log(`Recording uptime data for service ${data.serviceId || data.service_id}: Status ${data.status}, Response time: ${data.responseTime}ms`);
+   //   console.log(`Recording uptime data for service ${data.serviceId || data.service_id}: 状态 ${data.status}, Response time: ${data.responseTime}ms`);
       
       const options = {
-        $autoCancel: false,
+        $auto取消: false,
         $cancelKey: `uptime_record_${data.serviceId || data.service_id}_${Date.now()}`
       };
       
@@ -47,8 +47,8 @@ export const uptimeService = {
       
       // Invalidate cache for this service
       const serviceId = data.service_id || data.serviceId;
-      const keysToDelete = Array.from(uptimeCache.keys()).filter(key => key.includes(`uptime_${serviceId}`));
-      keysToDelete.forEach(key => uptimeCache.delete(key));
+      const keysTo删除 = Array.from(uptimeCache.keys()).filter(key => key.includes(`uptime_${serviceId}`));
+      keysTo删除.forEach(key => uptimeCache.delete(key));
       
     //  console.log(`Uptime data recorded successfully with ID: ${record.id}`);
     } catch (error) {
@@ -86,7 +86,7 @@ export const uptimeService = {
       // Build filter to get records for specific service_id
       let filter = `service_id='${serviceId}'`;
       
-      // Add date range filtering if provided
+      // 添加 date range filtering if provided
       if (startDate && endDate) {
         const startUTC = startDate.toISOString();
         const endUTC = endDate.toISOString();
@@ -98,7 +98,7 @@ export const uptimeService = {
       const options = {
         filter: filter,
         sort: '-timestamp', // Sort by timestamp descending (newest first)
-        $autoCancel: false,
+        $auto取消: false,
         $cancelKey: `uptime_history_${serviceId}_${Date.now()}`
       };
       
@@ -159,16 +159,16 @@ export const uptimeService = {
     startDate?: Date, 
     endDate?: Date, 
     serviceType?: string,
-    regionName?: string,
+    region名称?: string,
     agentId?: string
   ): Promise<UptimeData[]> {
     try {
-      if (!regionName || !agentId) {
+      if (!region名称 || !agentId) {
       //  console.log('No region name or agent ID provided for regional query');
         return [];
       }
 
-      const cacheKey = `uptime_${serviceId}_${limit}_${startDate?.toISOString() || ''}_${endDate?.toISOString() || ''}_${serviceType || 'default'}_${regionName}_${agentId}`;
+      const cacheKey = `uptime_${serviceId}_${limit}_${startDate?.toISOString() || ''}_${endDate?.toISOString() || ''}_${serviceType || 'default'}_${region名称}_${agentId}`;
       
       // Check cache
       const cached = uptimeCache.get(cacheKey);
@@ -179,10 +179,10 @@ export const uptimeService = {
 
       // Determine the correct collection based on service type
       const collection = serviceType ? getCollectionForServiceType(serviceType) : 'uptime_data';
-     // console.log(`Fetching regional uptime history from collection: ${collection} for service: ${serviceId}, region: ${regionName}, agent: ${agentId}`);
+     // console.log(`Fetching regional uptime history from collection: ${collection} for service: ${serviceId}, region: ${region名称}, agent: ${agentId}`);
 
       // Build filter for regional agent data
-      let filter = `service_id="${serviceId}" && region_name="${regionName}" && agent_id="${agentId}"`;
+      let filter = `service_id="${serviceId}" && region_name="${region名称}" && agent_id="${agentId}"`;
 
       if (startDate && endDate) {
         const startISO = startDate.toISOString();
@@ -195,11 +195,11 @@ export const uptimeService = {
       const records = await pb.collection(collection).getList(1, limit, {
         sort: '-timestamp',
         filter: filter,
-        $autoCancel: false,
+        $auto取消: false,
         $cancelKey: `regional_uptime_history_${serviceId}_${Date.now()}`
       });
 
-    //  console.log(`Retrieved ${records.items.length} regional uptime records from ${collection} for region ${regionName}, agent ${agentId}`);
+    //  console.log(`Retrieved ${records.items.length} regional uptime records from ${collection} for region ${region名称}, agent ${agentId}`);
 
       const uptimeData = records.items.map(item => ({
         id: item.id,

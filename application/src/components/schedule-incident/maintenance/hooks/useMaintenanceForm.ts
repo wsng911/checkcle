@@ -10,7 +10,7 @@ import { authService } from '@/services/authService';
 // Define form schema with Zod
 export const maintenanceFormSchema = z.object({
   title: z.string().min(3, { message: "Title must be at least 3 characters" }),
-  description: z.string().min(10, { message: "Description must be at least 10 characters" }),
+  description: z.string().min(10, { message: "描述 must be at least 10 characters" }),
   start_time: z.date(),
   end_time: z.date(),
   affected: z.string().min(3, { message: "Affected services must be specified" }),
@@ -27,7 +27,7 @@ export type MaintenanceFormValues = z.infer<typeof maintenanceFormSchema>;
 
 export const useMaintenanceForm = (
   onSuccess: () => void,
-  onClose: () => void
+  on关闭: () => void
 ) => {
   const { t } = useLanguage();
   const { toast } = useToast();
@@ -53,7 +53,7 @@ export const useMaintenanceForm = (
     },
   });
 
-  const onSubmit = async (data: MaintenanceFormValues) => {
+  const on提交 = async (data: MaintenanceFormValues) => {
     try {
       console.log("Form data before submission:", data);
       console.log("Assigned users before submission:", data.assigned_users);
@@ -92,20 +92,20 @@ export const useMaintenanceForm = (
           : '',
       };
       
-      console.log("Submitting maintenance with data:", formattedData);
+      console.log("提交ting maintenance with data:", formattedData);
       console.log("Assigned users being sent:", formattedData.assigned_users);
       console.log("Notification channel being sent:", formattedData.notification_channel_id);
       console.log("Notification ID being sent:", formattedData.notification_id);
 
-      // Create the maintenance record
+      // 创建 the maintenance record
       await maintenanceService.createMaintenance(formattedData);
       
       toast({
-        title: t('maintenanceCreated'),
-        description: t('maintenanceCreatedDesc'),
+        title: t('maintenance创建d'),
+        description: t('maintenance创建dDesc'),
       });
       
-      onClose();
+      on关闭();
       onSuccess();
     } catch (error) {
       console.error('Error creating maintenance:', error);
@@ -128,6 +128,6 @@ export const useMaintenanceForm = (
 
   return {
     form,
-    onSubmit,
+    on提交,
   };
 };

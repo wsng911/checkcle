@@ -11,13 +11,13 @@ interface SslTemplateFieldsProps {
 
 export const SslTemplateFields: React.FC<SslTemplateFieldsProps> = ({ control }) => {
   return (
-    <div className="space-y-6">
+    <div class名称="space-y-6">
       <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-sm font-medium">SSL Certificate Messages</CardTitle>
+        <CardHeader class名称="pb-3">
+          <CardTitle class名称="text-sm font-medium">SSL Certificate Messages</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
+          <div class名称="space-y-4">
             <FormField
               control={control}
               name="expired"
@@ -27,7 +27,7 @@ export const SslTemplateFields: React.FC<SslTemplateFieldsProps> = ({ control })
                   <FormControl>
                     <Textarea 
                       placeholder="SSL certificate for ${domain} has EXPIRED on ${expiry_date}"
-                      className="min-h-24"
+                      class名称="min-h-24"
                       {...field} 
                     />
                   </FormControl>
@@ -45,7 +45,7 @@ export const SslTemplateFields: React.FC<SslTemplateFieldsProps> = ({ control })
                   <FormControl>
                     <Textarea 
                       placeholder="SSL certificate for ${domain} will expire in ${days_left} days on ${expiry_date}"
-                      className="min-h-24"
+                      class名称="min-h-24"
                       {...field} 
                     />
                   </FormControl>
@@ -63,7 +63,7 @@ export const SslTemplateFields: React.FC<SslTemplateFieldsProps> = ({ control })
                   <FormControl>
                     <Textarea 
                       placeholder="Warning: SSL certificate for ${domain} requires attention"
-                      className="min-h-24"
+                      class名称="min-h-24"
                       {...field} 
                     />
                   </FormControl>

@@ -3,7 +3,7 @@ export * from './maintenanceService';
 // Export maintenance API functions from the new structure
 export { 
   fetchAllMaintenanceRecords, 
-  updateMaintenanceStatus, 
+  updateMaintenance状态, 
   updateMaintenance, 
   deleteMaintenance, 
   createMaintenance, 

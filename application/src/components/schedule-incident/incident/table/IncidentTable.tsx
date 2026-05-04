@@ -11,7 +11,7 @@ import { format } from 'date-fns';
 import { IncidentItem } from '@/services/incident/types';
 import { IncidentTableRow } from './IncidentTableRow';
 import { IncidentDetailDialog } from '../detail-dialog/IncidentDetailDialog';
-import { EditIncidentDialog } from '../EditIncidentDialog';
+import { 编辑IncidentDialog } from '../编辑IncidentDialog';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { IncidentTableSkeleton } from './IncidentTableSkeleton';
 
@@ -20,7 +20,7 @@ interface IncidentTableProps {
   isLoading: boolean;
   onIncidentUpdated: () => void;
   onViewDetails?: (incident: IncidentItem) => void;
-  onEditIncident?: (incident: IncidentItem) => void;
+  on编辑Incident?: (incident: IncidentItem) => void;
 }
 
 export const IncidentTable = ({ 
@@ -28,12 +28,12 @@ export const IncidentTable = ({
   isLoading,
   onIncidentUpdated,
   onViewDetails,
-  onEditIncident 
+  on编辑Incident 
 }: IncidentTableProps) => {
   const { t } = useLanguage();
   const [selectedIncident, setSelectedIncident] = useState<IncidentItem | null>(null);
   const [isDetailOpen, setIsDetailOpen] = useState(false);
-  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [is编辑Open, setIs编辑Open] = useState(false);
 
   const formatDate = useCallback((dateString: string | undefined) => {
     if (!dateString) return '-';
@@ -55,9 +55,9 @@ export const IncidentTable = ({
     setIsDetailOpen(true);
   }, []);
   
-  const handleEditIncident = useCallback((incident: IncidentItem) => {
+  const handle编辑Incident = useCallback((incident: IncidentItem) => {
     setSelectedIncident(incident);
-    setIsEditOpen(true);
+    setIs编辑Open(true);
   }, []);
 
   // Handle status updates efficiently
@@ -67,7 +67,7 @@ export const IncidentTable = ({
   }, [onIncidentUpdated]);
 
   // Handle dialog closing
-  const handleDetailDialogClose = useCallback((open: boolean) => {
+  const handleDetailDialog关闭 = useCallback((open: boolean) => {
     setIsDetailOpen(open);
     if (!open) {
       onIncidentUpdated();
@@ -75,8 +75,8 @@ export const IncidentTable = ({
   }, [onIncidentUpdated]);
 
   // Handle edit dialog closing
-  const handleEditDialogClose = useCallback((open: boolean) => {
-    setIsEditOpen(open);
+  const handle编辑Dialog关闭 = useCallback((open: boolean) => {
+    setIs编辑Open(open);
     if (!open) {
       onIncidentUpdated();
     }
@@ -86,11 +86,11 @@ export const IncidentTable = ({
     return <IncidentTableSkeleton />;
   }
 
-  // Add a safety check to prevent map of undefined error
+  // 添加 a safety check to prevent map of undefined error
   if (!data || !Array.isArray(data)) {
     console.error('Data is not an array:', data);
     return (
-      <div className="p-4 text-center">
+      <div class名称="p-4 text-center">
         <p>No incident data available</p>
       </div>
     );
@@ -98,7 +98,7 @@ export const IncidentTable = ({
 
   return (
     <>
-      <div className="rounded-md border">
+      <div class名称="rounded-md border">
         <Table>
           <TableHeader>
             <TableRow>
@@ -109,7 +109,7 @@ export const IncidentTable = ({
               <TableHead>{t('affected')}</TableHead>
               <TableHead>{t('impact')}</TableHead>
               <TableHead>{t('assignedTo')}</TableHead>
-              <TableHead className="text-right">{t('actions')}</TableHead>
+              <TableHead class名称="text-right">{t('actions')}</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -120,7 +120,7 @@ export const IncidentTable = ({
                 formatDate={formatDate}
                 getAffectedSystemsArray={getAffectedSystemsArray}
                 onViewDetails={onViewDetails || handleViewDetails}
-                onEditIncident={onEditIncident || handleEditIncident}
+                on编辑Incident={on编辑Incident || handle编辑Incident}
                 onIncidentUpdated={handleIncidentUpdated}
                 t={t}
               />
@@ -132,15 +132,15 @@ export const IncidentTable = ({
       {/* Incident detail dialog */}
       <IncidentDetailDialog
         open={isDetailOpen}
-        onOpenChange={handleDetailDialogClose}
+        onOpenChange={handleDetailDialog关闭}
         incident={selectedIncident}
       />
       
-      {/* Edit incident dialog */}
+      {/* 编辑 incident dialog */}
       {selectedIncident && (
-        <EditIncidentDialog
-          open={isEditOpen}
-          onOpenChange={handleEditDialogClose}
+        <编辑IncidentDialog
+          open={is编辑Open}
+          onOpenChange={handle编辑Dialog关闭}
           incident={selectedIncident}
           onIncidentUpdated={onIncidentUpdated}
         />

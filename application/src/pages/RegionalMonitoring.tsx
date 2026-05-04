@@ -5,9 +5,9 @@ import { Sidebar } from "@/components/dashboard/Sidebar";
 import { authService } from "@/services/authService";
 import { useNavigate } from "react-router-dom";
 import { useSidebar } from "@/contexts/SidebarContext";
-import { RegionalMonitoringContent } from "@/components/regional-monitoring/RegionalMonitoringContent";
+import { Regional监控ingContent } from "@/components/regional-monitoring/Regional监控ingContent";
 
-const RegionalMonitoring = () => {
+const Regional监控ing = () => {
   const { sidebarCollapsed, toggleSidebar } = useSidebar();
   const currentUser = authService.getCurrentUser();
   const navigate = useNavigate();
@@ -18,21 +18,21 @@ const RegionalMonitoring = () => {
   };
 
   return (
-    <div className="flex h-screen bg-background text-foreground">
+    <div class名称="flex h-screen bg-background text-foreground">
       <Sidebar collapsed={sidebarCollapsed} />
-      <div className="flex flex-col flex-1 overflow-hidden">
+      <div class名称="flex flex-col flex-1 overflow-hidden">
         <Header 
           currentUser={currentUser} 
           onLogout={handleLogout} 
           sidebarCollapsed={sidebarCollapsed} 
           toggleSidebar={toggleSidebar} 
         />
-        <div className="flex-1 overflow-auto">
-          <RegionalMonitoringContent />
+        <div class名称="flex-1 overflow-auto">
+          <Regional监控ingContent />
         </div>
       </div>
     </div>
   );
 };
 
-export default RegionalMonitoring;
+export default Regional监控ing;

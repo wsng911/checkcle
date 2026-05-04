@@ -1,6 +1,6 @@
 
 import React from "react";
-import { FormField, FormItem, FormLabel, FormControl, FormMessage, FormDescription } from "@/components/ui/form";
+import { FormField, FormItem, FormLabel, FormControl, FormMessage, Form描述 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import { Control } from "react-hook-form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,13 +11,13 @@ interface ServerTemplateFieldsProps {
 
 export const ServerTemplateFields: React.FC<ServerTemplateFieldsProps> = ({ control }) => {
   return (
-    <div className="space-y-6">
+    <div class名称="space-y-6">
       <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-sm font-medium">System Resource Messages</CardTitle>
+        <CardHeader class名称="pb-3">
+          <CardTitle class名称="text-sm font-medium">System Resource Messages</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class名称="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField
               control={control}
               name="cpu_message"
@@ -27,7 +27,7 @@ export const ServerTemplateFields: React.FC<ServerTemplateFieldsProps> = ({ cont
                   <FormControl>
                     <Textarea 
                       placeholder="CPU usage on ${server_name} is ${cpu_usage}% (threshold: ${threshold}%)"
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>
@@ -45,7 +45,7 @@ export const ServerTemplateFields: React.FC<ServerTemplateFieldsProps> = ({ cont
                   <FormControl>
                     <Textarea 
                       placeholder="Memory usage on ${server_name} is ${ram_usage}% (threshold: ${threshold}%)"
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>
@@ -63,7 +63,7 @@ export const ServerTemplateFields: React.FC<ServerTemplateFieldsProps> = ({ cont
                   <FormControl>
                     <Textarea 
                       placeholder="Disk usage on ${server_name} is ${disk_usage}% (threshold: ${threshold}%)"
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>
@@ -81,7 +81,7 @@ export const ServerTemplateFields: React.FC<ServerTemplateFieldsProps> = ({ cont
                   <FormControl>
                     <Textarea 
                       placeholder="Network usage on ${server_name} is ${network_usage}% (threshold: ${threshold}%)"
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>
@@ -94,11 +94,11 @@ export const ServerTemplateFields: React.FC<ServerTemplateFieldsProps> = ({ cont
       </Card>
 
       <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-sm font-medium">System Resource Restore Messages</CardTitle>
+        <CardHeader class名称="pb-3">
+          <CardTitle class名称="text-sm font-medium">System Resource Restore Messages</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class名称="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField
               control={control}
               name="restore_cpu_message"
@@ -108,7 +108,7 @@ export const ServerTemplateFields: React.FC<ServerTemplateFieldsProps> = ({ cont
                   <FormControl>
                     <Textarea 
                       placeholder="CPU usage on ${server_name} has returned to normal: ${cpu_usage}%"
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>
@@ -126,7 +126,7 @@ export const ServerTemplateFields: React.FC<ServerTemplateFieldsProps> = ({ cont
                   <FormControl>
                     <Textarea 
                       placeholder="Memory usage on ${server_name} has returned to normal: ${ram_usage}%"
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>
@@ -144,7 +144,7 @@ export const ServerTemplateFields: React.FC<ServerTemplateFieldsProps> = ({ cont
                   <FormControl>
                     <Textarea 
                       placeholder="Disk usage on ${server_name} has returned to normal: ${disk_usage}%"
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>
@@ -162,7 +162,7 @@ export const ServerTemplateFields: React.FC<ServerTemplateFieldsProps> = ({ cont
                   <FormControl>
                     <Textarea 
                       placeholder="Network usage on ${server_name} has returned to normal: ${network_usage}%"
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>
@@ -175,8 +175,8 @@ export const ServerTemplateFields: React.FC<ServerTemplateFieldsProps> = ({ cont
       </Card>
 
       <Card>
-        <CardContent className="pt-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <CardContent class名称="pt-6">
+          <div class名称="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField
               control={control}
               name="up_message"
@@ -186,7 +186,7 @@ export const ServerTemplateFields: React.FC<ServerTemplateFieldsProps> = ({ cont
                   <FormControl>
                     <Textarea 
                       placeholder="Server ${server_name} is UP and responding"
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>
@@ -204,7 +204,7 @@ export const ServerTemplateFields: React.FC<ServerTemplateFieldsProps> = ({ cont
                   <FormControl>
                     <Textarea 
                       placeholder="Server ${server_name} is DOWN"
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>
@@ -222,7 +222,7 @@ export const ServerTemplateFields: React.FC<ServerTemplateFieldsProps> = ({ cont
                   <FormControl>
                     <Textarea 
                       placeholder="Warning: Server ${server_name} requires attention"
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>
@@ -239,8 +239,8 @@ export const ServerTemplateFields: React.FC<ServerTemplateFieldsProps> = ({ cont
                   <FormLabel>Paused Message</FormLabel>
                   <FormControl>
                     <Textarea 
-                      placeholder="Monitoring for server ${server_name} is paused"
-                      className="min-h-20"
+                      placeholder="监控ing for server ${server_name} is paused"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>
@@ -258,7 +258,7 @@ export const ServerTemplateFields: React.FC<ServerTemplateFieldsProps> = ({ cont
                   <FormControl>
                     <Textarea 
                       placeholder="CPU temperature on ${server_name} is ${cpu_temp}°C"
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>
@@ -276,7 +276,7 @@ export const ServerTemplateFields: React.FC<ServerTemplateFieldsProps> = ({ cont
                   <FormControl>
                     <Textarea 
                       placeholder="Disk I/O on ${server_name} is ${disk_io} MB/s"
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>
@@ -294,7 +294,7 @@ export const ServerTemplateFields: React.FC<ServerTemplateFieldsProps> = ({ cont
                   <FormControl>
                     <Textarea 
                       placeholder="CPU temperature on ${server_name} has returned to normal: ${cpu_temp}°C"
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>
@@ -312,7 +312,7 @@ export const ServerTemplateFields: React.FC<ServerTemplateFieldsProps> = ({ cont
                   <FormControl>
                     <Textarea 
                       placeholder="Disk I/O on ${server_name} has returned to normal: ${disk_io} MB/s"
-                      className="min-h-20"
+                      class名称="min-h-20"
                       {...field} 
                     />
                   </FormControl>

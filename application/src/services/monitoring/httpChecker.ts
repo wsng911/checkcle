@@ -1,7 +1,7 @@
 
 import { pb } from '@/lib/pocketbase';
 import { formatCurrentTime, makeHttpRequest } from './utils/httpUtils';
-import { handleServiceUp, handleServiceDown } from './handlers/serviceStatusHandlers';
+import { handleServiceUp, handleServiceDown } from './handlers/service状态Handlers';
 import { notificationService } from '@/services/notificationService';
 
 /**
@@ -31,7 +31,7 @@ export async function checkHttpService(serviceId: string): Promise<void> {
     console.log(`===============================================`);
     console.log(`Starting HTTP service check: ${service.name} (${service.id})`);
     console.log(`URL: ${serviceUrl}`);
-    console.log(`Current Status: ${service.status}`);
+    console.log(`Current 状态: ${service.status}`);
     console.log(`Mute Alerts: ${service.mute_alerts || service.muteAlerts ? "YES" : "NO"}`);
     console.log(`Time: ${formattedTime}`);
     
@@ -78,7 +78,7 @@ export async function testServiceNotification(serviceId: string, status: "up" | 
       ? `🟢 Test notification: Service ${service.name} is UP` 
       : `🔴 Test notification: Service ${service.name} is DOWN`;
     
-    // Removed the actual test notification sending
+    // 移除d the actual test notification sending
     console.log(`Test notification prepared for service ${service.name}, status: ${status}`);
     // To manually test notifications, use the UI instead
   } catch (error) {

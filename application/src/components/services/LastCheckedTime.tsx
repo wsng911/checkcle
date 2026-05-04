@@ -50,11 +50,11 @@ export const LastCheckedTime = ({ lastCheckedTime, status, interval }: LastCheck
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <div className="flex items-center space-x-2 text-sm text-gray-400 cursor-help">
+          <div class名称="flex items-center space-x-2 text-sm text-gray-400 cursor-help">
             {isPaused ? (
-              <TimerOff className="h-4 w-4" />
+              <TimerOff class名称="h-4 w-4" />
             ) : (
-              <Clock className="h-4 w-4" />
+              <Clock class名称="h-4 w-4" />
             )}
             <span>
               {isPaused ? t("pausedAt") : ""}
@@ -64,10 +64,10 @@ export const LastCheckedTime = ({ lastCheckedTime, status, interval }: LastCheck
         </TooltipTrigger>
         <TooltipContent 
           side="top"
-          className="bg-gray-900 text-white border-gray-800 px-3 py-2"
+          class名称="bg-gray-900 text-white border-gray-800 px-3 py-2"
         >
-          <div className="flex flex-col gap-1 text-xs">
-            <div className="font-medium">
+          <div class名称="flex flex-col gap-1 text-xs">
+            <div class名称="font-medium">
               {isPaused ? t("monitoringPaused") : t("lastCheckDetails")}
             </div>
             <div>
@@ -78,7 +78,7 @@ export const LastCheckedTime = ({ lastCheckedTime, status, interval }: LastCheck
 	              {t("checkInterval")}: {formatInterval(interval)}
               </div>
             )}
-            <div className="text-gray-400 text-[10px]">
+            <div class名称="text-gray-400 text-[10px]">
               {new Date(lastCheckedTime).toLocaleString()}
             </div>
           </div>

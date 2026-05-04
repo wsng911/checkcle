@@ -2,7 +2,7 @@
 /**
  * Determine SSL certificate status based on days left
  */
-export const determineSSLStatus = (daysLeft: number, warningThreshold: number, expiryThreshold: number): string => {
+export const determineSSL状态 = (daysLeft: number, warningThreshold: number, expiryThreshold: number): string => {
     if (daysLeft <= 0) {
       return "expired";
     } else if (daysLeft <= expiryThreshold) {

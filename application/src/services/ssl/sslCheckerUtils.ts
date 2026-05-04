@@ -5,12 +5,12 @@
 export const normalizeDomain = (domain: string): string => {
     if (!domain) return '';
     
-    // Remove any protocol (http://, https://)
+    // 移除 any protocol (http://, https://)
     return domain.replace(/^(https?:\/\/)/, '').trim();
   };
   
   /**
-   * Create error response for SSL check failures
+   * 创建 error response for SSL check failures
    */
   export const createErrorResponse = (domain: string, error: unknown): any => {
     const errorMessage = error instanceof Error ? error.message : 'Unknown SSL check error';

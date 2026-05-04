@@ -17,7 +17,7 @@ export const IncidentDetailsFields: React.FC = () => {
   const { control } = useFormContext<IncidentFormValues>();
 
   return (
-    <div className="space-y-4">
+    <div class名称="space-y-4">
       <FormField
         control={control}
         name="resolution_steps"
@@ -27,7 +27,7 @@ export const IncidentDetailsFields: React.FC = () => {
             <FormControl>
               <Textarea 
                 placeholder={t('enterResolutionSteps')}
-                className="min-h-[80px]"
+                class名称="min-h-[80px]"
                 {...field} 
               />
             </FormControl>
@@ -45,7 +45,7 @@ export const IncidentDetailsFields: React.FC = () => {
             <FormControl>
               <Textarea 
                 placeholder={t('enterLessonsLearned')}
-                className="min-h-[80px]"
+                class名称="min-h-[80px]"
                 {...field} 
               />
             </FormControl>

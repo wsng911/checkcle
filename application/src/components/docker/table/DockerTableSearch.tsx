@@ -1,27 +1,27 @@
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, RefreshCw } from "lucide-react";
+import { 搜索, RefreshCw } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-interface DockerTableSearchProps {
+interface DockerTable搜索Props {
   searchTerm: string;
-  onSearchChange: (value: string) => void;
+  on搜索Change: (value: string) => void;
   onRefresh: () => void;
   isLoading: boolean;
 }
 
-export const DockerTableSearch = ({ searchTerm, onSearchChange, onRefresh, isLoading }: DockerTableSearchProps) => {
+export const DockerTable搜索 = ({ searchTerm, on搜索Change, onRefresh, isLoading }: DockerTable搜索Props) => {
   const { t } = useLanguage();
   return (
-    <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-      <div className="relative flex-1 sm:flex-initial">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+    <div class名称="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+      <div class名称="relative flex-1 sm:flex-initial">
+        <搜索 class名称="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
         <Input
-          placeholder={t('searchContainersPlaceholder', 'docker')}
+          placeholder={t('search容器Placeholder', 'docker')}
           value={searchTerm}
-          onChange={(e) => onSearchChange(e.target.value)}
-          className="pl-10 sm:w-64 bg-background border-border"
+          onChange={(e) => on搜索Change(e.target.value)}
+          class名称="pl-10 sm:w-64 bg-background border-border"
         />
       </div>
       <Button
@@ -29,10 +29,10 @@ export const DockerTableSearch = ({ searchTerm, onSearchChange, onRefresh, isLoa
         disabled={isLoading}
         variant="outline"
         size="default"
-        className="w-full sm:w-auto bg-background border-border hover:bg-muted"
+        class名称="w-full sm:w-auto bg-background border-border hover:bg-muted"
       >
-        <RefreshCw className={`h-4 w-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
-        <span className="sm:inline">{t('refresh', 'docker')}</span>
+        <RefreshCw class名称={`h-4 w-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
+        <span class名称="sm:inline">{t('refresh', 'docker')}</span>
       </Button>
     </div>
   );

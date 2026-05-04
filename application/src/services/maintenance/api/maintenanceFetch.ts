@@ -39,7 +39,7 @@ export const fetchAllMaintenanceRecords = async (forceRefresh = false): Promise<
     
     lastRequestTime = now;
     
-    // Create the request promise
+    // 创建 the request promise
     currentRequest = performRequest(now);
     
     try {
@@ -63,7 +63,7 @@ export const fetchAllMaintenanceRecords = async (forceRefresh = false): Promise<
  * Perform the actual API request
  */
 const performRequest = async (timestamp: number): Promise<MaintenanceItem[]> => {
-  // Create abort controller for request timeout
+  // 创建 abort controller for request timeout
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
   

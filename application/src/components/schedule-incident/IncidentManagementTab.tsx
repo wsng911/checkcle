@@ -10,4 +10,4 @@ export const IncidentManagementTab = React.memo(({ refreshTrigger = 0 }: Inciden
   return <IncidentManagementContainer refreshTrigger={refreshTrigger} />;
 });
 
-IncidentManagementTab.displayName = 'IncidentManagementTab';
+IncidentManagementTab.display名称 = 'IncidentManagementTab';

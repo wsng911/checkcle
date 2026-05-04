@@ -18,25 +18,25 @@ export const MemoryChart = ({ data, latestData }: MemoryChartProps) => {
   const getAxisColor = () => theme === 'dark' ? '#9ca3af' : '#6b7280';
 
   return (
-    <Card className="bg-gradient-to-br from-background to-muted/20 border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm h-full flex flex-col">
-      <CardHeader className="pb-2 flex-shrink-0">
-        <CardTitle className="flex items-center justify-between text-foreground">
-          <div className="flex items-center gap-2">
-            <div className="p-2 rounded-lg bg-green-500/15">
-              <MemoryStick className="h-4 w-4 lg:h-5 lg:w-5 text-green-500" />
+    <Card class名称="bg-gradient-to-br from-background to-muted/20 border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm h-full flex flex-col">
+      <CardHeader class名称="pb-2 flex-shrink-0">
+        <CardTitle class名称="flex items-center justify-between text-foreground">
+          <div class名称="flex items-center gap-2">
+            <div class名称="p-2 rounded-lg bg-green-500/15">
+              <MemoryStick class名称="h-4 w-4 lg:h-5 lg:w-5 text-green-500" />
             </div>
-            <span className="text-sm lg:text-base">Memory Usage</span>
+            <span class名称="text-sm lg:text-base">Memory Usage</span>
           </div>
           {latestData && (
-            <div className="text-right text-xs lg:text-sm">
-              <div className="text-green-500 font-semibold">{latestData.ramUsagePercent}%</div>
-              <div className="text-xs text-muted-foreground">{latestData.ramUsed} / {latestData.ramTotal}</div>
+            <div class名称="text-right text-xs lg:text-sm">
+              <div class名称="text-green-500 font-semibold">{latestData.ramUsagePercent}%</div>
+              <div class名称="text-xs text-muted-foreground">{latestData.ramUsed} / {latestData.ramTotal}</div>
             </div>
           )}
         </CardTitle>
       </CardHeader>
-      <CardContent className="pt-2 flex-1 min-h-0">
-        <div className="w-full h-full min-h-[240px] lg:min-h-[320px]">
+      <CardContent class名称="pt-2 flex-1 min-h-0">
+        <div class名称="w-full h-full min-h-[240px] lg:min-h-[320px]">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={data} margin={{ top: 5, right: 5, left: 5, bottom: 5 }}>
               <defs>

@@ -3,13 +3,13 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { pb } from '@/lib/pocketbase';
 import { useToast } from '@/hooks/use-toast';
-import { incidentService, CreateIncidentInput } from '@/services/incident';
+import { incidentService, 创建IncidentInput } from '@/services/incident';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 // Define the schema for our incident form
 export const incidentFormSchema = z.object({
   title: z.string().min(1, { message: 'Title is required' }),
-  description: z.string().min(1, { message: 'Description is required' }),
+  description: z.string().min(1, { message: '描述 is required' }),
   affected_systems: z.string().min(1, { message: 'Affected systems are required' }),
   status: z.enum(['investigating', 'found_root_cause', 'in_progress', 'monitoring', 'resolved']),
   impact: z.enum(['none', 'minor', 'major', 'critical']),
@@ -23,7 +23,7 @@ export const incidentFormSchema = z.object({
 
 export type IncidentFormValues = z.infer<typeof incidentFormSchema>;
 
-export const useIncidentForm = (onSuccess: () => void, onClose: () => void) => {
+export const useIncidentForm = (onSuccess: () => void, on关闭: () => void) => {
   const { t } = useLanguage();
   const { toast } = useToast();
   
@@ -44,11 +44,11 @@ export const useIncidentForm = (onSuccess: () => void, onClose: () => void) => {
     },
   });
 
-  const onSubmit = async (data: IncidentFormValues) => {
+  const on提交 = async (data: IncidentFormValues) => {
     try {
       console.log("Form data before submission:", data);
       
-      const formattedData: CreateIncidentInput = {
+      const formattedData: 创建IncidentInput = {
         title: data.title,
         description: data.description,
         status: data.status,
@@ -70,14 +70,14 @@ export const useIncidentForm = (onSuccess: () => void, onClose: () => void) => {
       await incidentService.createIncident(formattedData);
       
       toast({
-        title: t('incidentCreated'),
-        description: t('incidentCreatedDesc'),
+        title: t('incident创建d'),
+        description: t('incident创建dDesc'),
       });
       
-      console.log("Incident created successfully, about to call onSuccess and onClose");
+      console.log("Incident created successfully, about to call onSuccess and on关闭");
       
       form.reset();
-      onClose();
+      on关闭();
       onSuccess();
     } catch (error) {
       console.error('Error creating incident:', error);
@@ -101,6 +101,6 @@ export const useIncidentForm = (onSuccess: () => void, onClose: () => void) => {
 
   return {
     form,
-    onSubmit: form.handleSubmit(onSubmit),
+    on提交: form.handle提交(on提交),
   };
 };

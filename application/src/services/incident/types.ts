@@ -25,7 +25,7 @@ export type IncidentItem = {
 };
 
 // Define the input type for creating an incident
-export type CreateIncidentInput = {
+export type 创建IncidentInput = {
   title: string;
   description: string;
   status: string;

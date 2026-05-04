@@ -22,16 +22,16 @@ const OperationalPage = () => {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-background text-foreground">
+    <div class名称="flex h-screen overflow-hidden bg-background text-foreground">
       <Sidebar collapsed={sidebarCollapsed} />
-      <div className="flex flex-col flex-1">
+      <div class名称="flex flex-col flex-1">
         <Header 
           currentUser={currentUser} 
           onLogout={handleLogout} 
           sidebarCollapsed={sidebarCollapsed} 
           toggleSidebar={toggleSidebar} 
         />
-        <div className="flex-1 overflow-auto">
+        <div class名称="flex-1 overflow-auto">
           <OperationalPageContent />
         </div>
       </div>

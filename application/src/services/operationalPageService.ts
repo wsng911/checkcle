@@ -89,7 +89,7 @@ export const operationalPageService = {
     }
   },
 
-  async createOperationalPage(data: Omit<OperationalPageRecord, 'id' | 'collectionId' | 'collectionName' | 'created' | 'updated'>): Promise<OperationalPageRecord> {
+  async createOperationalPage(data: Omit<OperationalPageRecord, 'id' | 'collectionId' | 'collection名称' | 'created' | 'updated'>): Promise<OperationalPageRecord> {
     try {
       const authToken = pb.authStore.token;
       const headers: Record<string, string> = {

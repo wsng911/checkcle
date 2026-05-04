@@ -9,7 +9,7 @@ interface MainNavigationProps {
 
 export const MainNavigation: React.FC<MainNavigationProps> = ({ collapsed }) => {
   return (
-    <nav className="my-2 mx-1 py-1 px-1">
+    <nav class名称="my-2 mx-1 py-1 px-1">
       {mainMenuItems.map((item) => (
         <MenuItem
           key={item.id}

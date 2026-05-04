@@ -1,4 +1,4 @@
-import { FormControl, FormField, FormItem, FormLabel, FormDescription } from "@/components/ui/form";
+import { FormControl, FormField, FormItem, FormLabel, Form描述 } from "@/components/ui/form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
@@ -20,7 +20,7 @@ export function ServiceNotificationFields({ form }: ServiceNotificationFieldsPro
   const [alertConfigs, setAlertConfigs] = useState<AlertConfiguration[]>([]);
   
   // Get the current form values for debugging
-  const notificationStatus = form.watch("notificationStatus");
+  const notification状态 = form.watch("notification状态");
   const notificationChannels = form.watch("notificationChannels") || [];
   const alertTemplate = form.watch("alertTemplate");
    
@@ -57,24 +57,24 @@ export function ServiceNotificationFields({ form }: ServiceNotificationFieldsPro
   // Log when form values change to debug
   useEffect(() => {
    // console.log("Notification values changed:", {
-   //   notificationStatus: form.getValues("notificationStatus"),
+   //   notification状态: form.getValues("notification状态"),
    //   notificationChannels: form.getValues("notificationChannels")
    // });
-  }, [form.watch("notificationStatus"), form.watch("notificationChannels")]);
+  }, [form.watch("notification状态"), form.watch("notificationChannels")]);
 
-  const handleChannelAdd = (channelId: string) => {
+  const handleChannel添加 = (channelId: string) => {
     const currentChannels = form.getValues("notificationChannels") || [];
     if (!currentChannels.includes(channelId)) {
       form.setValue("notificationChannels", [...currentChannels, channelId]);
     }
   };
 
-  const handleChannelRemove = (channelId: string) => {
+  const handleChannel移除 = (channelId: string) => {
     const currentChannels = form.getValues("notificationChannels") || [];
     form.setValue("notificationChannels", currentChannels.filter(id => id !== channelId));
   };
 
-  const getSelectedChannelNames = () => {
+  const getSelectedChannel名称s = () => {
     return (notificationChannels || []).map(channelId => {
       const config = alertConfigs.find(c => c.id === channelId);
       return config ? `${config.notify_name} (${config.notification_type})` : channelId;
@@ -85,16 +85,16 @@ export function ServiceNotificationFields({ form }: ServiceNotificationFieldsPro
     <>
       <FormField
         control={form.control}
-        name="notificationStatus"
+        name="notification状态"
         render={({ field }) => (
-          <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
-            <div className="space-y-0.5">
-              <FormLabel className="text-base">
+          <FormItem class名称="flex flex-row items-center justify-between rounded-lg border p-4">
+            <div class名称="space-y-0.5">
+              <FormLabel class名称="text-base">
 	              {t("enableNotifications")}
               </FormLabel>
-              <FormDescription>
+              <Form描述>
 	              {t("enableNotificationsDesc")}
-              </FormDescription>
+              </Form描述>
             </div>
             <FormControl>
               <Switch
@@ -118,21 +118,21 @@ export function ServiceNotificationFields({ form }: ServiceNotificationFieldsPro
         render={({ field }) => (
           <FormItem>
             <FormLabel>{t("notificationChannels")}</FormLabel>
-            <FormDescription>
-              {notificationStatus === "enabled" 
+            <Form描述>
+              {notification状态 === "enabled" 
                 ? t("notificationChannelsEnabledDesc")
                 : t("notificationChannelsDesc")}
-            </FormDescription>
+            </Form描述>
             
             {/* Display selected channels as badges */}
             {notificationChannels && notificationChannels.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-2">
-                {getSelectedChannelNames().map((channelName, index) => (
-                  <Badge key={notificationChannels[index]} variant="secondary" className="flex items-center gap-1">
-                    {channelName}
+              <div class名称="flex flex-wrap gap-2 mb-2">
+                {getSelectedChannel名称s().map((channel名称, index) => (
+                  <Badge key={notificationChannels[index]} variant="secondary" class名称="flex items-center gap-1">
+                    {channel名称}
                     <X 
-                      className="h-3 w-3 cursor-pointer" 
-                      onClick={() => handleChannelRemove(notificationChannels[index])}
+                      class名称="h-3 w-3 cursor-pointer" 
+                      onClick={() => handleChannel移除(notificationChannels[index])}
                     />
                   </Badge>
                 ))}
@@ -141,11 +141,11 @@ export function ServiceNotificationFields({ form }: ServiceNotificationFieldsPro
             
             <FormControl>
               <Select 
-                onValueChange={handleChannelAdd}
-                disabled={notificationStatus !== "enabled"}
+                onValueChange={handleChannel添加}
+                disabled={notification状态 !== "enabled"}
                 value="" // Always reset to empty after selection
               >
-                <SelectTrigger className={notificationStatus !== "enabled" ? 'opacity-50' : ''}>
+                <SelectTrigger class名称={notification状态 !== "enabled" ? 'opacity-50' : ''}>
                   <SelectValue placeholder={t("notificationChannelsPlaceholder")} />
                 </SelectTrigger>
                 <SelectContent>
@@ -178,9 +178,9 @@ export function ServiceNotificationFields({ form }: ServiceNotificationFieldsPro
                     field.onChange(value);
                   }} 
                   value={field.value || ""}
-                  disabled={notificationStatus !== "enabled" || isLoadingTemplates}
+                  disabled={notification状态 !== "enabled" || isLoadingTemplates}
                 >
-                  <SelectTrigger className={notificationStatus !== "enabled" ? 'opacity-50' : ''}>
+                  <SelectTrigger class名称={notification状态 !== "enabled" ? 'opacity-50' : ''}>
                     <SelectValue placeholder={isLoadingTemplates ? t("alertTemplateLoading") : t("alertTemplatePlaceholder")} />
                   </SelectTrigger>
                   <SelectContent>
@@ -192,11 +192,11 @@ export function ServiceNotificationFields({ form }: ServiceNotificationFieldsPro
                   </SelectContent>
                 </Select>
               </FormControl>
-              <FormDescription>
-                {notificationStatus === "enabled"
+              <Form描述>
+                {notification状态 === "enabled"
                   ? t("alertTemplateEnabledDesc")
                   : t("alertTemplateDesc")}
-              </FormDescription>
+              </Form描述>
             </FormItem>
           );
         }}

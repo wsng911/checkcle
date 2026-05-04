@@ -6,7 +6,7 @@ import {
   DialogContent, 
   DialogHeader, 
   DialogTitle, 
-  DialogDescription,
+  Dialog描述,
   DialogFooter
 } from '@/components/ui/dialog';
 import { Form } from '@/components/ui/form';
@@ -17,33 +17,33 @@ import {
   MaintenanceTimeFields,
   MaintenanceAffectedFields,
   MaintenanceConfigFields,
-  MaintenanceNotificationSettingsField
+  MaintenanceNotification设置Field
 } from './form';
 
-interface CreateMaintenanceDialogProps {
+interface 创建MaintenanceDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onMaintenanceCreated: () => void;
+  onMaintenance创建d: () => void;
 }
 
-export const CreateMaintenanceDialog = ({ 
+export const 创建MaintenanceDialog = ({ 
   open, 
   onOpenChange,
-  onMaintenanceCreated 
-}: CreateMaintenanceDialogProps) => {
+  onMaintenance创建d 
+}: 创建MaintenanceDialogProps) => {
   const { t } = useLanguage();
   
   const handleSuccess = () => {
-    console.log("CreateMaintenanceDialog: maintenance created successfully");
-    onMaintenanceCreated();
+    console.log("创建MaintenanceDialog: maintenance created successfully");
+    onMaintenance创建d();
   };
   
-  const handleClose = () => {
-    console.log("CreateMaintenanceDialog: closing dialog");
+  const handle关闭 = () => {
+    console.log("创建MaintenanceDialog: closing dialog");
     onOpenChange(false);
   };
   
-  const { form, onSubmit } = useMaintenanceForm(handleSuccess, handleClose);
+  const { form, on提交 } = useMaintenanceForm(handleSuccess, handle关闭);
 
   // Log the form state for debugging
   React.useEffect(() => {
@@ -55,23 +55,23 @@ export const CreateMaintenanceDialog = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
+      <DialogContent class名称="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>{t('createMaintenanceWindow')}</DialogTitle>
-          <DialogDescription>
+          <Dialog描述>
             {t('createMaintenanceDesc')}
-          </DialogDescription>
+          </Dialog描述>
         </DialogHeader>
         
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form on提交={form.handle提交(on提交)} class名称="space-y-4">
             <MaintenanceBasicFields />
             <MaintenanceTimeFields />
             <MaintenanceAffectedFields />
             <MaintenanceConfigFields />
-            <MaintenanceNotificationSettingsField />
+            <MaintenanceNotification设置Field />
             
-            <DialogFooter className="pt-4">
+            <DialogFooter class名称="pt-4">
               <Button 
                 type="button" 
                 variant="outline" 
@@ -81,9 +81,9 @@ export const CreateMaintenanceDialog = ({
               </Button>
               <Button 
                 type="submit"
-                disabled={form.formState.isSubmitting}
+                disabled={form.formState.is提交ting}
               >
-                {form.formState.isSubmitting ? t('creating') : t('createMaintenance')}
+                {form.formState.is提交ting ? t('creating') : t('createMaintenance')}
               </Button>
             </DialogFooter>
           </form>

@@ -12,7 +12,7 @@ export const sslTranslations: SSLTranslations = {
   detailedInfo: "상세 정보",
   viewDetailedInformation: "상세 정보 보기",
 
-  // Status related
+  // 状态 related
   valid: "유효",
   expiringSoon: "곧 만료",
   expired: "만료됨",
@@ -25,7 +25,7 @@ export const sslTranslations: SSLTranslations = {
 
   // Form fields
   domain: "도메인",
-  domainName: "도메인 이름",
+  domain名称: "도메인 이름",
   domainCannotChange: "생성 후 도메인은 변경할 수 없습니다",
   warningThreshold: "경고 임계값",
   warningThresholdDays: "경고 임계값(일)",
@@ -51,11 +51,11 @@ export const sslTranslations: SSLTranslations = {
   validityDays: "유효 일수",
   validityPeriod: "유효 기간",
   organization: "조직",
-  commonName: "공통 이름",
+  common名称: "공통 이름",
   serialNumber: "일련번호",
   algorithm: "알고리즘",
-  subjectAltNames: "대체 이름",
-  subjectAlternativeNames: "대체 이름",
+  subjectAlt名称s: "대체 이름",
+  subjectAlternative名称s: "대체 이름",
   resolvedIP: "해결된 IP",
   issuedTo: "발급 대상",
   days: "일",
@@ -85,21 +85,21 @@ export const sslTranslations: SSLTranslations = {
   certificateDetails: "인증서 상세",
   
   // Notifications and messages
-  sslCertificateAdded: "SSL 인증서가 성공적으로 추가되었습니다",
+  sslCertificate添加ed: "SSL 인증서가 성공적으로 추가되었습니다",
   sslCertificateUpdated: "SSL 인증서가 성공적으로 업데이트되었습니다",
-  sslCertificateDeleted: "SSL 인증서가 성공적으로 삭제되었습니다",
+  sslCertificate删除d: "SSL 인증서가 성공적으로 삭제되었습니다",
   sslCertificateRefreshed: "{domain}의 SSL 인증서가 성공적으로 갱신되었습니다",
   allCertificatesRefreshed: "총 {count}개의 인증서가 성공적으로 갱신되었습니다",
   someCertificatesFailed: "{success}개의 인증서 갱신 성공, {failed}개 실패",
-  failedToAddCertificate: "SSL 인증서 추가 실패",
+  failedTo添加Certificate: "SSL 인증서 추가 실패",
   failedToLoadCertificates: "SSL 인증서 불러오기 실패",
   failedToUpdateCertificate: "SSL 인증서 업데이트 실패",
-  failedToDeleteCertificate: "SSL 인증서 삭제 실패",
+  failedTo删除Certificate: "SSL 인증서 삭제 실패",
   failedToCheckCertificate: "SSL 인증서 확인 실패",
   noCertificatesToRefresh: "갱신할 인증서 없음",
   startingRefreshAll: "{count}개의 인증서 갱신 시작",
   checkingSSLCertificate: "SSL 인증서 확인 중...",
-  deleteConfirmation: "인증서를 삭제하시겠습니까?",
+  delete确认ation: "인증서를 삭제하시겠습니까?",
   deleteWarning: "이 작업은 되돌릴 수 없으며 인증서를 영구적으로 삭제합니다.",
   
   // Misc

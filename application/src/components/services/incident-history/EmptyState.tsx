@@ -5,7 +5,7 @@ interface EmptyStateProps {
 
 export function EmptyState({ statusFilter }: EmptyStateProps) {
   return (
-    <div className="text-center py-8 text-muted-foreground">
+    <div class名称="text-center py-8 text-muted-foreground">
       {statusFilter === "all"
         ? "No incidents recorded in selected time period"
         : `No ${

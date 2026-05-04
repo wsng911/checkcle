@@ -6,7 +6,7 @@ import { Sidebar } from "@/components/dashboard/Sidebar";
 import { Header } from "@/components/dashboard/Header";
 import { ServerStatsCards } from "@/components/servers/ServerStatsCards";
 import { ServerTable } from "@/components/servers/ServerTable";
-import { AddServerAgentDialog } from "@/components/servers/AddServerAgentDialog";
+import { 添加ServerAgentDialog } from "@/components/servers/添加ServerAgentDialog";
 import { serverService } from "@/services/serverService";
 import { Server, ServerStats } from "@/types/server.types";
 import { authService } from "@/services/authService";
@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 
-const InstanceMonitoring = () => {
+const Instance监控ing = () => {
   const { t } = useLanguage();
   const navigate = useNavigate();
   
@@ -26,7 +26,7 @@ const InstanceMonitoring = () => {
   });
   
   const [currentUser] = useState(authService.getCurrentUser());
-  const [addDialogOpen, setAddDialogOpen] = useState(false);
+  const [addDialogOpen, set添加DialogOpen] = useState(false);
   
   const { data: servers = [], isLoading, error, refetch } = useQuery<Server[]>({
     queryKey: ['servers'],
@@ -46,26 +46,26 @@ const InstanceMonitoring = () => {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-background text-foreground">
+    <div class名称="flex h-screen overflow-hidden bg-background text-foreground">
       <Sidebar />
-      <div className="flex flex-col flex-1 min-w-0">
+      <div class名称="flex flex-col flex-1 min-w-0">
         <Header 
           currentUser={currentUser} 
           onLogout={handleLogout} 
         />
-        <main className="flex-1 overflow-auto">
-          <div className="p-4 lg:p-8 space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div className="min-w-0 flex-1">
-                <h1 className="text-2xl font-bold text-foreground">
-                  {t('instanceMonitoring')}
+        <main class名称="flex-1 overflow-auto">
+          <div class名称="p-4 lg:p-8 space-y-6">
+            <div class名称="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div class名称="min-w-0 flex-1">
+                <h1 class名称="text-2xl font-bold text-foreground">
+                  {t('instance监控ing')}
                 </h1>
-                <p className="text-muted-foreground mt-1 text-sm">
-                  {t('describeMonitorInstance')}
+                <p class名称="text-muted-foreground mt-1 text-sm">
+                  {t('describe监控Instance')}
                 </p>
               </div>
-              <Button onClick={() => setAddDialogOpen(true)} className="flex-shrink-0">
-                <Plus className="mr-2 h-4 w-4" />
+              <Button onClick={() => set添加DialogOpen(true)} class名称="flex-shrink-0">
+                <Plus class名称="mr-2 h-4 w-4" />
                 {t('addServerAgent')}
               </Button>
             </div>
@@ -76,13 +76,13 @@ const InstanceMonitoring = () => {
         </main>
       </div>
 
-      <AddServerAgentDialog
+      <添加ServerAgentDialog
         open={addDialogOpen}
-        onOpenChange={setAddDialogOpen}
-        onAgentAdded={refetch}
+        onOpenChange={set添加DialogOpen}
+        onAgent添加ed={refetch}
       />
     </div>
   );
 };
 
-export default InstanceMonitoring;
+export default Instance监控ing;

@@ -1,10 +1,10 @@
 
 import { useState, useEffect } from "react";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, Card描述, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { User } from "@/services/userService";
 import { UserProfileDetails } from "./UserProfileDetails";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ChangePasswordForm } from "./ChangePasswordForm";
+import { Change密码Form } from "./Change密码Form";
 import { UpdateProfileForm } from "./UpdateProfileForm";
 
 interface ProfileContentProps {
@@ -27,21 +27,21 @@ export function ProfileContent({ currentUser, onUserUpdated }: ProfileContentPro
       <Card>
         <CardHeader>
           <CardTitle>User Profile</CardTitle>
-          <CardDescription>Your profile information could not be loaded</CardDescription>
+          <Card描述>Your profile information could not be loaded</Card描述>
         </CardHeader>
       </Card>
     );
   }
   
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold">My Profile</h1>
+    <div class名称="space-y-6">
+      <div class名称="flex justify-between items-center">
+        <h1 class名称="text-3xl font-bold">My Profile</h1>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class名称="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Left column - Profile summary card */}
-        <Card className="md:col-span-1">
+        <Card class名称="md:col-span-1">
           <CardHeader>
             <CardTitle>Profile Summary</CardTitle>
           </CardHeader>
@@ -51,28 +51,28 @@ export function ProfileContent({ currentUser, onUserUpdated }: ProfileContentPro
         </Card>
 
         {/* Right column - Profile tabs for edit and password change */}
-        <Card className="md:col-span-2">
+        <Card class名称="md:col-span-2">
           <CardHeader>
             <CardTitle>My Account</CardTitle>
-            <CardDescription>Manage your account settings</CardDescription>
+            <Card描述>Manage your account settings</Card描述>
           </CardHeader>
           <CardContent>
-            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="grid grid-cols-2 w-full">
+            <Tabs value={activeTab} onValueChange={setActiveTab} class名称="w-full">
+              <TabsList class名称="grid grid-cols-2 w-full">
                 <TabsTrigger value="details">Profile Details</TabsTrigger>
                 <TabsTrigger value="security">Security</TabsTrigger>
               </TabsList>
               
-              <TabsContent value="details" className="pt-4">
+              <TabsContent value="details" class名称="pt-4">
                 <UpdateProfileForm user={currentUser} />
               </TabsContent>
               
-              <TabsContent value="security" className="pt-4">
-                <ChangePasswordForm userId={currentUser.id} />
+              <TabsContent value="security" class名称="pt-4">
+                <Change密码Form userId={currentUser.id} />
               </TabsContent>
             </Tabs>
           </CardContent>
-          <CardFooter className="text-sm text-muted-foreground">
+          <CardFooter class名称="text-sm text-muted-foreground">
             Last updated: {new Date(currentUser.updated).toLocaleString()}
           </CardFooter>
         </Card>

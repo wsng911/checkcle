@@ -8,23 +8,23 @@ import { MaintenanceItem } from '@/services/maintenance';
 
 interface DownloadPdfButtonProps {
   maintenance: MaintenanceItem;
-  className?: string;
+  class名称?: string;
 }
 
 export const DownloadPdfButton: React.FC<DownloadPdfButtonProps> = ({ 
   maintenance, 
-  className 
+  class名称 
 }) => {
   const { t } = useLanguage();
   const { handleDownloadPDF } = useDownloadMaintenancePdf();
   
   return (
     <Button
-      className={`flex items-center gap-2 ${className || ''}`}
+      class名称={`flex items-center gap-2 ${class名称 || ''}`}
       onClick={() => handleDownloadPDF(maintenance)}
       variant="outline"
     >
-      <Download className="h-4 w-4" />
+      <Download class名称="h-4 w-4" />
       {t('downloadPdf')}
     </Button>
   );

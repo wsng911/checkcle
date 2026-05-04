@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, Card描述, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -8,20 +8,20 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import { Plus, X, Server } from 'lucide-react';
-import { StatusPageComponentRecord } from '@/types/statusPageComponents.types';
+import { 状态PageComponentRecord } from '@/types/statusPageComponents.types';
 import { useQuery } from '@tanstack/react-query';
 import { serviceService } from '@/services/serviceService';
 import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ComponentsSelectorProps {
-  selectedComponents: Partial<StatusPageComponentRecord>[];
-  onComponentsChange: (components: Partial<StatusPageComponentRecord>[]) => void;
-  onComponentDelete?: (componentId: string) => void;
+  selectedComponents: Partial<状态PageComponentRecord>[];
+  onComponentsChange: (components: Partial<状态PageComponentRecord>[]) => void;
+  onComponent删除?: (componentId: string) => void;
 }
 
-export const ComponentsSelector = ({ selectedComponents, onComponentsChange, onComponentDelete }: ComponentsSelectorProps) => {
+export const ComponentsSelector = ({ selectedComponents, onComponentsChange, onComponent删除 }: ComponentsSelectorProps) => {
   const { t } = useLanguage();
-  const [showAddForm, setShowAddForm] = useState(false);
+  const [show添加Form, setShow添加Form] = useState(false);
   const [newComponent, setNewComponent] = useState({
     name: '',
     description: '',
@@ -33,13 +33,13 @@ export const ComponentsSelector = ({ selectedComponents, onComponentsChange, onC
   // Fetch uptime services for the dropdown
   const { data: services = [] } = useQuery({
     queryKey: ['services'],
-    queryFn: serviceService.getServices,
+    queryFn: serviceService.get服务,
   });
 
   const addComponent = () => {
     if (!newComponent.name.trim()) return;
 
-    const component: Partial<StatusPageComponentRecord> = {
+    const component: Partial<状态PageComponentRecord> = {
       ...newComponent,
       operational_status_id: '', // Will be set when page is created
     };
@@ -52,15 +52,15 @@ export const ComponentsSelector = ({ selectedComponents, onComponentsChange, onC
       server_id: '',
       display_order: selectedComponents.length + 2,
     });
-    setShowAddForm(false);
+    setShow添加Form(false);
   };
 
   const removeComponent = async (index: number) => {
     const component = selectedComponents[index];
     
     // If component has an ID, it exists in database and needs to be deleted
-    if (component.id && onComponentDelete) {
-      await onComponentDelete(component.id);
+    if (component.id && onComponent删除) {
+      await onComponent删除(component.id);
     } else {
       // For new components not yet saved, just remove from local state
       const updated = selectedComponents.filter((_, i) => i !== index);
@@ -71,34 +71,34 @@ export const ComponentsSelector = ({ selectedComponents, onComponentsChange, onC
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Server className="h-5 w-5" />
+        <CardTitle class名称="flex items-center gap-2">
+          <Server class名称="h-5 w-5" />
           {t('statusPageComponents')}
         </CardTitle>
-        <CardDescription>
-          {t('addMonitoringComponentsDesc')}
-        </CardDescription>
+        <Card描述>
+          {t('add监控ingComponentsDesc')}
+        </Card描述>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent class名称="space-y-4">
         {selectedComponents.length > 0 && (
-          <div className="space-y-2">
+          <div class名称="space-y-2">
             <Label>{t('selectedComponents')}</Label>
-            <div className="space-y-2">
+            <div class名称="space-y-2">
               {selectedComponents.map((component, index) => (
-                <div key={component.id || index} className="flex items-center justify-between p-3 border rounded-lg">
-                  <div className="flex-1">
-                    <div className="font-medium">{component.name}</div>
+                <div key={component.id || index} class名称="flex items-center justify-between p-3 border rounded-lg">
+                  <div class名称="flex-1">
+                    <div class名称="font-medium">{component.name}</div>
                     {component.description && (
-                      <div className="text-sm text-muted-foreground">{component.description}</div>
+                      <div class名称="text-sm text-muted-foreground">{component.description}</div>
                     )}
-                    <div className="flex gap-2 mt-1">
+                    <div class名称="flex gap-2 mt-1">
                       {component.service_id && (
-                        <Badge variant="secondary" className="text-xs">
+                        <Badge variant="secondary" class名称="text-xs">
                           {t('service')}: {services.find(s => s.id === component.service_id)?.name || component.service_id}
                         </Badge>
                       )}
                       {component.server_id && (
-                        <Badge variant="secondary" className="text-xs">
+                        <Badge variant="secondary" class名称="text-xs">
                           {t('server')}: {component.server_id}
                         </Badge>
                       )}
@@ -109,7 +109,7 @@ export const ComponentsSelector = ({ selectedComponents, onComponentsChange, onC
                     size="sm"
                     onClick={() => removeComponent(index)}
                   >
-                    <X className="h-4 w-4" />
+                    <X class名称="h-4 w-4" />
                   </Button>
                 </div>
               ))}
@@ -117,23 +117,23 @@ export const ComponentsSelector = ({ selectedComponents, onComponentsChange, onC
           </div>
         )}
 
-        {!showAddForm ? (
+        {!show添加Form ? (
           <Button
             variant="outline"
-            onClick={() => setShowAddForm(true)}
-            className="w-full"
+            onClick={() => setShow添加Form(true)}
+            class名称="w-full"
           >
-            <Plus className="h-4 w-4 mr-2" />
+            <Plus class名称="h-4 w-4 mr-2" />
             {t('addComponent')}
           </Button>
         ) : (
-          <div className="border rounded-lg p-4 space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+          <div class名称="border rounded-lg p-4 space-y-4">
+            <div class名称="grid grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="component-name">{t('componentName')}</Label>
+                <Label htmlFor="component-name">{t('component名称')}</Label>
                 <Input
                   id="component-name"
-                  placeholder={t('componentNamePlaceholder')}
+                  placeholder={t('component名称Placeholder')}
                   value={newComponent.name}
                   onChange={(e) => setNewComponent({ ...newComponent, name: e.target.value })}
                 />
@@ -159,7 +159,7 @@ export const ComponentsSelector = ({ selectedComponents, onComponentsChange, onC
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div class名称="grid grid-cols-2 gap-4">
               <div>
                 <Label htmlFor="service-id">{t('uptimeServiceOptional')}</Label>
                 <Select onValueChange={(value) => setNewComponent({ ...newComponent, service_id: value })}>
@@ -169,8 +169,8 @@ export const ComponentsSelector = ({ selectedComponents, onComponentsChange, onC
                   <SelectContent>
                     {services.map((service) => (
                       <SelectItem key={service.id} value={service.id}>
-                        <div className="flex items-center gap-2">
-                          <div className={`w-2 h-2 rounded-full ${
+                        <div class名称="flex items-center gap-2">
+                          <div class名称={`w-2 h-2 rounded-full ${
                             service.status === 'up' ? 'bg-green-500' : 
                             service.status === 'down' ? 'bg-red-500' : 
                             'bg-yellow-500'
@@ -193,11 +193,11 @@ export const ComponentsSelector = ({ selectedComponents, onComponentsChange, onC
               </div>
             </div>
 
-            <div className="flex gap-2">
+            <div class名称="flex gap-2">
               <Button onClick={addComponent} disabled={!newComponent.name.trim()}>
                 {t('addComponent')}
               </Button>
-              <Button variant="outline" onClick={() => setShowAddForm(false)}>
+              <Button variant="outline" onClick={() => setShow添加Form(false)}>
                 {t('cancel')}
               </Button>
             </div>

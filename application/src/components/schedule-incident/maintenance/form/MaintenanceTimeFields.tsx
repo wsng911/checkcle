@@ -35,19 +35,19 @@ export const MaintenanceTimeFields: React.FC = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class名称="grid grid-cols-1 md:grid-cols-2 gap-4">
       <FormField
         control={control}
         name="start_time"
         render={({ field }) => (
-          <FormItem className="flex flex-col">
+          <FormItem class名称="flex flex-col">
             <FormLabel>{t('startTime')}</FormLabel>
             <Popover>
               <PopoverTrigger asChild>
                 <FormControl>
                   <Button
                     variant="outline"
-                    className={cn(
+                    class名称={cn(
                       "w-full pl-3 text-left font-normal",
                       !field.value && "text-muted-foreground"
                     )}
@@ -57,11 +57,11 @@ export const MaintenanceTimeFields: React.FC = () => {
                     ) : (
                       <span>{t('selectDate')}</span>
                     )}
-                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                    <CalendarIcon class名称="ml-auto h-4 w-4 opacity-50" />
                   </Button>
                 </FormControl>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0" align="start">
+              <PopoverContent class名称="w-auto p-0" align="start">
                 <Calendar
                   mode="single"
                   selected={field.value instanceof Date && !isNaN(field.value.getTime()) ? field.value : undefined}
@@ -83,9 +83,9 @@ export const MaintenanceTimeFields: React.FC = () => {
                     }
                   }}
                   initialFocus
-                  className={cn("p-3 pointer-events-auto")}
+                  class名称={cn("p-3 pointer-events-auto")}
                 />
-                <div className="p-3 border-t border-border">
+                <div class名称="p-3 border-t border-border">
                   <Input
                     type="time"
                     onChange={(e) => {
@@ -117,14 +117,14 @@ export const MaintenanceTimeFields: React.FC = () => {
         control={control}
         name="end_time"
         render={({ field }) => (
-          <FormItem className="flex flex-col">
+          <FormItem class名称="flex flex-col">
             <FormLabel>{t('endTime')}</FormLabel>
             <Popover>
               <PopoverTrigger asChild>
                 <FormControl>
                   <Button
                     variant="outline"
-                    className={cn(
+                    class名称={cn(
                       "w-full pl-3 text-left font-normal",
                       !field.value && "text-muted-foreground"
                     )}
@@ -134,11 +134,11 @@ export const MaintenanceTimeFields: React.FC = () => {
                     ) : (
                       <span>{t('selectDate')}</span>
                     )}
-                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                    <CalendarIcon class名称="ml-auto h-4 w-4 opacity-50" />
                   </Button>
                 </FormControl>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0" align="start">
+              <PopoverContent class名称="w-auto p-0" align="start">
                 <Calendar
                   mode="single"
                   selected={field.value instanceof Date && !isNaN(field.value.getTime()) ? field.value : undefined}
@@ -161,9 +161,9 @@ export const MaintenanceTimeFields: React.FC = () => {
                     }
                   }}
                   initialFocus
-                  className={cn("p-3 pointer-events-auto")}
+                  class名称={cn("p-3 pointer-events-auto")}
                 />
-                <div className="p-3 border-t border-border">
+                <div class名称="p-3 border-t border-border">
                   <Input
                     type="time"
                     onChange={(e) => {

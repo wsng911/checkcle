@@ -3,7 +3,7 @@ import { pb } from "@/lib/pocketbase";
 export interface ServerNotificationTemplate {
   id: string;
   collectionId: string;
-  collectionName: string;
+  collection名称: string;
   name: string;
   ram_message: string;
   cpu_message: string;
@@ -27,7 +27,7 @@ export interface ServerNotificationTemplate {
   updated: string;
 }
 
-export interface CreateUpdateServerNotificationTemplateData {
+export interface 创建UpdateServerNotificationTemplateData {
   name: string;
   ram_message: string;
   cpu_message: string;
@@ -76,7 +76,7 @@ export const serverNotificationTemplateService = {
     }
   },
 
-  async createTemplate(data: CreateUpdateServerNotificationTemplateData): Promise<ServerNotificationTemplate> {
+  async createTemplate(data: 创建UpdateServerNotificationTemplateData): Promise<ServerNotificationTemplate> {
     try {
     
       const response = await pb.collection('server_notification_templates').create(data);
@@ -88,7 +88,7 @@ export const serverNotificationTemplateService = {
     }
   },
 
-  async updateTemplate(id: string, data: Partial<CreateUpdateServerNotificationTemplateData>): Promise<ServerNotificationTemplate> {
+  async updateTemplate(id: string, data: Partial<创建UpdateServerNotificationTemplateData>): Promise<ServerNotificationTemplate> {
     try {
      
       const response = await pb.collection('server_notification_templates').update(id, data);

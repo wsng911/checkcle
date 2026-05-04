@@ -12,7 +12,7 @@ export const HeatmapChart = ({ uptimeData, selectedMonth }: HeatmapChartProps) =
   const monthEnd = endOfMonth(selectedMonth);
   const daysInMonth = eachDayOfInterval({ start: monthStart, end: monthEnd });
 
-  const getStatusForDay = (day: Date) => {
+  const get状态ForDay = (day: Date) => {
     const dayData = uptimeData.filter(data => 
       isSameDay(new Date(data.timestamp), day)
     );
@@ -25,13 +25,13 @@ export const HeatmapChart = ({ uptimeData, selectedMonth }: HeatmapChartProps) =
       return acc;
     }, {} as Record<string, number>);
     
-    const predominantStatus = Object.entries(statusCounts)
+    const predominant状态 = Object.entries(statusCounts)
       .sort(([,a], [,b]) => b - a)[0][0];
     
-    return predominantStatus;
+    return predominant状态;
   };
 
-  const getStatusColor = (status: string) => {
+  const get状态Color = (status: string) => {
     switch (status) {
       case 'up':
         return 'bg-emerald-500';
@@ -46,7 +46,7 @@ export const HeatmapChart = ({ uptimeData, selectedMonth }: HeatmapChartProps) =
     }
   };
 
-  const getStatusLabel = (status: string) => {
+  const get状态Label = (status: string) => {
     switch (status) {
       case 'up':
         return 'Up';
@@ -82,7 +82,7 @@ export const HeatmapChart = ({ uptimeData, selectedMonth }: HeatmapChartProps) =
     }
   });
   
-  // Add remaining days to last week
+  // 添加 remaining days to last week
   if (currentWeek.length > 0) {
     while (currentWeek.length < 7) {
       currentWeek.push(new Date(0)); // Placeholder for empty cells
@@ -91,37 +91,37 @@ export const HeatmapChart = ({ uptimeData, selectedMonth }: HeatmapChartProps) =
   }
 
   return (
-    <div className="space-y-6">
+    <div class名称="space-y-6">
       {/* Header */}
-      <div className="text-center">
-        <h3 className="text-xl font-semibold text-white mb-2">
+      <div class名称="text-center">
+        <h3 class名称="text-xl font-semibold text-white mb-2">
           Service Health - {format(selectedMonth, 'MMMM yyyy')}
         </h3>
-        <p className="text-gray-400 text-sm">
+        <p class名称="text-gray-400 text-sm">
           Daily status overview for the current month
         </p>
       </div>
 
       {/* Calendar Grid */}
-      <div className="space-y-4">
+      <div class名称="space-y-4">
         {/* Day labels */}
-        <div className="grid grid-cols-7 gap-2 text-sm text-gray-400 font-medium">
-          <div className="text-center py-2">Sun</div>
-          <div className="text-center py-2">Mon</div>
-          <div className="text-center py-2">Tue</div>
-          <div className="text-center py-2">Wed</div>
-          <div className="text-center py-2">Thu</div>
-          <div className="text-center py-2">Fri</div>
-          <div className="text-center py-2">Sat</div>
+        <div class名称="grid grid-cols-7 gap-2 text-sm text-gray-400 font-medium">
+          <div class名称="text-center py-2">Sun</div>
+          <div class名称="text-center py-2">Mon</div>
+          <div class名称="text-center py-2">Tue</div>
+          <div class名称="text-center py-2">Wed</div>
+          <div class名称="text-center py-2">Thu</div>
+          <div class名称="text-center py-2">Fri</div>
+          <div class名称="text-center py-2">Sat</div>
         </div>
         
         {/* Calendar days */}
-        <div className="space-y-2">
+        <div class名称="space-y-2">
           {weeks.map((week, weekIndex) => (
-            <div key={weekIndex} className="grid grid-cols-7 gap-2">
+            <div key={weekIndex} class名称="grid grid-cols-7 gap-2">
               {week.map((day, dayIndex) => {
                 const isPlaceholder = day.getTime() === 0;
-                const status = isPlaceholder ? 'no-data' : getStatusForDay(day);
+                const status = isPlaceholder ? 'no-data' : get状态ForDay(day);
                 const dayData = isPlaceholder ? [] : uptimeData.filter(data => 
                   isSameDay(new Date(data.timestamp), day)
                 );
@@ -129,14 +129,14 @@ export const HeatmapChart = ({ uptimeData, selectedMonth }: HeatmapChartProps) =
                 return (
                   <div
                     key={dayIndex}
-                    className={`
+                    class名称={`
                       relative aspect-square rounded-lg flex items-center justify-center text-sm font-medium text-white
                       transition-all duration-200 cursor-pointer
                       ${isPlaceholder ? 'invisible' : `
-                        ${getStatusColor(status)} hover:scale-110 hover:shadow-lg
+                        ${get状态Color(status)} hover:scale-110 hover:shadow-lg
                       `}
                     `}
-                    title={isPlaceholder ? '' : `${format(day, 'MMM d, yyyy')}: ${getStatusLabel(status)}${dayData.length > 0 ? ` (${dayData.length} checks)` : ''}`}
+                    title={isPlaceholder ? '' : `${format(day, 'MMM d, yyyy')}: ${get状态Label(status)}${dayData.length > 0 ? ` (${dayData.length} checks)` : ''}`}
                   >
                     {isPlaceholder ? '' : format(day, 'd')}
                   </div>
@@ -147,25 +147,25 @@ export const HeatmapChart = ({ uptimeData, selectedMonth }: HeatmapChartProps) =
         </div>
       </div>
       
-      {/* Status Legend */}
-      <div className="flex items-center justify-center gap-6 pt-4 border-t border-gray-700">
-        <span className="text-gray-400 text-sm font-medium">Status:</span>
-        <div className="flex items-center gap-4">
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-emerald-500 rounded-full"></div>
-            <span className="text-gray-300 text-sm">Up</span>
+      {/* 状态 Legend */}
+      <div class名称="flex items-center justify-center gap-6 pt-4 border-t border-gray-700">
+        <span class名称="text-gray-400 text-sm font-medium">状态:</span>
+        <div class名称="flex items-center gap-4">
+          <div class名称="flex items-center space-x-2">
+            <div class名称="w-3 h-3 bg-emerald-500 rounded-full"></div>
+            <span class名称="text-gray-300 text-sm">Up</span>
           </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-amber-500 rounded-full"></div>
-            <span className="text-gray-300 text-sm">Warning</span>
+          <div class名称="flex items-center space-x-2">
+            <div class名称="w-3 h-3 bg-amber-500 rounded-full"></div>
+            <span class名称="text-gray-300 text-sm">Warning</span>
           </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-            <span className="text-gray-300 text-sm">Down</span>
+          <div class名称="flex items-center space-x-2">
+            <div class名称="w-3 h-3 bg-red-500 rounded-full"></div>
+            <span class名称="text-gray-300 text-sm">Down</span>
           </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-slate-500 rounded-full"></div>
-            <span className="text-gray-300 text-sm">Paused</span>
+          <div class名称="flex items-center space-x-2">
+            <div class名称="w-3 h-3 bg-slate-500 rounded-full"></div>
+            <span class名称="text-gray-300 text-sm">Paused</span>
           </div>
         </div>
       </div>

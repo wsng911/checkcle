@@ -17,10 +17,10 @@ export function ServiceBasicFields({ form }: ServiceBasicFieldsProps) {
       name="name"
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{t('serviceName')}</FormLabel>
+          <FormLabel>{t('service名称')}</FormLabel>
           <FormControl>
             <Input 
-              placeholder={t('serviceNameDesc')}
+              placeholder={t('service名称Desc')}
               {...field} 
             />
           </FormControl>

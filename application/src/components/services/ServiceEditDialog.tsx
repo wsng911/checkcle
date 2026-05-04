@@ -2,7 +2,7 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
+  Dialog描述,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
@@ -13,33 +13,33 @@ import { useState, useEffect } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-interface ServiceEditDialogProps {
+interface Service编辑DialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   service: Service | null;
 }
 
-export function ServiceEditDialog({ open, onOpenChange, service }: ServiceEditDialogProps) {
+export function Service编辑Dialog({ open, onOpenChange, service }: Service编辑DialogProps) {
 	const { t } = useLanguage();
   const queryClient = useQueryClient();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [is提交ting, setIs提交ting] = useState(false);
   
   // Reset submission state when dialog opens/closes
   useEffect(() => {
     if (!open) {
-      setIsSubmitting(false);
+      setIs提交ting(false);
     }
   }, [open]);
   
   const handleSuccess = () => {
     // Invalidate the services query to trigger a refetch
     queryClient.invalidateQueries({ queryKey: ["services"] });
-    setIsSubmitting(false);
+    setIs提交ting(false);
     onOpenChange(false);
   };
 
-  const handleCancel = () => {
-    if (!isSubmitting) {
+  const handle取消 = () => {
+    if (!is提交ting) {
       onOpenChange(false);
     }
   };
@@ -49,26 +49,26 @@ export function ServiceEditDialog({ open, onOpenChange, service }: ServiceEditDi
   return (
     <Dialog open={open} onOpenChange={(newOpen) => {
       // Only allow closing if not currently submitting
-      if (!isSubmitting || !newOpen) {
+      if (!is提交ting || !newOpen) {
         onOpenChange(newOpen);
       }
     }}>
-      <DialogContent className="sm:max-w-[700px] max-h-[90vh] flex flex-col">
+      <DialogContent class名称="sm:max-w-[700px] max-h-[90vh] flex flex-col">
         <DialogHeader>
-          <DialogTitle className="text-xl">{t("editService")}</DialogTitle>
-          <DialogDescription>
+          <DialogTitle class名称="text-xl">{t("editService")}</DialogTitle>
+          <Dialog描述>
 	          {t("editServiceDesc")}
-          </DialogDescription>
+          </Dialog描述>
         </DialogHeader>
         {open && service && (
-          <ScrollArea className="flex-1 pr-4 overflow-auto" style={{ height: "calc(80vh - 180px)" }}>
-            <div className="pr-2">
+          <ScrollArea class名称="flex-1 pr-4 overflow-auto" style={{ height: "calc(80vh - 180px)" }}>
+            <div class名称="pr-2">
               <ServiceForm 
                 onSuccess={handleSuccess} 
-                onCancel={handleCancel}
+                on取消={handle取消}
                 initialData={service}
-                isEdit={true}
-                onSubmitStart={() => setIsSubmitting(true)}
+                is编辑={true}
+                on提交Start={() => setIs提交ting(true)}
               />
             </div>
           </ScrollArea>

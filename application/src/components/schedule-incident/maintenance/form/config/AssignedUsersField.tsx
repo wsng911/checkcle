@@ -8,7 +8,7 @@ import {
   FormLabel, 
   FormControl, 
   FormMessage,
-  FormDescription 
+  Form描述 
 } from '@/components/ui/form';
 import { 
   Select,
@@ -73,7 +73,7 @@ export const AssignedUsersField = () => {
       : [];
       
     if (!currentValues.includes(userId)) {
-   //   console.log("Adding user:", userId);
+   //   console.log("添加ing user:", userId);
       form.setValue('assigned_users', [...currentValues, userId], { shouldValidate: true, shouldDirty: true });
     }
   };
@@ -113,22 +113,22 @@ export const AssignedUsersField = () => {
       control={form.control}
       name="assigned_users"
       render={({ field }) => (
-        <FormItem className="flex flex-col">
-          <FormLabel className="flex items-center gap-1">
-            <Users className="h-4 w-4" /> {t('assignedPersonnel')}
+        <FormItem class名称="flex flex-col">
+          <FormLabel class名称="flex items-center gap-1">
+            <Users class名称="h-4 w-4" /> {t('assignedPersonnel')}
           </FormLabel>
-          <div className="space-y-3">
+          <div class名称="space-y-3">
             <Select onValueChange={addUser}>
               <FormControl>
-                <SelectTrigger className="w-full">
+                <SelectTrigger class名称="w-full">
                   <SelectValue placeholder={t('selectAssignedUsers')} />
                 </SelectTrigger>
               </FormControl>
               <SelectContent>
                 {isLoading ? (
-                  <div className="py-2 px-2 text-sm">{t('loading')}</div>
+                  <div class名称="py-2 px-2 text-sm">{t('loading')}</div>
                 ) : users.length === 0 ? (
-                  <div className="py-2 px-2 text-sm">{t('noUsersFound')}</div>
+                  <div class名称="py-2 px-2 text-sm">{t('noUsersFound')}</div>
                 ) : (
                   users.map((user) => (
                     <SelectItem 
@@ -144,12 +144,12 @@ export const AssignedUsersField = () => {
             </Select>
 
             {selectedUsers.length > 0 ? (
-              <div className="flex flex-wrap gap-2 mt-2 border p-2 rounded-md bg-muted/50">
+              <div class名称="flex flex-wrap gap-2 mt-2 border p-2 rounded-md bg-muted/50">
                 {selectedUsers.map((user) => (
-                  <Badge key={user.id} variant="secondary" className="flex items-center gap-1 py-1 px-2">
-                    <Avatar className="h-5 w-5 mr-1">
+                  <Badge key={user.id} variant="secondary" class名称="flex items-center gap-1 py-1 px-2">
+                    <Avatar class名称="h-5 w-5 mr-1">
                       <AvatarImage src={user.avatar} alt={user.full_name || user.username} />
-                      <AvatarFallback className="text-[10px]">
+                      <AvatarFallback class名称="text-[10px]">
                         {getUserInitials(user)}
                       </AvatarFallback>
                     </Avatar>
@@ -157,26 +157,26 @@ export const AssignedUsersField = () => {
                     <Button 
                       variant="ghost" 
                       size="icon" 
-                      className="h-4 w-4 p-0 ml-1 hover:bg-transparent hover:opacity-70"
+                      class名称="h-4 w-4 p-0 ml-1 hover:bg-transparent hover:opacity-70"
                       onClick={() => removeUser(user.id)}
                       type="button"
                     >
-                      <X className="h-3 w-3" />
-                      <span className="sr-only">{t('remove')}</span>
+                      <X class名称="h-3 w-3" />
+                      <span class名称="sr-only">{t('remove')}</span>
                     </Button>
                   </Badge>
                 ))}
               </div>
             ) : (
-              <div className="text-sm text-muted-foreground italic p-2">
+              <div class名称="text-sm text-muted-foreground italic p-2">
                 {t('noAssignedUsers')}
               </div>
             )}
           </div>
 
-          <FormDescription>
-            {t('assignedPersonnelDescription')}
-          </FormDescription>
+          <Form描述>
+            {t('assignedPersonnel描述')}
+          </Form描述>
           <FormMessage />
         </FormItem>
       )}

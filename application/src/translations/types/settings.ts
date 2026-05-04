@@ -1,52 +1,52 @@
 
-export interface SettingsTranslations {
-	// General Settings - Tabs
-  systemSettings: string;
-  mailSettings: string;
+export interface 设置Translations {
+	// General 设置 - Tabs
+  system设置: string;
+  mail设置: string;
   
-	// General Settings - System Settings
-  appName: string;
+	// General 设置 - System 设置
+  app名称: string;
   appURL: string;
-  senderName: string;
-  senderEmail: string;
+  sender名称: string;
+  sender邮箱: string;
   hideControls: string;
   
-	// General Settings - Mail Settings
-  smtpSettings?: string;
+	// General 设置 - Mail 设置
+  smtp设置?: string;
   smtpEnabled: string;
   smtpHost: string;
   smtpPort: string;
-  smtpUsername: string;
-  smtpPassword: string;
+  smtp用户名: string;
+  smtp密码: string;
   smtpAuthMethod: string;
   enableTLS: string;
-  localName: string;
+  local名称: string;
 
-	// General Settings - Test Email
-  testEmail: string;
-  sendTestEmail: string;
+	// General 设置 - Test 邮箱
+  test邮箱: string;
+  sendTest邮箱: string;
   emailTemplate: string;
   verification: string;
   passwordReset: string;
-  confirmEmailChange: string;
+  confirm邮箱Change: string;
   otp: string;
   loginAlert: string;
   authCollection: string;
   selectCollection: string;
-  toEmailAddress: string;
-  enterEmailAddress: string;
+  to邮箱添加ress: string;
+  enter邮箱添加ress: string;
 	send: string;
   sending: string;
-	testEmailSettings: string;
-	testEmailDescription: string;
-	testEmailAlert: string;
+	test邮箱设置: string;
+	test邮箱描述: string;
+	test邮箱Alert: string;
 
-	// General Settings - Actions and status
+	// General 设置 - 操作 and status
   save: string;
   saving: string;
   settingsUpdated: string;
-  errorSavingSettings: string;
-  errorFetchingSettings: string;
+  errorSaving设置: string;
+  errorFetching设置: string;
   testConnection: string;
   testingConnection: string;
   connectionSuccess: string;
@@ -55,13 +55,13 @@ export interface SettingsTranslations {
   // User Management
 	addUser: string;
 	permissionNotice: string;
-	permissionNoticeAddUser: string;
-	loadingSettings: string;
-	loadingSettingsError: string;
+	permissionNotice添加User: string;
+	loading设置: string;
+	loading设置Error: string;
 
-  //NotificationSettings.ts
+  //Notification设置.ts
   titleNotification: string;
-  descriptionChannelsServices: string;
+  descriptionChannels服务: string;
   addChannel: string;
   all: string;
   telegram: string;
@@ -76,8 +76,8 @@ export interface SettingsTranslations {
   // NotificationChannelDialog.tsx
   editChannel: string;
   addChannelDialog: string;
-  channelName: string;
-  channelNameDesc: string;
+  channel名称: string;
+  channel名称Desc: string;
   channelType: string;
   selectType: string;
   enabled: string;
@@ -109,14 +109,14 @@ export interface SettingsTranslations {
   signalApiEndpointDesc: string;
   googleChatWebhookUrl: string;
   googleChatWebhookUrlDesc: string;
-  emailAddress: string;
-  emailAddressDesc: string;
-  emailSenderName: string;
-  emailSenderNameDesc: string;
+  email添加ress: string;
+  email添加ressDesc: string;
+  emailSender名称: string;
+  emailSender名称Desc: string;
   smtpServer: string;
   // smtpPort: string;
-  // smtpPassword: string;
-  smtpPasswordDesc: string;
+  // smtp密码: string;
+  smtp密码Desc: string;
   ntfyEndpoint: string;
   ntfyEndpointDesc: string;
   apiToken: string;
@@ -134,9 +134,9 @@ export interface SettingsTranslations {
   matrixRoomIdDesc: string;
   matrixAccessToken: string;
   matrixAccessTokenDesc: string;
-  errorSaveChannel: string;
+  error保存Channel: string;
 
-  channelNamePlaceholder: string;
+  channel名称Placeholder: string;
   telegramChatIdPlaceholder: string;
   botTokenPlaceholder: string;
   discordWebhookUrlPlaceholder: string;
@@ -144,11 +144,11 @@ export interface SettingsTranslations {
   signalNumberPlaceholder: string;
   signalApiEndpointPlaceholder: string;
   googleChatWebhookUrlPlaceholder: string;
-  emailAddressPlaceholder: string;
-  emailSenderNamePlaceholder: string;
+  email添加ressPlaceholder: string;
+  emailSender名称Placeholder: string;
   smtpServerPlaceholder: string;
   smtpPortPlaceholder: string;
-  smtpPasswordPlaceholder: string;
+  smtp密码Placeholder: string;
   ntfyEndpointPlaceholder: string;
   apiTokenPlaceholder: string;
   pushoverUserKeyPlaceholder: string;
@@ -159,12 +159,12 @@ export interface SettingsTranslations {
   matrixRoomIdPlaceholder: string;
   matrixAccessTokenPlaceholder: string;
 
-  // DataRetentionSettings.tsx
+  // DataRetention设置.tsx
   // permissionNotice: string;
   permissionNoticeDataRetention: string;
-  loadingRetentionSettings: string;
+  loadingRetention设置: string;
   dataRetention: string;
-  dataRetentionDescription: string;
+  dataRetention描述: string;
   uptimeRetentionLabel: string;
   uptimeRetentionHelp: string;
   serverRetentionLabel: string;

@@ -38,14 +38,14 @@ export const IncidentDetailDialog = ({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent 
-        className="dialog-content sm:max-w-[700px] max-h-[90vh] p-0
+        class名称="dialog-content sm:max-w-[700px] max-h-[90vh] p-0
                   print:max-w-none print:max-h-none print:overflow-visible 
                   print:shadow-none print:m-0 print:p-0 print:border-none
                   print:absolute print:left-0 print:top-0 print:w-full print:h-auto"
       >
         <IncidentDetailContent 
           incident={incident}
-          onClose={() => onOpenChange(false)}
+          on关闭={() => onOpenChange(false)}
           assignedUser={assignedUser}
         />
       </DialogContent>

@@ -29,7 +29,7 @@ export function ServiceStatsCards({ service, uptimeData }: ServiceStatsCardsProp
       return {
         totalUptimeFormatted: "N/A",
         totalDowntimeFormatted: "N/A",
-        currentStatusDuration: "N/A"
+        current状态Duration: "N/A"
       };
     }
 
@@ -48,7 +48,7 @@ export function ServiceStatsCards({ service, uptimeData }: ServiceStatsCardsProp
 
     let totalUptime = 0;
     let totalDowntime = 0;
-    let currentStatus = service.status;
+    let current状态 = service.status;
     let lastChangeTime = new Date();
 
     // Calculate durations between status changes
@@ -67,17 +67,17 @@ export function ServiceStatsCards({ service, uptimeData }: ServiceStatsCardsProp
       } else {
         // For the last status, calculate time until now
         lastChangeTime = new Date(currentChange.timestamp);
-        currentStatus = currentChange.status;
+        current状态 = currentChange.status;
       }
     }
     
-    // Add time from last change until now for current status
+    // 添加 time from last change until now for current status
     const now = new Date();
     const sinceLastChange = now.getTime() - lastChangeTime.getTime();
     
-    if (currentStatus === "up") {
+    if (current状态 === "up") {
       totalUptime += sinceLastChange;
-    } else if (currentStatus === "down") {
+    } else if (current状态 === "down") {
       totalDowntime += sinceLastChange;
     }
     
@@ -90,7 +90,7 @@ export function ServiceStatsCards({ service, uptimeData }: ServiceStatsCardsProp
     return {
       totalUptimeFormatted: formatDuration(totalUptime),
       totalDowntimeFormatted: formatDuration(totalDowntime),
-      currentStatusDuration: formatDuration(sinceLastChange)
+      current状态Duration: formatDuration(sinceLastChange)
     };
   }, [uptimeData, service.status]);
 
@@ -109,48 +109,48 @@ export function ServiceStatsCards({ service, uptimeData }: ServiceStatsCardsProp
   const upChecks = uptimeData.filter(data => data.status === "up" && data.responseTime > 0);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-      <Card className="border-blue-400 dark:border-blue-700 bg-blue-50 dark:bg-blue-900/50 shadow-md">
-        <CardHeader className="pb-2">
-          <CardTitle className="text-sm font-medium text-blue-800 dark:text-blue-100">{t('responseTime')}</CardTitle>
+    <div class名称="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      <Card class名称="border-blue-400 dark:border-blue-700 bg-blue-50 dark:bg-blue-900/50 shadow-md">
+        <CardHeader class名称="pb-2">
+          <CardTitle class名称="text-sm font-medium text-blue-800 dark:text-blue-100">{t('responseTime')}</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold text-blue-700 dark:text-white">
+          <div class名称="text-2xl font-bold text-blue-700 dark:text-white">
             {service.responseTime}ms
           </div>
-          <p className="text-xs text-blue-600 dark:text-blue-200 mt-1">{t('lastCheckedAt').replace('{datetime}', service.lastChecked)}</p>
+          <p class名称="text-xs text-blue-600 dark:text-blue-200 mt-1">{t('lastCheckedAt').replace('{datetime}', service.lastChecked)}</p>
           {avgResponseTime > 0 && avgResponseTime !== service.responseTime && (
-            <p className="text-xs text-blue-600 dark:text-blue-200 mt-1">{t('avg')}: {avgResponseTime}ms ({t('lastUpChecksCount').replace('{count}', String(upChecks.length))})</p>
+            <p class名称="text-xs text-blue-600 dark:text-blue-200 mt-1">{t('avg')}: {avgResponseTime}ms ({t('lastUpChecksCount').replace('{count}', String(upChecks.length))})</p>
           )}
         </CardContent>
       </Card>
       
-      <Card className="border-green-400 dark:border-green-700 bg-green-50 dark:bg-green-900/50 shadow-md">
-        <CardHeader className="pb-2">
-          <CardTitle className="text-sm font-medium text-green-800 dark:text-green-100">{t('uptime')}</CardTitle>
+      <Card class名称="border-green-400 dark:border-green-700 bg-green-50 dark:bg-green-900/50 shadow-md">
+        <CardHeader class名称="pb-2">
+          <CardTitle class名称="text-sm font-medium text-green-800 dark:text-green-100">{t('uptime')}</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold text-green-700 dark:text-white">
+          <div class名称="text-2xl font-bold text-green-700 dark:text-white">
             {uptimePercentage}%
           </div>
-          <p className="text-xs text-green-600 dark:text-green-200 mt-1">{t('basedOnlastChecksCount').replace('{count}', String(uptimeData.length))}</p>
-          <div className="flex flex-col space-y-1 mt-2">
-            <div className="flex items-center text-xs text-green-600 dark:text-green-200">
-              <ArrowUp className="h-3 w-3 mr-1 text-green-600 dark:text-green-400" />
+          <p class名称="text-xs text-green-600 dark:text-green-200 mt-1">{t('basedOnlastChecksCount').replace('{count}', String(uptimeData.length))}</p>
+          <div class名称="flex flex-col space-y-1 mt-2">
+            <div class名称="flex items-center text-xs text-green-600 dark:text-green-200">
+              <ArrowUp class名称="h-3 w-3 mr-1 text-green-600 dark:text-green-400" />
               <span>{t("totalUptime")}: {uptimeStats.totalUptimeFormatted}</span>
             </div>
-            <div className="flex items-center text-xs text-red-600 dark:text-red-200">
-              <ArrowDown className="h-3 w-3 mr-1 text-red-600 dark:text-red-400" />
+            <div class名称="flex items-center text-xs text-red-600 dark:text-red-200">
+              <ArrowDown class名称="h-3 w-3 mr-1 text-red-600 dark:text-red-400" />
               <span>{t("totalDowntime")}: {uptimeStats.totalDowntimeFormatted}</span>
             </div>
             {service.status !== "paused" && (
-              <div className="flex items-center text-xs font-medium mt-1">
-                <span className={service.status === "up" ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}>
+              <div class名称="flex items-center text-xs font-medium mt-1">
+                <span class名称={service.status === "up" ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}>
                   {
 										service.status === "up" ?
-											t('upStatusDuration').replace("{duration}", uptimeStats.currentStatusDuration)
+											t('up状态Duration').replace("{duration}", uptimeStats.current状态Duration)
 											:
-											t('downStatusDuration').replace("{duration}", uptimeStats.currentStatusDuration)
+											t('down状态Duration').replace("{duration}", uptimeStats.current状态Duration)
 									}
                 </span>
               </div>
@@ -159,18 +159,18 @@ export function ServiceStatsCards({ service, uptimeData }: ServiceStatsCardsProp
         </CardContent>
       </Card>
       
-      <Card className="border-purple-400 dark:border-purple-700 bg-purple-50 dark:bg-purple-900/50 shadow-md">
-        <CardHeader className="pb-2">
-          <CardTitle className="text-sm font-medium text-purple-800 dark:text-purple-100">{t('monitoringSettings')}</CardTitle>
+      <Card class名称="border-purple-400 dark:border-purple-700 bg-purple-50 dark:bg-purple-900/50 shadow-md">
+        <CardHeader class名称="pb-2">
+          <CardTitle class名称="text-sm font-medium text-purple-800 dark:text-purple-100">{t('monitoring设置')}</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center text-sm text-purple-700 dark:text-purple-200">
-            <Clock className="h-4 w-4 mr-2 text-purple-600 dark:text-purple-400" />
-            <span>{t('monitoringSettingsInterval').replace('{interval}', String(service.interval))}</span>
+          <div class名称="flex items-center text-sm text-purple-700 dark:text-purple-200">
+            <Clock class名称="h-4 w-4 mr-2 text-purple-600 dark:text-purple-400" />
+            <span>{t('monitoring设置Interval').replace('{interval}', String(service.interval))}</span>
           </div>
-          <div className="flex items-center text-sm text-purple-700 dark:text-purple-200 mt-1">
-            <Server className="h-4 w-4 mr-2 text-purple-600 dark:text-purple-400" />
-            <span>{service.type} {t('monitoringSettingsType')}</span>
+          <div class名称="flex items-center text-sm text-purple-700 dark:text-purple-200 mt-1">
+            <Server class名称="h-4 w-4 mr-2 text-purple-600 dark:text-purple-400" />
+            <span>{service.type} {t('monitoring设置Type')}</span>
           </div>
         </CardContent>
       </Card>

@@ -9,7 +9,7 @@ export const usePrintMaintenance = () => {
   
   const handlePrint = (maintenance: MaintenanceItem) => {
     try {
-      // Add print-specific stylesheet temporarily
+      // 添加 print-specific stylesheet temporarily
       const style = document.createElement('style');
       style.id = 'print-style';
       style.textContent = `
@@ -41,7 +41,7 @@ export const usePrintMaintenance = () => {
             transform: none !important;
           }
           
-          /* Remove any black backgrounds */
+          /* 移除 any black backgrounds */
           html, body {
             background-color: white !important;
             color: black !important;
@@ -146,7 +146,7 @@ export const usePrintMaintenance = () => {
       setTimeout(() => {
         window.print();
         
-        // Remove the style after printing dialog closes
+        // 移除 the style after printing dialog closes
         setTimeout(() => {
           const printStyle = document.getElementById('print-style');
           if (printStyle) {

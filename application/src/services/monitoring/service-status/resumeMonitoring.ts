@@ -2,12 +2,12 @@
 import { pb } from '@/lib/pocketbase';
 import { monitoringIntervals } from '../monitoringIntervals';
 import { Service } from '@/types/service.types';
-import { startMonitoringService } from './startMonitoring';
+import { start监控ingService } from './start监控ing';
 
 /**
  * Specifically resume a paused service
  */
-export async function resumeMonitoring(serviceId: string): Promise<void> {
+export async function resume监控ing(serviceId: string): Promise<void> {
   try {
     // Get current timestamp formatted as a string
     const now = new Date().toISOString();
@@ -35,7 +35,7 @@ export async function resumeMonitoring(serviceId: string): Promise<void> {
     await new Promise(resolve => setTimeout(resolve, 500));
     
     // Now start the service monitoring with a clean slate
-    await startMonitoringService(serviceId);
+    await start监控ingService(serviceId);
     
    // console.log(`Service ${service.name} resumed and ready for monitoring`);
   } catch (error) {

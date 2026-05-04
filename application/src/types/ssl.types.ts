@@ -28,12 +28,12 @@ export interface SSLCertificate {
   check_at?: string; // Next check time
   // Existing fields based on the provided structure
   collectionId?: string;
-  collectionName?: string;
+  collection名称?: string;
   resolved_ip?: string;
   issuer_cn?: string;
 }
 
-export interface AddSSLCertificateDto {
+export interface 添加SSLCertificateDto {
   domain: string;
   warning_threshold: number;
   expiry_threshold: number;

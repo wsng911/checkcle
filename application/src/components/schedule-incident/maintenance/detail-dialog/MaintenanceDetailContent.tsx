@@ -10,12 +10,12 @@ import { alertConfigService } from '@/services/alertConfigService';
 
 interface MaintenanceDetailContentProps {
   maintenance: MaintenanceItem;
-  onClose: () => void;
+  on关闭: () => void;
 }
 
 export const MaintenanceDetailContent = ({ 
   maintenance,
-  onClose
+  on关闭
 }: MaintenanceDetailContentProps) => {
   const [assignedUsers, setAssignedUsers] = useState<User[]>([]);
   const [maintenanceWithDetails, setMaintenanceWithDetails] = useState<MaintenanceItem>(maintenance);
@@ -43,7 +43,7 @@ export const MaintenanceDetailContent = ({
   // Process user information when users data is available
   useEffect(() => {
     if (users.length > 0 && maintenance) {
-      // Create a copy of the maintenance object for modifications
+      // 创建 a copy of the maintenance object for modifications
       const enhancedMaintenance = { ...maintenance };
       
       // Process assigned users
@@ -89,9 +89,9 @@ export const MaintenanceDetailContent = ({
         
         // Step 2: Clean up extracted IDs (remove quotes, brackets, etc.)
         userIds = userIds.map(id => {
-          // Remove surrounding quotes if present
+          // 移除 surrounding quotes if present
           let cleanId = id.replace(/^["']|["']$/g, '');
-          // Remove any remaining JSON artifacts
+          // 移除 any remaining JSON artifacts
           cleanId = cleanId.replace(/[\[\]"'\\]/g, '');
           return cleanId;
         }).filter(Boolean);
@@ -143,7 +143,7 @@ export const MaintenanceDetailContent = ({
       />
       <MaintenanceDetailFooter 
         maintenance={maintenanceWithDetails}
-        onClose={onClose}
+        on关闭={on关闭}
       />
     </>
   );

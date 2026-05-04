@@ -28,10 +28,10 @@ export const useUptimeData = ({ serviceId, serviceType, status, interval }: UseU
       const rawData = await uptimeService.getUptimeHistory(serviceId, 50, undefined, undefined, serviceType);
       
       // Include ALL monitoring data - both default and regional
-      const allMonitoringData = rawData.filter(record => record.service_id === serviceId);
+      const all监控ingData = rawData.filter(record => record.service_id === serviceId);
       
-      console.log(`Retrieved ${rawData.length} total records, filtered to ${allMonitoringData.length} records for service ${serviceId}`);
-      return allMonitoringData;
+      console.log(`Retrieved ${rawData.length} total records, filtered to ${all监控ingData.length} records for service ${serviceId}`);
+      return all监控ingData;
     },
     enabled: !!serviceId,
     refetchInterval: 60000, // 1 minute polling

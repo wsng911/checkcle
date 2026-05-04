@@ -29,7 +29,7 @@ const UserTextField = ({
         <FormItem>
           <FormLabel>
             {label}
-            {required && <span className="text-destructive ml-1">*</span>}
+            {required && <span class名称="text-destructive ml-1">*</span>}
           </FormLabel>
           <FormControl>
             <Input

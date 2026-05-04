@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, Card描述, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Settings, Mail, ShieldAlert } from "lucide-react";
+import { 设置, Mail, ShieldAlert } from "lucide-react";
 import { Form } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useSystemSettings } from "@/hooks/useSystemSettings";
-import { GeneralSettings } from "@/services/settingsService";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { useSystem设置 } from "@/hooks/useSystem设置";
+import { General设置 } from "@/services/settingsService";
+import { Alert, Alert描述 } from "@/components/ui/alert";
 import { authService } from "@/services/authService";
-import SystemSettingsTab from './SystemSettingsTab';
-import MailSettingsTab from './MailSettingsTab';
-import { GeneralSettingsPanelProps } from './types';
+import System设置Tab from './System设置Tab';
+import Mail设置Tab from './Mail设置Tab';
+import { General设置PanelProps } from './types';
 
-const GeneralSettingsPanel: React.FC<GeneralSettingsPanelProps> = () => {
+const General设置Panel: React.FC<General设置PanelProps> = () => {
   const { t } = useLanguage();
-  const [isEditing, setIsEditing] = useState(false);
+  const [is编辑ing, setIs编辑ing] = useState(false);
   const [activeTab, setActiveTab] = useState("system");
   
   // Get current user to check permissions
@@ -27,17 +27,17 @@ const GeneralSettingsPanel: React.FC<GeneralSettingsPanelProps> = () => {
     settings,
     isLoading,
     error,
-    updateSettings,
+    update设置,
     isUpdating,
-  } = useSystemSettings();
+  } = useSystem设置();
 
-  const form = useForm<GeneralSettings>({
+  const form = useForm<General设置>({
     defaultValues: {
       meta: {
-        appName: '',
+        app名称: '',
         appURL: '',
-        senderName: '',
-        senderAddress: '',
+        sender名称: '',
+        sender添加ress: '',
         hideControls: false
       },
       smtp: {
@@ -48,23 +48,23 @@ const GeneralSettingsPanel: React.FC<GeneralSettingsPanelProps> = () => {
         password: '',
         authMethod: '',
         tls: true,
-        localName: ''
+        local名称: ''
       }
     }
   });
 
   useEffect(() => {
     if (settings && isSuperAdmin) {
-      // Initialize form with existing settings, using system_name for appName if meta.appName is not set
-      const appName = settings.meta?.appName || settings.system_name || '';
+      // Initialize form with existing settings, using system_name for app名称 if meta.app名称 is not set
+      const app名称 = settings.meta?.app名称 || settings.system_name || '';
       
       form.reset({
         ...settings,
         meta: {
-          appName: appName,
+          app名称: app名称,
           appURL: settings.meta?.appURL || '',
-          senderName: settings.meta?.senderName || '',
-          senderAddress: settings.meta?.senderAddress || '',
+          sender名称: settings.meta?.sender名称 || '',
+          sender添加ress: settings.meta?.sender添加ress || '',
           hideControls: settings.meta?.hideControls || false
         },
         smtp: settings.smtp || {
@@ -75,46 +75,46 @@ const GeneralSettingsPanel: React.FC<GeneralSettingsPanelProps> = () => {
           password: '',
           authMethod: '',
           tls: true,
-          localName: ''
+          local名称: ''
         }
       });
     }
   }, [settings, form, isSuperAdmin]);
 
-  const handleSave = async (formData: GeneralSettings) => {
+  const handle保存 = async (formData: General设置) => {
     try {
       // Prepare data for PocketBase settings update (no ID needed)
-      const dataToSave = {
+      const dataTo保存 = {
         ...formData,
-        system_name: formData.meta?.appName || settings?.system_name
+        system_name: formData.meta?.app名称 || settings?.system_name
       };
       
-      console.log('Saving settings data:', dataToSave);
-      await updateSettings(dataToSave);
-      setIsEditing(false);
+      console.log('Saving settings data:', dataTo保存);
+      await update设置(dataTo保存);
+      setIs编辑ing(false);
     } catch (error) {
       console.error("Error updating settings:", error);
     }
   };
 
-  const handleEditClick = () => {
-    console.log('Edit button clicked, setting isEditing to true');
-    setIsEditing(true);
+  const handle编辑Click = () => {
+    console.log('编辑 button clicked, setting is编辑ing to true');
+    setIs编辑ing(true);
   };
 
-  const handleCancelClick = () => {
-    console.log('Cancel button clicked, setting isEditing to false');
-    setIsEditing(false);
+  const handle取消Click = () => {
+    console.log('取消 button clicked, setting is编辑ing to false');
+    setIs编辑ing(false);
     // Reset form to original values
     if (settings) {
-      const appName = settings.meta?.appName || settings.system_name || '';
+      const app名称 = settings.meta?.app名称 || settings.system_name || '';
       form.reset({
         ...settings,
         meta: {
-          appName: appName,
+          app名称: app名称,
           appURL: settings.meta?.appURL || '',
-          senderName: settings.meta?.senderName || '',
-          senderAddress: settings.meta?.senderAddress || '',
+          sender名称: settings.meta?.sender名称 || '',
+          sender添加ress: settings.meta?.sender添加ress || '',
           hideControls: settings.meta?.hideControls || false
         },
         smtp: settings.smtp || {
@@ -125,7 +125,7 @@ const GeneralSettingsPanel: React.FC<GeneralSettingsPanelProps> = () => {
           password: '',
           authMethod: '',
           tls: true,
-          localName: ''
+          local名称: ''
         }
       });
     }
@@ -134,17 +134,17 @@ const GeneralSettingsPanel: React.FC<GeneralSettingsPanelProps> = () => {
   // Show permission notice for admin users
   if (!isSuperAdmin) {
     return (
-      <div className="p-4">
+      <div class名称="p-4">
         <Card>
           <CardHeader>
-            <CardTitle>{t("generalSettings", "menu")}</CardTitle>
+            <CardTitle>{t("general设置", "menu")}</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <Alert className="border-blue-200 bg-blue-50 dark:bg-blue-950 dark:border-blue-800">
-              <ShieldAlert className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-              <AlertDescription className="text-blue-700 dark:text-blue-300">
-                <span className="font-medium">{t("permissionNotice")}</span> {t("permissionNoticeAddUser")}
-              </AlertDescription>
+          <CardContent class名称="space-y-4">
+            <Alert class名称="border-blue-200 bg-blue-50 dark:bg-blue-950 dark:border-blue-800">
+              <ShieldAlert class名称="h-5 w-5 text-blue-600 dark:text-blue-400" />
+              <Alert描述 class名称="text-blue-700 dark:text-blue-300">
+                <span class名称="font-medium">{t("permissionNotice")}</span> {t("permissionNotice添加User")}
+              </Alert描述>
             </Alert>
           </CardContent>
         </Card>
@@ -153,54 +153,54 @@ const GeneralSettingsPanel: React.FC<GeneralSettingsPanelProps> = () => {
   }
 
   if (isLoading) {
-    return <div className="p-4">{t("loadingSettings")}</div>;
+    return <div class名称="p-4">{t("loading设置")}</div>;
   }
 
   if (error) {
-    return <div className="p-4 text-red-500">{t("loadingSettingsError")}</div>;
+    return <div class名称="p-4 text-red-500">{t("loading设置Error")}</div>;
   }
 
   return (
-    <div className="p-4">
+    <div class名称="p-4">
       <Card>
         <CardHeader>
-          <CardTitle>{t("generalSettings", "menu")}</CardTitle>
+          <CardTitle>{t("general设置", "menu")}</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent class名称="space-y-4">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleSave)}>
-              <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                <TabsList className="w-full mb-4">
-                  <TabsTrigger value="system" className="flex items-center gap-2 flex-1">
-                    <Settings className="h-4 w-4" />
-                    {t("systemSettings", "settings")}
+            <form on提交={form.handle提交(handle保存)}>
+              <Tabs value={activeTab} onValueChange={setActiveTab} class名称="w-full">
+                <TabsList class名称="w-full mb-4">
+                  <TabsTrigger value="system" class名称="flex items-center gap-2 flex-1">
+                    <设置 class名称="h-4 w-4" />
+                    {t("system设置", "settings")}
                   </TabsTrigger>
-                  <TabsTrigger value="mail" className="flex items-center gap-2 flex-1">
-                    <Mail className="h-4 w-4" />
-                    {t("mailSettings", "settings")}
+                  <TabsTrigger value="mail" class名称="flex items-center gap-2 flex-1">
+                    <Mail class名称="h-4 w-4" />
+                    {t("mail设置", "settings")}
                   </TabsTrigger>
                 </TabsList>
                 
                 <TabsContent value="system">
-                  <SystemSettingsTab 
+                  <System设置Tab 
                     form={form} 
-                    isEditing={isEditing} 
+                    is编辑ing={is编辑ing} 
                     settings={settings} 
                   />
                 </TabsContent>
                 
                 <TabsContent value="mail">
-                  <MailSettingsTab 
+                  <Mail设置Tab 
                     form={form} 
-                    isEditing={isEditing} 
+                    is编辑ing={is编辑ing} 
                     settings={settings}
                   />
                 </TabsContent>
               </Tabs>
               
-              {isEditing && (
-                <div className="flex justify-between mt-6">
-                  <Button type="button" variant="outline" onClick={handleCancelClick} disabled={isUpdating}>
+              {is编辑ing && (
+                <div class名称="flex justify-between mt-6">
+                  <Button type="button" variant="outline" onClick={handle取消Click} disabled={isUpdating}>
                     {t("cancel", "common")}
                   </Button>
                   <Button type="submit" disabled={isUpdating}>
@@ -212,9 +212,9 @@ const GeneralSettingsPanel: React.FC<GeneralSettingsPanelProps> = () => {
           </Form>
         </CardContent>
         
-        {!isEditing && (
+        {!is编辑ing && (
           <CardFooter>
-            <Button type="button" onClick={handleEditClick}>
+            <Button type="button" onClick={handle编辑Click}>
               {t("edit", "common")}
             </Button>
           </CardFooter>
@@ -224,4 +224,4 @@ const GeneralSettingsPanel: React.FC<GeneralSettingsPanelProps> = () => {
   );
 };
 
-export default GeneralSettingsPanel;
+export default General设置Panel;

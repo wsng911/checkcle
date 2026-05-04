@@ -66,9 +66,9 @@ const SslDomain = () => {
   // Show loading state while fetching data
   if (isLoading) {
     return (
-      <div className="flex h-screen overflow-hidden bg-background text-foreground">
+      <div class名称="flex h-screen overflow-hidden bg-background text-foreground">
         <Sidebar collapsed={sidebarCollapsed} />
-        <div className="flex flex-col flex-1">
+        <div class名称="flex flex-col flex-1">
           <Header 
             currentUser={currentUser} 
             onLogout={handleLogout} 
@@ -84,22 +84,22 @@ const SslDomain = () => {
   // Show error state
   if (error) {
     return (
-      <div className="flex h-screen overflow-hidden bg-background text-foreground">
+      <div class名称="flex h-screen overflow-hidden bg-background text-foreground">
         <Sidebar collapsed={sidebarCollapsed} />
-        <div className="flex flex-col flex-1">
+        <div class名称="flex flex-col flex-1">
           <Header 
             currentUser={currentUser} 
             onLogout={handleLogout} 
             sidebarCollapsed={sidebarCollapsed} 
             toggleSidebar={toggleSidebar} 
           />
-          <div className="flex flex-col items-center justify-center h-full p-6">
-            <h2 className="text-xl font-bold mb-2">{t('failedToLoadCertificates')}</h2>
-            <p className="text-muted-foreground mb-4">
+          <div class名称="flex flex-col items-center justify-center h-full p-6">
+            <h2 class名称="text-xl font-bold mb-2">{t('failedToLoadCertificates')}</h2>
+            <p class名称="text-muted-foreground mb-4">
               {error instanceof Error ? error.message : t('unknown')}
             </p>
             <button 
-              className="px-4 py-2 bg-primary text-primary-foreground rounded-md"
+              class名称="px-4 py-2 bg-primary text-primary-foreground rounded-md"
               onClick={() => refetch()}
             >
               {t('check')}
@@ -112,9 +112,9 @@ const SslDomain = () => {
 
   // Render with data
   return (
-    <div className="flex h-screen overflow-hidden bg-background text-foreground">
+    <div class名称="flex h-screen overflow-hidden bg-background text-foreground">
       <Sidebar collapsed={sidebarCollapsed} />
-      <div className="flex flex-col flex-1">
+      <div class名称="flex flex-col flex-1">
         <Header 
           currentUser={currentUser} 
           onLogout={handleLogout} 

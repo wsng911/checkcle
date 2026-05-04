@@ -1,6 +1,6 @@
 
 import { AlertConfiguration } from "@/services/alertConfigService";
-import { Bell, Edit, Trash2 } from "lucide-react";
+import { Bell, 编辑, Trash2 } from "lucide-react";
 import { useState } from "react";
 import { 
   Table, 
@@ -25,14 +25,14 @@ interface CombinedChannel extends Partial<AlertConfiguration> {
 
 interface NotificationChannelListProps {
   channels: CombinedChannel[];
-  onEdit: (config: AlertConfiguration) => void;
-  onDelete: (id: string) => void;
+  on编辑: (config: AlertConfiguration) => void;
+  on删除: (id: string) => void;
 }
 
 export const NotificationChannelList = ({
   channels,
-  onEdit,
-  onDelete
+  on编辑,
+  on删除
 }: NotificationChannelListProps) => {
   const [optimisticStates, setOptimisticStates] = useState<Record<string, boolean>>({});
 
@@ -78,7 +78,7 @@ export const NotificationChannelList = ({
       case "slack": return "Slack";
       case "signal": return "Signal";
       case "google_chat": return "Google Chat";
-      case "email": return "Email";
+      case "email": return "邮箱";
       case "pushover": return "Pushover";
       case "notifiarr": return "Notifiarr";
       case "webhook": return "Webhook";
@@ -112,37 +112,37 @@ export const NotificationChannelList = ({
 
   if (channels.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-10 text-center">
-        <Bell className="h-12 w-12 text-muted-foreground mb-4" />
-        <h3 className="text-lg font-medium">No notification channels configured</h3>
-        <p className="text-muted-foreground mt-2">
-          Add a notification channel to get alerts when your services go down.
+      <div class名称="flex flex-col items-center justify-center py-10 text-center">
+        <Bell class名称="h-12 w-12 text-muted-foreground mb-4" />
+        <h3 class名称="text-lg font-medium">No notification channels configured</h3>
+        <p class名称="text-muted-foreground mt-2">
+          添加 a notification channel to get alerts when your services go down.
         </p>
       </div>
     );
   }
 
   return (
-    <div className="rounded-md border">
+    <div class名称="rounded-md border">
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Name</TableHead>
+            <TableHead>名称</TableHead>
             <TableHead>Type</TableHead>
             <TableHead>Details</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Created</TableHead>
-            <TableHead className="text-right">Actions</TableHead>
+            <TableHead>状态</TableHead>
+            <TableHead>创建d</TableHead>
+            <TableHead class名称="text-right">操作</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {channels.map((channel) => (
             <TableRow key={channel.id}>
-              <TableCell className="font-medium">{channel.notify_name}</TableCell>
+              <TableCell class名称="font-medium">{channel.notify_name}</TableCell>
               <TableCell>
                 <Badge variant="outline">{getChannelTypeLabel(channel.notification_type)}</Badge>
               </TableCell>
-              <TableCell className="max-w-xs truncate text-sm text-muted-foreground">
+              <TableCell class名称="max-w-xs truncate text-sm text-muted-foreground">
                 {getChannelDetails(channel)}
               </TableCell>
                <TableCell>
@@ -160,26 +160,26 @@ export const NotificationChannelList = ({
               <TableCell>
                 {channel.created ? new Date(channel.created).toLocaleDateString() : "-"}
               </TableCell>
-              <TableCell className="text-right">
-                <div className="flex justify-end gap-2">
+              <TableCell class名称="text-right">
+                <div class名称="flex justify-end gap-2">
                   <Button 
                     variant="outline" 
                     size="sm" 
-                    onClick={() => onEdit(channel as AlertConfiguration)}
+                    onClick={() => on编辑(channel as AlertConfiguration)}
                     disabled={channel.isWebhook} 
                   >
-                    <Edit className="h-4 w-4" />
+                    <编辑 class名称="h-4 w-4" />
                   </Button>
                   <Button 
                     variant="outline" 
                     size="sm" 
                     onClick={() => {
                       if (channel.id && confirm("Are you sure you want to delete this notification channel?")) {
-                        onDelete(channel.id)
+                        on删除(channel.id)
                       }
                     }}
                   >
-                    <Trash2 className="h-4 w-4 text-destructive" />
+                    <Trash2 class名称="h-4 w-4 text-destructive" />
                   </Button>
                 </div>
               </TableCell>

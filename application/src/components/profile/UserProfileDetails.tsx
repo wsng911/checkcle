@@ -27,48 +27,48 @@ export function UserProfileDetails({ user }: UserProfileDetailsProps) {
   const isActive = user.status === "Active";
 
   return (
-    <div className="flex flex-col items-center space-y-4">
-      <Avatar className="h-32 w-32">
+    <div class名称="flex flex-col items-center space-y-4">
+      <Avatar class名称="h-32 w-32">
         {user.avatar ? (
           <AvatarImage src={user.avatar} alt={user.full_name || user.username} />
         ) : (
-          <AvatarFallback className="text-3xl bg-primary/20 text-primary">
+          <AvatarFallback class名称="text-3xl bg-primary/20 text-primary">
             {getInitials()}
           </AvatarFallback>
         )}
       </Avatar>
 
-      <div className="space-y-1 text-center">
-        <h2 className="text-xl font-bold">{user.full_name || user.username}</h2>
-        <div className="flex items-center justify-center text-sm text-muted-foreground gap-1">
-          <Mail className="h-3 w-3" />
+      <div class名称="space-y-1 text-center">
+        <h2 class名称="text-xl font-bold">{user.full_name || user.username}</h2>
+        <div class名称="flex items-center justify-center text-sm text-muted-foreground gap-1">
+          <Mail class名称="h-3 w-3" />
           <span>{user.email}</span>
         </div>
-        <div className="flex items-center justify-center text-sm text-muted-foreground gap-1">
-          <UserIcon className="h-3 w-3" />
+        <div class名称="flex items-center justify-center text-sm text-muted-foreground gap-1">
+          <UserIcon class名称="h-3 w-3" />
           <span>@{user.username}</span>
         </div>
       </div>
 
-      <div className="w-full pt-2">
-        <div className="flex flex-wrap justify-center gap-2 pt-2">
+      <div class名称="w-full pt-2">
+        <div class名称="flex flex-wrap justify-center gap-2 pt-2">
           {user.role && (
-            <Badge variant="secondary" className="px-2 py-1">
+            <Badge variant="secondary" class名称="px-2 py-1">
               {user.role}
             </Badge>
           )}
-          <Badge variant={isActive ? "default" : "outline"} className="px-2 py-1">
+          <Badge variant={isActive ? "default" : "outline"} class名称="px-2 py-1">
             {user.status || (isActive ? "Active" : "Inactive")}
           </Badge>
           {user.verified && (
-            <Badge className="bg-green-600 hover:bg-green-700 px-2 py-1">
+            <Badge class名称="bg-green-600 hover:bg-green-700 px-2 py-1">
               Verified
             </Badge>
           )}
         </div>
 
-        <div className="border-t border-border mt-4 pt-4">
-          <p className="text-sm text-muted-foreground">
+        <div class名称="border-t border-border mt-4 pt-4">
+          <p class名称="text-sm text-muted-foreground">
             Member since: {createdDate}
           </p>
         </div>

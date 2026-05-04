@@ -1,13 +1,13 @@
 
-import { ServicesTranslations } from '../types/services';
+import { 服务Translations } from '../types/services';
 
-export const servicesTranslations: ServicesTranslations = {
-  serviceStatus: "서비스 상태",
+export const servicesTranslations: 服务Translations = {
+  service状态: "서비스 상태",
   responseTime: "응답 시간",
   uptime: "가동 시간",
   lastChecked: "마지막 확인",
-  noServices: "필터 조건에 맞는 서비스가 없습니다.",
-  currentlyMonitoring: "현재 모니터링 중",
+  no服务: "필터 조건에 맞는 서비스가 없습니다.",
+  currently监控ing: "현재 모니터링 중",
   retry: "재시도",
   overview: "개요",
   newService: "새 서비스",
@@ -17,8 +17,8 @@ export const servicesTranslations: ServicesTranslations = {
   createNewService: "새 서비스 생성",
   createNewServiceDesc: "모니터링할 새 서비스의 세부 정보를 입력하세요.",
 
-  serviceName: "서비스 이름",
-  serviceNameDesc: "서비스에 대한 설명적인 이름을 입력하세요",
+  service名称: "서비스 이름",
+  service名称Desc: "서비스에 대한 설명적인 이름을 입력하세요",
 
   checkInterval: "체크 간격",
   seconds: "초",
@@ -57,8 +57,8 @@ export const servicesTranslations: ServicesTranslations = {
   serviceTypeTCPDesc: "TCP 프로토콜로 TCP 포트 연결 상태 모니터링",
   serviceTypeDNSDesc: "DNS 해석 모니터링",
 
-  regionalMonitoring: "지역 모니터링",
-  regionalMonitoringDesc: "이 서비스를 지역 모니터링 에이전트에 할당하여 분산 모니터링",
+  regional监控ing: "지역 모니터링",
+  regional监控ingDesc: "이 서비스를 지역 모니터링 에이전트에 할당하여 분산 모니터링",
   regionalAgents: "지역 에이전트",
   regionalAgentsLoading: "에이전트 로딩 중...",
   regionalAgentsAvailablePlaceholder: "추가 지역 에이전트 선택...",
@@ -78,12 +78,12 @@ export const servicesTranslations: ServicesTranslations = {
   targetDefaultDesc: "모니터링 대상 URL 또는 호스트 이름 입력",
   targetDefaultPlaceholder: "URL 또는 호스트 이름 입력",
 
-  serviceNameRequired: "서비스 이름은 필수입니다",
+  service名称Required: "서비스 이름은 필수입니다",
   urlDomainHostRequired: "URL/도메인/호스트는 필수입니다",
   enterValidUrlHostnameDomain: "유효한 URL, 호스트 이름 또는 도메인을 입력하세요",
 
-  upServices: "가동 서비스",
-  downServices: "다운 서비스",
-  pausedServices: "일시정지 서비스",
-  warningServices: "경고 서비스",
+  up服务: "가동 서비스",
+  down服务: "다운 서비스",
+  paused服务: "일시정지 서비스",
+  warning服务: "경고 서비스",
 };

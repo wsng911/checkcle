@@ -1,9 +1,9 @@
 
 import React from 'react';
-import { PublicStatusPage as PublicStatusPageContent } from '@/components/public/PublicStatusPage';
+import { Public状态Page as Public状态PageContent } from '@/components/public/Public状态Page';
 
-const PublicStatusPage = () => {
-  return <PublicStatusPageContent />;
+const Public状态Page = () => {
+  return <Public状态PageContent />;
 };
 
-export default PublicStatusPage;
+export default Public状态Page;

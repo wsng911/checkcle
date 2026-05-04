@@ -10,13 +10,13 @@ export const DockerEmptyState = ({ searchTerm }: DockerEmptyStateProps) => {
   const { t } = useLanguage();
   return (
     <TableRow>
-      <TableCell colSpan={8} className="text-center py-12 text-muted-foreground">
-        <div className="flex flex-col items-center gap-2">
-          <div className="text-lg font-medium">
-            {searchTerm ? t('noContainersFound', 'docker') : t('noContainersRunning', 'docker')}
+      <TableCell colSpan={8} class名称="text-center py-12 text-muted-foreground">
+        <div class名称="flex flex-col items-center gap-2">
+          <div class名称="text-lg font-medium">
+            {searchTerm ? t('no容器Found', 'docker') : t('no容器Running', 'docker')}
           </div>
-          <div className="text-sm">
-            {searchTerm ? t('tryAdjustSearch', 'docker') : t('startSomeContainers', 'docker')}
+          <div class名称="text-sm">
+            {searchTerm ? t('tryAdjust搜索', 'docker') : t('startSome容器', 'docker')}
           </div>
         </div>
       </TableCell>

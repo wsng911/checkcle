@@ -5,7 +5,7 @@ import { toast } from "@/hooks/use-toast";
 export interface WebhookConfiguration {
   id?: string;
   collectionId?: string;
-  collectionName?: string;
+  collection名称?: string;
   user_id?: string;
   url: string;
   enabled: string;
@@ -22,7 +22,7 @@ export interface WebhookConfiguration {
 }
 
 export const webhookService = {
-  async createWebhook(config: Omit<WebhookConfiguration, 'id' | 'collectionId' | 'collectionName' | 'created' | 'updated'>): Promise<WebhookConfiguration | null> {
+  async createWebhook(config: Omit<WebhookConfiguration, 'id' | 'collectionId' | 'collection名称' | 'created' | 'updated'>): Promise<WebhookConfiguration | null> {
    // console.info("Creating webhook configuration:", config);
     try {
       const result = await pb.collection('webhook').create(config);

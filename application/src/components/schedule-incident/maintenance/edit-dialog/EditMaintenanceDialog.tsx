@@ -6,47 +6,47 @@ import {
   DialogContent, 
   DialogHeader, 
   DialogTitle, 
-  DialogDescription,
+  Dialog描述,
   DialogFooter
 } from '@/components/ui/dialog';
 import { Form } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
 import { MaintenanceItem } from '@/services/types/maintenance.types';
-import { useMaintenanceEditForm } from '../hooks/useMaintenanceEditForm';
+import { useMaintenance编辑Form } from '../hooks/useMaintenance编辑Form';
 import {
   MaintenanceBasicFields,
   MaintenanceTimeFields,
   MaintenanceAffectedFields,
   MaintenanceConfigFields,
-  MaintenanceNotificationSettingsField
+  MaintenanceNotification设置Field
 } from '../form';
 
-interface EditMaintenanceDialogProps {
+interface 编辑MaintenanceDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   maintenance: MaintenanceItem;
   onMaintenanceUpdated: () => void;
 }
 
-export const EditMaintenanceDialog = ({ 
+export const 编辑MaintenanceDialog = ({ 
   open, 
   onOpenChange,
   maintenance,
   onMaintenanceUpdated
-}: EditMaintenanceDialogProps) => {
+}: 编辑MaintenanceDialogProps) => {
   const { t } = useLanguage();
   
   const handleSuccess = () => {
-    console.log("EditMaintenanceDialog: maintenance updated successfully");
+    console.log("编辑MaintenanceDialog: maintenance updated successfully");
     onMaintenanceUpdated();
   };
   
-  const handleClose = () => {
-    console.log("EditMaintenanceDialog: closing dialog");
+  const handle关闭 = () => {
+    console.log("编辑MaintenanceDialog: closing dialog");
     onOpenChange(false);
   };
   
-  const { form, onSubmit } = useMaintenanceEditForm(maintenance, handleSuccess, handleClose);
+  const { form, on提交 } = useMaintenance编辑Form(maintenance, handleSuccess, handle关闭);
 
   // Log the form state for debugging
   React.useEffect(() => {
@@ -58,23 +58,23 @@ export const EditMaintenanceDialog = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
+      <DialogContent class名称="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>{t('editMaintenanceWindow')}</DialogTitle>
-          <DialogDescription>
+          <Dialog描述>
             {t('editMaintenanceDesc')}
-          </DialogDescription>
+          </Dialog描述>
         </DialogHeader>
         
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form on提交={form.handle提交(on提交)} class名称="space-y-4">
             <MaintenanceBasicFields />
             <MaintenanceTimeFields />
             <MaintenanceAffectedFields />
             <MaintenanceConfigFields />
-            <MaintenanceNotificationSettingsField />
+            <MaintenanceNotification设置Field />
             
-            <DialogFooter className="pt-4">
+            <DialogFooter class名称="pt-4">
               <Button 
                 type="button" 
                 variant="outline" 
@@ -84,9 +84,9 @@ export const EditMaintenanceDialog = ({
               </Button>
               <Button 
                 type="submit"
-                disabled={form.formState.isSubmitting}
+                disabled={form.formState.is提交ting}
               >
-                {form.formState.isSubmitting ? t('updating') : t('updateMaintenance')}
+                {form.formState.is提交ting ? t('updating') : t('updateMaintenance')}
               </Button>
             </DialogFooter>
           </form>

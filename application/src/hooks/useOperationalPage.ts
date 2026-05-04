@@ -46,7 +46,7 @@ export const useUpdateOperationalPage = () => {
   });
 };
 
-export const useCreateOperationalPage = () => {
+export const use创建OperationalPage = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -68,7 +68,7 @@ export const useCreateOperationalPage = () => {
   });
 };
 
-export const useDeleteOperationalPage = () => {
+export const use删除OperationalPage = () => {
   const queryClient = useQueryClient();
 
   return useMutation({

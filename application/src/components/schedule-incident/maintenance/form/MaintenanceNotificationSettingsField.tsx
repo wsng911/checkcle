@@ -4,14 +4,14 @@ import { useFormContext } from 'react-hook-form';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { alertConfigService, AlertConfiguration } from '@/services/alertConfigService';
 import { MaintenanceFormValues } from '../hooks/useMaintenanceForm';
-import { FormField, FormItem, FormLabel, FormControl, FormDescription } from '@/components/ui/form';
+import { FormField, FormItem, FormLabel, FormControl, Form描述 } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
 import { useToast } from '@/hooks/use-toast';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Bell, BellOff } from 'lucide-react';
 
-export const MaintenanceNotificationSettingsField = () => {
+export const MaintenanceNotification设置Field = () => {
   const { t } = useLanguage();
   const { toast } = useToast();
   const [notificationChannels, setNotificationChannels] = useState<AlertConfiguration[]>([]);
@@ -72,26 +72,26 @@ export const MaintenanceNotificationSettingsField = () => {
  // }, [notifySubscribers, notificationChannelId, getValues]);
   
   return (
-    <div className="space-y-6">
-      <h3 className="font-medium text-lg">{t('notificationSettings')}</h3>
+    <div class名称="space-y-6">
+      <h3 class名称="font-medium text-lg">{t('notification设置')}</h3>
       
       <FormField
         control={control}
         name="notify_subscribers"
         render={({ field }) => (
-          <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
-            <div className="space-y-0.5">
-              <div className="flex items-center gap-2">
-                {field.value ? <Bell className="w-4 h-4" /> : <BellOff className="w-4 h-4" />}
-                <FormLabel className="text-base mb-0">
+          <FormItem class名称="flex flex-row items-center justify-between rounded-lg border p-4">
+            <div class名称="space-y-0.5">
+              <div class名称="flex items-center gap-2">
+                {field.value ? <Bell class名称="w-4 h-4" /> : <BellOff class名称="w-4 h-4" />}
+                <FormLabel class名称="text-base mb-0">
                   {field.value ? t('notifySubscribers') : t('mutedNotifications')}
                 </FormLabel>
               </div>
-              <FormDescription>
+              <Form描述>
                 {field.value 
                   ? t('notifySubscribersDesc') 
                   : t('notificationsAreMuted')}
-              </FormDescription>
+              </Form描述>
             </div>
             <FormControl>
               <Switch
@@ -130,7 +130,7 @@ export const MaintenanceNotificationSettingsField = () => {
               <FormLabel>{t('notificationChannel')}</FormLabel>
               <FormControl>
                 {isLoading ? (
-                  <Skeleton className="h-10 w-full" />
+                  <Skeleton class名称="h-10 w-full" />
                 ) : (
                   <Select 
                     value={displayValue} 
@@ -140,7 +140,7 @@ export const MaintenanceNotificationSettingsField = () => {
                     }}
                     disabled={!notifySubscribers}
                   >
-                    <SelectTrigger className={!notifySubscribers ? 'opacity-50' : ''}>
+                    <SelectTrigger class名称={!notifySubscribers ? 'opacity-50' : ''}>
                       <SelectValue placeholder={t('selectNotificationChannel')} />
                     </SelectTrigger>
                     <SelectContent>
@@ -156,11 +156,11 @@ export const MaintenanceNotificationSettingsField = () => {
                   </Select>
                 )}
               </FormControl>
-              <FormDescription>
+              <Form描述>
                 {notifySubscribers
                   ? t('selectChannelForNotifications')
                   : t('enableNotificationsFirst')}
-              </FormDescription>
+              </Form描述>
             </FormItem>
           );
         }}

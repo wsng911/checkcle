@@ -8,7 +8,7 @@ import {
   FormLabel, 
   FormControl, 
   FormMessage,
-  FormDescription 
+  Form描述 
 } from '@/components/ui/form';
 import { 
   Select, 
@@ -45,9 +45,9 @@ export const PriorityField = () => {
               <SelectItem value="critical">{t('critical')}</SelectItem>
             </SelectContent>
           </Select>
-          <FormDescription>
-            {t('priorityDescription')}
-          </FormDescription>
+          <Form描述>
+            {t('priority描述')}
+          </Form描述>
           <FormMessage />
         </FormItem>
       )}

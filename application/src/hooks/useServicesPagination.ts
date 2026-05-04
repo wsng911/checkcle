@@ -4,26 +4,26 @@ import { Service } from '@/types/service.types';
 
 export type PageSize = 10 | 30 | 50;
 
-interface UseServicesPaginationProps {
+interface Use服务PaginationProps {
   services: Service[];
   initialPageSize?: PageSize;
 }
 
-export const useServicesPagination = ({ 
+export const use服务Pagination = ({ 
   services, 
   initialPageSize = 10 
-}: UseServicesPaginationProps) => {
+}: Use服务PaginationProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState<PageSize>(initialPageSize);
 
-  const { paginatedServices, totalPages } = useMemo(() => {
+  const { paginated服务, totalPages } = useMemo(() => {
     const totalItems = services.length;
     const pages = Math.ceil(totalItems / pageSize);
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
     
     return {
-      paginatedServices: services.slice(startIndex, endIndex),
+      paginated服务: services.slice(startIndex, endIndex),
       totalPages: Math.max(1, pages)
     };
   }, [services, currentPage, pageSize]);
@@ -41,7 +41,7 @@ export const useServicesPagination = ({
   };
 
   return {
-    paginatedServices,
+    paginated服务,
     currentPage,
     totalPages,
     pageSize,

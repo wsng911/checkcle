@@ -8,7 +8,7 @@ import {
   deleteSSLCertificate
 } from './ssl';
 
-import { determineSSLStatus } from './ssl/sslStatusUtils';
+import { determineSSL状态 } from './ssl/ssl状态Utils';
 
 // Import from the new refactored location
 import {
@@ -18,7 +18,7 @@ import {
 } from './ssl/notification';
 
 export {
-  determineSSLStatus,
+  determineSSL状态,
   fetchSSLCertificates,
   addSSLCertificate,
   checkAndUpdateCertificate,

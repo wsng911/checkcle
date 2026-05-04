@@ -58,14 +58,14 @@ export function TablePagination({
   };
 
   return (
-    <div className="mt-4 flex items-center justify-between">
-      <div className="flex items-center space-x-2">
-        <span className="text-sm text-muted-foreground">{t("rowsPerPage")}:</span>
+    <div class名称="mt-4 flex items-center justify-between">
+      <div class名称="flex items-center space-x-2">
+        <span class名称="text-sm text-muted-foreground">{t("rowsPerPage")}:</span>
         <Select
           value={pageSize}
           onValueChange={(value) => onPageSizeChange(value as PageSize)}
         >
-          <SelectTrigger className="h-8 w-[70px]">
+          <SelectTrigger class名称="h-8 w-[70px]">
             <SelectValue placeholder="25" />
           </SelectTrigger>
           <SelectContent>
@@ -77,7 +77,7 @@ export function TablePagination({
             <SelectItem value="all">All</SelectItem>
           </SelectContent>
         </Select>
-        <span className="text-sm text-muted-foreground">
+        <span class名称="text-sm text-muted-foreground">
           {pageSize === 'all' 
             ? `Showing all ${totalItems} items` 
             : `Showing ${Math.min((currentPage - 1) * itemsPerPage + 1, totalItems)}-${Math.min(currentPage * itemsPerPage, totalItems)} of ${totalItems} items`}
@@ -90,7 +90,7 @@ export function TablePagination({
             <PaginationItem>
               <PaginationPrevious
                 onClick={() => onPageChange(Math.max(1, currentPage - 1))}
-                className={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                class名称={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
               />
             </PaginationItem>
             
@@ -99,7 +99,7 @@ export function TablePagination({
                 <PaginationLink
                   isActive={page === currentPage}
                   onClick={() => onPageChange(page)}
-                  className="cursor-pointer"
+                  class名称="cursor-pointer"
                 >
                   {page}
                 </PaginationLink>
@@ -109,7 +109,7 @@ export function TablePagination({
             <PaginationItem>
               <PaginationNext
                 onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
-                className={currentPage === totalPages ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                class名称={currentPage === totalPages ? "pointer-events-none opacity-50" : "cursor-pointer"}
               />
             </PaginationItem>
           </PaginationContent>

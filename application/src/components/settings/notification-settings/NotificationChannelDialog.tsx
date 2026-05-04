@@ -17,7 +17,7 @@ import { Textarea } from "@/components/ui/textarea";
 import {
   Form,
   FormControl,
-  FormDescription,
+  Form描述,
   FormField,
   FormItem,
   FormLabel,
@@ -31,13 +31,13 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 interface NotificationChannelDialogProps {
   open: boolean;
-  onClose: (refreshList: boolean) => void;
+  on关闭: (refreshList: boolean) => void;
   editingConfig: AlertConfiguration | null;
 }
 
 
 const baseSchema = z.object({
-  notify_name: z.string().min(1, "Name is required"),
+  notify_name: z.string().min(1, "名称 is required"),
   notification_type: z.enum(["telegram", "discord", "slack", "signal", "google_chat", "email", "ntfy", "pushover", "notifiarr", "gotify", "webhook", "matrix"]),
   enabled: z.boolean().default(true),
   service_id: z.string().default("global"),
@@ -167,7 +167,7 @@ const notificationTypeOptions = [
   },
   { 
     value: "email", 
-    label: "Email", 
+    label: "邮箱", 
     description: "Send notifications via email",
     icon: "/upload/notification/email.png"
   },
@@ -258,11 +258,11 @@ const defaultPayloadTemplate = `{
 
 export const NotificationChannelDialog = ({ 
   open, 
-  onClose,
+  on关闭,
   editingConfig 
 }: NotificationChannelDialogProps) => {
   const { t } = useLanguage();
-  const isEditing = !!editingConfig;
+  const is编辑ing = !!editingConfig;
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -276,7 +276,7 @@ export const NotificationChannelDialog = ({
 
   const { watch, reset, setValue } = form;
   const notificationType = watch("notification_type");
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [is提交ting, setIs提交ting] = React.useState(false);
   
   useEffect(() => {
     if (editingConfig) {
@@ -300,16 +300,16 @@ export const NotificationChannelDialog = ({
     }
   }, [editingConfig, open, reset]);
 
-  const handleClose = () => {
-    onClose(false);
+  const handle关闭 = () => {
+    on关闭(false);
   };
 
   const insertTemplate = (template: string) => {
     setValue("webhook_payload_template", template);
   };
 
-  const onSubmit = async (values: FormValues) => {
-    setIsSubmitting(true);
+  const on提交 = async (values: FormValues) => {
+    setIs提交ting(true);
     try {
       // Handle all notification types including webhook through alert_configurations
       const configData = {
@@ -317,13 +317,13 @@ export const NotificationChannelDialog = ({
         service_id: values.service_id || "global",
       };
       
-      if (isEditing && editingConfig?.id) {
+      if (is编辑ing && editingConfig?.id) {
         await alertConfigService.updateAlertConfiguration(editingConfig.id, configData);
       } else {
         await alertConfigService.createAlertConfiguration(configData as any);
       }
       
-      onClose(true); // Close with refresh
+      on关闭(true); // 关闭 with refresh
     } catch (error) {
       toast({
         title: "Error",
@@ -331,33 +331,33 @@ export const NotificationChannelDialog = ({
         variant: "destructive"
       });
     } finally {
-      setIsSubmitting(false);
+      setIs提交ting(false);
     }
   };
 
   return (
-    <Dialog open={open} onOpenChange={() => handleClose()}>
-      <DialogContent className="sm:max-w-[700px] max-h-[90vh] overflow-y-auto">
+    <Dialog open={open} onOpenChange={() => handle关闭()}>
+      <DialogContent class名称="sm:max-w-[700px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>
-            {isEditing ? t("editChannel") : t("addChannelDialog")}
+            {is编辑ing ? t("editChannel") : t("addChannelDialog")}
           </DialogTitle>
         </DialogHeader>
         
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form on提交={form.handle提交(on提交)} class名称="space-y-6">
             <FormField
               control={form.control}
               name="notify_name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>{t("channelName")}</FormLabel>
+                  <FormLabel>{t("channel名称")}</FormLabel>
                   <FormControl>
-                    <Input placeholder={t("channelNamePlaceholder")} {...field} />
+                    <Input placeholder={t("channel名称Placeholder")} {...field} />
                   </FormControl>
-                  <FormDescription>
-                    {t("channelNameDesc")}
-                  </FormDescription>
+                  <Form描述>
+                    {t("channel名称Desc")}
+                  </Form描述>
                   <FormMessage />
                 </FormItem>
               )}
@@ -378,15 +378,15 @@ export const NotificationChannelDialog = ({
                     <SelectContent>
                       {notificationTypeOptions.map((option) => (
                         <SelectItem key={option.value} value={option.value}>
-                          <div className="flex items-center space-x-3">
+                          <div class名称="flex items-center space-x-3">
                             <img 
                               src={option.icon} 
                               alt={`${option.label} icon`}
-                              className="w-5 h-5 object-contain"
+                              class名称="w-5 h-5 object-contain"
                             />
-                            <div className="flex flex-col">
-                              <span className="font-medium">{t(option.value)}</span>
-                              <span className="text-xs text-muted-foreground">{t(option.description)}</span>
+                            <div class名称="flex flex-col">
+                              <span class名称="font-medium">{t(option.value)}</span>
+                              <span class名称="text-xs text-muted-foreground">{t(option.description)}</span>
                             </div>
                           </div>
                         </SelectItem>
@@ -409,9 +409,9 @@ export const NotificationChannelDialog = ({
                       <FormControl>
                         <Input placeholder={t("telegramChatIdPlaceholder")} {...field} />
                       </FormControl>
-                      <FormDescription>
+                      <Form描述>
                         {t("telegramChatIdDesc")}
-                      </FormDescription>
+                      </Form描述>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -425,9 +425,9 @@ export const NotificationChannelDialog = ({
                       <FormControl>
                         <Input placeholder={t("botTokenPlaceholder")} {...field} type="password" />
                       </FormControl>
-                      <FormDescription>
+                      <Form描述>
                         {t("botTokenDesc")}
-                      </FormDescription>
+                      </Form描述>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -445,9 +445,9 @@ export const NotificationChannelDialog = ({
                     <FormControl>
                       <Input placeholder={t("discordWebhookUrlPlaceholder")} {...field} />
                     </FormControl>
-                    <FormDescription>
+                    <Form描述>
                       {t("discordWebhookUrlDesc")}
-                    </FormDescription>
+                    </Form描述>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -464,9 +464,9 @@ export const NotificationChannelDialog = ({
                     <FormControl>
                       <Input placeholder={t("slackWebhookUrlPlaceholder")} {...field} />
                     </FormControl>
-                    <FormDescription>
+                    <Form描述>
                       {t("slackWebhookUrlDesc")}
-                    </FormDescription>
+                    </Form描述>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -484,9 +484,9 @@ export const NotificationChannelDialog = ({
                       <FormControl>
                         <Input placeholder={t("signalNumberPlaceholder")} {...field} />
                       </FormControl>
-                      <FormDescription>
+                      <Form描述>
                         {t("signalNumberDesc")}
-                      </FormDescription>
+                      </Form描述>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -500,9 +500,9 @@ export const NotificationChannelDialog = ({
                       <FormControl>
                         <Input placeholder={t("signalApiEndpointPlaceholder")} {...field} />
                       </FormControl>
-                      <FormDescription>
+                      <Form描述>
                         {t("signalApiEndpointDesc")}
-                      </FormDescription>
+                      </Form描述>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -520,9 +520,9 @@ export const NotificationChannelDialog = ({
                     <FormControl>
                       <Input placeholder={t("googleChatWebhookUrlPlaceholder")} {...field} />
                     </FormControl>
-                    <FormDescription>
+                    <Form描述>
                       {t("googleChatWebhookUrlDesc")}
-                    </FormDescription>
+                    </Form描述>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -536,13 +536,13 @@ export const NotificationChannelDialog = ({
                   name="email_address"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{t("emailAddress")}</FormLabel>
+                      <FormLabel>{t("email添加ress")}</FormLabel>
                       <FormControl>
-                        <Input placeholder={t("emailAddressPlaceholder")} {...field} type="email" />
+                        <Input placeholder={t("email添加ressPlaceholder")} {...field} type="email" />
                       </FormControl>
-                      <FormDescription>
-                        {t("emailAddressDesc")}
-                      </FormDescription>
+                      <Form描述>
+                        {t("email添加ressDesc")}
+                      </Form描述>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -552,18 +552,18 @@ export const NotificationChannelDialog = ({
                   name="email_sender_name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{t("emailSenderName")}</FormLabel>
+                      <FormLabel>{t("emailSender名称")}</FormLabel>
                       <FormControl>
-                        <Input placeholder={t("emailSenderNamePlaceholder")} {...field} />
+                        <Input placeholder={t("emailSender名称Placeholder")} {...field} />
                       </FormControl>
-                      <FormDescription>
-                        {t("emailSenderNameDesc")}
-                      </FormDescription>
+                      <Form描述>
+                        {t("emailSender名称Desc")}
+                      </Form描述>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-                <div className="grid grid-cols-2 gap-4">
+                <div class名称="grid grid-cols-2 gap-4">
                   <FormField
                     control={form.control}
                     name="smtp_server"
@@ -596,13 +596,13 @@ export const NotificationChannelDialog = ({
                   name="smtp_password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{t("smtpPassword")}</FormLabel>
+                      <FormLabel>{t("smtp密码")}</FormLabel>
                       <FormControl>
-                        <Input placeholder={t("smtpPasswordPlaceholder")} {...field} type="password" />
+                        <Input placeholder={t("smtp密码Placeholder")} {...field} type="password" />
                       </FormControl>
-                      <FormDescription>
-                        {t("smtpPasswordDesc")}
-                      </FormDescription>
+                      <Form描述>
+                        {t("smtp密码Desc")}
+                      </Form描述>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -621,9 +621,9 @@ export const NotificationChannelDialog = ({
                       <FormControl>
                         <Input placeholder={t("ntfyEndpointPlaceholder")} {...field} />
                       </FormControl>
-                      <FormDescription>
+                      <Form描述>
                         {t("ntfyEndpointDesc")}
-                      </FormDescription>
+                      </Form描述>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -637,9 +637,9 @@ export const NotificationChannelDialog = ({
                       <FormControl>
                         <Input placeholder={t("apiTokenPlaceholder")} {...field} type="password" />
                       </FormControl>
-                      <FormDescription>
+                      <Form描述>
                         {t("apiTokenDesc")}
-                      </FormDescription>
+                      </Form描述>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -658,9 +658,9 @@ export const NotificationChannelDialog = ({
                       <FormControl>
                         <Input placeholder={t("apiTokenPlaceholder")} {...field} type="password" />
                       </FormControl>
-                      <FormDescription>
+                      <Form描述>
                         {t("apiTokenDesc")}
-                      </FormDescription>
+                      </Form描述>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -674,9 +674,9 @@ export const NotificationChannelDialog = ({
                       <FormControl>
                         <Input placeholder={t("pushoverUserKeyPlaceholder")} {...field} />
                       </FormControl>
-                      <FormDescription>
+                      <Form描述>
                         {t("pushoverUserKeyDesc")}
-                      </FormDescription>
+                      </Form描述>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -695,9 +695,9 @@ export const NotificationChannelDialog = ({
                       <FormControl>
                         <Input placeholder={t("apiTokenPlaceholder")} {...field} type="password" />
                       </FormControl>
-                      <FormDescription>
+                      <Form描述>
                         {t("apiTokenDesc")}
-                      </FormDescription>
+                      </Form描述>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -711,9 +711,9 @@ export const NotificationChannelDialog = ({
                       <FormControl>
                         <Input placeholder={t("notifiarrChannelIdPlaceholder")} {...field} />
                       </FormControl>
-                      <FormDescription>
+                      <Form描述>
                         {t("notifiarrChannelIdDesc")}
-                      </FormDescription>
+                      </Form描述>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -732,9 +732,9 @@ export const NotificationChannelDialog = ({
                       <FormControl>
                         <Input placeholder={t("apiTokenPlaceholder")} {...field} type="password" />
                       </FormControl>
-                      <FormDescription>
+                      <Form描述>
                         {t("apiTokenDesc")}
-                      </FormDescription>
+                      </Form描述>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -748,9 +748,9 @@ export const NotificationChannelDialog = ({
                       <FormControl>
                         <Input placeholder={t("gotifyServerUrlPlaceholder")} {...field} />
                       </FormControl>
-                      <FormDescription>
+                      <Form描述>
                         {t("gotifyServerUrlDesc")}
-                      </FormDescription>
+                      </Form描述>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -769,72 +769,72 @@ export const NotificationChannelDialog = ({
                       <FormControl>
                         <Input placeholder={t("webhookUrlPlaceholder")} {...field} />
                       </FormControl>
-                      <FormDescription>
+                      <Form描述>
                         {t("webhookUrlDesc")}
-                      </FormDescription>
+                      </Form描述>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
 
-                <div className="space-y-4">
+                <div class名称="space-y-4">
                   <FormField
                     control={form.control}
                     name="webhook_payload_template"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>{t("payloadTemplate")}</FormLabel>
-                        <FormDescription>
+                        <Form描述>
                           {t("payloadTemplateDesc")}
-                        </FormDescription>
+                        </Form描述>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
 
                   <Card>
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-sm font-medium">{t("payloadTemplates")}</CardTitle>
+                    <CardHeader class名称="pb-3">
+                      <CardTitle class名称="text-sm font-medium">{t("payloadTemplates")}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <div className="space-y-3">
-                        <div className="mt-4">
-                          <h4 className="text-sm font-medium mb-2">{t("availablePlaceholders")}</h4>
-                          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
-                            <div className="space-y-1">
-                              <p className="font-medium text-muted-foreground">{t("server")}</p>
-                              <div className="space-y-0.5">
-                                <code className="bg-muted px-1 rounded">${'{server_name}'}</code><br/>
-                                <code className="bg-muted px-1 rounded">${'{cpu_usage}'}</code><br/>
-                                <code className="bg-muted px-1 rounded">${'{ram_usage}'}</code><br/>
-                                <code className="bg-muted px-1 rounded">${'{disk_usage}'}</code>
+                      <div class名称="space-y-3">
+                        <div class名称="mt-4">
+                          <h4 class名称="text-sm font-medium mb-2">{t("availablePlaceholders")}</h4>
+                          <div class名称="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+                            <div class名称="space-y-1">
+                              <p class名称="font-medium text-muted-foreground">{t("server")}</p>
+                              <div class名称="space-y-0.5">
+                                <code class名称="bg-muted px-1 rounded">${'{server_name}'}</code><br/>
+                                <code class名称="bg-muted px-1 rounded">${'{cpu_usage}'}</code><br/>
+                                <code class名称="bg-muted px-1 rounded">${'{ram_usage}'}</code><br/>
+                                <code class名称="bg-muted px-1 rounded">${'{disk_usage}'}</code>
                               </div>
                             </div>
-                            <div className="space-y-1">
-                              <p className="font-medium text-muted-foreground">{t("service")}</p>
-                              <div className="space-y-0.5">
-                                <code className="bg-muted px-1 rounded">${'{service_name}'}</code><br/>
-                                <code className="bg-muted px-1 rounded">${'{response_time}'}</code><br/>
-                                <code className="bg-muted px-1 rounded">${'{url}'}</code><br/>
-                                <code className="bg-muted px-1 rounded">${'{uptime}'}</code>
+                            <div class名称="space-y-1">
+                              <p class名称="font-medium text-muted-foreground">{t("service")}</p>
+                              <div class名称="space-y-0.5">
+                                <code class名称="bg-muted px-1 rounded">${'{service_name}'}</code><br/>
+                                <code class名称="bg-muted px-1 rounded">${'{response_time}'}</code><br/>
+                                <code class名称="bg-muted px-1 rounded">${'{url}'}</code><br/>
+                                <code class名称="bg-muted px-1 rounded">${'{uptime}'}</code>
                               </div>
                             </div>
-                            <div className="space-y-1">
-                              <p className="font-medium text-muted-foreground">{t("ssl")}</p>
-                              <div className="space-y-0.5">
-                                <code className="bg-muted px-1 rounded">${'{domain}'}</code><br/>
-                                <code className="bg-muted px-1 rounded">${'{expiry_date}'}</code><br/>
-                                <code className="bg-muted px-1 rounded">${'{days_left}'}</code><br/>
-                                <code className="bg-muted px-1 rounded">${'{issuer}'}</code>
+                            <div class名称="space-y-1">
+                              <p class名称="font-medium text-muted-foreground">{t("ssl")}</p>
+                              <div class名称="space-y-0.5">
+                                <code class名称="bg-muted px-1 rounded">${'{domain}'}</code><br/>
+                                <code class名称="bg-muted px-1 rounded">${'{expiry_date}'}</code><br/>
+                                <code class名称="bg-muted px-1 rounded">${'{days_left}'}</code><br/>
+                                <code class名称="bg-muted px-1 rounded">${'{issuer}'}</code>
                               </div>
                             </div>
-                            <div className="space-y-1">
-                              <p className="font-medium text-muted-foreground">{t("common")}</p>
-                              <div className="space-y-0.5">
-                                <code className="bg-muted px-1 rounded">${'{status}'}</code><br/>
-                                <code className="bg-muted px-1 rounded">${'{time}'}</code><br/>
-                                <code className="bg-muted px-1 rounded">${'{message}'}</code><br/>
-                                <code className="bg-muted px-1 rounded">${'{threshold}'}</code>
+                            <div class名称="space-y-1">
+                              <p class名称="font-medium text-muted-foreground">{t("common")}</p>
+                              <div class名称="space-y-0.5">
+                                <code class名称="bg-muted px-1 rounded">${'{status}'}</code><br/>
+                                <code class名称="bg-muted px-1 rounded">${'{time}'}</code><br/>
+                                <code class名称="bg-muted px-1 rounded">${'{message}'}</code><br/>
+                                <code class名称="bg-muted px-1 rounded">${'{threshold}'}</code>
                               </div>
                             </div>
                           </div>
@@ -857,9 +857,9 @@ export const NotificationChannelDialog = ({
                       <FormControl>
                         <Input placeholder={t("matrixHomeserverPlaceholder")} {...field} />
                       </FormControl>
-                      <FormDescription>
+                      <Form描述>
                         {t("matrixHomeserverDesc")}
-                      </FormDescription>
+                      </Form描述>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -873,9 +873,9 @@ export const NotificationChannelDialog = ({
                       <FormControl>
                         <Input placeholder={t("matrixRoomIdPlaceholder")} {...field} />
                       </FormControl>
-                      <FormDescription>
+                      <Form描述>
                         {t("matrixRoomIdDesc")}
-                      </FormDescription>
+                      </Form描述>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -889,9 +889,9 @@ export const NotificationChannelDialog = ({
                       <FormControl>
                         <Input placeholder={t("matrixAccessTokenPlaceholder")} {...field} type="password" />
                       </FormControl>
-                      <FormDescription>
+                      <Form描述>
                         {t("matrixAccessTokenDesc")}
-                      </FormDescription>
+                      </Form描述>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -903,12 +903,12 @@ export const NotificationChannelDialog = ({
               control={form.control}
               name="enabled"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3">
-                  <div className="space-y-0.5">
+                <FormItem class名称="flex flex-row items-center justify-between rounded-lg border p-3">
+                  <div class名称="space-y-0.5">
                     <FormLabel>{t("enabled")}</FormLabel>
-                    <FormDescription>
+                    <Form描述>
                       {t("enabledDesc")}
-                    </FormDescription>
+                    </Form描述>
                   </div>
                   <FormControl>
                     <Switch
@@ -921,12 +921,12 @@ export const NotificationChannelDialog = ({
             />
             
             <DialogFooter>
-              <Button variant="outline" type="button" onClick={handleClose}>
+              <Button variant="outline" type="button" onClick={handle关闭}>
                 {t("cancel")}
               </Button>
-              <Button type="submit" disabled={isSubmitting}>
-                {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                {isEditing ? t("updateChannel") : t("createChannel")}
+              <Button type="submit" disabled={is提交ting}>
+                {is提交ting && <Loader2 class名称="mr-2 h-4 w-4 animate-spin" />}
+                {is编辑ing ? t("updateChannel") : t("createChannel")}
               </Button>
             </DialogFooter>
           </form>

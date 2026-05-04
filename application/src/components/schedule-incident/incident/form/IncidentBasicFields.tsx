@@ -50,7 +50,7 @@ export const IncidentBasicFields: React.FC = () => {
     staleTime: 300000 // Cache for 5 minutes
   });
 
-  // Add user to assigned_to
+  // 添加 user to assigned_to
   const addUser = (userId: string) => {
     // For now, we're using a single user assignment
   //  console.log("Setting user ID in form:", userId);
@@ -58,7 +58,7 @@ export const IncidentBasicFields: React.FC = () => {
     setSelectedUserIds([userId]);
   };
 
-  // Remove assigned user
+  // 移除 assigned user
   const removeUser = () => {
     form.setValue('assigned_to', '', { shouldValidate: true, shouldDirty: true });
     setSelectedUserIds([]);
@@ -80,7 +80,7 @@ export const IncidentBasicFields: React.FC = () => {
   };
 
   return (
-    <div className="space-y-4">
+    <div class名称="space-y-4">
       <FormField
         control={form.control}
         name="title"
@@ -103,8 +103,8 @@ export const IncidentBasicFields: React.FC = () => {
             <FormLabel>{t('description')}</FormLabel>
             <FormControl>
               <Textarea 
-                placeholder={t('enterIncidentDescription')}
-                className="min-h-[100px]"
+                placeholder={t('enterIncident描述')}
+                class名称="min-h-[100px]"
                 {...field} 
               />
             </FormControl>
@@ -131,15 +131,15 @@ export const IncidentBasicFields: React.FC = () => {
         control={form.control}
         name="assigned_to"
         render={({ field }) => (
-          <FormItem className="flex flex-col">
-            <FormLabel className="flex items-center gap-1">
-              <Users className="h-4 w-4" /> {t('assignedTo')}
+          <FormItem class名称="flex flex-col">
+            <FormLabel class名称="flex items-center gap-1">
+              <Users class名称="h-4 w-4" /> {t('assignedTo')}
             </FormLabel>
-            <div className="space-y-3">
+            <div class名称="space-y-3">
               <FormControl>
                 <select
                   id="assigned-user-select"
-                  className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  class名称="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                   value={field.value || ""}
                   onChange={(e) => {
                     const selectedValue = e.target.value;
@@ -165,11 +165,11 @@ export const IncidentBasicFields: React.FC = () => {
               </FormControl>
 
               {selectedUser ? (
-                <div className="flex flex-wrap gap-2 mt-2 border p-2 rounded-md bg-muted/50">
-                  <Badge key={selectedUser.id} variant="secondary" className="flex items-center gap-1 py-1 px-2">
-                    <Avatar className="h-5 w-5 mr-1">
+                <div class名称="flex flex-wrap gap-2 mt-2 border p-2 rounded-md bg-muted/50">
+                  <Badge key={selectedUser.id} variant="secondary" class名称="flex items-center gap-1 py-1 px-2">
+                    <Avatar class名称="h-5 w-5 mr-1">
                       <AvatarImage src={selectedUser.avatar} alt={selectedUser.full_name || selectedUser.username} />
-                      <AvatarFallback className="text-[10px]">
+                      <AvatarFallback class名称="text-[10px]">
                         {getUserInitials(selectedUser)}
                       </AvatarFallback>
                     </Avatar>
@@ -177,17 +177,17 @@ export const IncidentBasicFields: React.FC = () => {
                     <Button 
                       variant="ghost" 
                       size="icon" 
-                      className="h-4 w-4 p-0 ml-1 hover:bg-transparent hover:opacity-70"
+                      class名称="h-4 w-4 p-0 ml-1 hover:bg-transparent hover:opacity-70"
                       onClick={removeUser}
                       type="button"
                     >
-                      <X className="h-3 w-3" />
-                      <span className="sr-only">{t('remove')}</span>
+                      <X class名称="h-3 w-3" />
+                      <span class名称="sr-only">{t('remove')}</span>
                     </Button>
                   </Badge>
                 </div>
               ) : (
-                <div className="text-sm text-muted-foreground italic p-2">
+                <div class名称="text-sm text-muted-foreground italic p-2">
                   {t('noAssignedUser')}
                 </div>
               )}

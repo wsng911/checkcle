@@ -83,7 +83,7 @@ export const useRealTimeUpdates = ({
           
          // console.log("New uptime data (throttled):", e.record);
           
-          // Add the new uptime data to our list if it's within the selected date range
+          // 添加 the new uptime data to our list if it's within the selected date range
           const timestamp = new Date(e.record.timestamp);
           if (timestamp >= startDate && timestamp <= endDate) {
             setUptimeData(prev => {
@@ -100,7 +100,7 @@ export const useRealTimeUpdates = ({
                 uptime: e.record.uptime || 0
               };
               
-              // Add at the beginning and limit array size
+              // 添加 at the beginning and limit array size
               const updatedData = [newData, ...prev];
               return updatedData.slice(0, maxRecords);
             });

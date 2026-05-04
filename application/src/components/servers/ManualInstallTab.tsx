@@ -2,7 +2,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Copy, Terminal } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, Card描述, CardHeader, CardTitle } from "@/components/ui/card";
 import { copyToClipboard } from "@/utils/copyUtils";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -10,12 +10,12 @@ interface ManualInstallTabProps {
   serverToken: string;
   currentPocketBaseUrl: string;
   formData: {
-    serverName: string;
+    server名称: string;
     osType: string;
     checkInterval: string;
   };
   serverId: string;
-  onDialogClose: () => void;
+  onDialog关闭: () => void;
 }
 
 export const ManualInstallTab: React.FC<ManualInstallTabProps> = ({
@@ -23,7 +23,7 @@ export const ManualInstallTab: React.FC<ManualInstallTabProps> = ({
   currentPocketBaseUrl,
   formData,
   serverId,
-  onDialogClose,
+  onDialog关闭,
 }) => {
   const { t } = useLanguage();
 
@@ -41,7 +41,7 @@ export const ManualInstallTab: React.FC<ManualInstallTabProps> = ({
       },
       {
         title: t('runInstall'),
-        command: `SERVER_TOKEN="${serverToken}" POCKETBASE_URL="${currentPocketBaseUrl}" SERVER_NAME="${formData.serverName}" AGENT_ID="${serverId}" sudo bash server-agent.sh`
+        command: `SERVER_TOKEN="${serverToken}" POCKETBASE_URL="${currentPocketBaseUrl}" SERVER_NAME="${formData.server名称}" AGENT_ID="${serverId}" sudo bash server-agent.sh`
       }
     ];
   };
@@ -49,53 +49,53 @@ export const ManualInstallTab: React.FC<ManualInstallTabProps> = ({
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Terminal className="h-5 w-5" />
+        <CardTitle class名称="flex items-center gap-2">
+          <Terminal class名称="h-5 w-5" />
           {t('manualInstallTitle')}
         </CardTitle>
-        <CardDescription>
+        <Card描述>
           {t('manualInstallDesc')}
-        </CardDescription>
+        </Card描述>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="space-y-2">
-          <div className="grid grid-cols-2 gap-4 text-sm">
+      <CardContent class名称="space-y-4">
+        <div class名称="space-y-2">
+          <div class名称="grid grid-cols-2 gap-4 text-sm">
             <div>
-              <span className="font-medium">{t('serverName')}:</span> {formData.serverName}
+              <span class名称="font-medium">{t('server名称')}:</span> {formData.server名称}
             </div>
             <div>
-              <span className="font-medium">{t('agentId')}:</span> {serverId}
+              <span class名称="font-medium">{t('agentId')}:</span> {serverId}
             </div>
             <div>
-              <span className="font-medium">{t('osType')}:</span> {formData.osType}
+              <span class名称="font-medium">{t('osType')}:</span> {formData.osType}
             </div>
             <div>
-              <span className="font-medium">{t('checkInterval')}:</span> {formData.checkInterval}s
+              <span class名称="font-medium">{t('checkInterval')}:</span> {formData.checkInterval}s
             </div>
           </div>
         </div>
 
-        <div className="space-y-4">
+        <div class名称="space-y-4">
           {getManualInstallSteps().map((step, index) => (
-            <div key={index} className="space-y-2">
-              <div className="flex items-center gap-2">
-                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-primary text-primary-foreground text-sm font-medium">
+            <div key={index} class名称="space-y-2">
+              <div class名称="flex items-center gap-2">
+                <span class名称="flex items-center justify-center w-6 h-6 rounded-full bg-primary text-primary-foreground text-sm font-medium">
                   {index + 1}
                 </span>
-                <span className="font-medium">{step.title}</span>
+                <span class名称="font-medium">{step.title}</span>
               </div>
-              <div className="ml-8 relative">
-                <pre className="bg-muted p-3 rounded-md text-sm overflow-x-auto whitespace-pre-wrap break-all">
+              <div class名称="ml-8 relative">
+                <pre class名称="bg-muted p-3 rounded-md text-sm overflow-x-auto whitespace-pre-wrap break-all">
                   <code>{step.command}</code>
                 </pre>
                 <Button
                   type="button"
                   variant="outline"
                   size="sm"
-                  className="absolute top-2 right-2"
+                  class名称="absolute top-2 right-2"
                   onClick={() => copyToClipboard(step.command)}
                 >
-                  <Copy className="h-4 w-4 mr-1" />
+                  <Copy class名称="h-4 w-4 mr-1" />
                   {t('copy')}
                 </Button>
               </div>
@@ -103,22 +103,22 @@ export const ManualInstallTab: React.FC<ManualInstallTabProps> = ({
           ))}
         </div>
 
-        <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-md p-4">
-          <h4 className="font-medium text-blue-900 dark:text-blue-100 mb-2">{t('prerequisites')}</h4>
-          <ul className="text-sm text-blue-800 dark:text-blue-200 space-y-1 list-disc list-inside mb-3">
+        <div class名称="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-md p-4">
+          <h4 class名称="font-medium text-blue-900 dark:text-blue-100 mb-2">{t('prerequisites')}</h4>
+          <ul class名称="text-sm text-blue-800 dark:text-blue-200 space-y-1 list-disc list-inside mb-3">
             <li>{t('prereqRoot')}</li>
             <li>{t('prereqCurl')}</li>
             <li>{t('prereqInternet')}</li>
           </ul>
           
-          <h4 className="font-medium text-blue-900 dark:text-blue-100 mb-2">{t('afterInstall')}</h4>
-          <p className="text-sm text-blue-800 dark:text-blue-200">
+          <h4 class名称="font-medium text-blue-900 dark:text-blue-100 mb-2">{t('afterInstall')}</h4>
+          <p class名称="text-sm text-blue-800 dark:text-blue-200">
             {t('agentWillStart')}
           </p>
         </div>
 
-        <div className="flex justify-end pt-4">
-          <Button onClick={onDialogClose}>
+        <div class名称="flex justify-end pt-4">
+          <Button onClick={onDialog关闭}>
             {t('done')}
           </Button>
         </div>

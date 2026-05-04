@@ -41,8 +41,8 @@ export const MaintenanceBasicFields: React.FC = () => {
             <FormLabel>{t('description')}</FormLabel>
             <FormControl>
               <Textarea
-                placeholder={t('enterDescription')}
-                className="resize-none"
+                placeholder={t('enter描述')}
+                class名称="resize-none"
                 {...field}
               />
             </FormControl>

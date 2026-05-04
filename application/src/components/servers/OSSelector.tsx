@@ -24,26 +24,26 @@ interface OSSelectorProps {
 
 export const OSSelector: React.FC<OSSelectorProps> = ({ value, onValueChange }) => {
   return (
-    <div className="grid gap-2">
+    <div class名称="grid gap-2">
       {osOptions.map((os) => (
         <button
           key={os.value}
           type="button"
           onClick={() => onValueChange(os.value)}
-          className={cn(
+          class名称={cn(
             "flex items-center justify-between w-full rounded-md border px-4 py-2 text-left text-sm hover:bg-accent hover:text-accent-foreground transition",
             value === os.value ? "bg-accent text-accent-foreground border-ring" : "border-input"
           )}
         >
-          <div className="flex items-center gap-3">
+          <div class名称="flex items-center gap-3">
             <img
               src={os.logo}
               alt={`${os.name} logo`}
-              className="w-6 h-6 object-contain"
+              class名称="w-6 h-6 object-contain"
             />
             <span>{os.name}</span>
           </div>
-          {value === os.value && <Check className="h-4 w-4" />}
+          {value === os.value && <Check class名称="h-4 w-4" />}
         </button>
       ))}
     </div>

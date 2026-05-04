@@ -5,7 +5,7 @@ import { monitoringIntervals } from '../monitoringIntervals';
 /**
  * Start monitoring for a specific service with optimized performance
  */
-export async function startMonitoringService(serviceId: string): Promise<void> {
+export async function start监控ingService(serviceId: string): Promise<void> {
   try {
     // First check if the service is already being monitored
     if (monitoringIntervals.has(serviceId)) {
@@ -39,7 +39,7 @@ export async function startMonitoringService(serviceId: string): Promise<void> {
     const intervalId = window.setInterval(() => {
       // Only log every 5 minutes to reduce console spam
       if (Date.now() % (5 * 60 * 1000) < intervalMs) {
-       // console.log(`Monitoring active for service ${service.name} (handled by backend)`);
+       // console.log(`监控ing active for service ${service.name} (handled by backend)`);
       }
     }, Math.max(intervalMs, 300000)); // Minimum 5 minutes for logging
     

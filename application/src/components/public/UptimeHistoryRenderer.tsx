@@ -32,24 +32,24 @@ export const UptimeHistoryRenderer = ({ serviceId, uptimeData }: UptimeHistoryRe
             <Tooltip>
               <TooltipTrigger asChild>
                 <div
-                  className={`h-8 w-1 rounded-sm cursor-pointer ${
+                  class名称={`h-8 w-1 rounded-sm cursor-pointer ${
                     isUp ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600'
                   }`}
                 />
               </TooltipTrigger>
               <TooltipContent>
-                <div className="text-sm">
-                  <div className="font-medium">{format(date, 'MMM dd, yyyy')}</div>
-                  <div className="text-muted-foreground">
-                    Status: {isUp ? 'Operational' : 'Incident - Down'}
+                <div class名称="text-sm">
+                  <div class名称="font-medium">{format(date, 'MMM dd, yyyy')}</div>
+                  <div class名称="text-muted-foreground">
+                    状态: {isUp ? 'Operational' : 'Incident - Down'}
                   </div>
                   {isUp && (
-                    <div className="text-muted-foreground">
+                    <div class名称="text-muted-foreground">
                       Response: {responseTime}ms
                     </div>
                   )}
                   {!isUp && (
-                    <div className="text-muted-foreground text-red-400">
+                    <div class名称="text-muted-foreground text-red-400">
                       Service outage detected
                     </div>
                   )}
@@ -61,7 +61,7 @@ export const UptimeHistoryRenderer = ({ serviceId, uptimeData }: UptimeHistoryRe
       });
     }
 
-    // Create a map of dates to status records for efficient lookup and incident tracking
+    // 创建 a map of dates to status records for efficient lookup and incident tracking
     const dateToRecordMap = new Map();
     const incidentsByDate = new Map();
     
@@ -94,7 +94,7 @@ export const UptimeHistoryRenderer = ({ serviceId, uptimeData }: UptimeHistoryRe
         Math.round((incidents.filter(inc => inc.status === 'up').length / incidents.length) * 100) : 100;
       
       // Determine color based on actual status and incident history
-      const getStatusColor = (status: string, incidents: UptimeData[]) => {
+      const get状态Color = (status: string, incidents: UptimeData[]) => {
         const downIncidents = incidents.filter(inc => inc.status === 'down').length;
         const warningIncidents = incidents.filter(inc => inc.status === 'warning').length;
         
@@ -115,7 +115,7 @@ export const UptimeHistoryRenderer = ({ serviceId, uptimeData }: UptimeHistoryRe
         }
       };
 
-      const statusColor = record ? getStatusColor(record.status, incidents) : 'bg-gray-300 dark:bg-gray-600';
+      const statusColor = record ? get状态Color(record.status, incidents) : 'bg-gray-300 dark:bg-gray-600';
       const statusText = record ? 
         record.status === 'up' ? (incidents.some(inc => inc.status === 'down') ? 'Recovered' : 'Operational') :
         record.status === 'down' ? 'Incident - Down' :
@@ -128,34 +128,34 @@ export const UptimeHistoryRenderer = ({ serviceId, uptimeData }: UptimeHistoryRe
           <Tooltip>
             <TooltipTrigger asChild>
               <div
-                className={`h-8 w-1 rounded-sm cursor-pointer ${statusColor}`}
+                class名称={`h-8 w-1 rounded-sm cursor-pointer ${statusColor}`}
               />
             </TooltipTrigger>
             <TooltipContent>
-              <div className="text-sm">
-                <div className="font-medium">
+              <div class名称="text-sm">
+                <div class名称="font-medium">
                   {format(date, 'MMM dd, yyyy')}
                 </div>
-                <div className="text-muted-foreground">
-                  Status: {statusText}
+                <div class名称="text-muted-foreground">
+                  状态: {statusText}
                 </div>
                 {incidents.length > 0 && (
-                  <div className="text-muted-foreground">
+                  <div class名称="text-muted-foreground">
                     Uptime: {uptimePercentage}% ({incidents.length} checks)
                   </div>
                 )}
                 {incidents.filter(inc => inc.status === 'down').length > 0 && (
-                  <div className="text-red-400 text-xs">
+                  <div class名称="text-red-400 text-xs">
                     {incidents.filter(inc => inc.status === 'down').length} incident(s) detected
                   </div>
                 )}
                 {record && record.status === 'up' && record.responseTime > 0 && (
-                  <div className="text-muted-foreground">
+                  <div class名称="text-muted-foreground">
                     Response: {record.responseTime}ms
                   </div>
                 )}
                 {record && (
-                  <div className="text-muted-foreground">
+                  <div class名称="text-muted-foreground">
                     Last Check: {format(new Date(record.timestamp), 'HH:mm')}
                   </div>
                 )}
@@ -168,12 +168,12 @@ export const UptimeHistoryRenderer = ({ serviceId, uptimeData }: UptimeHistoryRe
   };
 
   return (
-    <div className="ml-8 p-3 bg-background/30 rounded-lg border border-border/50">
-      <div className="text-sm font-medium text-foreground mb-2">90-day uptime history</div>
-      <div className="flex items-center gap-1 mb-2">
+    <div class名称="ml-8 p-3 bg-background/30 rounded-lg border border-border/50">
+      <div class名称="text-sm font-medium text-foreground mb-2">90-day uptime history</div>
+      <div class名称="flex items-center gap-1 mb-2">
         {renderUptimeHistory(serviceId)}
       </div>
-      <div className="flex justify-between text-xs text-muted-foreground">
+      <div class名称="flex justify-between text-xs text-muted-foreground">
         <span>90 days ago</span>
         <span>Today</span>
       </div>

@@ -85,12 +85,12 @@ const Profile = () => {
 
   if (!currentUser) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <div className="text-center">
+      <div class名称="flex items-center justify-center h-screen">
+        <div class名称="text-center">
           <p>{t("loginToViewProfile")}</p>
           <button 
             onClick={() => navigate("/login")} 
-            className="mt-4 px-4 py-2 bg-primary text-white rounded"
+            class名称="mt-4 px-4 py-2 bg-primary text-white rounded"
           >
 	          {t("goToLogin")}
           </button>
@@ -100,29 +100,29 @@ const Profile = () => {
   }
 
   return (
-    <div className="flex h-screen bg-background text-foreground">
+    <div class名称="flex h-screen bg-background text-foreground">
       <Sidebar collapsed={sidebarCollapsed} />
-      <div className="flex flex-col flex-1 overflow-hidden">
+      <div class名称="flex flex-col flex-1 overflow-hidden">
         <Header 
           currentUser={currentUser} 
           onLogout={handleLogout} 
           sidebarCollapsed={sidebarCollapsed} 
           toggleSidebar={toggleSidebar} 
         />
-        <div className="flex-1 overflow-auto p-6">
+        <div class名称="flex-1 overflow-auto p-6">
           {loading ? (
-            <div className="flex items-center justify-center h-full">
-              <Loader2 className="h-12 w-12 animate-spin text-primary" />
-              <span className="ml-2">{t("loadingUserData")}</span>
+            <div class名称="flex items-center justify-center h-full">
+              <Loader2 class名称="h-12 w-12 animate-spin text-primary" />
+              <span class名称="ml-2">{t("loadingUserData")}</span>
             </div>
           ) : error ? (
-            <div className="flex flex-col items-center justify-center h-full">
-              <div className="bg-destructive/10 text-destructive p-4 rounded-md mb-4">
+            <div class名称="flex flex-col items-center justify-center h-full">
+              <div class名称="bg-destructive/10 text-destructive p-4 rounded-md mb-4">
                 <p>{error}</p>
               </div>
               <button 
                 onClick={() => fetchUserData()}
-                className="px-4 py-2 bg-primary text-primary-foreground rounded-md"
+                class名称="px-4 py-2 bg-primary text-primary-foreground rounded-md"
               >
 	              {t("retry")}
               </button>

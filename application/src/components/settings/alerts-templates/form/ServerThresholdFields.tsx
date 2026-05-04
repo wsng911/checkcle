@@ -1,6 +1,6 @@
 
 import React from "react";
-import { FormField, FormItem, FormLabel, FormControl, FormMessage, FormDescription } from "@/components/ui/form";
+import { FormField, FormItem, FormLabel, FormControl, FormMessage, Form描述 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Control } from "react-hook-form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,13 +11,13 @@ interface ServerThresholdFieldsProps {
 
 export const ServerThresholdFields: React.FC<ServerThresholdFieldsProps> = ({ control }) => {
   return (
-    <div className="space-y-6">
+    <div class名称="space-y-6">
       <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-sm font-medium">Server Resource Thresholds</CardTitle>
+        <CardHeader class名称="pb-3">
+          <CardTitle class名称="text-sm font-medium">Server Resource Thresholds</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class名称="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField
               control={control}
               name="cpu_threshold"
@@ -34,9 +34,9 @@ export const ServerThresholdFields: React.FC<ServerThresholdFieldsProps> = ({ co
                       onChange={(e) => field.onChange(Number(e.target.value))}
                     />
                   </FormControl>
-                  <FormDescription>
+                  <Form描述>
                     CPU usage percentage that triggers an alert
-                  </FormDescription>
+                  </Form描述>
                   <FormMessage />
                 </FormItem>
               )}
@@ -58,9 +58,9 @@ export const ServerThresholdFields: React.FC<ServerThresholdFieldsProps> = ({ co
                       onChange={(e) => field.onChange(Number(e.target.value))}
                     />
                   </FormControl>
-                  <FormDescription>
+                  <Form描述>
                     Memory usage percentage that triggers an alert
-                  </FormDescription>
+                  </Form描述>
                   <FormMessage />
                 </FormItem>
               )}
@@ -82,9 +82,9 @@ export const ServerThresholdFields: React.FC<ServerThresholdFieldsProps> = ({ co
                       onChange={(e) => field.onChange(Number(e.target.value))}
                     />
                   </FormControl>
-                  <FormDescription>
+                  <Form描述>
                     Disk usage percentage that triggers an alert
-                  </FormDescription>
+                  </Form描述>
                   <FormMessage />
                 </FormItem>
               )}
@@ -106,9 +106,9 @@ export const ServerThresholdFields: React.FC<ServerThresholdFieldsProps> = ({ co
                       onChange={(e) => field.onChange(Number(e.target.value))}
                     />
                   </FormControl>
-                  <FormDescription>
+                  <Form描述>
                     Network usage percentage that triggers an alert
-                  </FormDescription>
+                  </Form描述>
                   <FormMessage />
                 </FormItem>
               )}

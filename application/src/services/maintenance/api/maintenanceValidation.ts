@@ -6,19 +6,19 @@
 /**
  * Validate status value to ensure it's one of the acceptable values
  */
-export const validateStatus = (status: string): string => {
+export const validate状态 = (status: string): string => {
   // Convert to lowercase and replace spaces with underscore for consistency
-  const formattedStatus = status.toLowerCase().replace(' ', '_');
+  const formatted状态 = status.toLowerCase().replace(' ', '_');
   
   // Check if the status is one of the allowed values
-  const allowedStatuses = ['scheduled', 'in_progress', 'completed', 'cancelled'];
+  const allowed状态es = ['scheduled', 'in_progress', 'completed', 'cancelled'];
   
-  if (!allowedStatuses.includes(formattedStatus)) {
-    console.warn(`Invalid status value: ${formattedStatus}. Using 'scheduled' as fallback.`);
+  if (!allowed状态es.includes(formatted状态)) {
+    console.warn(`Invalid status value: ${formatted状态}. Using 'scheduled' as fallback.`);
     return 'scheduled';
   }
   
-  return formattedStatus;
+  return formatted状态;
 };
 
 /**
@@ -50,7 +50,7 @@ export const formatAssignedUsers = (assignedUsers: unknown): string => {
 /**
  * Process notification settings consistently
  */
-export const processNotificationSettings = (
+export const processNotification设置 = (
   notifySubscribers: string, 
   channelId?: string
 ): { notification_channel_id: string, notification_id: string } => {

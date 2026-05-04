@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 // Base schema
 const baseSchema = {
-  name: z.string().min(2, "Name is required and must be at least 2 characters"),
+  name: z.string().min(2, "名称 is required and must be at least 2 characters"),
   templateType: z.enum(['server', 'service', 'ssl', 'server_threshold'] as const),
   placeholder: z.string().optional(),
 };
@@ -100,7 +100,7 @@ const getDefaultValues = (templateType: TemplateType): TemplateFormData => {
         down_message: "Server ${server_name} is DOWN",
         notification_id: "",
         warning_message: "Warning: Server ${server_name} requires attention",
-        paused_message: "Monitoring for server ${server_name} is paused",
+        paused_message: "监控ing for server ${server_name} is paused",
         cpu_temp_message: "CPU temperature on ${server_name} is ${cpu_temp}°C",
         disk_io_message: "Disk I/O on ${server_name} is ${disk_io} MB/s",
         restore_ram_message: "Memory usage on ${server_name} has returned to normal: ${ram_usage}%",
@@ -116,7 +116,7 @@ const getDefaultValues = (templateType: TemplateType): TemplateFormData => {
         ...base,
         templateType: 'service' as const,
         up_message: "Service ${service_name} is UP. Response time: ${response_time}ms",
-        down_message: "Service ${service_name} is DOWN. Status: ${status}",
+        down_message: "Service ${service_name} is DOWN. 状态: ${status}",
         maintenance_message: "Service ${service_name} is under maintenance",
         incident_message: "Service ${service_name} has an incident",
         resolved_message: "Issue with service ${service_name} has been resolved",
@@ -160,7 +160,7 @@ export interface UseTemplateFormProps {
 export const useTemplateForm = ({ templateId, templateType, open, onOpenChange, onSuccess }: UseTemplateFormProps) => {
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const isEditMode = !!templateId;
+  const is编辑Mode = !!templateId;
   
   const form = useForm<TemplateFormData>({
     resolver: zodResolver(templateFormSchema),
@@ -209,7 +209,7 @@ export const useTemplateForm = ({ templateId, templateType, open, onOpenChange, 
         ]
       };
 
-      // Add template-specific fields
+      // 添加 template-specific fields
       const fieldsToProcess = expectedFields[templateType] || [];
       fieldsToProcess.forEach(key => {
         let value = (templateData as any)[key];
@@ -234,7 +234,7 @@ export const useTemplateForm = ({ templateId, templateType, open, onOpenChange, 
     }
   }, [templateData, open, form, templateType]);
 
-  // Create mutation
+  // 创建 mutation
   const createMutation = useMutation({
     mutationFn: (data: AnyTemplateData) => templateService.createTemplate(data, templateType),
     onSuccess: () => {
@@ -277,17 +277,17 @@ export const useTemplateForm = ({ templateId, templateType, open, onOpenChange, 
     },
   });
 
-  const isSubmitting = createMutation.isPending || updateMutation.isPending;
+  const is提交ting = createMutation.isPending || updateMutation.isPending;
 
   // Handle form submission
-  const onSubmit = (formData: TemplateFormData) => {
+  const on提交 = (formData: TemplateFormData) => {
    
     
-    // Remove templateType from the data before sending to API
+    // 移除 templateType from the data before sending to API
     const { templateType: _, ...templateDataWithoutType } = formData;
     const completeData = templateDataWithoutType as AnyTemplateData;
     
-    if (isEditMode && templateId) {
+    if (is编辑Mode && templateId) {
 
       updateMutation.mutate({ id: templateId, data: completeData });
     } else {
@@ -306,9 +306,9 @@ export const useTemplateForm = ({ templateId, templateType, open, onOpenChange, 
 
   return {
     form,
-    isEditMode,
+    is编辑Mode,
     isLoadingTemplate,
-    isSubmitting,
-    onSubmit
+    is提交ting,
+    on提交
   };
 };

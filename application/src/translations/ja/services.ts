@@ -1,15 +1,15 @@
-import { ServicesTranslations } from '../types/services';
+import { 服务Translations } from '../types/services';
 
-export const servicesTranslations: ServicesTranslations = {
-  serviceName: "サービス名",
-  serviceNameDesc: "サービスのわかりやすい名前を入力してください",
+export const servicesTranslations: 服务Translations = {
+  service名称: "サービス名",
+  service名称Desc: "サービスのわかりやすい名前を入力してください",
   serviceType: "サービスタイプ",
-  serviceStatus: "サービスステータス",
+  service状态: "サービスステータス",
   responseTime: "応答時間",
   uptime: "稼働時間",
   lastChecked: "最終チェック",
-  noServices: "フィルタ条件に一致するサービスがありません。",
-  currentlyMonitoring: "現在監視中",
+  no服务: "フィルタ条件に一致するサービスがありません。",
+  currently监控ing: "現在監視中",
   retry: "再試行",
   overview: "概要",
   newService: "新しいサービス",

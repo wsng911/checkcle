@@ -1,24 +1,24 @@
 
-import { ServicesTranslations } from '../types/services';
+import { 服务Translations } from '../types/services';
 
-export const servicesTranslations: ServicesTranslations = {
-  serviceStatus: "Service Status",
+export const servicesTranslations: 服务Translations = {
+  service状态: "Service 状态",
   uptime: "Uptime",
   lastChecked: "Last Checked",
-  noServices: "No services match your filter criteria.",
-  currentlyMonitoring: "Currently Monitoring",
+  no服务: "No services match your filter criteria.",
+  currently监控ing: "Currently 监控ing",
   retry: "Retry",
-  overview: "Overview",
+  overview: "概览",
   newService: "NewService",
   rowsPerPage: "Rows Per Page",
-  search: "Search",
+  search: "搜索",
   allTypes: "All Types",
-  createNewService: "Create New Service",
+  createNewService: "创建 New Service",
   createNewServiceDesc: "Fill in the details to create a new service to monitor.",
 
 	// ServiceBasicFields.tsx
-	serviceName: "Service Name",
-	serviceNameDesc: "Enter a descriptive name for your service",
+	service名称: "Service 名称",
+	service名称Desc: "Enter a descriptive name for your service",
 
 	// ServiceConfigFields.tsx
 	checkInterval: "Check Interval",
@@ -29,7 +29,7 @@ export const servicesTranslations: ServicesTranslations = {
 	hours: "hours",
 	custom: "Custom",
 	checkIntervalPlaceholder: "Enter interval in seconds",
-	backToPresets: "Back to presets",
+	backToPresets: "返回 to presets",
 	checkIntervalDesc: "How often to check the service status",
 	checkIntervalDescCustom: "Enter custom interval in seconds (minimum 10 seconds)",
 	retryAttempts: "Retry Attempts",
@@ -39,7 +39,7 @@ export const servicesTranslations: ServicesTranslations = {
 
 	// ServiceForm.tsx
 	updateService: "Update Service",
-	createService: "Create Service",
+	createService: "创建 Service",
 
 	// ServiceNotificationFields.tsx
 	enableNotifications: "Enable Notifications",
@@ -47,7 +47,7 @@ export const servicesTranslations: ServicesTranslations = {
 	notificationChannels: "Notification Channels",
 	notificationChannelsEnabledDesc: "Select notification channels for this service",
 	notificationChannelsDesc: "Enable notifications first to select channels",
-	notificationChannelsPlaceholder: "Add a notification channel",
+	notificationChannelsPlaceholder: "添加 a notification channel",
 	alertTemplate: "Alert Template",
 	alertTemplateLoading: "Loading templates...",
 	alertTemplatePlaceholder: "Select an alert template",
@@ -56,26 +56,26 @@ export const servicesTranslations: ServicesTranslations = {
 
 	// ServiceTypeField.tsx
 	serviceType: "Service Type",
-	serviceTypeHTTPDesc: "Monitor websites and REST APIs with HTTP/HTTPS Protocol",
-	serviceTypePINGDesc: "Monitor host availability with PING Protocol",
-	serviceTypeTCPDesc: "Monitor TCP port connectivity with TCP Protocol",
-	serviceTypeDNSDesc: "Monitor DNS resolution",
+	serviceTypeHTTPDesc: "监控 websites and REST APIs with HTTP/HTTPS Protocol",
+	serviceTypePINGDesc: "监控 host availability with PING Protocol",
+	serviceTypeTCPDesc: "监控 TCP port connectivity with TCP Protocol",
+	serviceTypeDNSDesc: "监控 DNS resolution",
 
 	// ServiceRegionalFields.tsx
-	regionalMonitoring: "Regional Monitoring",
-	regionalMonitoringDesc: "Assign this service to regional monitoring agents for distributed monitoring",
+	regional监控ing: "Regional 监控ing",
+	regional监控ingDesc: "Assign this service to regional monitoring agents for distributed monitoring",
 	regionalAgents: "Regional Agents",
 	regionalAgentsLoading: "Loading agents...",
 	regionalAgentsAvailablePlaceholder: "Select additional regional agents...",
 	regionalAgentsAllSelected: "All available agents selected",
 	regionalAgentsNoAvailable: "No regional agents available",
 	regionalAgentsNoOnlineAvailable: "No online regional agents available",
-	regionalAgentsNotFoundMessage: "No online regional agents found. Services will use default monitoring.",
+	regionalAgentsNotFoundMessage: "No online regional agents found. 服务 will use default monitoring.",
 	regionalAgentsNotSelectedMessage: "No regional agents selected. Service will use default monitoring.",
 
 	// ServiceUrlField.tsx
 	targetDefault: "Target URL/Host",
-	targetDNS: "Domain Name",
+	targetDNS: "Domain 名称",
 	targetHTTPDesc: "Enter the full URL including protocol (http:// or https://)",
 	targetPINGDesc: "Enter hostname or IP address to ping",
 	targetTCPDesc: "Enter hostname or IP address for TCP connection test",
@@ -85,21 +85,21 @@ export const servicesTranslations: ServicesTranslations = {
 	targetDefaultPlaceholder: "Enter URL or hostname",
 
 	// types.ts
-	serviceNameRequired: "Service name is required",
+	service名称Required: "Service name is required",
 	urlDomainHostRequired: "URL/Domain/Host is required",
 	enterValidUrlHostnameDomain: "Please enter a valid URL, hostname, or domain",
 	spacesNotAllowed: "Spaces are not allowed",
 
-	// Dashboard
-	upServices: "UP SERVICES",
-	downServices: "DOWN SERVICES",
-	pausedServices: "PAUSED SERVICES",
-	warningServices: "WARNING SERVICES",
+	// 仪表盘
+	up服务: "UP SERVICES",
+	down服务: "DOWN SERVICES",
+	paused服务: "PAUSED SERVICES",
+	warning服务: "WARNING SERVICES",
 
-	// ServiceRowActions.tsx
+	// ServiceRow操作.tsx
 	viewDetail: "View Detail",
-	resumeMonitoring: "Resume Monitoring",
-	pauseMonitoring: "Pause Monitoring",
+	resume监控ing: "Resume 监控ing",
+	pause监控ing: "Pause 监控ing",
 
 
 	//IncidentTable.tsx
@@ -113,11 +113,11 @@ export const servicesTranslations: ServicesTranslations = {
 	pausedAt: "Paused at ",
 	lastCheckDetails: "Last Check Details",
 	checkedAt: "Checked at ",
-	monitoringPaused: "Monitoring Paused",
+	monitoringPaused: "监控ing Paused",
 	noAutomaticChecks: "No automatic checks",
 
-	//ServiveEditDialog.tsx
-	editService: "Edit Service",
+	//Servive编辑Dialog.tsx
+	editService: "编辑 Service",
 	editServiceDesc: "Update the details of your monitored service.",
 
 	//ServiceStatsCards.tsx
@@ -127,15 +127,15 @@ export const servicesTranslations: ServicesTranslations = {
 	basedOnlastChecksCount: "Based on last {count} checks",
 	totalUptime: "Total Uptime",
 	totalDowntime: "Total Downtime",
-	monitoringSettings: "Monitoring Settings",
-	monitoringSettingsInterval: "Checked every {interval} seconds",
-	monitoringSettingsType: "monitoring",
-	upStatusDuration: "Up for {duration}",
-	downStatusDuration: "Down for {duration}",
+	monitoring设置: "监控ing 设置",
+	monitoring设置Interval: "Checked every {interval} seconds",
+	monitoring设置Type: "monitoring",
+	up状态Duration: "Up for {duration}",
+	down状态Duration: "Down for {duration}",
 
 	incidentHistory: "Incident History",
 	processing: "Processing",
-	back: "Back",
+	back: "返回",
 	last20Checks: "Last 20 checks",
 
 	//OneClickInstallTab.tsx
@@ -169,7 +169,7 @@ export const servicesTranslations: ServicesTranslations = {
 	// ManualInstallTab.tsx
 	manualInstallTitle: "Manual Installation Steps",
 	manualInstallDesc: "Step-by-step installation process",
-	serverName: "Server Name",
+	server名称: "Server 名称",
 	agentId: "Agent ID",
 	osType: "OS Type",
 	downloadScript: "Download the installation script",
@@ -185,17 +185,17 @@ export const servicesTranslations: ServicesTranslations = {
 	// ServerDetail.tsx
 	errorLoadingServer: "Error loading server",
 	unableToFetchServerData: "Unable to fetch server data. Please check your connection and try again.",
-	backToServers: "Back to Servers",
+	backToServers: "返回 to Servers",
 	loadingServerDetails: "Loading server details...",
 	serverDetail: "Server Detail",
-	monitorServerMetrics: "Monitor server performance metrics and system health",
+	monitorServerMetrics: "监控 server performance metrics and system health",
 	serverHostnameIpOs: "{hostname} • {ip_address} • {os_type}",
 
-	// ContainerMonitoring.tsx
-	errorLoadingContainers: "Error loading containers",
+	// Container监控ing.tsx
+	errorLoading容器: "Error loading containers",
 	unableToFetchContainerData: "Unable to fetch container data. Please check your connection and try again.",
 	errorUnknown: "Unknown error",
-	containerMonitoring: "Container Monitoring",
-	monitorAndManageContainers: "Monitor and manage your Docker containers in real-time",
+	container监控ing: "Container 监控ing",
+	monitorAndManage容器: "监控 and manage your Docker containers in real-time",
 	serverIdLabel: "Server ID",
 };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, Card描述, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Github, FileText, Twitter, MessageCircle, Code2, ServerIcon, FolderOpen, Database, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,14 +7,14 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
-import { useSystemSettings } from "@/hooks/useSystemSettings";
+import { useSystem设置 } from "@/hooks/useSystem设置";
 import { pb } from "@/lib/pocketbase";
 import { toast } from "@/components/ui/use-toast";
 
 export const AboutSystem: React.FC = () => {
   const { t } = useLanguage();
   const { theme } = useTheme();
-  const { systemName } = useSystemSettings();
+  const { system名称 } = useSystem设置();
   const [isImporting, setIsImporting] = useState(false);
   const [mergeFields, setMergeFields] = useState(true);
   const [importResult, setImportResult] = useState<{
@@ -85,7 +85,7 @@ export const AboutSystem: React.FC = () => {
       if (!pb.authStore.isValid) {
         throw new Error("Authentication required. Please log in as an admin.");
       }
-      // Create/update collections one by one using PocketBase client
+      // 创建/update collections one by one using PocketBase client
       let successCount = 0;
       let errorCount = 0;
       let updatedCount = 0;
@@ -118,15 +118,15 @@ export const AboutSystem: React.FC = () => {
                 const newSchema = collection.schema || [];
                 // Merge schemas - add new fields, keep existing ones
                 const mergedSchema = [...existingSchema];
-                let fieldsAdded = 0;
+                let fields添加ed = 0;
                 
                 for (const newField of newSchema) {
                   const existingFieldIndex = mergedSchema.findIndex(f => f.name === newField.name);
                   if (existingFieldIndex >= 0) {
                   } else {
-                    // Add new field
+                    // 添加 new field
                     mergedSchema.push(newField);
-                    fieldsAdded++;
+                    fields添加ed++;
                   }
                 }
                 
@@ -146,7 +146,7 @@ export const AboutSystem: React.FC = () => {
               continue;
             }
           } else {
-            // Create new collection
+            // 创建 new collection
             try {
               const newCollection = await pb.collections.create(collection);
               successCount++;
@@ -281,67 +281,67 @@ export const AboutSystem: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div class名称="space-y-6 animate-fade-in">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">{t('aboutSystem')}</h1>
+        <h1 class名称="text-3xl font-bold tracking-tight">{t('aboutSystem')}</h1>
       </div>
       
       <Separator />
       
-      <div className="grid gap-8 md:grid-cols-2">
-        <Card className="overflow-hidden border border-border transition-all duration-300 hover:shadow-md">
-          <CardHeader className="bg-muted/50 pb-4">
-            <CardTitle className="flex items-center gap-2">
-              <ServerIcon className={`h-5 w-5 ${theme === 'dark' ? 'text-sky-400' : 'text-sky-600'}`} />
-              <span className="font-thin text-xl">{t('systemDescription')}</span>
+      <div class名称="grid gap-8 md:grid-cols-2">
+        <Card class名称="overflow-hidden border border-border transition-all duration-300 hover:shadow-md">
+          <CardHeader class名称="bg-muted/50 pb-4">
+            <CardTitle class名称="flex items-center gap-2">
+              <ServerIcon class名称={`h-5 w-5 ${theme === 'dark' ? 'text-sky-400' : 'text-sky-600'}`} />
+              <span class名称="font-thin text-xl">{t('system描述')}</span>
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6 pt-6">
-            <div className="flex flex-col space-y-4">
-              <div className="flex flex-col space-y-3 pt-2">
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">{t('systemVersion')}</span>
-                  <span className="text-foreground font-medium">{t('version')} 1.5.1</span>
+          <CardContent class名称="space-y-6 pt-6">
+            <div class名称="flex flex-col space-y-4">
+              <div class名称="flex flex-col space-y-3 pt-2">
+                <div class名称="flex justify-between items-center">
+                  <span class名称="text-muted-foreground">{t('systemVersion')}</span>
+                  <span class名称="text-foreground font-medium">{t('version')} 1.5.1</span>
                 </div>
-                <Separator className="my-1" />
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">{t('license')}</span>
-                  <span className="text-foreground font-medium">{t('mitLicense')}</span>
+                <Separator class名称="my-1" />
+                <div class名称="flex justify-between items-center">
+                  <span class名称="text-muted-foreground">{t('license')}</span>
+                  <span class名称="text-foreground font-medium">{t('mitLicense')}</span>
                 </div>
-                <Separator className="my-1" />
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">{t('releasedOn')}</span>
-                  <span className="text-foreground font-medium">Auguest 21, 2025</span>
+                <Separator class名称="my-1" />
+                <div class名称="flex justify-between items-center">
+                  <span class名称="text-muted-foreground">{t('releasedOn')}</span>
+                  <span class名称="text-foreground font-medium">Auguest 21, 2025</span>
                 </div>
               </div>
             </div>
           </CardContent>
         </Card>
         
-        <Card className="overflow-hidden border border-border transition-all duration-300 hover:shadow-md">
-          <CardHeader className="bg-muted/50 pb-4">
-            <CardTitle className="flex items-center gap-2">
-              <Code2 className={`h-5 w-5 ${theme === 'dark' ? 'text-emerald-400' : 'text-emerald-600'}`} />
+        <Card class名称="overflow-hidden border border-border transition-all duration-300 hover:shadow-md">
+          <CardHeader class名称="bg-muted/50 pb-4">
+            <CardTitle class名称="flex items-center gap-2">
+              <Code2 class名称={`h-5 w-5 ${theme === 'dark' ? 'text-emerald-400' : 'text-emerald-600'}`} />
               <span>{t('links')}</span>
             </CardTitle>
-            <CardDescription className="font-medium text-base">{systemName || 'CheckCle'} {t('resources').toLowerCase()}</CardDescription>
+            <Card描述 class名称="font-medium text-base">{system名称 || 'CheckCle'} {t('resources').toLowerCase()}</Card描述>
           </CardHeader>
-          <CardContent className="space-y-4 pt-6">
-            <div className="grid grid-cols-1 gap-3">
-              <Button variant="outline" className="flex items-center justify-start gap-3 h-12 hover:bg-muted/50 transition-all duration-200" onClick={() => window.open("https://github.com/operacle/checkcle", "_blank")}>
-                <Github className={`h-5 w-5 ${theme === 'dark' ? 'text-white/80' : 'text-gray-700'}`} />
+          <CardContent class名称="space-y-4 pt-6">
+            <div class名称="grid grid-cols-1 gap-3">
+              <Button variant="outline" class名称="flex items-center justify-start gap-3 h-12 hover:bg-muted/50 transition-all duration-200" onClick={() => window.open("https://github.com/operacle/checkcle", "_blank")}>
+                <Github class名称={`h-5 w-5 ${theme === 'dark' ? 'text-white/80' : 'text-gray-700'}`} />
                 <span>{t('viewOnGithub')}</span>
               </Button>
-              <Button variant="outline" className="flex items-center justify-start gap-3 h-12 hover:bg-muted/50 transition-all duration-200" onClick={() => window.open("https://docs.checkcle.io", "_blank")}>
-                <FileText className={`h-5 w-5 ${theme === 'dark' ? 'text-white/80' : 'text-gray-700'}`} />
+              <Button variant="outline" class名称="flex items-center justify-start gap-3 h-12 hover:bg-muted/50 transition-all duration-200" onClick={() => window.open("https://docs.checkcle.io", "_blank")}>
+                <FileText class名称={`h-5 w-5 ${theme === 'dark' ? 'text-white/80' : 'text-gray-700'}`} />
                 <span>{t('viewDocumentation')}</span>
               </Button>
-              <Button variant="outline" className="flex items-center justify-start gap-3 h-12 hover:bg-muted/50 transition-all duration-200" onClick={() => window.open("https://x.com/checkcle_oss", "_blank")}>
-                <Twitter className={`h-5 w-5 ${theme === 'dark' ? 'text-white/80' : 'text-gray-700'}`} />
+              <Button variant="outline" class名称="flex items-center justify-start gap-3 h-12 hover:bg-muted/50 transition-all duration-200" onClick={() => window.open("https://x.com/checkcle_oss", "_blank")}>
+                <Twitter class名称={`h-5 w-5 ${theme === 'dark' ? 'text-white/80' : 'text-gray-700'}`} />
                 <span>{t('followOnX')}</span>
               </Button>
-              <Button variant="outline" className="flex items-center justify-start gap-3 h-12 hover:bg-muted/50 transition-all duration-200" onClick={() => window.open("https://discord.gg/xs9gbubGwX", "_blank")}>
-                <MessageCircle className={`h-5 w-5 ${theme === 'dark' ? 'text-white/80' : 'text-gray-700'}`} />
+              <Button variant="outline" class名称="flex items-center justify-start gap-3 h-12 hover:bg-muted/50 transition-all duration-200" onClick={() => window.open("https://discord.gg/xs9gbubGwX", "_blank")}>
+                <MessageCircle class名称={`h-5 w-5 ${theme === 'dark' ? 'text-white/80' : 'text-gray-700'}`} />
                 <span>{t('joinDiscord')}</span>
               </Button>
             </div>
@@ -351,54 +351,54 @@ export const AboutSystem: React.FC = () => {
 
       <Separator />
 
-      <Card className="overflow-hidden border border-border transition-all duration-300 hover:shadow-md">
-        <CardHeader className="bg-muted/50 pb-4">
-          <CardTitle className="flex items-center gap-2">
-            <Database className={`h-5 w-5 ${theme === 'dark' ? 'text-blue-400' : 'text-blue-600'}`} />
+      <Card class名称="overflow-hidden border border-border transition-all duration-300 hover:shadow-md">
+        <CardHeader class名称="bg-muted/50 pb-4">
+          <CardTitle class名称="flex items-center gap-2">
+            <Database class名称={`h-5 w-5 ${theme === 'dark' ? 'text-blue-400' : 'text-blue-600'}`} />
             <span>{t('updateSchema')}</span>
           </CardTitle>
-          <CardDescription className="font-medium text-base">{t('updateSchemaDesc')}</CardDescription>
+          <Card描述 class名称="font-medium text-base">{t('updateSchemaDesc')}</Card描述>
         </CardHeader>
-        <CardContent className="space-y-4 pt-6">
-          <div className="space-y-3">
-            <div className="flex items-center space-x-2">
+        <CardContent class名称="space-y-4 pt-6">
+          <div class名称="space-y-3">
+            <div class名称="flex items-center space-x-2">
               <Checkbox
                 id="merge-fields"
                 checked={mergeFields}
                 onCheckedChange={(checked) => setMergeFields(checked === true)}
               />
-              <Label htmlFor="merge-fields" className="text-sm font-medium">
+              <Label htmlFor="merge-fields" class名称="text-sm font-medium">
 	              {t('mergeFieldsLabel')}
               </Label>
             </div>
           </div>
           
-          <div className="flex gap-2 flex-wrap">
+          <div class名称="flex gap-2 flex-wrap">
             <Button
               onClick={handleLoadLocalSchema}
               disabled={isImporting}
-              className={`flex items-center gap-2 transition-all duration-200 ${
+              class名称={`flex items-center gap-2 transition-all duration-200 ${
                 isImporting ? 'animate-pulse' : ''
               }`}
             >
-              <Database className={`h-4 w-4 ${isImporting ? 'animate-spin' : ''}`} />
+              <Database class名称={`h-4 w-4 ${isImporting ? 'animate-spin' : ''}`} />
               {isImporting ? t('importing') : t('clickToUpdateSchema')}
             </Button>
           </div>
 
           {importResult && (
-            <div className={`mt-4 p-4 rounded-lg border ${
+            <div class名称={`mt-4 p-4 rounded-lg border ${
               importResult.success 
                 ? 'bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800' 
                 : 'bg-red-50 border-red-200 dark:bg-red-900/20 dark:border-red-800'
             } animate-in fade-in-0 slide-in-from-bottom-2 duration-300`}>
-              <div className="flex items-center gap-2">
-                <CheckCircle className={`h-5 w-5 ${
+              <div class名称="flex items-center gap-2">
+                <CheckCircle class名称={`h-5 w-5 ${
                   importResult.success 
                     ? 'text-green-600 dark:text-green-400' 
                     : 'text-red-600 dark:text-red-400'
                 }`} />
-                <span className={`font-medium ${
+                <span class名称={`font-medium ${
                   importResult.success 
                     ? 'text-green-800 dark:text-green-200' 
                     : 'text-red-800 dark:text-red-200'
@@ -406,23 +406,23 @@ export const AboutSystem: React.FC = () => {
                   {importResult.success ? t('importSuccessful') : t('importFailed')}
                 </span>
               </div>
-              <div className={`mt-2 text-sm ${
+              <div class名称={`mt-2 text-sm ${
                 importResult.success 
                   ? 'text-green-700 dark:text-green-300' 
                   : 'text-red-700 dark:text-red-300'
               }`}>
-                {importResult.created > 0 && t('collectionsCreatedCount').replace('{count}', String(importResult.created))}
+                {importResult.created > 0 && t('collections创建dCount').replace('{count}', String(importResult.created))}
                 {importResult.updated > 0 && (importResult.created > 0 ? ', ' : '') + t('collectionsUpdatedCount').replace('{count}', String(importResult.updated))}
                 {importResult.skipped > 0 && ((importResult.created > 0 || importResult.updated > 0) ? ', ' : '') + t('collectionsSkippedCount').replace('{count}', String(importResult.skipped))}
               </div>
             </div>
           )}
 
-          <div className="text-sm text-muted-foreground">
-            <p className="mb-2">
+          <div class名称="text-sm text-muted-foreground">
+            <p class名称="mb-2">
               <strong>{t('instructions')}:</strong>
             </p>
-            <ul className="list-disc list-inside space-y-1 ml-2">
+            <ul class名称="list-disc list-inside space-y-1 ml-2">
               <li><strong>{t('mergeFields')}:</strong> {t('instructionsMergeFields')}</li>
               <li>{t('instructionsCollections')}</li>
               <li>{t('instructionsImportAuth')}</li>

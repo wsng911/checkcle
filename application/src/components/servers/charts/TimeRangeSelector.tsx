@@ -19,7 +19,7 @@ const timeRangeOptions = [
 export const TimeRangeSelector = ({ value, onChange }: TimeRangeSelectorProps) => {
   return (
     <Select value={value} onValueChange={(value: TimeRange) => onChange(value)}>
-      <SelectTrigger className="w-[160px] h-8">
+      <SelectTrigger class名称="w-[160px] h-8">
         <SelectValue />
       </SelectTrigger>
       <SelectContent>

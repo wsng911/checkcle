@@ -1,33 +1,33 @@
 
 export interface RegionTranslations {
   
-  // RegionalMonitoringContent.tsx
+  // Regional监控ingContent.tsx
   regionalmonitoring: string;
   descriptRegionPage: string;
   addRegionalAgent: string;
   totalAgents: string;
-  regionalMonitoringAgents: string;
+  regional监控ingAgents: string;
   onlineAgents: string;
   currentlyConnected: string;
   offlineAgents: string;
   disconnectedAgents: string;
   regionalAgents: string;
   noRegionalAgents: string;
-  getStartedAddAgent: string;
+  getStarted添加Agent: string;
   addFirstAgent: string;
-  agentRemoved: string;
-  agentRemovedDesc: string;
-  regionalAgentAdded: string;
-  regionalAgentAddedDesc: string;
+  agent移除d: string;
+  agent移除dDesc: string;
+  regionalAgent添加ed: string;
+  regionalAgent添加edDesc: string;
   error: string;
-  failedToRemoveAgent: string;
+  failedTo移除Agent: string;
 
-  // AddRegionalAgentDialog.tsx
-  addRegionalMonitoringAgent: string;
-  deployRegionalMonitoringAgent: string;
-  regionName: string;
-  regionNamePlaceholder: string;
-  agentServerIpAddress: string;
+  // 添加RegionalAgentDialog.tsx
+  addRegional监控ingAgent: string;
+  deployRegional监控ingAgent: string;
+  region名称: string;
+  region名称Placeholder: string;
+  agentServerIp添加ress: string;
   agentIpPlaceholder: string;
   cancel: string;
   generateInstallation: string;
@@ -38,7 +38,7 @@ export interface RegionTranslations {
   agentDetailsTab: string;
   manualInstallTab: string;
   oneClickAutomaticInstallation: string;
-  completeInstallationDescription: string;
+  completeInstallation描述: string;
   whatThisScriptDoes: string;
   scriptActionDownload: string;
   scriptActionInstall: string;
@@ -52,7 +52,7 @@ export interface RegionTranslations {
   generatedAgentConfiguration: string;
   autoConfiguredDuringInstallation: string;
   agentId: string;
-  regionNameDetail: string;
+  region名称Detail: string;
   serverIp: string;
   apiEndpoint: string;
   authenticationToken: string;
@@ -71,14 +71,14 @@ export interface RegionTranslations {
   addAnotherAgent: string;
   completeSetup: string;
   copied: string;
-  copiedDescription: string;
+  copied描述: string;
   copyFailed: string;
-  copyFailedDescription: string;
+  copyFailed描述: string;
   copyFailedLocalhost: string;
   copyFailedChrome: string;
   downloaded: string;
-  downloadedDescription: string;
-  failedToCreateAgent: string;
+  downloaded描述: string;
+  failedTo创建Agent: string;
 
   // RegionalAgentCard.tsx
   defaultBadge: string;
@@ -87,6 +87,6 @@ export interface RegionTranslations {
   online: string;
   offline: string;
   lastUpdated: string;
-  activeMonitoring: string;
+  active监控ing: string;
   connectionLost: string;
 }

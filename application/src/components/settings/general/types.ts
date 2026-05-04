@@ -1,12 +1,12 @@
 
-import { GeneralSettings } from "@/services/settingsService";
+import { General设置 } from "@/services/settingsService";
 
-export interface SettingsTabProps {
+export interface 设置TabProps {
   form: any;
-  isEditing: boolean;
-  settings?: GeneralSettings;
+  is编辑ing: boolean;
+  settings?: General设置;
 }
 
-export interface GeneralSettingsPanelProps {
+export interface General设置PanelProps {
   // No props needed for now, but we can add them in the future
 }

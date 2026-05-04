@@ -3,35 +3,35 @@ import { CheckCircle, AlertTriangle, X, Pause } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { UptimeData } from "@/types/service.types";
 import { format } from "date-fns";
-import { StatusInfo } from "./types";
+import { 状态Info } from "./types";
 
 // Get appropriate icon and style for each status
-export const getStatusInfo = (status: string): StatusInfo => {
+export const get状态Info = (status: string): 状态Info => {
   switch (status) {
     case "up":
       return { 
-        icon: <CheckCircle className="h-4 w-4 text-green-500 mr-2" />, 
+        icon: <CheckCircle class名称="h-4 w-4 text-green-500 mr-2" />, 
         text: "Up", 
         textColor: "text-green-500",
-        badge: <Badge variant="default" className="bg-emerald-800 text-white hover:bg-emerald-700">Up</Badge>
+        badge: <Badge variant="default" class名称="bg-emerald-800 text-white hover:bg-emerald-700">Up</Badge>
       };
     case "warning":
       return { 
-        icon: <AlertTriangle className="h-4 w-4 text-yellow-500 mr-2" />, 
+        icon: <AlertTriangle class名称="h-4 w-4 text-yellow-500 mr-2" />, 
         text: "Warning", 
         textColor: "text-yellow-500",
-        badge: <Badge variant="outline" className="bg-yellow-800/80 text-yellow-300 border-yellow-700 hover:bg-yellow-800">Warning</Badge>
+        badge: <Badge variant="outline" class名称="bg-yellow-800/80 text-yellow-300 border-yellow-700 hover:bg-yellow-800">Warning</Badge>
       };
     case "paused":
       return { 
-        icon: <Pause className="h-4 w-4 text-gray-500 mr-2" />, 
+        icon: <Pause class名称="h-4 w-4 text-gray-500 mr-2" />, 
         text: "Paused", 
         textColor: "text-gray-500",
-        badge: <Badge variant="outline" className="bg-gray-800/50 text-gray-400 border-gray-700 hover:bg-gray-800">Paused</Badge>
+        badge: <Badge variant="outline" class名称="bg-gray-800/50 text-gray-400 border-gray-700 hover:bg-gray-800">Paused</Badge>
       };
     default: // down
       return { 
-        icon: <X className="h-4 w-4 text-red-500 mr-2" />, 
+        icon: <X class名称="h-4 w-4 text-red-500 mr-2" />, 
         text: "Down", 
         textColor: "text-red-500",
         badge: <Badge variant="destructive">Down</Badge>
@@ -40,7 +40,7 @@ export const getStatusInfo = (status: string): StatusInfo => {
 };
 
 // Filter the uptimeData to only include status changes (incidents)
-export const getStatusChangeEvents = (uptimeData: UptimeData[]): UptimeData[] => {
+export const get状态ChangeEvents = (uptimeData: UptimeData[]): UptimeData[] => {
   if (!uptimeData.length) return [];
 
   // First sort the data by timestamp (newest first for display)

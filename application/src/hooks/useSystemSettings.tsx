@@ -3,15 +3,15 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from "@/components/ui/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { authService } from "@/services/authService";
-import { GeneralSettings } from "@/services/settingsService";
+import { General设置 } from "@/services/settingsService";
 
 interface ApiResponse {
   success: boolean;
-  data?: GeneralSettings;
+  data?: General设置;
   message?: string;
 }
 
-export function useSystemSettings() {
+export function useSystem设置() {
   const queryClient = useQueryClient();
   const { t } = useLanguage();
   
@@ -26,8 +26,8 @@ export function useSystemSettings() {
     error,
     refetch
   } = useQuery({
-    queryKey: ['generalSettings'],
-    queryFn: async (): Promise<GeneralSettings | null> => {
+    queryKey: ['general设置'],
+    queryFn: async (): Promise<General设置 | null> => {
       try {
       //  console.log('Fetching settings from API...');
         const response = await fetch('/api/settings', {
@@ -35,7 +35,7 @@ export function useSystemSettings() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ action: 'getSettings' })
+          body: JSON.stringify({ action: 'get设置' })
         });
         
       //  console.log('API response status:', response.status);
@@ -55,7 +55,7 @@ export function useSystemSettings() {
       } catch (error) {
       //  console.error('Error fetching settings:', error);
         toast({
-          title: t("errorFetchingSettings", "settings"),
+          title: t("errorFetching设置", "settings"),
           description: error instanceof Error ? error.message : String(error),
           variant: "destructive",
         });
@@ -66,17 +66,17 @@ export function useSystemSettings() {
   });
 
   // Update settings mutation
-  const updateSettingsMutation = useMutation({
-    mutationFn: async (updatedSettings: GeneralSettings): Promise<GeneralSettings> => {
-     // console.log('Updating settings:', updatedSettings);
+  const update设置Mutation = useMutation({
+    mutationFn: async (updated设置: General设置): Promise<General设置> => {
+     // console.log('Updating settings:', updated设置);
       const response = await fetch('/api/settings', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ 
-          action: 'updateSettings',
-          data: updatedSettings
+          action: 'update设置',
+          data: updated设置
         })
       });
       
@@ -93,7 +93,7 @@ export function useSystemSettings() {
       return result.data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['generalSettings'] });
+      queryClient.invalidateQueries({ queryKey: ['general设置'] });
       toast({
         title: t("settingsUpdated", "settings"),
         description: "",
@@ -103,7 +103,7 @@ export function useSystemSettings() {
     onError: (error) => {
     //  console.error('Error updating settings:', error);
       toast({
-        title: t("errorSavingSettings", "settings"),
+        title: t("errorSaving设置", "settings"),
         description: error instanceof Error ? error.message : String(error),
         variant: "destructive",
       });
@@ -111,7 +111,7 @@ export function useSystemSettings() {
   });
 
   // Test email connection
-  const testEmailConnectionMutation = useMutation({
+  const test邮箱ConnectionMutation = useMutation({
     mutationFn: async (smtpConfig: any): Promise<{success: boolean, message: string}> => {
      // console.log('Testing email connection:', smtpConfig);
       const response = await fetch('/api/settings', {
@@ -120,7 +120,7 @@ export function useSystemSettings() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ 
-          action: 'testEmailConnection',
+          action: 'test邮箱Connection',
           data: smtpConfig
         })
       });
@@ -157,10 +157,10 @@ export function useSystemSettings() {
     isLoading,
     error,
     refetch,
-    updateSettings: updateSettingsMutation.mutate,
-    isUpdating: updateSettingsMutation.isPending,
-    testEmailConnection: testEmailConnectionMutation.mutate,
-    isTestingConnection: testEmailConnectionMutation.isPending,
-    systemName: settings?.system_name || settings?.meta?.appName || 'CheckCle',
+    update设置: update设置Mutation.mutate,
+    isUpdating: update设置Mutation.isPending,
+    test邮箱Connection: test邮箱ConnectionMutation.mutate,
+    isTestingConnection: test邮箱ConnectionMutation.isPending,
+    system名称: settings?.system_name || settings?.meta?.app名称 || 'CheckCle',
   };
 }

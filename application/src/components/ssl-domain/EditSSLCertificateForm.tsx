@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, Form描述, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Badge } from "@/components/ui/badge";
 import { SSLCertificate } from "@/types/ssl.types";
 import { Loader2, Bell, X } from "lucide-react";
@@ -26,14 +26,14 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-interface EditSSLCertificateFormProps {
+interface 编辑SSLCertificateFormProps {
   certificate: SSLCertificate;
-  onSubmit: (data: SSLCertificate) => void;
-  onCancel: () => void;
+  on提交: (data: SSLCertificate) => void;
+  on取消: () => void;
   isPending: boolean;
 }
 
-export const EditSSLCertificateForm = ({ certificate, onSubmit, onCancel, isPending }: EditSSLCertificateFormProps) => {
+export const 编辑SSLCertificateForm = ({ certificate, on提交, on取消, isPending }: 编辑SSLCertificateFormProps) => {
   const { t } = useLanguage();
   const [alertConfigs, setAlertConfigs] = useState<AlertConfiguration[]>([]);
   const [sslTemplates, setSslTemplates] = useState<SslNotificationTemplate[]>([]);
@@ -130,7 +130,7 @@ export const EditSSLCertificateForm = ({ certificate, onSubmit, onCancel, isPend
     }
   }, [certificate, form]);
 
-  const handleChannelAdd = (channelId: string) => {
+  const handleChannel添加 = (channelId: string) => {
     const currentChannels = form.getValues("notification_channels") || [];
     if (!currentChannels.includes(channelId)) {
       const newChannels = [...currentChannels, channelId];
@@ -138,20 +138,20 @@ export const EditSSLCertificateForm = ({ certificate, onSubmit, onCancel, isPend
     }
   };
 
-  const handleChannelRemove = (channelId: string) => {
+  const handleChannel移除 = (channelId: string) => {
     const currentChannels = form.getValues("notification_channels") || [];
     const newChannels = currentChannels.filter(id => id !== channelId);
     form.setValue("notification_channels", newChannels);
   };
 
-  const getSelectedChannelNames = () => {
+  const getSelectedChannel名称s = () => {
     return (notificationChannels || []).map(channelId => {
       const config = alertConfigs.find(c => c.id === channelId);
       return config ? `${config.notify_name} (${config.notification_type})` : channelId;
     });
   };
 
-  const handleSubmit = (data: FormValues) => {  
+  const handle提交 = (data: FormValues) => {  
     // Merge the updated values with the original certificate
     const updatedCertificate: SSLCertificate = {
       ...certificate,
@@ -165,18 +165,18 @@ export const EditSSLCertificateForm = ({ certificate, onSubmit, onCancel, isPend
       check_interval: data.check_interval ? Number(data.check_interval) : undefined
     };
     
-    onSubmit(updatedCertificate);
+    on提交(updatedCertificate);
   };
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
+      <form on提交={form.handle提交(handle提交)} class名称="space-y-4">
         <FormField
           control={form.control}
           name="domain"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t('domainName')}</FormLabel>
+              <FormLabel>{t('domain名称')}</FormLabel>
               <FormControl>
                 <Input 
                   {...field}
@@ -184,15 +184,15 @@ export const EditSSLCertificateForm = ({ certificate, onSubmit, onCancel, isPend
                   disabled={true}
                 />
               </FormControl>
-              <FormDescription>
+              <Form描述>
                 {t('domainCannotChange')}
-              </FormDescription>
+              </Form描述>
               <FormMessage />
             </FormItem>
           )}
         />
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class名称="grid grid-cols-1 md:grid-cols-3 gap-4">
           <FormField
             control={form.control}
             name="warning_threshold"
@@ -207,9 +207,9 @@ export const EditSSLCertificateForm = ({ certificate, onSubmit, onCancel, isPend
                     placeholder="30" 
                   />
                 </FormControl>
-                <FormDescription>
+                <Form描述>
                   {t('daysBeforeExpiration')}
-                </FormDescription>
+                </Form描述>
                 <FormMessage />
               </FormItem>
             )}
@@ -229,9 +229,9 @@ export const EditSSLCertificateForm = ({ certificate, onSubmit, onCancel, isPend
                     placeholder="7" 
                   />
                 </FormControl>
-                <FormDescription>
+                <Form描述>
                   {t('daysBeforeCritical')}
-                </FormDescription>
+                </Form描述>
                 <FormMessage />
               </FormItem>
             )}
@@ -252,9 +252,9 @@ export const EditSSLCertificateForm = ({ certificate, onSubmit, onCancel, isPend
                     placeholder="1" 
                   />
                 </FormControl>
-                <FormDescription>
+                <Form描述>
                   How often to check
-                </FormDescription>
+                </Form描述>
                 <FormMessage />
               </FormItem>
             )}
@@ -267,19 +267,19 @@ export const EditSSLCertificateForm = ({ certificate, onSubmit, onCancel, isPend
           render={({ field }) => (
             <FormItem>
               <FormLabel>{t('notificationChannel')}</FormLabel>
-              <FormDescription>
+              <Form描述>
                 Select multiple notification channels for this SSL certificate
-              </FormDescription>
+              </Form描述>
               
               {/* Display selected channels as badges */}
               {notificationChannels && notificationChannels.length > 0 && (
-                <div className="flex flex-wrap gap-2 mb-2">
-                  {getSelectedChannelNames().map((channelName, index) => (
-                    <Badge key={notificationChannels[index]} variant="secondary" className="flex items-center gap-1">
-                      {channelName}
+                <div class名称="flex flex-wrap gap-2 mb-2">
+                  {getSelectedChannel名称s().map((channel名称, index) => (
+                    <Badge key={notificationChannels[index]} variant="secondary" class名称="flex items-center gap-1">
+                      {channel名称}
                       <X 
-                        className="h-3 w-3 cursor-pointer" 
-                        onClick={() => handleChannelRemove(notificationChannels[index])}
+                        class名称="h-3 w-3 cursor-pointer" 
+                        onClick={() => handleChannel移除(notificationChannels[index])}
                       />
                     </Badge>
                   ))}
@@ -288,7 +288,7 @@ export const EditSSLCertificateForm = ({ certificate, onSubmit, onCancel, isPend
               
               <FormControl>
                 <Select 
-                  onValueChange={handleChannelAdd}
+                  onValueChange={handleChannel添加}
                   disabled={isLoading}
                   value=""
                 >
@@ -309,10 +309,10 @@ export const EditSSLCertificateForm = ({ certificate, onSubmit, onCancel, isPend
                   </SelectContent>
                 </Select>
               </FormControl>
-              <FormDescription className="flex items-center gap-1">
-                <Bell className="h-4 w-4" /> 
+              <Form描述 class名称="flex items-center gap-1">
+                <Bell class名称="h-4 w-4" /> 
                 {t('whereToSend')}
-              </FormDescription>
+              </Form描述>
               <FormMessage />
             </FormItem>
           )}
@@ -349,19 +349,19 @@ export const EditSSLCertificateForm = ({ certificate, onSubmit, onCancel, isPend
                   </SelectContent>
                 </Select>
               </FormControl>
-              <FormDescription>
+              <Form描述>
                 Choose a template for SSL certificate alert messages
-              </FormDescription>
+              </Form描述>
               <FormMessage />
             </FormItem>
           )}
         />
 
-        <div className="flex justify-end gap-3 pt-4">
+        <div class名称="flex justify-end gap-3 pt-4">
           <Button 
             type="button" 
             variant="outline" 
-            onClick={onCancel}
+            onClick={on取消}
             disabled={isPending}
           >
             {t('cancel')}
@@ -372,7 +372,7 @@ export const EditSSLCertificateForm = ({ certificate, onSubmit, onCancel, isPend
           >
             {isPending ? (
               <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" /> {t('updating')}
+                <Loader2 class名称="mr-2 h-4 w-4 animate-spin" /> {t('updating')}
               </>
             ) : (
               t('saveChanges')

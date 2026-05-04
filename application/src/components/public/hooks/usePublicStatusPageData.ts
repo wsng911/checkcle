@@ -1,17 +1,17 @@
 
 import { useState, useEffect } from 'react';
 import { OperationalPageRecord } from '@/types/operational.types';
-import { StatusPageComponentRecord } from '@/types/statusPageComponents.types';
+import { 状态PageComponentRecord } from '@/types/statusPageComponents.types';
 import { Service, UptimeData } from '@/types/service.types';
 import { operationalPageService } from '@/services/operationalPageService';
 import { statusPageComponentsService } from '@/services/statusPageComponentsService';
 import { serviceService } from '@/services/serviceService';
 import { uptimeService } from '@/services/uptimeService';
 
-export const usePublicStatusPageData = (slug: string | undefined) => {
+export const usePublic状态PageData = (slug: string | undefined) => {
   const [page, setPage] = useState<OperationalPageRecord | null>(null);
-  const [components, setComponents] = useState<StatusPageComponentRecord[]>([]);
-  const [services, setServices] = useState<Service[]>([]);
+  const [components, setComponents] = useState<状态PageComponentRecord[]>([]);
+  const [services, set服务] = useState<Service[]>([]);
   const [uptimeData, setUptimeData] = useState<Record<string, UptimeData[]>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -40,7 +40,7 @@ export const usePublicStatusPageData = (slug: string | undefined) => {
         
         if (!foundPage) {
        //   console.log('Page not found or not public');
-          setError('Status page not found or not public');
+          setError('状态 page not found or not public');
           setLoading(false);
           return;
         }
@@ -50,15 +50,15 @@ export const usePublicStatusPageData = (slug: string | undefined) => {
         
         // Fetch components for this page
        // console.log('Fetching components for page:', foundPage.id);
-        const pageComponents = await statusPageComponentsService.getStatusPageComponentsByOperationalId(foundPage.id);
+        const pageComponents = await statusPageComponentsService.get状态PageComponentsByOperationalId(foundPage.id);
        // console.log('Components found:', pageComponents);
         setComponents(pageComponents);
         
         // Fetch all services
       //  console.log('Fetching all services...');
-        const allServices = await serviceService.getServices();
-      //  console.log('Services found:', allServices);
-        setServices(allServices);
+        const all服务 = await serviceService.get服务();
+      //  console.log('服务 found:', all服务);
+        set服务(all服务);
         
         // Fetch uptime data for each component that has a service
       //  console.log('Fetching uptime data...');

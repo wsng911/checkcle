@@ -23,7 +23,7 @@ export const commonTranslations: CommonTranslations = {
   view: "Anzeigen",
   edit: "Bearbeiten",
   delete: "Löschen",
-  status: "Status",
+  status: "状态",
   time: "Zeit",
   title: "Titel",
   description: "Beschreibung",

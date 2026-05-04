@@ -17,13 +17,13 @@ interface ServiceRegionalFieldsProps {
 
 export function ServiceRegionalFields({ form }: ServiceRegionalFieldsProps) {
 	const { t } = useLanguage();
-  const regionalMonitoringEnabled = form.watch("regionalMonitoringEnabled");
+  const regional监控ingEnabled = form.watch("regional监控ingEnabled");
   const currentRegionalAgents = form.watch("regionalAgents") || [];
 
   const { data: regionalAgents = [], isLoading } = useQuery({
     queryKey: ['regional-services'],
-    queryFn: regionalService.getRegionalServices,
-    enabled: regionalMonitoringEnabled,
+    queryFn: regionalService.getRegional服务,
+    enabled: regional监控ingEnabled,
   });
 
   // Filter only online agents and exclude the default localhost agent (ID 1)
@@ -37,8 +37,8 @@ export function ServiceRegionalFields({ form }: ServiceRegionalFieldsProps) {
   );
 
   // Get agent display name
-  const getAgentDisplayName = (agentValue: string) => {
-    const [regionName, agentId] = agentValue.split("|");
+  const getAgentDisplay名称 = (agentValue: string) => {
+    const [region名称, agentId] = agentValue.split("|");
     const agent = onlineAgents.find(agent => 
       `${agent.region_name}|${agent.agent_id}` === agentValue
     );
@@ -48,14 +48,14 @@ export function ServiceRegionalFields({ form }: ServiceRegionalFieldsProps) {
     }
     
     // If agent is not found in online agents, it might be offline but still assigned
-    if (regionName && agentId) {
-      return `${regionName} (Agent ${agentId}) - Offline`;
+    if (region名称 && agentId) {
+      return `${region名称} (Agent ${agentId}) - Offline`;
     }
     
     return agentValue;
   };
 
-  // Add regional agent
+  // 添加 regional agent
   const addRegionalAgent = (agentValue: string) => {
     if (agentValue && agentValue !== "select") {
       const currentAgents = form.getValues("regionalAgents") || [];
@@ -65,26 +65,26 @@ export function ServiceRegionalFields({ form }: ServiceRegionalFieldsProps) {
     }
   };
 
-  // Remove regional agent
+  // 移除 regional agent
   const removeRegionalAgent = (agentValue: string) => {
     const currentAgents = form.getValues("regionalAgents") || [];
     form.setValue("regionalAgents", currentAgents.filter(agent => agent !== agentValue));
   };
 
   return (
-    <div className="space-y-4">
+    <div class名称="space-y-4">
       <FormField
         control={form.control}
-        name="regionalMonitoringEnabled"
+        name="regional监控ingEnabled"
         render={({ field }) => (
-          <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
-            <div className="space-y-0.5">
-              <FormLabel className="text-base font-medium flex items-center gap-2">
-                <MapPin className="h-4 w-4" />
-	              {t("regionalMonitoring")}
+          <FormItem class名称="flex flex-row items-center justify-between rounded-lg border p-4">
+            <div class名称="space-y-0.5">
+              <FormLabel class名称="text-base font-medium flex items-center gap-2">
+                <MapPin class名称="h-4 w-4" />
+	              {t("regional监控ing")}
               </FormLabel>
-              <div className="text-sm text-muted-foreground">
-	              {t("regionalMonitoringDesc")}
+              <div class名称="text-sm text-muted-foreground">
+	              {t("regional监控ingDesc")}
               </div>
             </div>
             <FormControl>
@@ -103,7 +103,7 @@ export function ServiceRegionalFields({ form }: ServiceRegionalFieldsProps) {
         )}
       />
 
-      {regionalMonitoringEnabled && (
+      {regional监控ingEnabled && (
         <FormField
           control={form.control}
           name="regionalAgents"
@@ -113,26 +113,26 @@ export function ServiceRegionalFields({ form }: ServiceRegionalFieldsProps) {
               
               {/* Display selected agents */}
               {currentRegionalAgents.length > 0 && (
-                <div className="flex flex-wrap gap-2 mb-3">
+                <div class名称="flex flex-wrap gap-2 mb-3">
                   {currentRegionalAgents.map((agentValue) => (
-                    <Badge key={agentValue} variant="secondary" className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      <span className="text-sm">{getAgentDisplayName(agentValue)}</span>
+                    <Badge key={agentValue} variant="secondary" class名称="flex items-center gap-2">
+                      <div class名称="w-2 h-2 bg-green-500 rounded-full"></div>
+                      <span class名称="text-sm">{getAgentDisplay名称(agentValue)}</span>
                       <Button
                         type="button"
                         variant="ghost"
                         size="sm"
-                        className="h-4 w-4 p-0 ml-1"
+                        class名称="h-4 w-4 p-0 ml-1"
                         onClick={() => removeRegionalAgent(agentValue)}
                       >
-                        <X className="h-3 w-3" />
+                        <X class名称="h-3 w-3" />
                       </Button>
                     </Badge>
                   ))}
                 </div>
               )}
 
-              {/* Add new agent selector */}
+              {/* 添加 new agent selector */}
               <Select 
                 onValueChange={addRegionalAgent}
                 value="select"
@@ -154,8 +154,8 @@ export function ServiceRegionalFields({ form }: ServiceRegionalFieldsProps) {
                 <SelectContent>
                   {isLoading ? (
                     <SelectItem value="loading" disabled>
-                      <div className="flex items-center gap-2">
-                        <Loader2 className="h-4 w-4 animate-spin" />
+                      <div class名称="flex items-center gap-2">
+                        <Loader2 class名称="h-4 w-4 animate-spin" />
 	                      t("regionalAgentsLoading")
                       </div>
                     </SelectItem>
@@ -169,17 +169,17 @@ export function ServiceRegionalFields({ form }: ServiceRegionalFieldsProps) {
                   ) : (
                     <>
                       <SelectItem value="select" disabled>
-                        <div className="flex items-center gap-2">
-                          <Plus className="h-4 w-4 text-muted-foreground" />
-                          <span className="text-muted-foreground">Select an agent to add...</span>
+                        <div class名称="flex items-center gap-2">
+                          <Plus class名称="h-4 w-4 text-muted-foreground" />
+                          <span class名称="text-muted-foreground">Select an agent to add...</span>
                         </div>
                       </SelectItem>
                       {availableAgents.map((agent) => (
                         <SelectItem key={agent.id} value={`${agent.region_name}|${agent.agent_id}`}>
-                          <div className="flex items-center gap-2">
-                            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                            <span className="font-medium">{agent.region_name}</span>
-                            <span className="text-muted-foreground">({agent.agent_ip_address})</span>
+                          <div class名称="flex items-center gap-2">
+                            <div class名称="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span class名称="font-medium">{agent.region_name}</span>
+                            <span class名称="text-muted-foreground">({agent.agent_ip_address})</span>
                           </div>
                         </SelectItem>
                       ))}
@@ -190,20 +190,20 @@ export function ServiceRegionalFields({ form }: ServiceRegionalFieldsProps) {
               
               <FormMessage />
               
-              {regionalMonitoringEnabled && onlineAgents.length === 0 && !isLoading && (
-                <p className="text-sm text-amber-600">
+              {regional监控ingEnabled && onlineAgents.length === 0 && !isLoading && (
+                <p class名称="text-sm text-amber-600">
 	                {t("regionalAgentsNotFoundMessage")}
                 </p>
               )}
               
-              {currentRegionalAgents.length === 0 && regionalMonitoringEnabled && (
-                <p className="text-sm text-orange-600">
+              {currentRegionalAgents.length === 0 && regional监控ingEnabled && (
+                <p class名称="text-sm text-orange-600">
 	                {t("regionalAgentsNotSelectedMessage")}
                 </p>
               )}
               
               {currentRegionalAgents.length > 0 && (
-                <p className="text-sm text-green-600">
+                <p class名称="text-sm text-green-600">
                   Service assigned to {currentRegionalAgents.length} regional agent{currentRegionalAgents.length > 1 ? 's' : ''}.
                 </p>
               )}

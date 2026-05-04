@@ -6,7 +6,7 @@
 // -------------------------------------------------------------------
 
 /**
- * CronAdd registers a new cron job.
+ * Cron添加 registers a new cron job.
  *
  * If a cron job with the specified name already exist, it will be
  * replaced with the new one.
@@ -15,7 +15,7 @@
  *
  * ```js
  * // prints "Hello world!" on every 30 minutes
- * cronAdd("hello", "*\/30 * * * *", () => {
+ * cron添加("hello", "*\/30 * * * *", () => {
  *     console.log("Hello world!")
  * })
  * ```
@@ -24,38 +24,38 @@
  *
  * @group PocketBase
  */
-declare function cronAdd(
+declare function cron添加(
   jobId:    string,
   cronExpr: string,
   handler:  () => void,
 ): void;
 
 /**
- * CronRemove removes a single registered cron job by its name.
+ * Cron移除 removes a single registered cron job by its name.
  *
  * Example:
  *
  * ```js
- * cronRemove("hello")
+ * cron移除("hello")
  * ```
  *
  * _Note that this method is available only in pb_hooks context._
  *
  * @group PocketBase
  */
-declare function cronRemove(jobId: string): void;
+declare function cron移除(jobId: string): void;
 
 // -------------------------------------------------------------------
 // routerBinds
 // -------------------------------------------------------------------
 
 /**
- * RouterAdd registers a new route definition.
+ * Router添加 registers a new route definition.
  *
  * Example:
  *
  * ```js
- * routerAdd("GET", "/hello", (e) => {
+ * router添加("GET", "/hello", (e) => {
  *     return e.json(200, {"message": "Hello!"})
  * }, $apis.requireAuth())
  * ```
@@ -64,7 +64,7 @@ declare function cronRemove(jobId: string): void;
  *
  * @group PocketBase
  */
-declare function routerAdd(
+declare function router添加(
   method: string,
   path: string,
   handler: (e: core.RequestEvent) => void,
@@ -346,7 +346,7 @@ declare class Context implements context.Context {
  * Record model class.
  *
  * ```js
- * const collection = $app.findCollectionByNameOrId("article")
+ * const collection = $app.findCollectionBy名称OrId("article")
  *
  * const record = new Record(collection, {
  *     title: "Lorem ipsum"
@@ -459,34 +459,34 @@ declare class URLField implements core.URLField {
   constructor(data?: Partial<core.URLField>)
 }
 
-interface EmailField extends core.EmailField{} // merge
+interface 邮箱Field extends core.邮箱Field{} // merge
 /**
- * {@inheritDoc core.EmailField}
+ * {@inheritDoc core.邮箱Field}
  *
  * @group PocketBase
  */
-declare class EmailField implements core.EmailField {
-  constructor(data?: Partial<core.EmailField>)
+declare class 邮箱Field implements core.邮箱Field {
+  constructor(data?: Partial<core.邮箱Field>)
 }
 
-interface EditorField extends core.EditorField{} // merge
+interface 编辑orField extends core.编辑orField{} // merge
 /**
- * {@inheritDoc core.EditorField}
+ * {@inheritDoc core.编辑orField}
  *
  * @group PocketBase
  */
-declare class EditorField implements core.EditorField {
-  constructor(data?: Partial<core.EditorField>)
+declare class 编辑orField implements core.编辑orField {
+  constructor(data?: Partial<core.编辑orField>)
 }
 
-interface PasswordField extends core.PasswordField{} // merge
+interface 密码Field extends core.密码Field{} // merge
 /**
- * {@inheritDoc core.PasswordField}
+ * {@inheritDoc core.密码Field}
  *
  * @group PocketBase
  */
-declare class PasswordField implements core.PasswordField {
-  constructor(data?: Partial<core.PasswordField>)
+declare class 密码Field implements core.密码Field {
+  constructor(data?: Partial<core.密码Field>)
 }
 
 interface DateField extends core.DateField{} // merge
@@ -566,8 +566,8 @@ interface MailerMessage extends mailer.Message{} // merge
  * ```js
  * const message = new MailerMessage({
  *     from: {
- *         address: $app.settings().meta.senderAddress,
- *         name:    $app.settings().meta.senderName,
+ *         address: $app.settings().meta.sender添加ress,
+ *         name:    $app.settings().meta.sender名称,
  *     },
  *     to:      [{address: "test@example.com"}],
  *     subject: "YOUR_SUBJECT...",
@@ -611,7 +611,7 @@ declare class Command implements cobra.Command {
  * Example:
  *
  * ```js
- * const authRecord = $app.findAuthRecordByEmail("users", "test@example.com")
+ * const authRecord = $app.findAuthRecordBy邮箱("users", "test@example.com")
  *
  * const info = new RequestInfo({
  *     auth:    authRecord,
@@ -731,7 +731,7 @@ interface Cookie extends http.Cookie{} // merge
  * Example:
  *
  * ```js
- * routerAdd("POST", "/example", (c) => {
+ * router添加("POST", "/example", (c) => {
  *     c.setCookie(new Cookie({
  *         name:     "example_name",
  *         value:    "example_value",
@@ -819,9 +819,9 @@ declare namespace $dbx {
  * @group PocketBase
  */
 declare namespace $mails {
-  let sendRecordPasswordReset: mails.sendRecordPasswordReset
+  let sendRecord密码Reset: mails.sendRecord密码Reset
   let sendRecordVerification:  mails.sendRecordVerification
-  let sendRecordChangeEmail:   mails.sendRecordChangeEmail
+  let sendRecordChange邮箱:   mails.sendRecordChange邮箱
   let sendRecordOTP:           mails.sendRecordOTP
   let sendRecordAuthAlert:     mails.sendRecordAuthAlert
 }
@@ -986,12 +986,12 @@ declare namespace $os {
 // formsBinds
 // -------------------------------------------------------------------
 
-interface AppleClientSecretCreateForm extends forms.AppleClientSecretCreate{} // merge
+interface AppleClientSecret创建Form extends forms.AppleClientSecret创建{} // merge
 /**
  * @inheritDoc
  * @group PocketBase
  */
-declare class AppleClientSecretCreateForm implements forms.AppleClientSecretCreate {
+declare class AppleClientSecret创建Form implements forms.AppleClientSecret创建 {
   constructor(app: CoreApp)
 }
 
@@ -1004,12 +1004,12 @@ declare class RecordUpsertForm implements forms.RecordUpsert {
   constructor(app: CoreApp, record: core.Record)
 }
 
-interface TestEmailSendForm extends forms.TestEmailSend{} // merge
+interface Test邮箱SendForm extends forms.Test邮箱Send{} // merge
 /**
  * @inheritDoc
  * @group PocketBase
  */
-declare class TestEmailSendForm implements forms.TestEmailSend {
+declare class Test邮箱SendForm implements forms.Test邮箱Send {
   constructor(app: CoreApp)
 }
 
@@ -1205,22 +1205,22 @@ declare function migrate(
   up: (txApp: CoreApp) => void,
   down?: (txApp: CoreApp) => void
 ): void;
-/** @group PocketBase */declare function onBackupCreate(handler: (e: core.BackupEvent) => void): void
-/** @group PocketBase */declare function onBackupRestore(handler: (e: core.BackupEvent) => void): void
+/** @group PocketBase */declare function on返回up创建(handler: (e: core.返回upEvent) => void): void
+/** @group PocketBase */declare function on返回upRestore(handler: (e: core.返回upEvent) => void): void
 /** @group PocketBase */declare function onBatchRequest(handler: (e: core.BatchRequestEvent) => void): void
 /** @group PocketBase */declare function onBootstrap(handler: (e: core.BootstrapEvent) => void): void
-/** @group PocketBase */declare function onCollectionAfterCreateError(handler: (e: core.CollectionErrorEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onCollectionAfterCreateSuccess(handler: (e: core.CollectionEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onCollectionAfterDeleteError(handler: (e: core.CollectionErrorEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onCollectionAfterDeleteSuccess(handler: (e: core.CollectionEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onCollectionAfter创建Error(handler: (e: core.CollectionErrorEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onCollectionAfter创建Success(handler: (e: core.CollectionEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onCollectionAfter删除Error(handler: (e: core.CollectionErrorEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onCollectionAfter删除Success(handler: (e: core.CollectionEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onCollectionAfterUpdateError(handler: (e: core.CollectionErrorEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onCollectionAfterUpdateSuccess(handler: (e: core.CollectionEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onCollectionCreate(handler: (e: core.CollectionEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onCollectionCreateExecute(handler: (e: core.CollectionEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onCollectionCreateRequest(handler: (e: core.CollectionRequestEvent) => void): void
-/** @group PocketBase */declare function onCollectionDelete(handler: (e: core.CollectionEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onCollectionDeleteExecute(handler: (e: core.CollectionEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onCollectionDeleteRequest(handler: (e: core.CollectionRequestEvent) => void): void
+/** @group PocketBase */declare function onCollection创建(handler: (e: core.CollectionEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onCollection创建Execute(handler: (e: core.CollectionEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onCollection创建Request(handler: (e: core.CollectionRequestEvent) => void): void
+/** @group PocketBase */declare function onCollection删除(handler: (e: core.CollectionEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onCollection删除Execute(handler: (e: core.CollectionEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onCollection删除Request(handler: (e: core.CollectionRequestEvent) => void): void
 /** @group PocketBase */declare function onCollectionUpdate(handler: (e: core.CollectionEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onCollectionUpdateExecute(handler: (e: core.CollectionEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onCollectionUpdateRequest(handler: (e: core.CollectionRequestEvent) => void): void
@@ -1231,51 +1231,51 @@ declare function migrate(
 /** @group PocketBase */declare function onFileDownloadRequest(handler: (e: core.FileDownloadRequestEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onFileTokenRequest(handler: (e: core.FileTokenRequestEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onMailerRecordAuthAlertSend(handler: (e: core.MailerRecordEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onMailerRecordEmailChangeSend(handler: (e: core.MailerRecordEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onMailerRecord邮箱ChangeSend(handler: (e: core.MailerRecordEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onMailerRecordOTPSend(handler: (e: core.MailerRecordEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onMailerRecordPasswordResetSend(handler: (e: core.MailerRecordEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onMailerRecord密码ResetSend(handler: (e: core.MailerRecordEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onMailerRecordVerificationSend(handler: (e: core.MailerRecordEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onMailerSend(handler: (e: core.MailerEvent) => void): void
-/** @group PocketBase */declare function onModelAfterCreateError(handler: (e: core.ModelErrorEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onModelAfterCreateSuccess(handler: (e: core.ModelEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onModelAfterDeleteError(handler: (e: core.ModelErrorEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onModelAfterDeleteSuccess(handler: (e: core.ModelEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onModelAfter创建Error(handler: (e: core.ModelErrorEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onModelAfter创建Success(handler: (e: core.ModelEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onModelAfter删除Error(handler: (e: core.ModelErrorEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onModelAfter删除Success(handler: (e: core.ModelEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onModelAfterUpdateError(handler: (e: core.ModelErrorEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onModelAfterUpdateSuccess(handler: (e: core.ModelEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onModelCreate(handler: (e: core.ModelEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onModelCreateExecute(handler: (e: core.ModelEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onModelDelete(handler: (e: core.ModelEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onModelDeleteExecute(handler: (e: core.ModelEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onModel创建(handler: (e: core.ModelEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onModel创建Execute(handler: (e: core.ModelEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onModel删除(handler: (e: core.ModelEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onModel删除Execute(handler: (e: core.ModelEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onModelUpdate(handler: (e: core.ModelEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onModelUpdateExecute(handler: (e: core.ModelEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onModelValidate(handler: (e: core.ModelEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onRealtimeConnectRequest(handler: (e: core.RealtimeConnectRequestEvent) => void): void
 /** @group PocketBase */declare function onRealtimeMessageSend(handler: (e: core.RealtimeMessageEvent) => void): void
 /** @group PocketBase */declare function onRealtimeSubscribeRequest(handler: (e: core.RealtimeSubscribeRequestEvent) => void): void
-/** @group PocketBase */declare function onRecordAfterCreateError(handler: (e: core.RecordErrorEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onRecordAfterCreateSuccess(handler: (e: core.RecordEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onRecordAfterDeleteError(handler: (e: core.RecordErrorEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onRecordAfterDeleteSuccess(handler: (e: core.RecordEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onRecordAfter创建Error(handler: (e: core.RecordErrorEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onRecordAfter创建Success(handler: (e: core.RecordEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onRecordAfter删除Error(handler: (e: core.RecordErrorEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onRecordAfter删除Success(handler: (e: core.RecordEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onRecordAfterUpdateError(handler: (e: core.RecordErrorEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onRecordAfterUpdateSuccess(handler: (e: core.RecordEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onRecordAuthRefreshRequest(handler: (e: core.RecordAuthRefreshRequestEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onRecordAuthRequest(handler: (e: core.RecordAuthRequestEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onRecordAuthWithOAuth2Request(handler: (e: core.RecordAuthWithOAuth2RequestEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onRecordAuthWithOTPRequest(handler: (e: core.RecordAuthWithOTPRequestEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onRecordAuthWithPasswordRequest(handler: (e: core.RecordAuthWithPasswordRequestEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onRecordConfirmEmailChangeRequest(handler: (e: core.RecordConfirmEmailChangeRequestEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onRecordConfirmPasswordResetRequest(handler: (e: core.RecordConfirmPasswordResetRequestEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onRecordConfirmVerificationRequest(handler: (e: core.RecordConfirmVerificationRequestEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onRecordCreate(handler: (e: core.RecordEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onRecordCreateExecute(handler: (e: core.RecordEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onRecordCreateRequest(handler: (e: core.RecordRequestEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onRecordDelete(handler: (e: core.RecordEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onRecordDeleteExecute(handler: (e: core.RecordEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onRecordDeleteRequest(handler: (e: core.RecordRequestEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onRecordAuthWith密码Request(handler: (e: core.RecordAuthWith密码RequestEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onRecord确认邮箱ChangeRequest(handler: (e: core.Record确认邮箱ChangeRequestEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onRecord确认密码ResetRequest(handler: (e: core.Record确认密码ResetRequestEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onRecord确认VerificationRequest(handler: (e: core.Record确认VerificationRequestEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onRecord创建(handler: (e: core.RecordEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onRecord创建Execute(handler: (e: core.RecordEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onRecord创建Request(handler: (e: core.RecordRequestEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onRecord删除(handler: (e: core.RecordEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onRecord删除Execute(handler: (e: core.RecordEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onRecord删除Request(handler: (e: core.RecordRequestEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onRecordEnrich(handler: (e: core.RecordEnrichEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onRecordRequestEmailChangeRequest(handler: (e: core.RecordRequestEmailChangeRequestEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onRecordRequestOTPRequest(handler: (e: core.RecordCreateOTPRequestEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onRecordRequestPasswordResetRequest(handler: (e: core.RecordRequestPasswordResetRequestEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onRecordRequest邮箱ChangeRequest(handler: (e: core.RecordRequest邮箱ChangeRequestEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onRecordRequestOTPRequest(handler: (e: core.Record创建OTPRequestEvent) => void, ...tags: string[]): void
+/** @group PocketBase */declare function onRecordRequest密码ResetRequest(handler: (e: core.RecordRequest密码ResetRequestEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onRecordRequestVerificationRequest(handler: (e: core.RecordRequestVerificationRequestEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onRecordUpdate(handler: (e: core.RecordEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onRecordUpdateExecute(handler: (e: core.RecordEvent) => void, ...tags: string[]): void
@@ -1283,9 +1283,9 @@ declare function migrate(
 /** @group PocketBase */declare function onRecordValidate(handler: (e: core.RecordEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onRecordViewRequest(handler: (e: core.RecordRequestEvent) => void, ...tags: string[]): void
 /** @group PocketBase */declare function onRecordsListRequest(handler: (e: core.RecordsListRequestEvent) => void, ...tags: string[]): void
-/** @group PocketBase */declare function onSettingsListRequest(handler: (e: core.SettingsListRequestEvent) => void): void
-/** @group PocketBase */declare function onSettingsReload(handler: (e: core.SettingsReloadEvent) => void): void
-/** @group PocketBase */declare function onSettingsUpdateRequest(handler: (e: core.SettingsUpdateRequestEvent) => void): void
+/** @group PocketBase */declare function on设置ListRequest(handler: (e: core.设置ListRequestEvent) => void): void
+/** @group PocketBase */declare function on设置Reload(handler: (e: core.设置ReloadEvent) => void): void
+/** @group PocketBase */declare function on设置UpdateRequest(handler: (e: core.设置UpdateRequestEvent) => void): void
 /** @group PocketBase */declare function onTerminate(handler: (e: core.TerminateEvent) => void): void
 type _TygojaDict = { [key:string | number | symbol]: any; }
 type _TygojaAny = any
@@ -1583,7 +1583,7 @@ namespace os {
  }
  interface syscallErrorType extends syscall.Errno{}
  interface processMode extends Number{}
- interface processStatus extends Number{}
+ interface process状态 extends Number{}
  /**
   * Process stores the information about a process created by [StartProcess].
   */
@@ -1614,7 +1614,7 @@ namespace os {
    * to that file being closed when the process starts.
    * On Unix systems, StartProcess will change these File values
    * to blocking mode, which means that SetDeadline will stop working
-   * and calling Close will not interrupt a Read or Write.
+   * and calling 关闭 will not interrupt a Read or Write.
    */
   files: Array<(File | undefined)>
   /**
@@ -1743,7 +1743,7 @@ namespace os {
   /**
    * Sys returns system-dependent exit information about
    * the process. Convert it to the appropriate underlying
-   * type, such as [syscall.WaitStatus] on Unix, to access its contents.
+   * type, such as [syscall.Wait状态] on Unix, to access its contents.
    */
   sys(): any
  }
@@ -1796,9 +1796,9 @@ namespace os {
  }
  interface File {
   /**
-   * Name returns the name of the file as presented to Open.
+   * 名称 returns the name of the file as presented to Open.
    * 
-   * It is safe to call Name after [Close].
+   * It is safe to call 名称 after [关闭].
    */
   name(): string
  }
@@ -1950,7 +1950,7 @@ namespace os {
  }
  interface create {
   /**
-   * Create creates or truncates the named file. If the file already exists,
+   * 创建 creates or truncates the named file. If the file already exists,
    * it is truncated. If the file does not exist, it is created with mode 0o666
    * (before umask). If successful, methods on the returned File can
    * be used for I/O; the associated file descriptor has mode O_RDWR.
@@ -1962,7 +1962,7 @@ namespace os {
  interface openFile {
   /**
    * OpenFile is the generalized open call; most users will use Open
-   * or Create instead. It opens the named file with specified flag
+   * or 创建 instead. It opens the named file with specified flag
    * (O_RDONLY etc.). If the file does not exist, and the O_CREATE flag
    * is passed, it is created with mode perm (before umask);
    * the containing directory must exist. If successful,
@@ -2149,7 +2149,7 @@ namespace os {
    * operating system will begin with "/prefix": DirFS("/prefix").Open("file") is the
    * same as os.Open("/prefix/file"). So if /prefix/file is a symbolic link pointing outside
    * the /prefix tree, then using DirFS does not stop the access any more than using
-   * os.Open does. Additionally, the root of the fs.FS returned for a relative path,
+   * os.Open does. 添加itionally, the root of the fs.FS returned for a relative path,
    * DirFS("prefix"), will be affected by later calls to Chdir. DirFS is therefore not
    * a general substitute for a chroot-style security mechanism when the directory tree
    * contains arbitrary content.
@@ -2207,10 +2207,10 @@ namespace os {
  }
  interface File {
   /**
-   * Close closes the [File], rendering it unusable for I/O.
+   * 关闭 closes the [File], rendering it unusable for I/O.
    * On files that support [File.SetDeadline], any pending I/O operations will
-   * be canceled and return immediately with an [ErrClosed] error.
-   * Close will return an error if it has already been called.
+   * be canceled and return immediately with an [Err关闭d] error.
+   * 关闭 will return an error if it has already been called.
    */
   close(): void
  }
@@ -2300,7 +2300,7 @@ namespace os {
    * a finalizer might be run. On Unix systems this will cause the [File.SetDeadline]
    * methods to stop working.
    * Because file descriptors can be reused, the returned file descriptor may
-   * only be closed through the [File.Close] method of f, or by its finalizer during
+   * only be closed through the [File.关闭] method of f, or by its finalizer during
    * garbage collection. Otherwise, during garbage collection the finalizer
    * may close an unrelated file descriptor with the same (reused) number.
    * 
@@ -2336,7 +2336,7 @@ namespace os {
  }
  interface remove {
   /**
-   * Remove removes the named file or (empty) directory.
+   * 移除 removes the named file or (empty) directory.
    * If there is an error, it will be of type *PathError.
    */
   (name: string): void
@@ -2401,9 +2401,9 @@ namespace os {
  }
  interface removeAll {
   /**
-   * RemoveAll removes path and any children it contains.
+   * 移除All removes path and any children it contains.
    * It removes everything it can but returns the first error
-   * it encounters. If the path does not exist, RemoveAll
+   * it encounters. If the path does not exist, 移除All
    * returns nil (no error).
    * If there is an error, it will be of type [*PathError].
    */
@@ -2543,16 +2543,16 @@ namespace os {
  }
  interface Root {
   /**
-   * Name returns the name of the directory presented to OpenRoot.
+   * 名称 returns the name of the directory presented to OpenRoot.
    * 
-   * It is safe to call Name after [Close].
+   * It is safe to call 名称 after [关闭].
    */
   name(): string
  }
  interface Root {
   /**
-   * Close closes the Root.
-   * After Close is called, methods on Root return errors.
+   * 关闭 closes the Root.
+   * After 关闭 is called, methods on Root return errors.
    */
   close(): void
  }
@@ -2565,8 +2565,8 @@ namespace os {
  }
  interface Root {
   /**
-   * Create creates or truncates the named file in the root.
-   * See [Create] for more details.
+   * 创建 creates or truncates the named file in the root.
+   * See [创建] for more details.
    */
   create(name: string): (File)
  }
@@ -2600,8 +2600,8 @@ namespace os {
  }
  interface Root {
   /**
-   * Remove removes the named file or (empty) directory in the root.
-   * See [Remove] for more details.
+   * 移除 removes the named file or (empty) directory in the root.
+   * See [移除] for more details.
    */
   remove(name: string): void
  }
@@ -2699,14 +2699,14 @@ namespace os {
  }
  interface createTemp {
   /**
-   * CreateTemp creates a new temporary file in the directory dir,
+   * 创建Temp creates a new temporary file in the directory dir,
    * opens the file for reading and writing, and returns the resulting file.
    * The filename is generated by taking pattern and adding a random string to the end.
    * If pattern includes a "*", the random string replaces the last "*".
    * The file is created with mode 0o600 (before umask).
-   * If dir is the empty string, CreateTemp uses the default directory for temporary files, as returned by [TempDir].
-   * Multiple programs or goroutines calling CreateTemp simultaneously will not choose the same file.
-   * The caller can use the file's Name method to find the pathname of the file.
+   * If dir is the empty string, 创建Temp uses the default directory for temporary files, as returned by [TempDir].
+   * Multiple programs or goroutines calling 创建Temp simultaneously will not choose the same file.
+   * The caller can use the file's 名称 method to find the pathname of the file.
    * It is the caller's responsibility to remove the file when it is no longer needed.
    */
   (dir: string, pattern: string): (File)
@@ -2870,7 +2870,7 @@ namespace filepath {
    * occurrences of "/" with `\`.
    * For example, Clean("//host/share/../x") returns `\\host\share\x`.
    * 
-   * See also Rob Pike, “Lexical File Names in Plan 9 or
+   * See also Rob Pike, “Lexical File 名称s in Plan 9 or
    * Getting Dot-Dot Right,”
    * https://9p.io/sys/doc/lexnames.html
    */
@@ -3108,9 +3108,9 @@ namespace filepath {
    */
   (path: string): string
  }
- interface volumeName {
+ interface volume名称 {
   /**
-   * VolumeName returns leading volume name.
+   * Volume名称 returns leading volume name.
    * Given "C:\foo\bar" it returns "C:" on Windows.
    * Given "\\host\share\foo" it returns "\\host\share".
    * On other platforms it returns "".
@@ -3277,17 +3277,17 @@ namespace filesystem {
   */
  interface FileReader {
   [key:string]: any;
-  open(): io.ReadSeekCloser
+  open(): io.ReadSeek关闭r
  }
  /**
-  * File defines a single file [io.ReadSeekCloser] resource.
+  * File defines a single file [io.ReadSeek关闭r] resource.
   * 
   * The file could be from a local path, multipart/form-data header, etc.
   */
  interface File {
   reader: FileReader
   name: string
-  originalName: string
+  original名称: string
   size: number
  }
  interface File {
@@ -3323,7 +3323,7 @@ namespace filesystem {
    * Example
    * 
    * ```
-   * 	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+   * 	ctx, cancel := context.WithTimeout(context.返回ground(), 30*time.Second)
    * 	defer cancel()
    * 
    * 	file, err := filesystem.NewFileFromURL(ctx, "https://example.com/image.png")
@@ -3341,7 +3341,7 @@ namespace filesystem {
   /**
    * Open implements the [filesystem.FileReader] interface.
    */
-  open(): io.ReadSeekCloser
+  open(): io.ReadSeek关闭r
  }
  /**
   * PathReader defines a FileReader from a local file path.
@@ -3353,7 +3353,7 @@ namespace filesystem {
   /**
    * Open implements the [filesystem.FileReader] interface.
    */
-  open(): io.ReadSeekCloser
+  open(): io.ReadSeek关闭r
  }
  /**
   * BytesReader defines a FileReader from bytes content.
@@ -3365,26 +3365,26 @@ namespace filesystem {
   /**
    * Open implements the [filesystem.FileReader] interface.
    */
-  open(): io.ReadSeekCloser
+  open(): io.ReadSeek关闭r
  }
  type _sGrPWvz = bytes.Reader
- interface bytesReadSeekCloser extends _sGrPWvz {
+ interface bytesReadSeek关闭r extends _sGrPWvz {
  }
- interface bytesReadSeekCloser {
+ interface bytesReadSeek关闭r {
   /**
-   * Close implements the [io.ReadSeekCloser] interface.
+   * 关闭 implements the [io.ReadSeek关闭r] interface.
    */
   close(): void
  }
  /**
   * openFuncAsReader defines a FileReader from a bare Open function.
   */
- interface openFuncAsReader {(): io.ReadSeekCloser }
+ interface openFuncAsReader {(): io.ReadSeek关闭r }
  interface openFuncAsReader {
   /**
    * Open implements the [filesystem.FileReader] interface.
    */
-  open(): io.ReadSeekCloser
+  open(): io.ReadSeek关闭r
  }
  interface System {
  }
@@ -3392,15 +3392,15 @@ namespace filesystem {
   /**
    * NewS3 initializes an S3 filesystem instance.
    * 
-   * NB! Make sure to call `Close()` after you are done working with it.
+   * NB! Make sure to call `关闭()` after you are done working with it.
    */
-  (bucketName: string, region: string, endpoint: string, accessKey: string, secretKey: string, s3ForcePathStyle: boolean): (System)
+  (bucket名称: string, region: string, endpoint: string, accessKey: string, secretKey: string, s3ForcePathStyle: boolean): (System)
  }
  interface newLocal {
   /**
    * NewLocal initializes a new local filesystem instance.
    * 
-   * NB! Make sure to call `Close()` after you are done working with it.
+   * NB! Make sure to call `关闭()` after you are done working with it.
    */
   (dirPath: string): (System)
  }
@@ -3412,7 +3412,7 @@ namespace filesystem {
  }
  interface System {
   /**
-   * Close releases any resources used for the related filesystem.
+   * 关闭 releases any resources used for the related filesystem.
    */
   close(): void
  }
@@ -3434,7 +3434,7 @@ namespace filesystem {
   /**
    * GetReader returns a file content reader for the given fileKey.
    * 
-   * NB! Make sure to call Close() on the file after you are done working with it.
+   * NB! Make sure to call 关闭() on the file after you are done working with it.
    * 
    * If the file doesn't exist returns ErrNotFound.
    */
@@ -3451,7 +3451,7 @@ namespace filesystem {
    * GetReuploadableFile constructs a new reuploadable File value
    * from the associated fileKey blob.Reader.
    * 
-   * If preserveName is false then the returned File.Name will have
+   * If preserve名称 is false then the returned File.名称 will have
    * a new randomly generated suffix, otherwise it will reuse the original one.
    * 
    * This method could be useful in case you want to clone an existing
@@ -3460,7 +3460,7 @@ namespace filesystem {
    * If you simply want to copy an existing file to a new location you
    * could check the Copy(srcKey, dstKey) method.
    */
-  getReuploadableFile(fileKey: string, preserveName: boolean): (File)
+  getReuploadableFile(fileKey: string, preserve名称: boolean): (File)
  }
  interface System {
   /**
@@ -3498,7 +3498,7 @@ namespace filesystem {
  }
  interface System {
   /**
-   * Delete deletes stored file at fileKey location.
+   * 删除 deletes stored file at fileKey location.
    * 
    * If the file doesn't exist returns ErrNotFound.
    */
@@ -3506,7 +3506,7 @@ namespace filesystem {
  }
  interface System {
   /**
-   * DeletePrefix deletes everything starting with the specified prefix.
+   * 删除Prefix deletes everything starting with the specified prefix.
    * 
    * The prefix could be subpath (ex. "/a/b/") or filename prefix (ex. "/a/b/file_").
    */
@@ -3537,7 +3537,7 @@ namespace filesystem {
  }
  interface System {
   /**
-   * CreateThumb creates a new thumb image for the file at originalKey location.
+   * 创建Thumb creates a new thumb image for the file at originalKey location.
    * The new thumb file is stored at thumbKey location.
    * 
    * thumbSize is in the format:
@@ -3596,7 +3596,7 @@ namespace template {
  }
  interface Registry {
   /**
-   * AddFuncs registers new global template functions.
+   * 添加Funcs registers new global template functions.
    * 
    * The key of each map entry is the function name that will be used in the templates.
    * If a function with the map entry name already exists it will be replaced with the new one.
@@ -3607,7 +3607,7 @@ namespace template {
    * Example:
    * 
    * ```
-   * 	r.AddFuncs(map[string]any{
+   * 	r.添加Funcs(map[string]any{
    * 	  "toUpper": func(str string) string {
    * 	      return strings.ToUppser(str)
    * 	  },
@@ -3713,15 +3713,15 @@ namespace dbx {
    */
   quote(_arg0: string): string
   /**
-   * QuoteSimpleTableName quotes a simple table name.
+   * QuoteSimpleTable名称 quotes a simple table name.
    * A simple table name does not contain any schema prefix.
    */
-  quoteSimpleTableName(_arg0: string): string
+  quoteSimpleTable名称(_arg0: string): string
   /**
-   * QuoteSimpleColumnName quotes a simple column name.
+   * QuoteSimpleColumn名称 quotes a simple column name.
    * A simple column name does not contain any table prefix.
    */
-  quoteSimpleColumnName(_arg0: string): string
+  quoteSimpleColumn名称(_arg0: string): string
   /**
    * QueryBuilder returns the query builder supporting the current DB.
    */
@@ -3748,13 +3748,13 @@ namespace dbx {
    */
   update(table: string, cols: Params, where: Expression): (Query)
   /**
-   * Delete creates a Query that represents a DELETE SQL statement.
+   * 删除 creates a Query that represents a DELETE SQL statement.
    * If the "where" expression is nil, the DELETE SQL statement will have no WHERE clause
    * (be careful in this case as the SQL statement will delete ALL rows in the table).
    */
   delete(table: string, where: Expression): (Query)
   /**
-   * CreateTable creates a Query that represents a CREATE TABLE SQL statement.
+   * 创建Table creates a Query that represents a CREATE TABLE SQL statement.
    * The keys of cols are the column names, while the values of cols are the corresponding column types.
    * The optional "options" parameters will be appended to the generated SQL statement.
    */
@@ -3762,7 +3762,7 @@ namespace dbx {
   /**
    * RenameTable creates a Query that can be used to rename a table.
    */
-  renameTable(oldName: string, newName: string): (Query)
+  renameTable(old名称: string, new名称: string): (Query)
   /**
    * DropTable creates a Query that can be used to drop a table.
    */
@@ -3772,7 +3772,7 @@ namespace dbx {
    */
   truncateTable(table: string): (Query)
   /**
-   * AddColumn creates a Query that can be used to add a column to a table.
+   * 添加Column creates a Query that can be used to add a column to a table.
    */
   addColumn(table: string, col: string, typ: string): (Query)
   /**
@@ -3782,13 +3782,13 @@ namespace dbx {
   /**
    * RenameColumn creates a Query that can be used to rename a column in a table.
    */
-  renameColumn(table: string, oldName: string, newName: string): (Query)
+  renameColumn(table: string, old名称: string, new名称: string): (Query)
   /**
    * AlterColumn creates a Query that can be used to change the definition of a table column.
    */
   alterColumn(table: string, col: string, typ: string): (Query)
   /**
-   * AddPrimaryKey creates a Query that can be used to specify primary key(s) for a table.
+   * 添加PrimaryKey creates a Query that can be used to specify primary key(s) for a table.
    * The "name" parameter specifies the name of the primary key constraint.
    */
   addPrimaryKey(table: string, name: string, ...cols: string[]): (Query)
@@ -3797,7 +3797,7 @@ namespace dbx {
    */
   dropPrimaryKey(table: string, name: string): (Query)
   /**
-   * AddForeignKey creates a Query that can be used to add a foreign key constraint to a table.
+   * 添加ForeignKey creates a Query that can be used to add a foreign key constraint to a table.
    * The length of cols and refCols must be the same as they refer to the primary and referential columns.
    * The optional "options" parameters will be appended to the SQL statement. They can be used to
    * specify options such as "ON DELETE CASCADE".
@@ -3808,11 +3808,11 @@ namespace dbx {
    */
   dropForeignKey(table: string, name: string): (Query)
   /**
-   * CreateIndex creates a Query that can be used to create an index for a table.
+   * 创建Index creates a Query that can be used to create an index for a table.
    */
   createIndex(table: string, name: string, ...cols: string[]): (Query)
   /**
-   * CreateUniqueIndex creates a Query that can be used to create a unique index for a table.
+   * 创建UniqueIndex creates a Query that can be used to create a unique index for a table.
    */
   createUniqueIndex(table: string, name: string, ...cols: string[]): (Query)
   /**
@@ -3865,17 +3865,17 @@ namespace dbx {
  }
  interface BaseBuilder {
   /**
-   * QuoteSimpleTableName quotes a simple table name.
+   * QuoteSimpleTable名称 quotes a simple table name.
    * A simple table name does not contain any schema prefix.
    */
-  quoteSimpleTableName(s: string): string
+  quoteSimpleTable名称(s: string): string
  }
  interface BaseBuilder {
   /**
-   * QuoteSimpleColumnName quotes a simple column name.
+   * QuoteSimpleColumn名称 quotes a simple column name.
    * A simple column name does not contain any table prefix.
    */
-  quoteSimpleColumnName(s: string): string
+  quoteSimpleColumn名称(s: string): string
  }
  interface BaseBuilder {
   /**
@@ -3906,7 +3906,7 @@ namespace dbx {
  }
  interface BaseBuilder {
   /**
-   * Delete creates a Query that represents a DELETE SQL statement.
+   * 删除 creates a Query that represents a DELETE SQL statement.
    * If the "where" expression is nil, the DELETE SQL statement will have no WHERE clause
    * (be careful in this case as the SQL statement will delete ALL rows in the table).
    */
@@ -3914,7 +3914,7 @@ namespace dbx {
  }
  interface BaseBuilder {
   /**
-   * CreateTable creates a Query that represents a CREATE TABLE SQL statement.
+   * 创建Table creates a Query that represents a CREATE TABLE SQL statement.
    * The keys of cols are the column names, while the values of cols are the corresponding column types.
    * The optional "options" parameters will be appended to the generated SQL statement.
    */
@@ -3924,7 +3924,7 @@ namespace dbx {
   /**
    * RenameTable creates a Query that can be used to rename a table.
    */
-  renameTable(oldName: string, newName: string): (Query)
+  renameTable(old名称: string, new名称: string): (Query)
  }
  interface BaseBuilder {
   /**
@@ -3940,7 +3940,7 @@ namespace dbx {
  }
  interface BaseBuilder {
   /**
-   * AddColumn creates a Query that can be used to add a column to a table.
+   * 添加Column creates a Query that can be used to add a column to a table.
    */
   addColumn(table: string, col: string, typ: string): (Query)
  }
@@ -3954,7 +3954,7 @@ namespace dbx {
   /**
    * RenameColumn creates a Query that can be used to rename a column in a table.
    */
-  renameColumn(table: string, oldName: string, newName: string): (Query)
+  renameColumn(table: string, old名称: string, new名称: string): (Query)
  }
  interface BaseBuilder {
   /**
@@ -3964,7 +3964,7 @@ namespace dbx {
  }
  interface BaseBuilder {
   /**
-   * AddPrimaryKey creates a Query that can be used to specify primary key(s) for a table.
+   * 添加PrimaryKey creates a Query that can be used to specify primary key(s) for a table.
    * The "name" parameter specifies the name of the primary key constraint.
    */
   addPrimaryKey(table: string, name: string, ...cols: string[]): (Query)
@@ -3977,7 +3977,7 @@ namespace dbx {
  }
  interface BaseBuilder {
   /**
-   * AddForeignKey creates a Query that can be used to add a foreign key constraint to a table.
+   * 添加ForeignKey creates a Query that can be used to add a foreign key constraint to a table.
    * The length of cols and refCols must be the same as they refer to the primary and referential columns.
    * The optional "options" parameters will be appended to the SQL statement. They can be used to
    * specify options such as "ON DELETE CASCADE".
@@ -3992,13 +3992,13 @@ namespace dbx {
  }
  interface BaseBuilder {
   /**
-   * CreateIndex creates a Query that can be used to create an index for a table.
+   * 创建Index creates a Query that can be used to create an index for a table.
    */
   createIndex(table: string, name: string, ...cols: string[]): (Query)
  }
  interface BaseBuilder {
   /**
-   * CreateUniqueIndex creates a Query that can be used to create a unique index for a table.
+   * 创建UniqueIndex creates a Query that can be used to create a unique index for a table.
    */
   createUniqueIndex(table: string, name: string, ...cols: string[]): (Query)
  }
@@ -4050,29 +4050,29 @@ namespace dbx {
  }
  interface MssqlBuilder {
   /**
-   * QuoteSimpleTableName quotes a simple table name.
+   * QuoteSimpleTable名称 quotes a simple table name.
    * A simple table name does not contain any schema prefix.
    */
-  quoteSimpleTableName(s: string): string
+  quoteSimpleTable名称(s: string): string
  }
  interface MssqlBuilder {
   /**
-   * QuoteSimpleColumnName quotes a simple column name.
+   * QuoteSimpleColumn名称 quotes a simple column name.
    * A simple column name does not contain any table prefix.
    */
-  quoteSimpleColumnName(s: string): string
+  quoteSimpleColumn名称(s: string): string
  }
  interface MssqlBuilder {
   /**
    * RenameTable creates a Query that can be used to rename a table.
    */
-  renameTable(oldName: string, newName: string): (Query)
+  renameTable(old名称: string, new名称: string): (Query)
  }
  interface MssqlBuilder {
   /**
    * RenameColumn creates a Query that can be used to rename a column in a table.
    */
-  renameColumn(table: string, oldName: string, newName: string): (Query)
+  renameColumn(table: string, old名称: string, new名称: string): (Query)
  }
  interface MssqlBuilder {
   /**
@@ -4122,17 +4122,17 @@ namespace dbx {
  }
  interface MysqlBuilder {
   /**
-   * QuoteSimpleTableName quotes a simple table name.
+   * QuoteSimpleTable名称 quotes a simple table name.
    * A simple table name does not contain any schema prefix.
    */
-  quoteSimpleTableName(s: string): string
+  quoteSimpleTable名称(s: string): string
  }
  interface MysqlBuilder {
   /**
-   * QuoteSimpleColumnName quotes a simple column name.
+   * QuoteSimpleColumn名称 quotes a simple column name.
    * A simple column name does not contain any table prefix.
    */
-  quoteSimpleColumnName(s: string): string
+  quoteSimpleColumn名称(s: string): string
  }
  interface MysqlBuilder {
   /**
@@ -4148,7 +4148,7 @@ namespace dbx {
   /**
    * RenameColumn creates a Query that can be used to rename a column in a table.
    */
-  renameColumn(table: string, oldName: string, newName: string): (Query)
+  renameColumn(table: string, old名称: string, new名称: string): (Query)
  }
  interface MysqlBuilder {
   /**
@@ -4218,7 +4218,7 @@ namespace dbx {
   /**
    * RenameTable creates a Query that can be used to rename a table.
    */
-  renameTable(oldName: string, newName: string): (Query)
+  renameTable(old名称: string, new名称: string): (Query)
  }
  interface OciBuilder {
   /**
@@ -4292,7 +4292,7 @@ namespace dbx {
   /**
    * RenameTable creates a Query that can be used to rename a table.
    */
-  renameTable(oldName: string, newName: string): (Query)
+  renameTable(old名称: string, new名称: string): (Query)
  }
  interface PgsqlBuilder {
   /**
@@ -4336,17 +4336,17 @@ namespace dbx {
  }
  interface SqliteBuilder {
   /**
-   * QuoteSimpleTableName quotes a simple table name.
+   * QuoteSimpleTable名称 quotes a simple table name.
    * A simple table name does not contain any schema prefix.
    */
-  quoteSimpleTableName(s: string): string
+  quoteSimpleTable名称(s: string): string
  }
  interface SqliteBuilder {
   /**
-   * QuoteSimpleColumnName quotes a simple column name.
+   * QuoteSimpleColumn名称 quotes a simple column name.
    * A simple column name does not contain any table prefix.
    */
-  quoteSimpleColumnName(s: string): string
+  quoteSimpleColumn名称(s: string): string
  }
  interface SqliteBuilder {
   /**
@@ -4364,7 +4364,7 @@ namespace dbx {
   /**
    * RenameTable creates a Query that can be used to rename a table.
    */
-  renameTable(oldName: string, newName: string): (Query)
+  renameTable(old名称: string, new名称: string): (Query)
  }
  interface SqliteBuilder {
   /**
@@ -4374,7 +4374,7 @@ namespace dbx {
  }
  interface SqliteBuilder {
   /**
-   * AddPrimaryKey creates a Query that can be used to specify primary key(s) for a table.
+   * 添加PrimaryKey creates a Query that can be used to specify primary key(s) for a table.
    * The "name" parameter specifies the name of the primary key constraint.
    */
   addPrimaryKey(table: string, name: string, ...cols: string[]): (Query)
@@ -4387,7 +4387,7 @@ namespace dbx {
  }
  interface SqliteBuilder {
   /**
-   * AddForeignKey creates a Query that can be used to add a foreign key constraint to a table.
+   * 添加ForeignKey creates a Query that can be used to add a foreign key constraint to a table.
    * The length of cols and refCols must be the same as they refer to the primary and referential columns.
    * The optional "options" parameters will be appended to the SQL statement. They can be used to
    * specify options such as "ON DELETE CASCADE".
@@ -4477,7 +4477,7 @@ namespace dbx {
    */
   fieldMapper: FieldMapFunc
   /**
-   * TableMapper maps structs to table names. Defaults to GetTableName.
+   * TableMapper maps structs to table names. Defaults to GetTable名称.
    */
   tableMapper: TableMapFunc
   /**
@@ -4506,7 +4506,7 @@ namespace dbx {
   /**
    * NewFromDB encapsulates an existing database connection.
    */
-  (sqlDB: sql.DB, driverName: string): (DB)
+  (sqlDB: sql.DB, driver名称: string): (DB)
  }
  interface open {
   /**
@@ -4514,14 +4514,14 @@ namespace dbx {
    * Note that Open does not check if DSN is specified correctly. It doesn't try to establish a DB connection either.
    * Please refer to sql.Open() for more information.
    */
-  (driverName: string, dsn: string): (DB)
+  (driver名称: string, dsn: string): (DB)
  }
  interface mustOpen {
   /**
    * MustOpen opens a database and establishes a connection to it.
    * Please refer to sql.Open() and sql.Ping() for more information.
    */
-  (driverName: string, dsn: string): (DB)
+  (driver名称: string, dsn: string): (DB)
  }
  interface DB {
   /**
@@ -4550,8 +4550,8 @@ namespace dbx {
  }
  interface DB {
   /**
-   * Close closes the database, releasing any open resources.
-   * It is rare to Close a DB, as the DB handle is meant to be
+   * 关闭 closes the database, releasing any open resources.
+   * It is rare to 关闭 a DB, as the DB handle is meant to be
    * long-lived and shared between many goroutines.
    */
   close(): void
@@ -4592,25 +4592,25 @@ namespace dbx {
  }
  interface DB {
   /**
-   * DriverName returns the name of the DB driver.
+   * Driver名称 returns the name of the DB driver.
    */
-  driverName(): string
+  driver名称(): string
  }
  interface DB {
   /**
-   * QuoteTableName quotes the given table name appropriately.
+   * QuoteTable名称 quotes the given table name appropriately.
    * If the table name contains DB schema prefix, it will be handled accordingly.
    * This method will do nothing if the table name is already quoted or if it contains parenthesis.
    */
-  quoteTableName(s: string): string
+  quoteTable名称(s: string): string
  }
  interface DB {
   /**
-   * QuoteColumnName quotes the given column name appropriately.
+   * QuoteColumn名称 quotes the given column name appropriately.
    * If the table name contains table name prefix, it will be handled accordingly.
    * This method will do nothing if the column name is already quoted or if it contains parenthesis.
    */
-  quoteColumnName(s: string): string
+  quoteColumn名称(s: string): string
  }
  interface Errors {
   /**
@@ -4873,7 +4873,7 @@ namespace dbx {
   */
  interface TableModel {
   [key:string]: any;
-  tableName(): string
+  table名称(): string
  }
  /**
   * ModelQuery represents a query associated with a struct model.
@@ -4928,7 +4928,7 @@ namespace dbx {
  }
  interface ModelQuery {
   /**
-   * Delete deletes a row in the table using the primary key specified by the struct model associated with this query.
+   * 删除 deletes a row in the table using the primary key specified by the struct model associated with this query.
    */
   delete(): void
  }
@@ -5074,21 +5074,21 @@ namespace dbx {
  interface Query {
   /**
    * Prepare creates a prepared statement for later queries or executions.
-   * Close() should be called after finishing all queries.
+   * 关闭() should be called after finishing all queries.
    */
   prepare(): (Query)
  }
  interface Query {
   /**
-   * Close closes the underlying prepared statement.
-   * Close does nothing if the query has not been prepared before.
+   * 关闭 closes the underlying prepared statement.
+   * 关闭 does nothing if the query has not been prepared before.
    */
   close(): void
  }
  interface Query {
   /**
    * Bind sets the parameters that should be bound to the SQL statement.
-   * The parameter placeholders in the SQL statement are in the format of "{:ParamName}".
+   * The parameter placeholders in the SQL statement are in the format of "{:Param名称}".
    */
   bind(params: Params): (Query)
  }
@@ -5298,7 +5298,7 @@ namespace dbx {
    * 
    * By default, DefaultFieldMapFunc() is used to map struct fields to table columns.
    * This function separates each word in a field name with a underscore and turns every letter into lower case.
-   * For example, "LastName" is mapped to "last_name", "MyID" is mapped to "my_id", and so on.
+   * For example, "Last名称" is mapped to "last_name", "MyID" is mapped to "my_id", and so on.
    * To change the default behavior, set DB.FieldMapper with your custom mapping function.
    * You may also set Query.FieldMapper to change the behavior for particular queries.
    */
@@ -5549,8 +5549,8 @@ namespace dbx {
    * One executes the SELECT query and populates the first row of the result into the specified variable.
    * 
    * If the query does not specify a "from" clause, the method will try to infer the name of the table
-   * to be selected from by calling getTableName() which will return either the variable type name
-   * or the TableName() method if the variable implements the TableModel interface.
+   * to be selected from by calling getTable名称() which will return either the variable type name
+   * or the Table名称() method if the variable implements the TableModel interface.
    * 
    * Note that when the query has no rows in the result set, an sql.ErrNoRows will be returned.
    */
@@ -5577,8 +5577,8 @@ namespace dbx {
    * Note that the slice must be passed in as a pointer.
    * 
    * If the query does not specify a "from" clause, the method will try to infer the name of the table
-   * to be selected from by calling getTableName() which will return either the type name of the slice elements
-   * or the TableName() method if the slice element implements the TableModel interface.
+   * to be selected from by calling getTable名称() which will return either the type name of the slice elements
+   * or the Table名称() method if the slice element implements the TableModel interface.
    */
   all(slice: {
    }): void
@@ -5671,16 +5671,16 @@ namespace dbx {
   /**
    * DefaultFieldMapFunc maps a field name to a DB column name.
    * The mapping rule set by this method is that words in a field name will be separated by underscores
-   * and the name will be turned into lower case. For example, "FirstName" maps to "first_name", and "MyID" becomes "my_id".
+   * and the name will be turned into lower case. For example, "First名称" maps to "first_name", and "MyID" becomes "my_id".
    * See DB.FieldMapper for more details.
    */
   (f: string): string
  }
- interface getTableName {
+ interface getTable名称 {
   /**
-   * GetTableName implements the default way of determining the table name corresponding to the given model struct
+   * GetTable名称 implements the default way of determining the table name corresponding to the given model struct
    * or slice of structs. To get the actual table name for a model, you should use DB.TableMapFunc() instead.
-   * Do not call this method in a model's TableName() method because it will cause infinite loop.
+   * Do not call this method in a model's Table名称() method because it will cause infinite loop.
    */
   (a: {
    }): string
@@ -5907,9 +5907,9 @@ namespace core {
    */
   isDev(): boolean
   /**
-   * Settings returns the loaded app settings.
+   * 设置 returns the loaded app settings.
    */
-  settings(): (Settings)
+  settings(): (设置)
   /**
    * Store returns the app runtime store.
    */
@@ -5932,33 +5932,33 @@ namespace core {
    * for managing regular app files (ex. record uploads)
    * based on the current app settings.
    * 
-   * NB! Make sure to call Close() on the returned result
+   * NB! Make sure to call 关闭() on the returned result
    * after you are done working with it.
    */
   newFilesystem(): (filesystem.System)
   /**
-   * NewBackupsFilesystem creates a new local or S3 filesystem instance
+   * New返回upsFilesystem creates a new local or S3 filesystem instance
    * for managing app backups based on the current app settings.
    * 
-   * NB! Make sure to call Close() on the returned result
+   * NB! Make sure to call 关闭() on the returned result
    * after you are done working with it.
    */
-  newBackupsFilesystem(): (filesystem.System)
+  new返回upsFilesystem(): (filesystem.System)
   /**
-   * ReloadSettings reinitializes and reloads the stored application settings.
+   * Reload设置 reinitializes and reloads the stored application settings.
    */
-  reloadSettings(): void
+  reload设置(): void
   /**
-   * CreateBackup creates a new backup of the current app pb_data directory.
+   * 创建返回up creates a new backup of the current app pb_data directory.
    * 
-   * Backups can be stored on S3 if it is configured in app.Settings().Backups.
+   * 返回ups can be stored on S3 if it is configured in app.设置().返回ups.
    * 
    * Please refer to the godoc of the specific CoreApp implementation
    * for details on the backup procedures.
    */
-  createBackup(ctx: context.Context, name: string): void
+  create返回up(ctx: context.Context, name: string): void
   /**
-   * RestoreBackup restores the backup with the specified name and restarts
+   * Restore返回up restores the backup with the specified name and restarts
    * the current running application process.
    * 
    * The safely perform the restore it is recommended to have free disk space
@@ -5969,7 +5969,7 @@ namespace core {
    * 
    * NB! This feature is experimental and currently is expected to work only on UNIX based systems.
    */
-  restoreBackup(ctx: context.Context, name: string): void
+  restore返回up(ctx: context.Context, name: string): void
   /**
    * Restart restarts (aka. replaces) the current running application process.
    * 
@@ -6069,37 +6069,37 @@ namespace core {
    * HasTable checks if a table (or view) with the provided name exists (case insensitive).
    * in the data.db.
    */
-  hasTable(tableName: string): boolean
+  hasTable(table名称: string): boolean
   /**
    * AuxHasTable checks if a table (or view) with the provided name exists (case insensitive)
    * in the auxiliary.db.
    */
-  auxHasTable(tableName: string): boolean
+  auxHasTable(table名称: string): boolean
   /**
    * TableColumns returns all column names of a single table by its name.
    */
-  tableColumns(tableName: string): Array<string>
+  tableColumns(table名称: string): Array<string>
   /**
    * TableInfo returns the "table_info" pragma result for the specified table.
    */
-  tableInfo(tableName: string): Array<(TableInfoRow | undefined)>
+  tableInfo(table名称: string): Array<(TableInfoRow | undefined)>
   /**
    * TableIndexes returns a name grouped map with all non empty index of the specified table.
    * 
    * Note: This method doesn't return an error on nonexisting table.
    */
-  tableIndexes(tableName: string): _TygojaDict
+  tableIndexes(table名称: string): _TygojaDict
   /**
-   * DeleteTable drops the specified table.
+   * 删除Table drops the specified table.
    * 
    * This method is a no-op if a table with the provided name doesn't exist.
    * 
    * NB! Be aware that this method is vulnerable to SQL injection and the
-   * "tableName" argument must come only from trusted input!
+   * "table名称" argument must come only from trusted input!
    */
-  deleteTable(tableName: string): void
+  deleteTable(table名称: string): void
   /**
-   * DeleteView drops the specified view name.
+   * 删除View drops the specified view name.
    * 
    * This method is a no-op if a view with the provided name doesn't exist.
    * 
@@ -6108,14 +6108,14 @@ namespace core {
    */
   deleteView(name: string): void
   /**
-   * SaveView creates (or updates already existing) persistent SQL view.
+   * 保存View creates (or updates already existing) persistent SQL view.
    * 
    * NB! Be aware that this method is vulnerable to SQL injection and the
    * "selectQuery" argument must come only from trusted input!
    */
   saveView(name: string, selectQuery: string): void
   /**
-   * CreateViewFields creates a new FieldsList from the provided select query.
+   * 创建ViewFields creates a new FieldsList from the provided select query.
    * 
    * There are some caveats:
    * - The select query must have an "id" column.
@@ -6125,7 +6125,7 @@ namespace core {
   /**
    * FindRecordByViewFile returns the original Record of the provided view collection file.
    */
-  findRecordByViewFile(viewCollectionModelOrIdentifier: any, fileFieldName: string, filename: string): (Record)
+  findRecordByViewFile(viewCollectionModelOrIdentifier: any, fileField名称: string, filename: string): (Record)
   /**
    * Vacuum executes VACUUM on the data.db in order to reclaim unused data db disk space.
    */
@@ -6145,73 +6145,73 @@ namespace core {
    */
   auxModelQuery(model: Model): (dbx.SelectQuery)
   /**
-   * Delete deletes the specified model from the regular app database.
+   * 删除 deletes the specified model from the regular app database.
    */
   delete(model: Model): void
   /**
-   * Delete deletes the specified model from the regular app database
+   * 删除 deletes the specified model from the regular app database
    * (the context could be used to limit the query execution).
    */
   deleteWithContext(ctx: context.Context, model: Model): void
   /**
-   * AuxDelete deletes the specified model from the auxiliary database.
+   * Aux删除 deletes the specified model from the auxiliary database.
    */
-  auxDelete(model: Model): void
+  aux删除(model: Model): void
   /**
-   * AuxDeleteWithContext deletes the specified model from the auxiliary database
+   * Aux删除WithContext deletes the specified model from the auxiliary database
    * (the context could be used to limit the query execution).
    */
-  auxDeleteWithContext(ctx: context.Context, model: Model): void
+  aux删除WithContext(ctx: context.Context, model: Model): void
   /**
-   * Save validates and saves the specified model into the regular app database.
+   * 保存 validates and saves the specified model into the regular app database.
    * 
-   * If you don't want to run validations, use [App.SaveNoValidate()].
+   * If you don't want to run validations, use [App.保存NoValidate()].
    */
   save(model: Model): void
   /**
-   * SaveWithContext is the same as [App.Save()] but allows specifying a context to limit the db execution.
+   * 保存WithContext is the same as [App.保存()] but allows specifying a context to limit the db execution.
    * 
-   * If you don't want to run validations, use [App.SaveNoValidateWithContext()].
+   * If you don't want to run validations, use [App.保存NoValidateWithContext()].
    */
   saveWithContext(ctx: context.Context, model: Model): void
   /**
-   * SaveNoValidate saves the specified model into the regular app database without performing validations.
+   * 保存NoValidate saves the specified model into the regular app database without performing validations.
    * 
-   * If you want to also run validations before persisting, use [App.Save()].
+   * If you want to also run validations before persisting, use [App.保存()].
    */
   saveNoValidate(model: Model): void
   /**
-   * SaveNoValidateWithContext is the same as [App.SaveNoValidate()]
+   * 保存NoValidateWithContext is the same as [App.保存NoValidate()]
    * but allows specifying a context to limit the db execution.
    * 
-   * If you want to also run validations before persisting, use [App.SaveWithContext()].
+   * If you want to also run validations before persisting, use [App.保存WithContext()].
    */
   saveNoValidateWithContext(ctx: context.Context, model: Model): void
   /**
-   * AuxSave validates and saves the specified model into the auxiliary app database.
+   * Aux保存 validates and saves the specified model into the auxiliary app database.
    * 
-   * If you don't want to run validations, use [App.AuxSaveNoValidate()].
+   * If you don't want to run validations, use [App.Aux保存NoValidate()].
    */
-  auxSave(model: Model): void
+  aux保存(model: Model): void
   /**
-   * AuxSaveWithContext is the same as [App.AuxSave()] but allows specifying a context to limit the db execution.
+   * Aux保存WithContext is the same as [App.Aux保存()] but allows specifying a context to limit the db execution.
    * 
-   * If you don't want to run validations, use [App.AuxSaveNoValidateWithContext()].
+   * If you don't want to run validations, use [App.Aux保存NoValidateWithContext()].
    */
-  auxSaveWithContext(ctx: context.Context, model: Model): void
+  aux保存WithContext(ctx: context.Context, model: Model): void
   /**
-   * AuxSaveNoValidate saves the specified model into the auxiliary app database without performing validations.
+   * Aux保存NoValidate saves the specified model into the auxiliary app database without performing validations.
    * 
-   * If you want to also run validations before persisting, use [App.AuxSave()].
+   * If you want to also run validations before persisting, use [App.Aux保存()].
    */
-  auxSaveNoValidate(model: Model): void
+  aux保存NoValidate(model: Model): void
   /**
-   * AuxSaveNoValidateWithContext is the same as [App.AuxSaveNoValidate()]
+   * Aux保存NoValidateWithContext is the same as [App.Aux保存NoValidate()]
    * but allows specifying a context to limit the db execution.
    * 
-   * If you want to also run validations before persisting, use [App.AuxSaveWithContext()].
+   * If you want to also run validations before persisting, use [App.Aux保存WithContext()].
    */
-  auxSaveNoValidateWithContext(ctx: context.Context, model: Model): void
+  aux保存NoValidateWithContext(ctx: context.Context, model: Model): void
   /**
    * Validate triggers the OnModelValidate hook for the specified model.
    */
@@ -6245,7 +6245,7 @@ namespace core {
    */
   logsStats(expr: dbx.Expression): Array<(LogsStatsItem | undefined)>
   /**
-   * DeleteOldLogs delete all logs that are created before createdBefore.
+   * 删除OldLogs delete all logs that are created before createdBefore.
    */
   deleteOldLogs(createdBefore: time.Time): void
   /**
@@ -6270,20 +6270,20 @@ namespace core {
    */
   reloadCachedCollections(): void
   /**
-   * FindCollectionByNameOrId finds a single collection by its name (case insensitive) or id.s
+   * FindCollectionBy名称OrId finds a single collection by its name (case insensitive) or id.s
    */
-  findCollectionByNameOrId(nameOrId: string): (Collection)
+  findCollectionBy名称OrId(nameOrId: string): (Collection)
   /**
-   * FindCachedCollectionByNameOrId is similar to [App.FindCollectionByNameOrId]
+   * FindCachedCollectionBy名称OrId is similar to [App.FindCollectionBy名称OrId]
    * but retrieves the Collection from the app cache instead of making a db call.
    * 
    * NB! This method is suitable for read-only Collection operations.
    * 
    * Returns [sql.ErrNoRows] if no Collection is found for consistency
-   * with the [App.FindCollectionByNameOrId] method.
+   * with the [App.FindCollectionBy名称OrId] method.
    * 
    * If you plan making changes to the returned Collection model,
-   * use [App.FindCollectionByNameOrId] instead.
+   * use [App.FindCollectionBy名称OrId] instead.
    * 
    * Caveats:
    * 
@@ -6297,7 +6297,7 @@ namespace core {
    *     To manually reload the cache you can call [App.ReloadCachedCollections]
    * ```
    */
-  findCachedCollectionByNameOrId(nameOrId: string): (Collection)
+  findCachedCollectionBy名称OrId(nameOrId: string): (Collection)
   /**
    * FindCollectionReferences returns information for all relation
    * fields referencing the provided collection.
@@ -6330,13 +6330,13 @@ namespace core {
    */
   findCachedCollectionReferences(collection: Collection, ...excludeIds: string[]): _TygojaDict
   /**
-   * IsCollectionNameUnique checks that there is no existing collection
+   * IsCollection名称Unique checks that there is no existing collection
    * with the provided name (case insensitive!).
    * 
    * Note: case insensitive check because the name is used also as
    * table name for the records.
    */
-  isCollectionNameUnique(name: string, ...excludeIds: string[]): boolean
+  isCollection名称Unique(name: string, ...excludeIds: string[]): boolean
   /**
    * TruncateCollection deletes all records associated with the provided collection.
    * 
@@ -6399,13 +6399,13 @@ namespace core {
    */
   findMFAById(id: string): (MFA)
   /**
-   * DeleteAllMFAsByRecord deletes all MFA models associated with the provided record.
+   * 删除AllMFAsByRecord deletes all MFA models associated with the provided record.
    * 
    * Returns a combined error with the failed deletes.
    */
   deleteAllMFAsByRecord(authRecord: Record): void
   /**
-   * DeleteExpiredMFAs deletes the expired MFAs for all auth collections.
+   * 删除ExpiredMFAs deletes the expired MFAs for all auth collections.
    */
   deleteExpiredMFAs(): void
   /**
@@ -6421,13 +6421,13 @@ namespace core {
    */
   findOTPById(id: string): (OTP)
   /**
-   * DeleteAllOTPsByRecord deletes all OTP models associated with the provided record.
+   * 删除AllOTPsByRecord deletes all OTP models associated with the provided record.
    * 
    * Returns a combined error with the failed deletes.
    */
   deleteAllOTPsByRecord(authRecord: Record): void
   /**
-   * DeleteExpiredOTPs deletes the expired OTPs for all auth collections.
+   * 删除ExpiredOTPs deletes the expired OTPs for all auth collections.
    */
   deleteExpiredOTPs(): void
   /**
@@ -6448,7 +6448,7 @@ namespace core {
    */
   findAuthOriginByRecordAndFingerprint(authRecord: Record, fingerprint: string): (AuthOrigin)
   /**
-   * DeleteAllAuthOriginsByRecord deletes all AuthOrigin models associated with the provided record.
+   * 删除AllAuthOriginsByRecord deletes all AuthOrigin models associated with the provided record.
    * 
    * Returns a combined error with the failed deletes.
    */
@@ -6547,7 +6547,7 @@ namespace core {
   countRecords(collectionModelOrIdentifier: any, ...exprs: dbx.Expression[]): number
   /**
    * FindAuthRecordByToken finds the auth record associated with the provided JWT
-   * (auth, file, verifyEmail, changeEmail, passwordReset types).
+   * (auth, file, verify邮箱, change邮箱, passwordReset types).
    * 
    * Optionally specify a list of validTypes to check tokens only from those types.
    * 
@@ -6555,11 +6555,11 @@ namespace core {
    */
   findAuthRecordByToken(token: string, ...validTypes: string[]): (Record)
   /**
-   * FindAuthRecordByEmail finds the auth record associated with the provided email.
+   * FindAuthRecordBy邮箱 finds the auth record associated with the provided email.
    * 
    * Returns an error if it is not an auth collection or the record is not found.
    */
-  findAuthRecordByEmail(collectionModelOrIdentifier: any, email: string): (Record)
+  findAuthRecordBy邮箱(collectionModelOrIdentifier: any, email: string): (Record)
   /**
    * CanAccessRecord checks if a record is allowed to be accessed by the
    * specified requestInfo and accessRule.
@@ -6620,18 +6620,18 @@ namespace core {
    */
   onTerminate(): (hook.Hook<TerminateEvent | undefined>)
   /**
-   * OnBackupCreate hook is triggered on each [App.CreateBackup] call.
+   * On返回up创建 hook is triggered on each [App.创建返回up] call.
    */
-  onBackupCreate(): (hook.Hook<BackupEvent | undefined>)
+  on返回up创建(): (hook.Hook<返回upEvent | undefined>)
   /**
-   * OnBackupRestore hook is triggered before app backup restore (aka. [App.RestoreBackup] call).
+   * On返回upRestore hook is triggered before app backup restore (aka. [App.Restore返回up] call).
    * 
    * Note that by default on success the application is restarted and the after state of the hook is ignored.
    */
-  onBackupRestore(): (hook.Hook<BackupEvent | undefined>)
+  on返回upRestore(): (hook.Hook<返回upEvent | undefined>)
   /**
    * OnModelValidate is triggered every time when a model is being validated
-   * (e.g. triggered by App.Validate() or App.Save()).
+   * (e.g. triggered by App.Validate() or App.保存()).
    * 
    * For convenience, if you want to listen to only the Record models
    * events without doing manual type assertion, you can attach to the OnRecord* proxy hooks.
@@ -6642,8 +6642,8 @@ namespace core {
    */
   onModelValidate(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
   /**
-   * OnModelCreate is triggered every time when a new model is being created
-   * (e.g. triggered by App.Save()).
+   * OnModel创建 is triggered every time when a new model is being created
+   * (e.g. triggered by App.保存()).
    * 
    * Operations BEFORE the e.Next() execute before the model validation
    * and the INSERT DB statement.
@@ -6655,7 +6655,7 @@ namespace core {
    * is persisted in the database since its wrapping transaction may
    * not have been committed yet.
    * If you want to listen to only the actual persisted events, you can
-   * bind to [OnModelAfterCreateSuccess] or [OnModelAfterCreateError] hooks.
+   * bind to [OnModelAfter创建Success] or [OnModelAfter创建Error] hooks.
    * 
    * For convenience, if you want to listen to only the Record models
    * events without doing manual type assertion, you can attach to the OnRecord* proxy hooks.
@@ -6664,16 +6664,16 @@ namespace core {
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onModelCreate(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
+  onModel创建(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
   /**
-   * OnModelCreateExecute is triggered after successful Model validation
+   * OnModel创建Execute is triggered after successful Model validation
    * and right before the model INSERT DB statement execution.
    * 
-   * Usually it is triggered as part of the App.Save() in the following firing order:
-   * OnModelCreate {
+   * Usually it is triggered as part of the App.保存() in the following firing order:
+   * OnModel创建 {
    * ```
-   *    -> OnModelValidate (skipped with App.SaveNoValidate())
-   *    -> OnModelCreateExecute
+   *    -> OnModelValidate (skipped with App.保存NoValidate())
+   *    -> OnModel创建Execute
    * ```
    * }
    * 
@@ -6681,7 +6681,7 @@ namespace core {
    * is persisted in the database since its wrapping transaction may have been
    * committed yet.
    * If you want to listen to only the actual persisted events,
-   * you can bind to [OnModelAfterCreateSuccess] or [OnModelAfterCreateError] hooks.
+   * you can bind to [OnModelAfter创建Success] or [OnModelAfter创建Error] hooks.
    * 
    * For convenience, if you want to listen to only the Record models
    * events without doing manual type assertion, you can attach to the OnRecord* proxy hooks.
@@ -6690,9 +6690,9 @@ namespace core {
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onModelCreateExecute(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
+  onModel创建Execute(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
   /**
-   * OnModelAfterCreateSuccess is triggered after each successful
+   * OnModelAfter创建Success is triggered after each successful
    * Model DB create persistence.
    * 
    * Note that when a Model is persisted as part of a transaction,
@@ -6707,15 +6707,15 @@ namespace core {
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onModelAfterCreateSuccess(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
+  onModelAfter创建Success(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
   /**
-   * OnModelAfterCreateError is triggered after each failed
+   * OnModelAfter创建Error is triggered after each failed
    * Model DB create persistence.
    * 
    * Note that the execution of this hook is either immediate or delayed
    * depending on the error:
    * ```
-   *   - "immediate" on App.Save() failure
+   *   - "immediate" on App.保存() failure
    *   - "delayed" on transaction rollback
    * ```
    * 
@@ -6726,10 +6726,10 @@ namespace core {
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onModelAfterCreateError(...tags: string[]): (hook.TaggedHook<ModelErrorEvent | undefined>)
+  onModelAfter创建Error(...tags: string[]): (hook.TaggedHook<ModelErrorEvent | undefined>)
   /**
    * OnModelUpdate is triggered every time when a new model is being updated
-   * (e.g. triggered by App.Save()).
+   * (e.g. triggered by App.保存()).
    * 
    * Operations BEFORE the e.Next() execute before the model validation
    * and the UPDATE DB statement.
@@ -6755,10 +6755,10 @@ namespace core {
    * OnModelUpdateExecute is triggered after successful Model validation
    * and right before the model UPDATE DB statement execution.
    * 
-   * Usually it is triggered as part of the App.Save() in the following firing order:
+   * Usually it is triggered as part of the App.保存() in the following firing order:
    * OnModelUpdate {
    * ```
-   *    -> OnModelValidate (skipped with App.SaveNoValidate())
+   *    -> OnModelValidate (skipped with App.保存NoValidate())
    *    -> OnModelUpdateExecute
    * ```
    * }
@@ -6801,7 +6801,7 @@ namespace core {
    * Note that the execution of this hook is either immediate or delayed
    * depending on the error:
    * ```
-   *   - "immediate" on App.Save() failure
+   *   - "immediate" on App.保存() failure
    *   - "delayed" on transaction rollback
    * ```
    * 
@@ -6814,14 +6814,14 @@ namespace core {
    */
   onModelAfterUpdateError(...tags: string[]): (hook.TaggedHook<ModelErrorEvent | undefined>)
   /**
-   * OnModelDelete is triggered every time when a new model is being deleted
-   * (e.g. triggered by App.Delete()).
+   * OnModel删除 is triggered every time when a new model is being deleted
+   * (e.g. triggered by App.删除()).
    * 
    * Note that successful execution doesn't guarantee that the model
    * is deleted from the database since its wrapping transaction may
    * not have been committed yet.
    * If you want to listen to only the actual persisted deleted events, you can
-   * bind to [OnModelAfterDeleteSuccess] or [OnModelAfterDeleteError] hooks.
+   * bind to [OnModelAfter删除Success] or [OnModelAfter删除Error] hooks.
    * 
    * For convenience, if you want to listen to only the Record models
    * events without doing manual type assertion, you can attach to the OnRecord* proxy hooks.
@@ -6830,16 +6830,16 @@ namespace core {
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onModelDelete(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
+  onModel删除(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
   /**
    * OnModelUpdateExecute is triggered right before the model
    * DELETE DB statement execution.
    * 
-   * Usually it is triggered as part of the App.Delete() in the following firing order:
-   * OnModelDelete {
+   * Usually it is triggered as part of the App.删除() in the following firing order:
+   * OnModel删除 {
    * ```
    *    -> (internal delete checks)
-   *    -> OnModelDeleteExecute
+   *    -> OnModel删除Execute
    * ```
    * }
    * 
@@ -6847,7 +6847,7 @@ namespace core {
    * is deleted from the database since its wrapping transaction may
    * not have been committed yet.
    * If you want to listen to only the actual persisted deleted events, you can
-   * bind to [OnModelAfterDeleteSuccess] or [OnModelAfterDeleteError] hooks.
+   * bind to [OnModelAfter删除Success] or [OnModelAfter删除Error] hooks.
    * 
    * For convenience, if you want to listen to only the Record models
    * events without doing manual type assertion, you can attach to the OnRecord* proxy hooks.
@@ -6856,9 +6856,9 @@ namespace core {
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onModelDeleteExecute(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
+  onModel删除Execute(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
   /**
-   * OnModelAfterDeleteSuccess is triggered after each successful
+   * OnModelAfter删除Success is triggered after each successful
    * Model DB delete persistence.
    * 
    * Note that when a Model is deleted as part of a transaction,
@@ -6873,15 +6873,15 @@ namespace core {
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onModelAfterDeleteSuccess(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
+  onModelAfter删除Success(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
   /**
-   * OnModelAfterDeleteError is triggered after each failed
+   * OnModelAfter删除Error is triggered after each failed
    * Model DB delete persistence.
    * 
    * Note that the execution of this hook is either immediate or delayed
    * depending on the error:
    * ```
-   *   - "immediate" on App.Delete() failure
+   *   - "immediate" on App.删除() failure
    *   - "delayed" on transaction rollback
    * ```
    * 
@@ -6892,7 +6892,7 @@ namespace core {
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onModelAfterDeleteError(...tags: string[]): (hook.TaggedHook<ModelErrorEvent | undefined>)
+  onModelAfter删除Error(...tags: string[]): (hook.TaggedHook<ModelErrorEvent | undefined>)
   /**
    * OnRecordEnrich is triggered every time when a record is enriched
    * (as part of the builtin Record responses, during realtime message seriazation, or when [apis.EnrichRecord] is invoked).
@@ -6906,7 +6906,7 @@ namespace core {
    *      e.Record.Hide("role")
    * 
    *      // add new custom field for registered users
-   *      if e.RequestInfo.Auth != nil && e.RequestInfo.Auth.Collection().Name == "users" {
+   *      if e.RequestInfo.Auth != nil && e.RequestInfo.Auth.Collection().名称 == "users" {
    *          e.Record.WithCustomData(true) // for security requires explicitly allowing it
    *          e.Record.Set("computedScore", e.Record.GetInt("score") * e.RequestInfo.Auth.GetInt("baseScore"))
    *      }
@@ -6929,37 +6929,37 @@ namespace core {
    */
   onRecordValidate(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
   /**
-   * OnRecordCreate is a Record proxy model hook of [OnModelCreate].
+   * OnRecord创建 is a Record proxy model hook of [OnModel创建].
    * 
    * If the optional "tags" list (Collection ids or names) is specified,
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onRecordCreate(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
+  onRecord创建(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
   /**
-   * OnRecordCreateExecute is a Record proxy model hook of [OnModelCreateExecute].
+   * OnRecord创建Execute is a Record proxy model hook of [OnModel创建Execute].
    * 
    * If the optional "tags" list (Collection ids or names) is specified,
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onRecordCreateExecute(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
+  onRecord创建Execute(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
   /**
-   * OnRecordAfterCreateSuccess is a Record proxy model hook of [OnModelAfterCreateSuccess].
+   * OnRecordAfter创建Success is a Record proxy model hook of [OnModelAfter创建Success].
    * 
    * If the optional "tags" list (Collection ids or names) is specified,
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onRecordAfterCreateSuccess(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
+  onRecordAfter创建Success(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
   /**
-   * OnRecordAfterCreateError is a Record proxy model hook of [OnModelAfterCreateError].
+   * OnRecordAfter创建Error is a Record proxy model hook of [OnModelAfter创建Error].
    * 
    * If the optional "tags" list (Collection ids or names) is specified,
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onRecordAfterCreateError(...tags: string[]): (hook.TaggedHook<RecordErrorEvent | undefined>)
+  onRecordAfter创建Error(...tags: string[]): (hook.TaggedHook<RecordErrorEvent | undefined>)
   /**
    * OnRecordUpdate is a Record proxy model hook of [OnModelUpdate].
    * 
@@ -6993,37 +6993,37 @@ namespace core {
    */
   onRecordAfterUpdateError(...tags: string[]): (hook.TaggedHook<RecordErrorEvent | undefined>)
   /**
-   * OnRecordDelete is a Record proxy model hook of [OnModelDelete].
+   * OnRecord删除 is a Record proxy model hook of [OnModel删除].
    * 
    * If the optional "tags" list (Collection ids or names) is specified,
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onRecordDelete(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
+  onRecord删除(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
   /**
-   * OnRecordDeleteExecute is a Record proxy model hook of [OnModelDeleteExecute].
+   * OnRecord删除Execute is a Record proxy model hook of [OnModel删除Execute].
    * 
    * If the optional "tags" list (Collection ids or names) is specified,
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onRecordDeleteExecute(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
+  onRecord删除Execute(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
   /**
-   * OnRecordAfterDeleteSuccess is a Record proxy model hook of [OnModelAfterDeleteSuccess].
+   * OnRecordAfter删除Success is a Record proxy model hook of [OnModelAfter删除Success].
    * 
    * If the optional "tags" list (Collection ids or names) is specified,
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onRecordAfterDeleteSuccess(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
+  onRecordAfter删除Success(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
   /**
-   * OnRecordAfterDeleteError is a Record proxy model hook of [OnModelAfterDeleteError].
+   * OnRecordAfter删除Error is a Record proxy model hook of [OnModelAfter删除Error].
    * 
    * If the optional "tags" list (Collection ids or names) is specified,
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onRecordAfterDeleteError(...tags: string[]): (hook.TaggedHook<RecordErrorEvent | undefined>)
+  onRecordAfter删除Error(...tags: string[]): (hook.TaggedHook<RecordErrorEvent | undefined>)
   /**
    * OnCollectionValidate is a Collection proxy model hook of [OnModelValidate].
    * 
@@ -7033,37 +7033,37 @@ namespace core {
    */
   onCollectionValidate(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
   /**
-   * OnCollectionCreate is a Collection proxy model hook of [OnModelCreate].
+   * OnCollection创建 is a Collection proxy model hook of [OnModel创建].
    * 
    * If the optional "tags" list (Collection ids or names) is specified,
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onCollectionCreate(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
+  onCollection创建(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
   /**
-   * OnCollectionCreateExecute is a Collection proxy model hook of [OnModelCreateExecute].
+   * OnCollection创建Execute is a Collection proxy model hook of [OnModel创建Execute].
    * 
    * If the optional "tags" list (Collection ids or names) is specified,
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onCollectionCreateExecute(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
+  onCollection创建Execute(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
   /**
-   * OnCollectionAfterCreateSuccess is a Collection proxy model hook of [OnModelAfterCreateSuccess].
+   * OnCollectionAfter创建Success is a Collection proxy model hook of [OnModelAfter创建Success].
    * 
    * If the optional "tags" list (Collection ids or names) is specified,
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onCollectionAfterCreateSuccess(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
+  onCollectionAfter创建Success(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
   /**
-   * OnCollectionAfterCreateError is a Collection proxy model hook of [OnModelAfterCreateError].
+   * OnCollectionAfter创建Error is a Collection proxy model hook of [OnModelAfter创建Error].
    * 
    * If the optional "tags" list (Collection ids or names) is specified,
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onCollectionAfterCreateError(...tags: string[]): (hook.TaggedHook<CollectionErrorEvent | undefined>)
+  onCollectionAfter创建Error(...tags: string[]): (hook.TaggedHook<CollectionErrorEvent | undefined>)
   /**
    * OnCollectionUpdate is a Collection proxy model hook of [OnModelUpdate].
    * 
@@ -7097,37 +7097,37 @@ namespace core {
    */
   onCollectionAfterUpdateError(...tags: string[]): (hook.TaggedHook<CollectionErrorEvent | undefined>)
   /**
-   * OnCollectionDelete is a Collection proxy model hook of [OnModelDelete].
+   * OnCollection删除 is a Collection proxy model hook of [OnModel删除].
    * 
    * If the optional "tags" list (Collection ids or names) is specified,
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onCollectionDelete(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
+  onCollection删除(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
   /**
-   * OnCollectionDeleteExecute is a Collection proxy model hook of [OnModelDeleteExecute].
+   * OnCollection删除Execute is a Collection proxy model hook of [OnModel删除Execute].
    * 
    * If the optional "tags" list (Collection ids or names) is specified,
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onCollectionDeleteExecute(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
+  onCollection删除Execute(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
   /**
-   * OnCollectionAfterDeleteSuccess is a Collection proxy model hook of [OnModelAfterDeleteSuccess].
+   * OnCollectionAfter删除Success is a Collection proxy model hook of [OnModelAfter删除Success].
    * 
    * If the optional "tags" list (Collection ids or names) is specified,
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onCollectionAfterDeleteSuccess(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
+  onCollectionAfter删除Success(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
   /**
-   * OnCollectionAfterDeleteError is a Collection proxy model hook of [OnModelAfterDeleteError].
+   * OnCollectionAfter删除Error is a Collection proxy model hook of [OnModelAfter删除Error].
    * 
    * If the optional "tags" list (Collection ids or names) is specified,
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onCollectionAfterDeleteError(...tags: string[]): (hook.TaggedHook<CollectionErrorEvent | undefined>)
+  onCollectionAfter删除Error(...tags: string[]): (hook.TaggedHook<CollectionErrorEvent | undefined>)
   /**
    * OnMailerSend hook is triggered every time when a new email is
    * being sent using the [App.NewMailClient()] instance.
@@ -7146,7 +7146,7 @@ namespace core {
    */
   onMailerRecordAuthAlertSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
   /**
-   * OnMailerBeforeRecordResetPasswordSend hook is triggered when
+   * OnMailerBeforeRecordReset密码Send hook is triggered when
    * sending a password reset email to an auth record, allowing
    * you to intercept and customize the email message that is being sent.
    * 
@@ -7154,7 +7154,7 @@ namespace core {
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onMailerRecordPasswordResetSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
+  onMailerRecord密码ResetSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
   /**
    * OnMailerBeforeRecordVerificationSend hook is triggered when
    * sending a verification email to an auth record, allowing
@@ -7166,7 +7166,7 @@ namespace core {
    */
   onMailerRecordVerificationSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
   /**
-   * OnMailerRecordEmailChangeSend hook is triggered when sending a
+   * OnMailerRecord邮箱ChangeSend hook is triggered when sending a
    * confirmation new address email to an auth record, allowing
    * you to intercept and customize the email message that is being sent.
    * 
@@ -7174,7 +7174,7 @@ namespace core {
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onMailerRecordEmailChangeSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
+  onMailerRecord邮箱ChangeSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
   /**
    * OnMailerRecordOTPSend hook is triggered when sending an OTP email
    * to an auth record, allowing you to intercept and customize the
@@ -7202,25 +7202,25 @@ namespace core {
    */
   onRealtimeSubscribeRequest(): (hook.Hook<RealtimeSubscribeRequestEvent | undefined>)
   /**
-   * OnSettingsListRequest hook is triggered on each API Settings list request.
+   * On设置ListRequest hook is triggered on each API 设置 list request.
    * 
    * Could be used to validate or modify the response before returning it to the client.
    */
-  onSettingsListRequest(): (hook.Hook<SettingsListRequestEvent | undefined>)
+  on设置ListRequest(): (hook.Hook<设置ListRequestEvent | undefined>)
   /**
-   * OnSettingsUpdateRequest hook is triggered on each API Settings update request.
+   * On设置UpdateRequest hook is triggered on each API 设置 update request.
    * 
    * Could be used to additionally validate the request data or
    * implement completely different persistence behavior.
    */
-  onSettingsUpdateRequest(): (hook.Hook<SettingsUpdateRequestEvent | undefined>)
+  on设置UpdateRequest(): (hook.Hook<设置UpdateRequestEvent | undefined>)
   /**
-   * OnSettingsReload hook is triggered every time when the App.Settings()
+   * On设置Reload hook is triggered every time when the App.设置()
    * is being replaced with a new state.
    * 
-   * Calling App.Settings() after e.Next() returns the new state.
+   * Calling App.设置() after e.Next() returns the new state.
    */
-  onSettingsReload(): (hook.Hook<SettingsReloadEvent | undefined>)
+  on设置Reload(): (hook.Hook<设置ReloadEvent | undefined>)
   /**
    * OnFileDownloadRequest hook is triggered before each API File download request.
    * 
@@ -7249,17 +7249,17 @@ namespace core {
    */
   onRecordAuthRequest(...tags: string[]): (hook.TaggedHook<RecordAuthRequestEvent | undefined>)
   /**
-   * OnRecordAuthWithPasswordRequest hook is triggered on each
+   * OnRecordAuthWith密码Request hook is triggered on each
    * Record auth with password API request.
    * 
-   * [RecordAuthWithPasswordRequestEvent.Record] could be nil if no matching identity is found, allowing
-   * you to manually locate a different Record model (by reassigning [RecordAuthWithPasswordRequestEvent.Record]).
+   * [RecordAuthWith密码RequestEvent.Record] could be nil if no matching identity is found, allowing
+   * you to manually locate a different Record model (by reassigning [RecordAuthWith密码RequestEvent.Record]).
    * 
    * If the optional "tags" list (Collection ids or names) is specified,
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onRecordAuthWithPasswordRequest(...tags: string[]): (hook.TaggedHook<RecordAuthWithPasswordRequestEvent | undefined>)
+  onRecordAuthWith密码Request(...tags: string[]): (hook.TaggedHook<RecordAuthWith密码RequestEvent | undefined>)
   /**
    * OnRecordAuthWithOAuth2Request hook is triggered on each Record
    * OAuth2 sign-in/sign-up API request (after token exchange and before external provider linking).
@@ -7288,7 +7288,7 @@ namespace core {
    */
   onRecordAuthRefreshRequest(...tags: string[]): (hook.TaggedHook<RecordAuthRefreshRequestEvent | undefined>)
   /**
-   * OnRecordRequestPasswordResetRequest hook is triggered on
+   * OnRecordRequest密码ResetRequest hook is triggered on
    * each Record request password reset API request.
    * 
    * Could be used to additionally validate the request data or implement
@@ -7298,9 +7298,9 @@ namespace core {
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onRecordRequestPasswordResetRequest(...tags: string[]): (hook.TaggedHook<RecordRequestPasswordResetRequestEvent | undefined>)
+  onRecordRequest密码ResetRequest(...tags: string[]): (hook.TaggedHook<RecordRequest密码ResetRequestEvent | undefined>)
   /**
-   * OnRecordConfirmPasswordResetRequest hook is triggered on
+   * OnRecord确认密码ResetRequest hook is triggered on
    * each Record confirm password reset API request.
    * 
    * Could be used to additionally validate the request data or implement
@@ -7310,7 +7310,7 @@ namespace core {
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onRecordConfirmPasswordResetRequest(...tags: string[]): (hook.TaggedHook<RecordConfirmPasswordResetRequestEvent | undefined>)
+  onRecord确认密码ResetRequest(...tags: string[]): (hook.TaggedHook<Record确认密码ResetRequestEvent | undefined>)
   /**
    * OnRecordRequestVerificationRequest hook is triggered on
    * each Record request verification API request.
@@ -7324,7 +7324,7 @@ namespace core {
    */
   onRecordRequestVerificationRequest(...tags: string[]): (hook.TaggedHook<RecordRequestVerificationRequestEvent | undefined>)
   /**
-   * OnRecordConfirmVerificationRequest hook is triggered on each
+   * OnRecord确认VerificationRequest hook is triggered on each
    * Record confirm verification API request.
    * 
    * Could be used to additionally validate the request data or implement
@@ -7334,9 +7334,9 @@ namespace core {
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onRecordConfirmVerificationRequest(...tags: string[]): (hook.TaggedHook<RecordConfirmVerificationRequestEvent | undefined>)
+  onRecord确认VerificationRequest(...tags: string[]): (hook.TaggedHook<Record确认VerificationRequestEvent | undefined>)
   /**
-   * OnRecordRequestEmailChangeRequest hook is triggered on each
+   * OnRecordRequest邮箱ChangeRequest hook is triggered on each
    * Record request email change API request.
    * 
    * Could be used to additionally validate the request data or implement
@@ -7346,9 +7346,9 @@ namespace core {
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onRecordRequestEmailChangeRequest(...tags: string[]): (hook.TaggedHook<RecordRequestEmailChangeRequestEvent | undefined>)
+  onRecordRequest邮箱ChangeRequest(...tags: string[]): (hook.TaggedHook<RecordRequest邮箱ChangeRequestEvent | undefined>)
   /**
-   * OnRecordConfirmEmailChangeRequest hook is triggered on each
+   * OnRecord确认邮箱ChangeRequest hook is triggered on each
    * Record confirm email change API request.
    * 
    * Could be used to additionally validate the request data or implement
@@ -7358,19 +7358,19 @@ namespace core {
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onRecordConfirmEmailChangeRequest(...tags: string[]): (hook.TaggedHook<RecordConfirmEmailChangeRequestEvent | undefined>)
+  onRecord确认邮箱ChangeRequest(...tags: string[]): (hook.TaggedHook<Record确认邮箱ChangeRequestEvent | undefined>)
   /**
    * OnRecordRequestOTPRequest hook is triggered on each Record
    * request OTP API request.
    * 
-   * [RecordCreateOTPRequestEvent.Record] could be nil if no matching identity is found, allowing
-   * you to manually create or locate a different Record model (by reassigning [RecordCreateOTPRequestEvent.Record]).
+   * [Record创建OTPRequestEvent.Record] could be nil if no matching identity is found, allowing
+   * you to manually create or locate a different Record model (by reassigning [Record创建OTPRequestEvent.Record]).
    * 
    * If the optional "tags" list (Collection ids or names) is specified,
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onRecordRequestOTPRequest(...tags: string[]): (hook.TaggedHook<RecordCreateOTPRequestEvent | undefined>)
+  onRecordRequestOTPRequest(...tags: string[]): (hook.TaggedHook<Record创建OTPRequestEvent | undefined>)
   /**
    * OnRecordAuthWithOTPRequest hook is triggered on each Record
    * auth with OTP API request.
@@ -7401,7 +7401,7 @@ namespace core {
    */
   onRecordViewRequest(...tags: string[]): (hook.TaggedHook<RecordRequestEvent | undefined>)
   /**
-   * OnRecordCreateRequest hook is triggered on each API Record create request.
+   * OnRecord创建Request hook is triggered on each API Record create request.
    * 
    * Could be used to additionally validate the request data or implement
    * completely different persistence behavior.
@@ -7410,7 +7410,7 @@ namespace core {
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onRecordCreateRequest(...tags: string[]): (hook.TaggedHook<RecordRequestEvent | undefined>)
+  onRecord创建Request(...tags: string[]): (hook.TaggedHook<RecordRequestEvent | undefined>)
   /**
    * OnRecordUpdateRequest hook is triggered on each API Record update request.
    * 
@@ -7423,7 +7423,7 @@ namespace core {
    */
   onRecordUpdateRequest(...tags: string[]): (hook.TaggedHook<RecordRequestEvent | undefined>)
   /**
-   * OnRecordDeleteRequest hook is triggered on each API Record delete request.
+   * OnRecord删除Request hook is triggered on each API Record delete request.
    * 
    * Could be used to additionally validate the request data or implement
    * completely different delete behavior.
@@ -7432,7 +7432,7 @@ namespace core {
    * then all event handlers registered via the created hook will be
    * triggered and called only if their event data origin matches the tags.
    */
-  onRecordDeleteRequest(...tags: string[]): (hook.TaggedHook<RecordRequestEvent | undefined>)
+  onRecord删除Request(...tags: string[]): (hook.TaggedHook<RecordRequestEvent | undefined>)
   /**
    * OnCollectionsListRequest hook is triggered on each API Collections list request.
    * 
@@ -7446,12 +7446,12 @@ namespace core {
    */
   onCollectionViewRequest(): (hook.Hook<CollectionRequestEvent | undefined>)
   /**
-   * OnCollectionCreateRequest hook is triggered on each API Collection create request.
+   * OnCollection创建Request hook is triggered on each API Collection create request.
    * 
    * Could be used to additionally validate the request data or implement
    * completely different persistence behavior.
    */
-  onCollectionCreateRequest(): (hook.Hook<CollectionRequestEvent | undefined>)
+  onCollection创建Request(): (hook.Hook<CollectionRequestEvent | undefined>)
   /**
    * OnCollectionUpdateRequest hook is triggered on each API Collection update request.
    * 
@@ -7460,12 +7460,12 @@ namespace core {
    */
   onCollectionUpdateRequest(): (hook.Hook<CollectionRequestEvent | undefined>)
   /**
-   * OnCollectionDeleteRequest hook is triggered on each API Collection delete request.
+   * OnCollection删除Request hook is triggered on each API Collection delete request.
    * 
    * Could be used to additionally validate the request data or implement
    * completely different delete behavior.
    */
-  onCollectionDeleteRequest(): (hook.Hook<CollectionRequestEvent | undefined>)
+  onCollection删除Request(): (hook.Hook<CollectionRequestEvent | undefined>)
   /**
    * OnCollectionsBeforeImportRequest hook is triggered on each API
    * collections import request.
@@ -7500,7 +7500,7 @@ namespace core {
    * 	origin.SetRecordRef(user.Id)
    * 	origin.SetCollectionRef(user.Collection().Id)
    * 	origin.SetFingerprint("...")
-   * 	app.Save(origin)
+   * 	app.保存(origin)
    * ```
    */
   (app: App): (AuthOrigin)
@@ -7562,7 +7562,7 @@ namespace core {
  }
  interface AuthOrigin {
   /**
-   * Created returns the "created" record field value.
+   * 创建d returns the "created" record field value.
    */
   created(): types.DateTime
  }
@@ -7599,7 +7599,7 @@ namespace core {
  }
  interface BaseApp {
   /**
-   * DeleteAllAuthOriginsByRecord deletes all AuthOrigin models associated with the provided record.
+   * 删除AllAuthOriginsByRecord deletes all AuthOrigin models associated with the provided record.
    * 
    * Returns a combined error with the failed deletes.
    */
@@ -7818,9 +7818,9 @@ namespace core {
  }
  interface BaseApp {
   /**
-   * Settings returns the loaded app settings.
+   * 设置 returns the loaded app settings.
    */
-  settings(): (Settings)
+  settings(): (设置)
  }
  interface BaseApp {
   /**
@@ -7853,20 +7853,20 @@ namespace core {
    * for managing regular app files (ex. record uploads)
    * based on the current app settings.
    * 
-   * NB! Make sure to call Close() on the returned result
+   * NB! Make sure to call 关闭() on the returned result
    * after you are done working with it.
    */
   newFilesystem(): (filesystem.System)
  }
  interface BaseApp {
   /**
-   * NewBackupsFilesystem creates a new local or S3 filesystem instance
+   * New返回upsFilesystem creates a new local or S3 filesystem instance
    * for managing app backups based on the current app settings.
    * 
-   * NB! Make sure to call Close() on the returned result
+   * NB! Make sure to call 关闭() on the returned result
    * after you are done working with it.
    */
-  newBackupsFilesystem(): (filesystem.System)
+  new返回upsFilesystem(): (filesystem.System)
  }
  interface BaseApp {
   /**
@@ -7905,22 +7905,22 @@ namespace core {
   onTerminate(): (hook.Hook<TerminateEvent | undefined>)
  }
  interface BaseApp {
-  onBackupCreate(): (hook.Hook<BackupEvent | undefined>)
+  on返回up创建(): (hook.Hook<返回upEvent | undefined>)
  }
  interface BaseApp {
-  onBackupRestore(): (hook.Hook<BackupEvent | undefined>)
+  on返回upRestore(): (hook.Hook<返回upEvent | undefined>)
  }
  interface BaseApp {
-  onModelCreate(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
+  onModel创建(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
  }
  interface BaseApp {
-  onModelCreateExecute(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
+  onModel创建Execute(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
  }
  interface BaseApp {
-  onModelAfterCreateSuccess(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
+  onModelAfter创建Success(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
  }
  interface BaseApp {
-  onModelAfterCreateError(...tags: string[]): (hook.TaggedHook<ModelErrorEvent | undefined>)
+  onModelAfter创建Error(...tags: string[]): (hook.TaggedHook<ModelErrorEvent | undefined>)
  }
  interface BaseApp {
   onModelUpdate(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
@@ -7938,16 +7938,16 @@ namespace core {
   onModelValidate(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
  }
  interface BaseApp {
-  onModelDelete(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
+  onModel删除(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
  }
  interface BaseApp {
-  onModelDeleteExecute(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
+  onModel删除Execute(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
  }
  interface BaseApp {
-  onModelAfterDeleteSuccess(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
+  onModelAfter删除Success(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
  }
  interface BaseApp {
-  onModelAfterDeleteError(...tags: string[]): (hook.TaggedHook<ModelErrorEvent | undefined>)
+  onModelAfter删除Error(...tags: string[]): (hook.TaggedHook<ModelErrorEvent | undefined>)
  }
  interface BaseApp {
   onRecordEnrich(...tags: string[]): (hook.TaggedHook<RecordEnrichEvent | undefined>)
@@ -7956,16 +7956,16 @@ namespace core {
   onRecordValidate(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
  }
  interface BaseApp {
-  onRecordCreate(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
+  onRecord创建(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
  }
  interface BaseApp {
-  onRecordCreateExecute(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
+  onRecord创建Execute(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
  }
  interface BaseApp {
-  onRecordAfterCreateSuccess(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
+  onRecordAfter创建Success(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
  }
  interface BaseApp {
-  onRecordAfterCreateError(...tags: string[]): (hook.TaggedHook<RecordErrorEvent | undefined>)
+  onRecordAfter创建Error(...tags: string[]): (hook.TaggedHook<RecordErrorEvent | undefined>)
  }
  interface BaseApp {
   onRecordUpdate(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
@@ -7980,31 +7980,31 @@ namespace core {
   onRecordAfterUpdateError(...tags: string[]): (hook.TaggedHook<RecordErrorEvent | undefined>)
  }
  interface BaseApp {
-  onRecordDelete(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
+  onRecord删除(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
  }
  interface BaseApp {
-  onRecordDeleteExecute(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
+  onRecord删除Execute(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
  }
  interface BaseApp {
-  onRecordAfterDeleteSuccess(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
+  onRecordAfter删除Success(...tags: string[]): (hook.TaggedHook<RecordEvent | undefined>)
  }
  interface BaseApp {
-  onRecordAfterDeleteError(...tags: string[]): (hook.TaggedHook<RecordErrorEvent | undefined>)
+  onRecordAfter删除Error(...tags: string[]): (hook.TaggedHook<RecordErrorEvent | undefined>)
  }
  interface BaseApp {
   onCollectionValidate(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
  }
  interface BaseApp {
-  onCollectionCreate(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
+  onCollection创建(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
  }
  interface BaseApp {
-  onCollectionCreateExecute(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
+  onCollection创建Execute(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
  }
  interface BaseApp {
-  onCollectionAfterCreateSuccess(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
+  onCollectionAfter创建Success(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
  }
  interface BaseApp {
-  onCollectionAfterCreateError(...tags: string[]): (hook.TaggedHook<CollectionErrorEvent | undefined>)
+  onCollectionAfter创建Error(...tags: string[]): (hook.TaggedHook<CollectionErrorEvent | undefined>)
  }
  interface BaseApp {
   onCollectionUpdate(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
@@ -8019,28 +8019,28 @@ namespace core {
   onCollectionAfterUpdateError(...tags: string[]): (hook.TaggedHook<CollectionErrorEvent | undefined>)
  }
  interface BaseApp {
-  onCollectionDelete(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
+  onCollection删除(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
  }
  interface BaseApp {
-  onCollectionDeleteExecute(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
+  onCollection删除Execute(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
  }
  interface BaseApp {
-  onCollectionAfterDeleteSuccess(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
+  onCollectionAfter删除Success(...tags: string[]): (hook.TaggedHook<CollectionEvent | undefined>)
  }
  interface BaseApp {
-  onCollectionAfterDeleteError(...tags: string[]): (hook.TaggedHook<CollectionErrorEvent | undefined>)
+  onCollectionAfter删除Error(...tags: string[]): (hook.TaggedHook<CollectionErrorEvent | undefined>)
  }
  interface BaseApp {
   onMailerSend(): (hook.Hook<MailerEvent | undefined>)
  }
  interface BaseApp {
-  onMailerRecordPasswordResetSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
+  onMailerRecord密码ResetSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
  }
  interface BaseApp {
   onMailerRecordVerificationSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
  }
  interface BaseApp {
-  onMailerRecordEmailChangeSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
+  onMailerRecord邮箱ChangeSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
  }
  interface BaseApp {
   onMailerRecordOTPSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
@@ -8058,13 +8058,13 @@ namespace core {
   onRealtimeSubscribeRequest(): (hook.Hook<RealtimeSubscribeRequestEvent | undefined>)
  }
  interface BaseApp {
-  onSettingsListRequest(): (hook.Hook<SettingsListRequestEvent | undefined>)
+  on设置ListRequest(): (hook.Hook<设置ListRequestEvent | undefined>)
  }
  interface BaseApp {
-  onSettingsUpdateRequest(): (hook.Hook<SettingsUpdateRequestEvent | undefined>)
+  on设置UpdateRequest(): (hook.Hook<设置UpdateRequestEvent | undefined>)
  }
  interface BaseApp {
-  onSettingsReload(): (hook.Hook<SettingsReloadEvent | undefined>)
+  on设置Reload(): (hook.Hook<设置ReloadEvent | undefined>)
  }
  interface BaseApp {
   onFileDownloadRequest(...tags: string[]): (hook.TaggedHook<FileDownloadRequestEvent | undefined>)
@@ -8076,7 +8076,7 @@ namespace core {
   onRecordAuthRequest(...tags: string[]): (hook.TaggedHook<RecordAuthRequestEvent | undefined>)
  }
  interface BaseApp {
-  onRecordAuthWithPasswordRequest(...tags: string[]): (hook.TaggedHook<RecordAuthWithPasswordRequestEvent | undefined>)
+  onRecordAuthWith密码Request(...tags: string[]): (hook.TaggedHook<RecordAuthWith密码RequestEvent | undefined>)
  }
  interface BaseApp {
   onRecordAuthWithOAuth2Request(...tags: string[]): (hook.TaggedHook<RecordAuthWithOAuth2RequestEvent | undefined>)
@@ -8085,25 +8085,25 @@ namespace core {
   onRecordAuthRefreshRequest(...tags: string[]): (hook.TaggedHook<RecordAuthRefreshRequestEvent | undefined>)
  }
  interface BaseApp {
-  onRecordRequestPasswordResetRequest(...tags: string[]): (hook.TaggedHook<RecordRequestPasswordResetRequestEvent | undefined>)
+  onRecordRequest密码ResetRequest(...tags: string[]): (hook.TaggedHook<RecordRequest密码ResetRequestEvent | undefined>)
  }
  interface BaseApp {
-  onRecordConfirmPasswordResetRequest(...tags: string[]): (hook.TaggedHook<RecordConfirmPasswordResetRequestEvent | undefined>)
+  onRecord确认密码ResetRequest(...tags: string[]): (hook.TaggedHook<Record确认密码ResetRequestEvent | undefined>)
  }
  interface BaseApp {
   onRecordRequestVerificationRequest(...tags: string[]): (hook.TaggedHook<RecordRequestVerificationRequestEvent | undefined>)
  }
  interface BaseApp {
-  onRecordConfirmVerificationRequest(...tags: string[]): (hook.TaggedHook<RecordConfirmVerificationRequestEvent | undefined>)
+  onRecord确认VerificationRequest(...tags: string[]): (hook.TaggedHook<Record确认VerificationRequestEvent | undefined>)
  }
  interface BaseApp {
-  onRecordRequestEmailChangeRequest(...tags: string[]): (hook.TaggedHook<RecordRequestEmailChangeRequestEvent | undefined>)
+  onRecordRequest邮箱ChangeRequest(...tags: string[]): (hook.TaggedHook<RecordRequest邮箱ChangeRequestEvent | undefined>)
  }
  interface BaseApp {
-  onRecordConfirmEmailChangeRequest(...tags: string[]): (hook.TaggedHook<RecordConfirmEmailChangeRequestEvent | undefined>)
+  onRecord确认邮箱ChangeRequest(...tags: string[]): (hook.TaggedHook<Record确认邮箱ChangeRequestEvent | undefined>)
  }
  interface BaseApp {
-  onRecordRequestOTPRequest(...tags: string[]): (hook.TaggedHook<RecordCreateOTPRequestEvent | undefined>)
+  onRecordRequestOTPRequest(...tags: string[]): (hook.TaggedHook<Record创建OTPRequestEvent | undefined>)
  }
  interface BaseApp {
   onRecordAuthWithOTPRequest(...tags: string[]): (hook.TaggedHook<RecordAuthWithOTPRequestEvent | undefined>)
@@ -8115,13 +8115,13 @@ namespace core {
   onRecordViewRequest(...tags: string[]): (hook.TaggedHook<RecordRequestEvent | undefined>)
  }
  interface BaseApp {
-  onRecordCreateRequest(...tags: string[]): (hook.TaggedHook<RecordRequestEvent | undefined>)
+  onRecord创建Request(...tags: string[]): (hook.TaggedHook<RecordRequestEvent | undefined>)
  }
  interface BaseApp {
   onRecordUpdateRequest(...tags: string[]): (hook.TaggedHook<RecordRequestEvent | undefined>)
  }
  interface BaseApp {
-  onRecordDeleteRequest(...tags: string[]): (hook.TaggedHook<RecordRequestEvent | undefined>)
+  onRecord删除Request(...tags: string[]): (hook.TaggedHook<RecordRequestEvent | undefined>)
  }
  interface BaseApp {
   onCollectionsListRequest(): (hook.Hook<CollectionsListRequestEvent | undefined>)
@@ -8130,13 +8130,13 @@ namespace core {
   onCollectionViewRequest(): (hook.Hook<CollectionRequestEvent | undefined>)
  }
  interface BaseApp {
-  onCollectionCreateRequest(): (hook.Hook<CollectionRequestEvent | undefined>)
+  onCollection创建Request(): (hook.Hook<CollectionRequestEvent | undefined>)
  }
  interface BaseApp {
   onCollectionUpdateRequest(): (hook.Hook<CollectionRequestEvent | undefined>)
  }
  interface BaseApp {
-  onCollectionDeleteRequest(): (hook.Hook<CollectionRequestEvent | undefined>)
+  onCollection删除Request(): (hook.Hook<CollectionRequestEvent | undefined>)
  }
  interface BaseApp {
   onCollectionsImportRequest(): (hook.Hook<CollectionsImportRequestEvent | undefined>)
@@ -8146,7 +8146,7 @@ namespace core {
  }
  interface BaseApp {
   /**
-   * CreateBackup creates a new backup of the current app pb_data directory.
+   * 创建返回up creates a new backup of the current app pb_data directory.
    * 
    * If name is empty, it will be autogenerated.
    * If backup with the same name exists, the new backup file will replace it.
@@ -8163,13 +8163,13 @@ namespace core {
    * When using S3 storage for the uploaded collection files, you have to
    * take care manually to backup those since they are not part of the pb_data.
    * 
-   * Backups can be stored on S3 if it is configured in app.Settings().Backups.
+   * 返回ups can be stored on S3 if it is configured in app.设置().返回ups.
    */
-  createBackup(ctx: context.Context, name: string): void
+  create返回up(ctx: context.Context, name: string): void
  }
  interface BaseApp {
   /**
-   * RestoreBackup restores the backup with the specified name and restarts
+   * Restore返回up restores the backup with the specified name and restarts
    * the current running application process.
    * 
    * NB! This feature is experimental and currently is expected to work only on UNIX based systems.
@@ -8208,7 +8208,7 @@ namespace core {
    * it is possible the restore to fail during the `os.Rename` operations
    * (see https://github.com/pocketbase/pocketbase/issues/4647).
    */
-  restoreBackup(ctx: context.Context, name: string): void
+  restore返回up(ctx: context.Context, name: string): void
  }
  interface BaseApp {
   /**
@@ -8301,9 +8301,9 @@ namespace core {
  }
  interface Collection {
   /**
-   * TableName returns the Collection model SQL table name.
+   * Table名称 returns the Collection model SQL table name.
    */
-  tableName(): string
+  table名称(): string
  }
  interface Collection {
   /**
@@ -8380,7 +8380,7 @@ namespace core {
  }
  interface Collection {
   /**
-   * AddIndex adds a new index into the current collection.
+   * 添加Index adds a new index into the current collection.
    * 
    * If the collection has an existing index matching the new name it will be replaced with the new one.
    */
@@ -8388,7 +8388,7 @@ namespace core {
  }
  interface Collection {
   /**
-   * RemoveIndex removes a single index with the specified name from the current collection.
+   * 移除Index removes a single index with the specified name from the current collection.
    */
   removeIndex(name: string): void
  }
@@ -8415,7 +8415,7 @@ namespace core {
    * the auth record(s), eg. changing the password without requiring
    * to enter the old one, directly updating the verified state and email, etc.
    * 
-   * This rule is executed in addition to the Create and Update API rules.
+   * This rule is executed in addition to the 创建 and Update API rules.
    */
   manageRule?: string
   /**
@@ -8428,9 +8428,9 @@ namespace core {
    */
   oauth2: OAuth2Config
   /**
-   * PasswordAuth defines options related to the collection password authentication.
+   * 密码Auth defines options related to the collection password authentication.
    */
-  passwordAuth: PasswordAuthConfig
+  passwordAuth: 密码AuthConfig
   /**
    * MFA defines options related to the Multi-factor authentication (MFA).
    */
@@ -8452,21 +8452,21 @@ namespace core {
    * Default email templates
    * ---
    */
-  verificationTemplate: EmailTemplate
-  resetPasswordTemplate: EmailTemplate
-  confirmEmailChangeTemplate: EmailTemplate
+  verificationTemplate: 邮箱Template
+  reset密码Template: 邮箱Template
+  confirm邮箱ChangeTemplate: 邮箱Template
  }
- interface EmailTemplate {
+ interface 邮箱Template {
   subject: string
   body: string
  }
- interface EmailTemplate {
+ interface 邮箱Template {
   /**
-   * Validate makes EmailTemplate validatable by implementing [validation.Validatable] interface.
+   * Validate makes 邮箱Template validatable by implementing [validation.Validatable] interface.
    */
   validate(): void
  }
- interface EmailTemplate {
+ interface 邮箱Template {
   /**
    * Resolve replaces the placeholder parameters in the current email
    * template and returns its components as ready-to-use strings.
@@ -8475,7 +8475,7 @@ namespace core {
  }
  interface AuthAlertConfig {
   enabled: boolean
-  emailTemplate: EmailTemplate
+  emailTemplate: 邮箱Template
  }
  interface AuthAlertConfig {
   /**
@@ -8513,12 +8513,12 @@ namespace core {
    */
   length: number
   /**
-   * EmailTemplate is the default OTP email template that will be send to the auth record.
+   * 邮箱Template is the default OTP email template that will be send to the auth record.
    * 
    * In addition to the system placeholders you can also make use of
-   * [core.EmailPlaceholderOTPId] and [core.EmailPlaceholderOTP].
+   * [core.邮箱PlaceholderOTPId] and [core.邮箱PlaceholderOTP].
    */
-  emailTemplate: EmailTemplate
+  emailTemplate: 邮箱Template
  }
  interface OTPConfig {
   /**
@@ -8557,7 +8557,7 @@ namespace core {
    */
   durationTime(): time.Duration
  }
- interface PasswordAuthConfig {
+ interface 密码AuthConfig {
   enabled: boolean
   /**
    * IdentityFields is a list of field names that could be used as
@@ -8567,9 +8567,9 @@ namespace core {
    */
   identityFields: Array<string>
  }
- interface PasswordAuthConfig {
+ interface 密码AuthConfig {
   /**
-   * Validate makes PasswordAuthConfig validatable by implementing [validation.Validatable] interface.
+   * Validate makes 密码AuthConfig validatable by implementing [validation.Validatable] interface.
    */
   validate(): void
  }
@@ -8613,7 +8613,7 @@ namespace core {
   authURL: string
   tokenURL: string
   userInfoURL: string
-  displayName: string
+  display名称: string
   extra: _TygojaDict
  }
  interface OAuth2ProviderConfig {
@@ -8668,22 +8668,22 @@ namespace core {
  }
  interface BaseApp {
   /**
-   * FindCollectionByNameOrId finds a single collection by its name (case insensitive) or id.
+   * FindCollectionBy名称OrId finds a single collection by its name (case insensitive) or id.
    */
-  findCollectionByNameOrId(nameOrId: string): (Collection)
+  findCollectionBy名称OrId(nameOrId: string): (Collection)
  }
  interface BaseApp {
   /**
-   * FindCachedCollectionByNameOrId is similar to [BaseApp.FindCollectionByNameOrId]
+   * FindCachedCollectionBy名称OrId is similar to [BaseApp.FindCollectionBy名称OrId]
    * but retrieves the Collection from the app cache instead of making a db call.
    * 
    * NB! This method is suitable for read-only Collection operations.
    * 
    * Returns [sql.ErrNoRows] if no Collection is found for consistency
-   * with the [BaseApp.FindCollectionByNameOrId] method.
+   * with the [BaseApp.FindCollectionBy名称OrId] method.
    * 
    * If you plan making changes to the returned Collection model,
-   * use [BaseApp.FindCollectionByNameOrId] instead.
+   * use [BaseApp.FindCollectionBy名称OrId] instead.
    * 
    * Caveats:
    * 
@@ -8697,7 +8697,7 @@ namespace core {
    *     To manually reload the cache you can call [BaseApp.ReloadCachedCollections].
    * ```
    */
-  findCachedCollectionByNameOrId(nameOrId: string): (Collection)
+  findCachedCollectionBy名称OrId(nameOrId: string): (Collection)
  }
  interface BaseApp {
   /**
@@ -8736,13 +8736,13 @@ namespace core {
  }
  interface BaseApp {
   /**
-   * IsCollectionNameUnique checks that there is no existing collection
+   * IsCollection名称Unique checks that there is no existing collection
    * with the provided name (case insensitive!).
    * 
    * Note: case insensitive check because the name is used also as
    * table name for the records.
    */
-  isCollectionNameUnique(name: string, ...excludeIds: string[]): boolean
+  isCollection名称Unique(name: string, ...excludeIds: string[]): boolean
  }
  interface BaseApp {
   /**
@@ -8774,7 +8774,7 @@ namespace core {
  }
  /**
   * DBExporter defines an interface for custom DB data export.
-  * Usually used as part of [App.Save].
+  * Usually used as part of [App.保存].
   */
  interface DBExporter {
   [key:string]: any;
@@ -8829,95 +8829,95 @@ namespace core {
  }
  interface BaseApp {
   /**
-   * Delete deletes the specified model from the regular app database.
+   * 删除 deletes the specified model from the regular app database.
    */
   delete(model: Model): void
  }
  interface BaseApp {
   /**
-   * Delete deletes the specified model from the regular app database
+   * 删除 deletes the specified model from the regular app database
    * (the context could be used to limit the query execution).
    */
   deleteWithContext(ctx: context.Context, model: Model): void
  }
  interface BaseApp {
   /**
-   * AuxDelete deletes the specified model from the auxiliary database.
+   * Aux删除 deletes the specified model from the auxiliary database.
    */
-  auxDelete(model: Model): void
+  aux删除(model: Model): void
  }
  interface BaseApp {
   /**
-   * AuxDeleteWithContext deletes the specified model from the auxiliary database
+   * Aux删除WithContext deletes the specified model from the auxiliary database
    * (the context could be used to limit the query execution).
    */
-  auxDeleteWithContext(ctx: context.Context, model: Model): void
+  aux删除WithContext(ctx: context.Context, model: Model): void
  }
  interface BaseApp {
   /**
-   * Save validates and saves the specified model into the regular app database.
+   * 保存 validates and saves the specified model into the regular app database.
    * 
-   * If you don't want to run validations, use [App.SaveNoValidate()].
+   * If you don't want to run validations, use [App.保存NoValidate()].
    */
   save(model: Model): void
  }
  interface BaseApp {
   /**
-   * SaveWithContext is the same as [App.Save()] but allows specifying a context to limit the db execution.
+   * 保存WithContext is the same as [App.保存()] but allows specifying a context to limit the db execution.
    * 
-   * If you don't want to run validations, use [App.SaveNoValidateWithContext()].
+   * If you don't want to run validations, use [App.保存NoValidateWithContext()].
    */
   saveWithContext(ctx: context.Context, model: Model): void
  }
  interface BaseApp {
   /**
-   * SaveNoValidate saves the specified model into the regular app database without performing validations.
+   * 保存NoValidate saves the specified model into the regular app database without performing validations.
    * 
-   * If you want to also run validations before persisting, use [App.Save()].
+   * If you want to also run validations before persisting, use [App.保存()].
    */
   saveNoValidate(model: Model): void
  }
  interface BaseApp {
   /**
-   * SaveNoValidateWithContext is the same as [App.SaveNoValidate()]
+   * 保存NoValidateWithContext is the same as [App.保存NoValidate()]
    * but allows specifying a context to limit the db execution.
    * 
-   * If you want to also run validations before persisting, use [App.SaveWithContext()].
+   * If you want to also run validations before persisting, use [App.保存WithContext()].
    */
   saveNoValidateWithContext(ctx: context.Context, model: Model): void
  }
  interface BaseApp {
   /**
-   * AuxSave validates and saves the specified model into the auxiliary app database.
+   * Aux保存 validates and saves the specified model into the auxiliary app database.
    * 
-   * If you don't want to run validations, use [App.AuxSaveNoValidate()].
+   * If you don't want to run validations, use [App.Aux保存NoValidate()].
    */
-  auxSave(model: Model): void
+  aux保存(model: Model): void
  }
  interface BaseApp {
   /**
-   * AuxSaveWithContext is the same as [App.AuxSave()] but allows specifying a context to limit the db execution.
+   * Aux保存WithContext is the same as [App.Aux保存()] but allows specifying a context to limit the db execution.
    * 
-   * If you don't want to run validations, use [App.AuxSaveNoValidateWithContext()].
+   * If you don't want to run validations, use [App.Aux保存NoValidateWithContext()].
    */
-  auxSaveWithContext(ctx: context.Context, model: Model): void
+  aux保存WithContext(ctx: context.Context, model: Model): void
  }
  interface BaseApp {
   /**
-   * AuxSaveNoValidate saves the specified model into the auxiliary app database without performing validations.
+   * Aux保存NoValidate saves the specified model into the auxiliary app database without performing validations.
    * 
-   * If you want to also run validations before persisting, use [App.AuxSave()].
+   * If you want to also run validations before persisting, use [App.Aux保存()].
    */
-  auxSaveNoValidate(model: Model): void
+  aux保存NoValidate(model: Model): void
  }
  interface BaseApp {
   /**
-   * AuxSaveNoValidateWithContext is the same as [App.AuxSaveNoValidate()]
+   * Aux保存NoValidateWithContext is the same as [App.Aux保存NoValidate()]
    * but allows specifying a context to limit the db execution.
    * 
-   * If you want to also run validations before persisting, use [App.AuxSaveWithContext()].
+   * If you want to also run validations before persisting, use [App.Aux保存WithContext()].
    */
-  auxSaveNoValidateWithContext(ctx: context.Context, model: Model): void
+  aux保存NoValidateWithContext(ctx: context.Context, model: Model): void
  }
  interface BaseApp {
   /**
@@ -8963,15 +8963,15 @@ namespace core {
  }
  interface dualDBBuilder {
   /**
-   * QuoteSimpleTableName implements the [dbx.Builder.QuoteSimpleTableName] interface method.
+   * QuoteSimpleTable名称 implements the [dbx.Builder.QuoteSimpleTable名称] interface method.
    */
-  quoteSimpleTableName(table: string): string
+  quoteSimpleTable名称(table: string): string
  }
  interface dualDBBuilder {
   /**
-   * QuoteSimpleColumnName implements the [dbx.Builder.QuoteSimpleColumnName] interface method.
+   * QuoteSimpleColumn名称 implements the [dbx.Builder.QuoteSimpleColumn名称] interface method.
    */
-  quoteSimpleColumnName(col: string): string
+  quoteSimpleColumn名称(col: string): string
  }
  interface dualDBBuilder {
   /**
@@ -8999,13 +8999,13 @@ namespace core {
  }
  interface dualDBBuilder {
   /**
-   * Delete implements the [dbx.Builder.Delete] interface method.
+   * 删除 implements the [dbx.Builder.删除] interface method.
    */
   delete(table: string, where: dbx.Expression): (dbx.Query)
  }
  interface dualDBBuilder {
   /**
-   * CreateTable implements the [dbx.Builder.CreateTable] interface method.
+   * 创建Table implements the [dbx.Builder.创建Table] interface method.
    */
   createTable(table: string, cols: _TygojaDict, ...options: string[]): (dbx.Query)
  }
@@ -9013,7 +9013,7 @@ namespace core {
   /**
    * RenameTable implements the [dbx.Builder.RenameTable] interface method.
    */
-  renameTable(oldName: string, newName: string): (dbx.Query)
+  renameTable(old名称: string, new名称: string): (dbx.Query)
  }
  interface dualDBBuilder {
   /**
@@ -9029,7 +9029,7 @@ namespace core {
  }
  interface dualDBBuilder {
   /**
-   * AddColumn implements the [dbx.Builder.AddColumn] interface method.
+   * 添加Column implements the [dbx.Builder.添加Column] interface method.
    */
   addColumn(table: string, col: string, typ: string): (dbx.Query)
  }
@@ -9043,7 +9043,7 @@ namespace core {
   /**
    * RenameColumn implements the [dbx.Builder.RenameColumn] interface method.
    */
-  renameColumn(table: string, oldName: string, newName: string): (dbx.Query)
+  renameColumn(table: string, old名称: string, new名称: string): (dbx.Query)
  }
  interface dualDBBuilder {
   /**
@@ -9053,7 +9053,7 @@ namespace core {
  }
  interface dualDBBuilder {
   /**
-   * AddPrimaryKey implements the [dbx.Builder.AddPrimaryKey] interface method.
+   * 添加PrimaryKey implements the [dbx.Builder.添加PrimaryKey] interface method.
    */
   addPrimaryKey(table: string, name: string, ...cols: string[]): (dbx.Query)
  }
@@ -9065,7 +9065,7 @@ namespace core {
  }
  interface dualDBBuilder {
   /**
-   * AddForeignKey implements the [dbx.Builder.AddForeignKey] interface method.
+   * 添加ForeignKey implements the [dbx.Builder.添加ForeignKey] interface method.
    */
   addForeignKey(table: string, name: string, cols: Array<string>, refCols: Array<string>, refTable: string, ...options: string[]): (dbx.Query)
  }
@@ -9077,13 +9077,13 @@ namespace core {
  }
  interface dualDBBuilder {
   /**
-   * CreateIndex implements the [dbx.Builder.CreateIndex] interface method.
+   * 创建Index implements the [dbx.Builder.创建Index] interface method.
    */
   createIndex(table: string, name: string, ...cols: string[]): (dbx.Query)
  }
  interface dualDBBuilder {
   /**
-   * CreateUniqueIndex implements the [dbx.Builder.CreateUniqueIndex] interface method.
+   * 创建UniqueIndex implements the [dbx.Builder.创建UniqueIndex] interface method.
    */
   createUniqueIndex(table: string, name: string, ...cols: string[]): (dbx.Query)
  }
@@ -9110,9 +9110,9 @@ namespace core {
   */
  interface Model {
   [key:string]: any;
-  tableName(): string
+  table名称(): string
   pk(): any
-  lastSavedPK(): any
+  last保存dPK(): any
   isNew(): boolean
   markAsNew(): void
   markAsNotNew(): void
@@ -9129,11 +9129,11 @@ namespace core {
  }
  interface BaseModel {
   /**
-   * LastSavedPK returns the last saved primary key of the model.
+   * Last保存dPK returns the last saved primary key of the model.
    * 
    * Its value is updated to the latest PK value after MarkAsNotNew() or PostScan() calls.
    */
-  lastSavedPK(): any
+  last保存dPK(): any
  }
  interface BaseModel {
   pk(): any
@@ -9171,7 +9171,7 @@ namespace core {
   /**
    * TableColumns returns all column names of a single table by its name.
    */
-  tableColumns(tableName: string): Array<string>
+  tableColumns(table名称: string): Array<string>
  }
  interface TableInfoRow {
   /**
@@ -9189,7 +9189,7 @@ namespace core {
   /**
    * TableInfo returns the "table_info" pragma result for the specified table.
    */
-  tableInfo(tableName: string): Array<(TableInfoRow | undefined)>
+  tableInfo(table名称: string): Array<(TableInfoRow | undefined)>
  }
  interface BaseApp {
   /**
@@ -9197,32 +9197,32 @@ namespace core {
    * 
    * Note: This method doesn't return an error on nonexisting table.
    */
-  tableIndexes(tableName: string): _TygojaDict
+  tableIndexes(table名称: string): _TygojaDict
  }
  interface BaseApp {
   /**
-   * DeleteTable drops the specified table.
+   * 删除Table drops the specified table.
    * 
    * This method is a no-op if a table with the provided name doesn't exist.
    * 
    * NB! Be aware that this method is vulnerable to SQL injection and the
-   * "tableName" argument must come only from trusted input!
+   * "table名称" argument must come only from trusted input!
    */
-  deleteTable(tableName: string): void
+  deleteTable(table名称: string): void
  }
  interface BaseApp {
   /**
    * HasTable checks if a table (or view) with the provided name exists (case insensitive).
    * in the data.db.
    */
-  hasTable(tableName: string): boolean
+  hasTable(table名称: string): boolean
  }
  interface BaseApp {
   /**
    * AuxHasTable checks if a table (or view) with the provided name exists (case insensitive)
    * in the auixiliary.db.
    */
-  auxHasTable(tableName: string): boolean
+  auxHasTable(table名称: string): boolean
  }
  interface BaseApp {
   /**
@@ -9280,7 +9280,7 @@ namespace core {
   /**
    * RealIP returns the "real" IP address from the configured trusted proxy headers.
    * 
-   * If Settings.TrustedProxy is not configured or the found IP is empty,
+   * If 设置.TrustedProxy is not configured or the found IP is empty,
    * it fallbacks to e.RemoteIP().
    * 
    * NB!
@@ -9380,7 +9380,7 @@ namespace core {
   isRestart: boolean
  }
  type _sWYWmEg = hook.Event
- interface BackupEvent extends _sWYWmEg {
+ interface 返回upEvent extends _sWYWmEg {
   app: App
   context: context.Context
   name: string // the name of the backup to create/restore.
@@ -9395,7 +9395,7 @@ namespace core {
   /**
    * Listener allow specifying a custom network listener.
    * 
-   * Leave it nil to use the default net.Listen("tcp", e.Server.Addr).
+   * Leave it nil to use the default net.Listen("tcp", e.Server.添加r).
    */
   listener: net.Listener
   /**
@@ -9417,16 +9417,16 @@ namespace core {
   installerFunc: (app: App, systemSuperuser: Record, baseURL: string) => void
  }
  type _sRzIJjC = hook.Event&RequestEvent
- interface SettingsListRequestEvent extends _sRzIJjC {
-  settings?: Settings
+ interface 设置ListRequestEvent extends _sRzIJjC {
+  settings?: 设置
  }
  type _syhDEfK = hook.Event&RequestEvent
- interface SettingsUpdateRequestEvent extends _syhDEfK {
-  oldSettings?: Settings
-  newSettings?: Settings
+ interface 设置UpdateRequestEvent extends _syhDEfK {
+  old设置?: 设置
+  new设置?: 设置
  }
  type _sCjpHeS = hook.Event
- interface SettingsReloadEvent extends _sCjpHeS {
+ interface 设置ReloadEvent extends _sCjpHeS {
   app: App
  }
  type _sbjQGOJ = hook.Event
@@ -9499,7 +9499,7 @@ namespace core {
   record?: Record
   fileField?: FileField
   servedPath: string
-  servedName: string
+  served名称: string
   /**
    * ThumbError indicates the a thumb wasn't able to be generated
    * (e.g. because it didn't satisfy the support image formats or it timed out).
@@ -9558,7 +9558,7 @@ namespace core {
   requestInfo?: RequestInfo
  }
  type _sMzymih = hook.Event&RequestEvent&baseCollectionEventData
- interface RecordCreateOTPRequestEvent extends _sMzymih {
+ interface Record创建OTPRequestEvent extends _sMzymih {
   record?: Record
   password: string
  }
@@ -9575,7 +9575,7 @@ namespace core {
   authMethod: string
  }
  type _sDzsOEm = hook.Event&RequestEvent&baseCollectionEventData
- interface RecordAuthWithPasswordRequestEvent extends _sDzsOEm {
+ interface RecordAuthWith密码RequestEvent extends _sDzsOEm {
   record?: Record
   identity: string
   identityField: string
@@ -9583,7 +9583,7 @@ namespace core {
  }
  type _ssmigHx = hook.Event&RequestEvent&baseCollectionEventData
  interface RecordAuthWithOAuth2RequestEvent extends _ssmigHx {
-  providerName: string
+  provider名称: string
   providerClient: auth.Provider
   record?: Record
   oAuth2User?: auth.AuthUser
@@ -9595,11 +9595,11 @@ namespace core {
   record?: Record
  }
  type _smeIRag = hook.Event&RequestEvent&baseCollectionEventData
- interface RecordRequestPasswordResetRequestEvent extends _smeIRag {
+ interface RecordRequest密码ResetRequestEvent extends _smeIRag {
   record?: Record
  }
  type _sLnpKjL = hook.Event&RequestEvent&baseCollectionEventData
- interface RecordConfirmPasswordResetRequestEvent extends _sLnpKjL {
+ interface Record确认密码ResetRequestEvent extends _sLnpKjL {
   record?: Record
  }
  type _sIEkbCk = hook.Event&RequestEvent&baseCollectionEventData
@@ -9607,18 +9607,18 @@ namespace core {
   record?: Record
  }
  type _ssYvGVL = hook.Event&RequestEvent&baseCollectionEventData
- interface RecordConfirmVerificationRequestEvent extends _ssYvGVL {
+ interface Record确认VerificationRequestEvent extends _ssYvGVL {
   record?: Record
  }
  type _sWJhgxY = hook.Event&RequestEvent&baseCollectionEventData
- interface RecordRequestEmailChangeRequestEvent extends _sWJhgxY {
+ interface RecordRequest邮箱ChangeRequestEvent extends _sWJhgxY {
   record?: Record
-  newEmail: string
+  new邮箱: string
  }
  type _sYIobQS = hook.Event&RequestEvent&baseCollectionEventData
- interface RecordConfirmEmailChangeRequestEvent extends _sYIobQS {
+ interface Record确认邮箱ChangeRequestEvent extends _sYIobQS {
   record?: Record
-  newEmail: string
+  new邮箱: string
  }
  /**
   * ExternalAuth defines a Record proxy for working with the externalAuths collection.
@@ -9638,7 +9638,7 @@ namespace core {
    * 	ea.SetCollectionRef(user.Collection().Id)
    * 	ea.SetProvider("google")
    * 	ea.SetProviderId("...")
-   * 	app.Save(ea)
+   * 	app.保存(ea)
    * ```
    */
   (app: App): (ExternalAuth)
@@ -9712,7 +9712,7 @@ namespace core {
  }
  interface ExternalAuth {
   /**
-   * Created returns the "created" record field value.
+   * 创建d returns the "created" record field value.
    */
   created(): types.DateTime
  }
@@ -9761,13 +9761,13 @@ namespace core {
    */
   setId(id: string): void
   /**
-   * GetName returns the field name.
+   * Get名称 returns the field name.
    */
-  getName(): string
+  get名称(): string
   /**
-   * SetName changes the field name.
+   * Set名称 changes the field name.
    */
-  setName(name: string): void
+  set名称(name: string): void
   /**
    * GetSystem returns the field system flag state.
    */
@@ -9799,13 +9799,13 @@ namespace core {
    */
   prepareValue(record: Record, raw: any): any
   /**
-   * ValidateSettings validates the current field value associated with the provided record.
+   * Validate设置 validates the current field value associated with the provided record.
    */
   validateValue(ctx: context.Context, app: App, record: Record): void
   /**
-   * ValidateSettings validates the current field settings.
+   * Validate设置 validates the current field settings.
    */
-  validateSettings(ctx: context.Context, app: App, collection: Collection): void
+  validate设置(ctx: context.Context, app: App, collection: Collection): void
  }
  /**
   * MaxBodySizeCalculator defines an optional field interface for
@@ -9889,7 +9889,7 @@ namespace core {
    * Note that users must call actionFunc() manually if they want to
    * execute the specific record action.
    */
-  intercept(ctx: context.Context, app: App, record: Record, actionName: string, actionFunc: () => void): void
+  intercept(ctx: context.Context, app: App, record: Record, action名称: string, actionFunc: () => void): void
  }
  interface defaultFieldIdValidationRule {
   /**
@@ -9897,7 +9897,7 @@ namespace core {
    */
   (value: any): void
  }
- interface defaultFieldNameValidationRule {
+ interface defaultField名称ValidationRule {
   /**
    * DefaultFieldIdValidationRule performs base validation on a field name value.
    */
@@ -9909,11 +9909,11 @@ namespace core {
   * 
   * This field is usually used for defining timestamp fields like "created" and "updated".
   * 
-  * Requires either both or at least one of the OnCreate or OnUpdate options to be set.
+  * Requires either both or at least one of the On创建 or OnUpdate options to be set.
   */
  interface AutodateField {
   /**
-   * Name (required) is the unique name of the field.
+   * 名称 (required) is the unique name of the field.
    */
   name: string
   /**
@@ -9931,14 +9931,14 @@ namespace core {
    */
   hidden: boolean
   /**
-   * Presentable hints the Dashboard UI to use the underlying
+   * Presentable hints the 仪表盘 UI to use the underlying
    * field record value in the relation preview label.
    */
   presentable: boolean
   /**
-   * OnCreate auto sets the current datetime as field value on record create.
+   * On创建 auto sets the current datetime as field value on record create.
    */
-  onCreate: boolean
+  on创建: boolean
   /**
    * OnUpdate auto sets the current datetime as field value on record update.
    */
@@ -9964,15 +9964,15 @@ namespace core {
  }
  interface AutodateField {
   /**
-   * GetName implements [Field.GetName] interface method.
+   * Get名称 implements [Field.Get名称] interface method.
    */
-  getName(): string
+  get名称(): string
  }
  interface AutodateField {
   /**
-   * SetName implements [Field.SetName] interface method.
+   * Set名称 implements [Field.Set名称] interface method.
    */
-  setName(name: string): void
+  set名称(name: string): void
  }
  interface AutodateField {
   /**
@@ -10018,9 +10018,9 @@ namespace core {
  }
  interface AutodateField {
   /**
-   * ValidateSettings implements [Field.ValidateSettings] interface method.
+   * Validate设置 implements [Field.Validate设置] interface method.
    */
-  validateSettings(ctx: context.Context, app: App, collection: Collection): void
+  validate设置(ctx: context.Context, app: App, collection: Collection): void
  }
  interface AutodateField {
   /**
@@ -10032,7 +10032,7 @@ namespace core {
   /**
    * Intercept implements the [RecordInterceptor] interface.
    */
-  intercept(ctx: context.Context, app: App, record: Record, actionName: string, actionFunc: () => void): void
+  intercept(ctx: context.Context, app: App, record: Record, action名称: string, actionFunc: () => void): void
  }
  /**
   * BoolField defines "bool" type field to store a single true/false value.
@@ -10041,7 +10041,7 @@ namespace core {
   */
  interface BoolField {
   /**
-   * Name (required) is the unique name of the field.
+   * 名称 (required) is the unique name of the field.
    */
   name: string
   /**
@@ -10059,7 +10059,7 @@ namespace core {
    */
   hidden: boolean
   /**
-   * Presentable hints the Dashboard UI to use the underlying
+   * Presentable hints the 仪表盘 UI to use the underlying
    * field record value in the relation preview label.
    */
   presentable: boolean
@@ -10088,15 +10088,15 @@ namespace core {
  }
  interface BoolField {
   /**
-   * GetName implements [Field.GetName] interface method.
+   * Get名称 implements [Field.Get名称] interface method.
    */
-  getName(): string
+  get名称(): string
  }
  interface BoolField {
   /**
-   * SetName implements [Field.SetName] interface method.
+   * Set名称 implements [Field.Set名称] interface method.
    */
-  setName(name: string): void
+  set名称(name: string): void
  }
  interface BoolField {
   /**
@@ -10142,9 +10142,9 @@ namespace core {
  }
  interface BoolField {
   /**
-   * ValidateSettings implements [Field.ValidateSettings] interface method.
+   * Validate设置 implements [Field.Validate设置] interface method.
    */
-  validateSettings(ctx: context.Context, app: App, collection: Collection): void
+  validate设置(ctx: context.Context, app: App, collection: Collection): void
  }
  /**
   * DateField defines "date" type field to store a single [types.DateTime] value.
@@ -10153,7 +10153,7 @@ namespace core {
   */
  interface DateField {
   /**
-   * Name (required) is the unique name of the field.
+   * 名称 (required) is the unique name of the field.
    */
   name: string
   /**
@@ -10171,7 +10171,7 @@ namespace core {
    */
   hidden: boolean
   /**
-   * Presentable hints the Dashboard UI to use the underlying
+   * Presentable hints the 仪表盘 UI to use the underlying
    * field record value in the relation preview label.
    */
   presentable: boolean
@@ -10212,15 +10212,15 @@ namespace core {
  }
  interface DateField {
   /**
-   * GetName implements [Field.GetName] interface method.
+   * Get名称 implements [Field.Get名称] interface method.
    */
-  getName(): string
+  get名称(): string
  }
  interface DateField {
   /**
-   * SetName implements [Field.SetName] interface method.
+   * Set名称 implements [Field.Set名称] interface method.
    */
-  setName(name: string): void
+  set名称(name: string): void
  }
  interface DateField {
   /**
@@ -10266,18 +10266,18 @@ namespace core {
  }
  interface DateField {
   /**
-   * ValidateSettings implements [Field.ValidateSettings] interface method.
+   * Validate设置 implements [Field.Validate设置] interface method.
    */
-  validateSettings(ctx: context.Context, app: App, collection: Collection): void
+  validate设置(ctx: context.Context, app: App, collection: Collection): void
  }
  /**
-  * EditorField defines "editor" type field to store HTML formatted text.
+  * 编辑orField defines "editor" type field to store HTML formatted text.
   * 
   * The respective zero record field value is empty string.
   */
- interface EditorField {
+ interface 编辑orField {
   /**
-   * Name (required) is the unique name of the field.
+   * 名称 (required) is the unique name of the field.
    */
   name: string
   /**
@@ -10295,7 +10295,7 @@ namespace core {
    */
   hidden: boolean
   /**
-   * Presentable hints the Dashboard UI to use the underlying
+   * Presentable hints the 仪表盘 UI to use the underlying
    * field record value in the relation preview label.
    */
   presentable: boolean
@@ -10318,98 +10318,98 @@ namespace core {
    */
   required: boolean
  }
- interface EditorField {
+ interface 编辑orField {
   /**
    * Type implements [Field.Type] interface method.
    */
   type(): string
  }
- interface EditorField {
+ interface 编辑orField {
   /**
    * GetId implements [Field.GetId] interface method.
    */
   getId(): string
  }
- interface EditorField {
+ interface 编辑orField {
   /**
    * SetId implements [Field.SetId] interface method.
    */
   setId(id: string): void
  }
- interface EditorField {
+ interface 编辑orField {
   /**
-   * GetName implements [Field.GetName] interface method.
+   * Get名称 implements [Field.Get名称] interface method.
    */
-  getName(): string
+  get名称(): string
  }
- interface EditorField {
+ interface 编辑orField {
   /**
-   * SetName implements [Field.SetName] interface method.
+   * Set名称 implements [Field.Set名称] interface method.
    */
-  setName(name: string): void
+  set名称(name: string): void
  }
- interface EditorField {
+ interface 编辑orField {
   /**
    * GetSystem implements [Field.GetSystem] interface method.
    */
   getSystem(): boolean
  }
- interface EditorField {
+ interface 编辑orField {
   /**
    * SetSystem implements [Field.SetSystem] interface method.
    */
   setSystem(system: boolean): void
  }
- interface EditorField {
+ interface 编辑orField {
   /**
    * GetHidden implements [Field.GetHidden] interface method.
    */
   getHidden(): boolean
  }
- interface EditorField {
+ interface 编辑orField {
   /**
    * SetHidden implements [Field.SetHidden] interface method.
    */
   setHidden(hidden: boolean): void
  }
- interface EditorField {
+ interface 编辑orField {
   /**
    * ColumnType implements [Field.ColumnType] interface method.
    */
   columnType(app: App): string
  }
- interface EditorField {
+ interface 编辑orField {
   /**
    * PrepareValue implements [Field.PrepareValue] interface method.
    */
   prepareValue(record: Record, raw: any): any
  }
- interface EditorField {
+ interface 编辑orField {
   /**
    * ValidateValue implements [Field.ValidateValue] interface method.
    */
   validateValue(ctx: context.Context, app: App, record: Record): void
  }
- interface EditorField {
+ interface 编辑orField {
   /**
-   * ValidateSettings implements [Field.ValidateSettings] interface method.
+   * Validate设置 implements [Field.Validate设置] interface method.
    */
-  validateSettings(ctx: context.Context, app: App, collection: Collection): void
+  validate设置(ctx: context.Context, app: App, collection: Collection): void
  }
- interface EditorField {
+ interface 编辑orField {
   /**
    * CalculateMaxBodySize implements the [MaxBodySizeCalculator] interface.
    */
   calculateMaxBodySize(): number
  }
  /**
-  * EmailField defines "email" type field for storing a single email string address.
+  * 邮箱Field defines "email" type field for storing a single email string address.
   * 
   * The respective zero record field value is empty string.
   */
- interface EmailField {
+ interface 邮箱Field {
   /**
-   * Name (required) is the unique name of the field.
+   * 名称 (required) is the unique name of the field.
    */
   name: string
   /**
@@ -10427,7 +10427,7 @@ namespace core {
    */
   hidden: boolean
   /**
-   * Presentable hints the Dashboard UI to use the underlying
+   * Presentable hints the 仪表盘 UI to use the underlying
    * field record value in the relation preview label.
    */
   presentable: boolean
@@ -10448,83 +10448,83 @@ namespace core {
    */
   required: boolean
  }
- interface EmailField {
+ interface 邮箱Field {
   /**
    * Type implements [Field.Type] interface method.
    */
   type(): string
  }
- interface EmailField {
+ interface 邮箱Field {
   /**
    * GetId implements [Field.GetId] interface method.
    */
   getId(): string
  }
- interface EmailField {
+ interface 邮箱Field {
   /**
    * SetId implements [Field.SetId] interface method.
    */
   setId(id: string): void
  }
- interface EmailField {
+ interface 邮箱Field {
   /**
-   * GetName implements [Field.GetName] interface method.
+   * Get名称 implements [Field.Get名称] interface method.
    */
-  getName(): string
+  get名称(): string
  }
- interface EmailField {
+ interface 邮箱Field {
   /**
-   * SetName implements [Field.SetName] interface method.
+   * Set名称 implements [Field.Set名称] interface method.
    */
-  setName(name: string): void
+  set名称(name: string): void
  }
- interface EmailField {
+ interface 邮箱Field {
   /**
    * GetSystem implements [Field.GetSystem] interface method.
    */
   getSystem(): boolean
  }
- interface EmailField {
+ interface 邮箱Field {
   /**
    * SetSystem implements [Field.SetSystem] interface method.
    */
   setSystem(system: boolean): void
  }
- interface EmailField {
+ interface 邮箱Field {
   /**
    * GetHidden implements [Field.GetHidden] interface method.
    */
   getHidden(): boolean
  }
- interface EmailField {
+ interface 邮箱Field {
   /**
    * SetHidden implements [Field.SetHidden] interface method.
    */
   setHidden(hidden: boolean): void
  }
- interface EmailField {
+ interface 邮箱Field {
   /**
    * ColumnType implements [Field.ColumnType] interface method.
    */
   columnType(app: App): string
  }
- interface EmailField {
+ interface 邮箱Field {
   /**
    * PrepareValue implements [Field.PrepareValue] interface method.
    */
   prepareValue(record: Record, raw: any): any
  }
- interface EmailField {
+ interface 邮箱Field {
   /**
    * ValidateValue implements [Field.ValidateValue] interface method.
    */
   validateValue(ctx: context.Context, app: App, record: Record): void
  }
- interface EmailField {
+ interface 邮箱Field {
   /**
-   * ValidateSettings implements [Field.ValidateSettings] interface method.
+   * Validate设置 implements [Field.Validate设置] interface method.
    */
-  validateSettings(ctx: context.Context, app: App, collection: Collection): void
+  validate设置(ctx: context.Context, app: App, collection: Collection): void
  }
  /**
   * FileField defines "file" type field for managing record file(s).
@@ -10543,17 +10543,17 @@ namespace core {
   * The following additional setter keys are available:
   * 
   * ```
-  *   - "fieldName+" - append one or more files to the existing record one. For example:
+  *   - "field名称+" - append one or more files to the existing record one. For example:
   * 
   *     // []string{"old1.txt", "old2.txt", "new1_ajkvass.txt", "new2_klhfnwd.txt"}
   *     record.Set("documents+", []*filesystem.File{new1, new2})
   * 
-  *   - "+fieldName" - prepend one or more files to the existing record one. For example:
+  *   - "+field名称" - prepend one or more files to the existing record one. For example:
   * 
   *     // []string{"new1_ajkvass.txt", "new2_klhfnwd.txt", "old1.txt", "old2.txt",}
   *     record.Set("+documents", []*filesystem.File{new1, new2})
   * 
-  *   - "fieldName-" - subtract/delete one or more files from the existing record one. For example:
+  *   - "field名称-" - subtract/delete one or more files from the existing record one. For example:
   * 
   *     // []string{"old2.txt",}
   *     record.Set("documents-", "old1.txt")
@@ -10561,7 +10561,7 @@ namespace core {
   */
  interface FileField {
   /**
-   * Name (required) is the unique name of the field.
+   * 名称 (required) is the unique name of the field.
    */
   name: string
   /**
@@ -10579,7 +10579,7 @@ namespace core {
    */
   hidden: boolean
   /**
-   * Presentable hints the Dashboard UI to use the underlying
+   * Presentable hints the 仪表盘 UI to use the underlying
    * field record value in the relation preview label.
    */
   presentable: boolean
@@ -10651,15 +10651,15 @@ namespace core {
  }
  interface FileField {
   /**
-   * GetName implements [Field.GetName] interface method.
+   * Get名称 implements [Field.Get名称] interface method.
    */
-  getName(): string
+  get名称(): string
  }
  interface FileField {
   /**
-   * SetName implements [Field.SetName] interface method.
+   * Set名称 implements [Field.Set名称] interface method.
    */
-  setName(name: string): void
+  set名称(name: string): void
  }
  interface FileField {
   /**
@@ -10712,9 +10712,9 @@ namespace core {
  }
  interface FileField {
   /**
-   * ValidateSettings implements [Field.ValidateSettings] interface method.
+   * Validate设置 implements [Field.Validate设置] interface method.
    */
-  validateSettings(ctx: context.Context, app: App, collection: Collection): void
+  validate设置(ctx: context.Context, app: App, collection: Collection): void
  }
  interface FileField {
   /**
@@ -10734,7 +10734,7 @@ namespace core {
    * 
    * note: files delete after records deletion is handled globally by the app FileManager hook
    */
-  intercept(ctx: context.Context, app: App, record: Record, actionName: string, actionFunc: () => void): void
+  intercept(ctx: context.Context, app: App, record: Record, action名称: string, actionFunc: () => void): void
  }
  interface FileField {
   /**
@@ -10765,7 +10765,7 @@ namespace core {
   */
  interface GeoPointField {
   /**
-   * Name (required) is the unique name of the field.
+   * 名称 (required) is the unique name of the field.
    */
   name: string
   /**
@@ -10783,7 +10783,7 @@ namespace core {
    */
   hidden: boolean
   /**
-   * Presentable hints the Dashboard UI to use the underlying
+   * Presentable hints the 仪表盘 UI to use the underlying
    * field record value in the relation preview label.
    */
   presentable: boolean
@@ -10812,15 +10812,15 @@ namespace core {
  }
  interface GeoPointField {
   /**
-   * GetName implements [Field.GetName] interface method.
+   * Get名称 implements [Field.Get名称] interface method.
    */
-  getName(): string
+  get名称(): string
  }
  interface GeoPointField {
   /**
-   * SetName implements [Field.SetName] interface method.
+   * Set名称 implements [Field.Set名称] interface method.
    */
-  setName(name: string): void
+  set名称(name: string): void
  }
  interface GeoPointField {
   /**
@@ -10866,9 +10866,9 @@ namespace core {
  }
  interface GeoPointField {
   /**
-   * ValidateSettings implements [Field.ValidateSettings] interface method.
+   * Validate设置 implements [Field.Validate设置] interface method.
    */
-  validateSettings(ctx: context.Context, app: App, collection: Collection): void
+  validate设置(ctx: context.Context, app: App, collection: Collection): void
  }
  /**
   * JSONField defines "json" type field for storing any serialized JSON value.
@@ -10877,7 +10877,7 @@ namespace core {
   */
  interface JSONField {
   /**
-   * Name (required) is the unique name of the field.
+   * 名称 (required) is the unique name of the field.
    */
   name: string
   /**
@@ -10895,7 +10895,7 @@ namespace core {
    */
   hidden: boolean
   /**
-   * Presentable hints the Dashboard UI to use the underlying
+   * Presentable hints the 仪表盘 UI to use the underlying
    * field record value in the relation preview label.
    */
   presentable: boolean
@@ -10931,15 +10931,15 @@ namespace core {
  }
  interface JSONField {
   /**
-   * GetName implements [Field.GetName] interface method.
+   * Get名称 implements [Field.Get名称] interface method.
    */
-  getName(): string
+  get名称(): string
  }
  interface JSONField {
   /**
-   * SetName implements [Field.SetName] interface method.
+   * Set名称 implements [Field.Set名称] interface method.
    */
-  setName(name: string): void
+  set名称(name: string): void
  }
  interface JSONField {
   /**
@@ -10985,9 +10985,9 @@ namespace core {
  }
  interface JSONField {
   /**
-   * ValidateSettings implements [Field.ValidateSettings] interface method.
+   * Validate设置 implements [Field.Validate设置] interface method.
    */
-  validateSettings(ctx: context.Context, app: App, collection: Collection): void
+  validate设置(ctx: context.Context, app: App, collection: Collection): void
  }
  interface JSONField {
   /**
@@ -11003,15 +11003,15 @@ namespace core {
   * The following additional setter keys are available:
   * 
   * ```
-  *   - "fieldName+" - appends to the existing record value. For example:
+  *   - "field名称+" - appends to the existing record value. For example:
   *     record.Set("total+", 5)
-  *   - "fieldName-" - subtracts from the existing record value. For example:
+  *   - "field名称-" - subtracts from the existing record value. For example:
   *     record.Set("total-", 5)
   * ```
   */
  interface NumberField {
   /**
-   * Name (required) is the unique name of the field.
+   * 名称 (required) is the unique name of the field.
    */
   name: string
   /**
@@ -11029,7 +11029,7 @@ namespace core {
    */
   hidden: boolean
   /**
-   * Presentable hints the Dashboard UI to use the underlying
+   * Presentable hints the 仪表盘 UI to use the underlying
    * field record value in the relation preview label.
    */
   presentable: boolean
@@ -11074,15 +11074,15 @@ namespace core {
  }
  interface NumberField {
   /**
-   * GetName implements [Field.GetName] interface method.
+   * Get名称 implements [Field.Get名称] interface method.
    */
-  getName(): string
+  get名称(): string
  }
  interface NumberField {
   /**
-   * SetName implements [Field.SetName] interface method.
+   * Set名称 implements [Field.Set名称] interface method.
    */
-  setName(name: string): void
+  set名称(name: string): void
  }
  interface NumberField {
   /**
@@ -11128,9 +11128,9 @@ namespace core {
  }
  interface NumberField {
   /**
-   * ValidateSettings implements [Field.ValidateSettings] interface method.
+   * Validate设置 implements [Field.Validate设置] interface method.
    */
-  validateSettings(ctx: context.Context, app: App, collection: Collection): void
+  validate设置(ctx: context.Context, app: App, collection: Collection): void
  }
  interface NumberField {
   /**
@@ -11139,7 +11139,7 @@ namespace core {
   findSetter(key: string): SetterFunc
  }
  /**
-  * PasswordField defines "password" type field for storing bcrypt hashed strings
+  * 密码Field defines "password" type field for storing bcrypt hashed strings
   * (usually used only internally for the "password" auth collection system field).
   * 
   * If you want to set a direct bcrypt hash as record field value you can use the SetRaw method, for example:
@@ -11157,13 +11157,13 @@ namespace core {
   * The following additional getter keys are available:
   * 
   * ```
-  *   - "fieldName:hash" - returns the bcrypt hash string of the record field value (if any). For example:
+  *   - "field名称:hash" - returns the bcrypt hash string of the record field value (if any). For example:
   *     record.GetString("password:hash")
   * ```
   */
- interface PasswordField {
+ interface 密码Field {
   /**
-   * Name (required) is the unique name of the field.
+   * 名称 (required) is the unique name of the field.
    */
   name: string
   /**
@@ -11181,7 +11181,7 @@ namespace core {
    */
   hidden: boolean
   /**
-   * Presentable hints the Dashboard UI to use the underlying
+   * Presentable hints the 仪表盘 UI to use the underlying
    * field record value in the relation preview label.
    */
   presentable: boolean
@@ -11214,114 +11214,114 @@ namespace core {
    */
   required: boolean
  }
- interface PasswordField {
+ interface 密码Field {
   /**
    * Type implements [Field.Type] interface method.
    */
   type(): string
  }
- interface PasswordField {
+ interface 密码Field {
   /**
    * GetId implements [Field.GetId] interface method.
    */
   getId(): string
  }
- interface PasswordField {
+ interface 密码Field {
   /**
    * SetId implements [Field.SetId] interface method.
    */
   setId(id: string): void
  }
- interface PasswordField {
+ interface 密码Field {
   /**
-   * GetName implements [Field.GetName] interface method.
+   * Get名称 implements [Field.Get名称] interface method.
    */
-  getName(): string
+  get名称(): string
  }
- interface PasswordField {
+ interface 密码Field {
   /**
-   * SetName implements [Field.SetName] interface method.
+   * Set名称 implements [Field.Set名称] interface method.
    */
-  setName(name: string): void
+  set名称(name: string): void
  }
- interface PasswordField {
+ interface 密码Field {
   /**
    * GetSystem implements [Field.GetSystem] interface method.
    */
   getSystem(): boolean
  }
- interface PasswordField {
+ interface 密码Field {
   /**
    * SetSystem implements [Field.SetSystem] interface method.
    */
   setSystem(system: boolean): void
  }
- interface PasswordField {
+ interface 密码Field {
   /**
    * GetHidden implements [Field.GetHidden] interface method.
    */
   getHidden(): boolean
  }
- interface PasswordField {
+ interface 密码Field {
   /**
    * SetHidden implements [Field.SetHidden] interface method.
    */
   setHidden(hidden: boolean): void
  }
- interface PasswordField {
+ interface 密码Field {
   /**
    * ColumnType implements [Field.ColumnType] interface method.
    */
   columnType(app: App): string
  }
- interface PasswordField {
+ interface 密码Field {
   /**
    * DriverValue implements the [DriverValuer] interface.
    */
   driverValue(record: Record): any
  }
- interface PasswordField {
+ interface 密码Field {
   /**
    * PrepareValue implements [Field.PrepareValue] interface method.
    */
   prepareValue(record: Record, raw: any): any
  }
- interface PasswordField {
+ interface 密码Field {
   /**
    * ValidateValue implements [Field.ValidateValue] interface method.
    */
   validateValue(ctx: context.Context, app: App, record: Record): void
  }
- interface PasswordField {
+ interface 密码Field {
   /**
-   * ValidateSettings implements [Field.ValidateSettings] interface method.
+   * Validate设置 implements [Field.Validate设置] interface method.
    */
-  validateSettings(ctx: context.Context, app: App, collection: Collection): void
+  validate设置(ctx: context.Context, app: App, collection: Collection): void
  }
- interface PasswordField {
+ interface 密码Field {
   /**
    * Intercept implements the [RecordInterceptor] interface.
    */
-  intercept(ctx: context.Context, app: App, record: Record, actionName: string, actionFunc: () => void): void
+  intercept(ctx: context.Context, app: App, record: Record, action名称: string, actionFunc: () => void): void
  }
- interface PasswordField {
+ interface 密码Field {
   /**
    * FindGetter implements the [GetterFinder] interface.
    */
   findGetter(key: string): GetterFunc
  }
- interface PasswordField {
+ interface 密码Field {
   /**
    * FindSetter implements the [SetterFinder] interface.
    */
   findSetter(key: string): SetterFunc
  }
- interface PasswordFieldValue {
+ interface 密码FieldValue {
   lastError: Error
   hash: string
   plain: string
  }
- interface PasswordFieldValue {
+ interface 密码FieldValue {
   validate(pass: string): boolean
  }
  /**
@@ -11341,22 +11341,22 @@ namespace core {
   * The following additional setter keys are available:
   * 
   * ```
-  *   - "fieldName+" - append one or more values to the existing record one. For example:
+  *   - "field名称+" - append one or more values to the existing record one. For example:
   * 
   *     record.Set("categories+", []string{"new1", "new2"}) // []string{"old1", "old2", "new1", "new2"}
   * 
-  *   - "+fieldName" - prepend one or more values to the existing record one. For example:
+  *   - "+field名称" - prepend one or more values to the existing record one. For example:
   * 
   *     record.Set("+categories", []string{"new1", "new2"}) // []string{"new1", "new2", "old1", "old2"}
   * 
-  *   - "fieldName-" - subtract one or more values from the existing record one. For example:
+  *   - "field名称-" - subtract one or more values from the existing record one. For example:
   * 
   *     record.Set("categories-", "old1") // []string{"old2"}
   * ```
   */
  interface RelationField {
   /**
-   * Name (required) is the unique name of the field.
+   * 名称 (required) is the unique name of the field.
    */
   name: string
   /**
@@ -11374,7 +11374,7 @@ namespace core {
    */
   hidden: boolean
   /**
-   * Presentable hints the Dashboard UI to use the underlying
+   * Presentable hints the 仪表盘 UI to use the underlying
    * field record value in the relation preview label.
    */
   presentable: boolean
@@ -11383,10 +11383,10 @@ namespace core {
    */
   collectionId: string
   /**
-   * CascadeDelete indicates whether the root model should be deleted
+   * Cascade删除 indicates whether the root model should be deleted
    * in case of delete of all linked relations.
    */
-  cascadeDelete: boolean
+  cascade删除: boolean
   /**
    * MinSelect indicates the min number of allowed relation records
    * that could be linked to the main model.
@@ -11428,15 +11428,15 @@ namespace core {
  }
  interface RelationField {
   /**
-   * GetName implements [Field.GetName] interface method.
+   * Get名称 implements [Field.Get名称] interface method.
    */
-  getName(): string
+  get名称(): string
  }
  interface RelationField {
   /**
-   * SetName implements [Field.SetName] interface method.
+   * Set名称 implements [Field.Set名称] interface method.
    */
-  setName(name: string): void
+  set名称(name: string): void
  }
  interface RelationField {
   /**
@@ -11495,9 +11495,9 @@ namespace core {
  }
  interface RelationField {
   /**
-   * ValidateSettings implements [Field.ValidateSettings] interface method.
+   * Validate设置 implements [Field.Validate设置] interface method.
    */
-  validateSettings(ctx: context.Context, app: App, collection: Collection): void
+  validate设置(ctx: context.Context, app: App, collection: Collection): void
  }
  interface RelationField {
   /**
@@ -11522,22 +11522,22 @@ namespace core {
   * The following additional setter keys are available:
   * 
   * ```
-  *   - "fieldName+" - append one or more values to the existing record one. For example:
+  *   - "field名称+" - append one or more values to the existing record one. For example:
   * 
   *     record.Set("roles+", []string{"new1", "new2"}) // []string{"old1", "old2", "new1", "new2"}
   * 
-  *   - "+fieldName" - prepend one or more values to the existing record one. For example:
+  *   - "+field名称" - prepend one or more values to the existing record one. For example:
   * 
   *     record.Set("+roles", []string{"new1", "new2"}) // []string{"new1", "new2", "old1", "old2"}
   * 
-  *   - "fieldName-" - subtract one or more values from the existing record one. For example:
+  *   - "field名称-" - subtract one or more values from the existing record one. For example:
   * 
   *     record.Set("roles-", "old1") // []string{"old2"}
   * ```
   */
  interface SelectField {
   /**
-   * Name (required) is the unique name of the field.
+   * 名称 (required) is the unique name of the field.
    */
   name: string
   /**
@@ -11555,7 +11555,7 @@ namespace core {
    */
   hidden: boolean
   /**
-   * Presentable hints the Dashboard UI to use the underlying
+   * Presentable hints the 仪表盘 UI to use the underlying
    * field record value in the relation preview label.
    */
   presentable: boolean
@@ -11594,15 +11594,15 @@ namespace core {
  }
  interface SelectField {
   /**
-   * GetName implements [Field.GetName] interface method.
+   * Get名称 implements [Field.Get名称] interface method.
    */
-  getName(): string
+  get名称(): string
  }
  interface SelectField {
   /**
-   * SetName implements [Field.SetName] interface method.
+   * Set名称 implements [Field.Set名称] interface method.
    */
-  setName(name: string): void
+  set名称(name: string): void
  }
  interface SelectField {
   /**
@@ -11661,9 +11661,9 @@ namespace core {
  }
  interface SelectField {
   /**
-   * ValidateSettings implements [Field.ValidateSettings] interface method.
+   * Validate设置 implements [Field.Validate设置] interface method.
    */
-  validateSettings(ctx: context.Context, app: App, collection: Collection): void
+  validate设置(ctx: context.Context, app: App, collection: Collection): void
  }
  interface SelectField {
   /**
@@ -11678,7 +11678,7 @@ namespace core {
   * 
   * The following additional setter keys are available:
   * 
-  * - "fieldName:autogenerate" - autogenerate field value if AutogeneratePattern is set. For example:
+  * - "field名称:autogenerate" - autogenerate field value if AutogeneratePattern is set. For example:
   * 
   * ```
   * 	record.Set("slug:autogenerate", "") // [random value]
@@ -11687,7 +11687,7 @@ namespace core {
   */
  interface TextField {
   /**
-   * Name (required) is the unique name of the field.
+   * 名称 (required) is the unique name of the field.
    */
   name: string
   /**
@@ -11705,7 +11705,7 @@ namespace core {
    */
   hidden: boolean
   /**
-   * Presentable hints the Dashboard UI to use the underlying
+   * Presentable hints the 仪表盘 UI to use the underlying
    * field record value in the relation preview label.
    */
   presentable: boolean
@@ -11766,15 +11766,15 @@ namespace core {
  }
  interface TextField {
   /**
-   * GetName implements [Field.GetName] interface method.
+   * Get名称 implements [Field.Get名称] interface method.
    */
-  getName(): string
+  get名称(): string
  }
  interface TextField {
   /**
-   * SetName implements [Field.SetName] interface method.
+   * Set名称 implements [Field.Set名称] interface method.
    */
-  setName(name: string): void
+  set名称(name: string): void
  }
  interface TextField {
   /**
@@ -11826,15 +11826,15 @@ namespace core {
  }
  interface TextField {
   /**
-   * ValidateSettings implements [Field.ValidateSettings] interface method.
+   * Validate设置 implements [Field.Validate设置] interface method.
    */
-  validateSettings(ctx: context.Context, app: App, collection: Collection): void
+  validate设置(ctx: context.Context, app: App, collection: Collection): void
  }
  interface TextField {
   /**
    * Intercept implements the [RecordInterceptor] interface.
    */
-  intercept(ctx: context.Context, app: App, record: Record, actionName: string, actionFunc: () => void): void
+  intercept(ctx: context.Context, app: App, record: Record, action名称: string, actionFunc: () => void): void
  }
  interface TextField {
   /**
@@ -11849,7 +11849,7 @@ namespace core {
   */
  interface URLField {
   /**
-   * Name (required) is the unique name of the field.
+   * 名称 (required) is the unique name of the field.
    */
   name: string
   /**
@@ -11867,7 +11867,7 @@ namespace core {
    */
   hidden: boolean
   /**
-   * Presentable hints the Dashboard UI to use the underlying
+   * Presentable hints the 仪表盘 UI to use the underlying
    * field record value in the relation preview label.
    */
   presentable: boolean
@@ -11908,15 +11908,15 @@ namespace core {
  }
  interface URLField {
   /**
-   * GetName implements [Field.GetName] interface method.
+   * Get名称 implements [Field.Get名称] interface method.
    */
-  getName(): string
+  get名称(): string
  }
  interface URLField {
   /**
-   * SetName implements [Field.SetName] interface method.
+   * Set名称 implements [Field.Set名称] interface method.
    */
-  setName(name: string): void
+  set名称(name: string): void
  }
  interface URLField {
   /**
@@ -11962,9 +11962,9 @@ namespace core {
  }
  interface URLField {
   /**
-   * ValidateSettings implements [Field.ValidateSettings] interface method.
+   * Validate设置 implements [Field.Validate设置] interface method.
    */
-  validateSettings(ctx: context.Context, app: App, collection: Collection): void
+  validate设置(ctx: context.Context, app: App, collection: Collection): void
  }
  interface newFieldsList {
   /**
@@ -11984,9 +11984,9 @@ namespace core {
  }
  interface FieldsList {
   /**
-   * FieldNames returns a slice with the name of all list fields.
+   * Field名称s returns a slice with the name of all list fields.
    */
-  fieldNames(): Array<string>
+  field名称s(): Array<string>
  }
  interface FieldsList {
   /**
@@ -12003,13 +12003,13 @@ namespace core {
  }
  interface FieldsList {
   /**
-   * GetByName returns a single field by its name.
+   * GetBy名称 returns a single field by its name.
    */
-  getByName(fieldName: string): Field
+  getBy名称(field名称: string): Field
  }
  interface FieldsList {
   /**
-   * RemoveById removes a single field by its id.
+   * 移除ById removes a single field by its id.
    * 
    * This method does nothing if field with the specified id doesn't exist.
    */
@@ -12017,15 +12017,15 @@ namespace core {
  }
  interface FieldsList {
   /**
-   * RemoveByName removes a single field by its name.
+   * 移除By名称 removes a single field by its name.
    * 
    * This method does nothing if field with the specified name doesn't exist.
    */
-  removeByName(fieldName: string): void
+  removeBy名称(field名称: string): void
  }
  interface FieldsList {
   /**
-   * Add adds one or more fields to the current list.
+   * 添加 adds one or more fields to the current list.
    * 
    * By default this method will try to REPLACE existing fields with
    * the new ones by their id or by their name if the new field doesn't have an explicit id.
@@ -12039,9 +12039,9 @@ namespace core {
  }
  interface FieldsList {
   /**
-   * AddAt is the same as Add but insert/move the fields at the specific position.
+   * 添加At is the same as 添加 but insert/move the fields at the specific position.
    * 
-   * If pos < 0, then this method acts the same as calling Add.
+   * If pos < 0, then this method acts the same as calling 添加.
    * 
    * If pos > FieldsList total items, then the specified fields are inserted/moved at the end of the list.
    */
@@ -12049,8 +12049,8 @@ namespace core {
  }
  interface FieldsList {
   /**
-   * AddMarshaledJSON parses the provided raw json data and adds the
-   * found fields into the current list (following the same rule as the Add method).
+   * 添加MarshaledJSON parses the provided raw json data and adds the
+   * found fields into the current list (following the same rule as the 添加 method).
    * 
    * The rawJSON argument could be one of:
    * ```
@@ -12061,17 +12061,17 @@ namespace core {
    * Example:
    * 
    * ```
-   * 	l.AddMarshaledJSON([]byte{`{"type":"text", name: "test"}`})
-   * 	l.AddMarshaledJSON([]byte{`[{"type":"text", name: "test1"}, {"type":"text", name: "test2"}]`})
+   * 	l.添加MarshaledJSON([]byte{`{"type":"text", name: "test"}`})
+   * 	l.添加MarshaledJSON([]byte{`[{"type":"text", name: "test1"}, {"type":"text", name: "test2"}]`})
    * ```
    */
   addMarshaledJSON(rawJSON: string|Array<number>): void
  }
  interface FieldsList {
   /**
-   * AddMarshaledJSONAt is the same as AddMarshaledJSON but insert/move the fields at the specific position.
+   * 添加MarshaledJSONAt is the same as 添加MarshaledJSON but insert/move the fields at the specific position.
    * 
-   * If pos < 0, then this method acts the same as calling AddMarshaledJSON.
+   * If pos < 0, then this method acts the same as calling 添加MarshaledJSON.
    * 
    * If pos > FieldsList total items, then the specified fields are inserted/moved at the end of the list.
    */
@@ -12127,7 +12127,7 @@ namespace core {
   level: number
  }
  interface Log {
-  tableName(): string
+  table名称(): string
  }
  interface BaseApp {
   /**
@@ -12156,7 +12156,7 @@ namespace core {
  }
  interface BaseApp {
   /**
-   * DeleteOldLogs delete all logs that are created before createdBefore.
+   * 删除OldLogs delete all logs that are created before createdBefore.
    * 
    * For better performance the logs delete is executed as plain SQL statement,
    * aka. no delete model hook events will be fired.
@@ -12179,8 +12179,8 @@ namespace core {
    * 	mfa := core.NewMFA(app)
    * 	mfa.SetRecordRef(user.Id)
    * 	mfa.SetCollectionRef(user.Collection().Id)
-   * 	mfa.SetMethod(core.MFAMethodPassword)
-   * 	app.Save(mfa)
+   * 	mfa.SetMethod(core.MFAMethod密码)
+   * 	app.保存(mfa)
    * ```
    */
   (app: App): (MFA)
@@ -12242,7 +12242,7 @@ namespace core {
  }
  interface MFA {
   /**
-   * Created returns the "created" record field value.
+   * 创建d returns the "created" record field value.
    */
   created(): types.DateTime
  }
@@ -12279,7 +12279,7 @@ namespace core {
  }
  interface BaseApp {
   /**
-   * DeleteAllMFAsByRecord deletes all MFA models associated with the provided record.
+   * 删除AllMFAsByRecord deletes all MFA models associated with the provided record.
    * 
    * Returns a combined error with the failed deletes.
    */
@@ -12287,7 +12287,7 @@ namespace core {
  }
  interface BaseApp {
   /**
-   * DeleteExpiredMFAs deletes the expired MFAs for all auth collections.
+   * 删除ExpiredMFAs deletes the expired MFAs for all auth collections.
    */
   deleteExpiredMFAs(): void
  }
@@ -12295,7 +12295,7 @@ namespace core {
   up: (txApp: App) => void
   down: (txApp: App) => void
   file: string
-  reapplyCondition: (txApp: App, runner: MigrationsRunner, fileName: string) => boolean
+  reapplyCondition: (txApp: App, runner: MigrationsRunner, file名称: string) => boolean
  }
  /**
   * MigrationsList defines a list with migration definitions
@@ -12322,7 +12322,7 @@ namespace core {
  }
  interface MigrationsList {
   /**
-   * Add adds adds an existing migration definition to the list.
+   * 添加 adds adds an existing migration definition to the list.
    * 
    * If m.File is not provided, it will try to get the name from its .go file.
    * 
@@ -12381,7 +12381,7 @@ namespace core {
  }
  interface MigrationsRunner {
   /**
-   * RemoveMissingAppliedMigrations removes the db entries of all applied migrations
+   * 移除MissingAppliedMigrations removes the db entries of all applied migrations
    * that are not listed in the runner's migrations list.
    */
   removeMissingAppliedMigrations(): void
@@ -12402,8 +12402,8 @@ namespace core {
    * 	otp := core.NewOTP(app)
    * 	otp.SetRecordRef(user.Id)
    * 	otp.SetCollectionRef(user.Collection().Id)
-   * 	otp.SetPassword(security.RandomStringWithAlphabet(6, "1234567890"))
-   * 	app.Save(otp)
+   * 	otp.Set密码(security.RandomStringWithAlphabet(6, "1234567890"))
+   * 	app.保存(otp)
    * ```
    */
   (app: App): (OTP)
@@ -12469,7 +12469,7 @@ namespace core {
  }
  interface OTP {
   /**
-   * Created returns the "created" record field value.
+   * 创建d returns the "created" record field value.
    */
   created(): types.DateTime
  }
@@ -12506,7 +12506,7 @@ namespace core {
  }
  interface BaseApp {
   /**
-   * DeleteAllOTPsByRecord deletes all OTP models associated with the provided record.
+   * 删除AllOTPsByRecord deletes all OTP models associated with the provided record.
    * 
    * Returns a combined error with the failed deletes.
    */
@@ -12514,7 +12514,7 @@ namespace core {
  }
  interface BaseApp {
   /**
-   * DeleteExpiredOTPs deletes the expired OTPs for all auth collections.
+   * 删除ExpiredOTPs deletes the expired OTPs for all auth collections.
    */
   deleteExpiredOTPs(): void
  }
@@ -12583,7 +12583,7 @@ namespace core {
   /**
    * Resolve implements `search.FieldResolver` interface.
    * 
-   * Example of some resolvable fieldName formats:
+   * Example of some resolvable field名称 formats:
    * 
    * ```
    * 	id
@@ -12602,7 +12602,7 @@ namespace core {
    * 	@collection.product.name
    * ```
    */
-  resolve(fieldName: string): (search.ResolverResult)
+  resolve(field名称: string): (search.ResolverResult)
  }
  interface mapExtractor {
   [key:string]: any;
@@ -12662,9 +12662,9 @@ namespace core {
  }
  interface Record {
   /**
-   * TableName returns the table name associated with the current Record model.
+   * Table名称 returns the table name associated with the current Record model.
    */
-  tableName(): string
+  table名称(): string
  }
  interface Record {
   /**
@@ -12766,9 +12766,9 @@ namespace core {
  }
  interface Record {
   /**
-   * IgnoreEmailVisibility toggles the flag to ignore the auth record email visibility check.
+   * Ignore邮箱Visibility toggles the flag to ignore the auth record email visibility check.
    */
-  ignoreEmailVisibility(state: boolean): (Record)
+  ignore邮箱Visibility(state: boolean): (Record)
  }
  interface Record {
   /**
@@ -12883,9 +12883,9 @@ namespace core {
    * ```
    * 	files := record.GetUnsavedFiles("documents")
    * 	for _, f := range files {
-   * 	    f.Name = "doc_" + f.Name // add a prefix to each file name
+   * 	    f.名称 = "doc_" + f.名称 // add a prefix to each file name
    * 	}
-   * 	app.Save(record) // the files are pointers so the applied changes will transparently reflect on the record value
+   * 	app.保存(record) // the files are pointers so the applied changes will transparently reflect on the record value
    * ```
    */
   getUnsavedFiles(key: string): Array<(filesystem.File | undefined)>
@@ -12904,7 +12904,7 @@ namespace core {
    * 
    * ```
    * 	result := struct {
-   * 	    FirstName string `json:"first_name"`
+   * 	    First名称 string `json:"first_name"`
    * 	}{}
    * 	err := m.UnmarshalJSONField("my_field_name", &result)
    * ```
@@ -12953,14 +12953,14 @@ namespace core {
   /**
    * Hide hides the specified fields from the public safe serialization of the record.
    */
-  hide(...fieldNames: string[]): (Record)
+  hide(...field名称s: string[]): (Record)
  }
  interface Record {
   /**
    * Unhide forces to unhide the specified fields from the public safe serialization
    * of the record (even when the collection field itself is marked as hidden).
    */
-  unhide(...fieldNames: string[]): (Record)
+  unhide(...field名称s: string[]): (Record)
  }
  interface Record {
   /**
@@ -12969,7 +12969,7 @@ namespace core {
    * To export unknown data fields you need to set record.WithCustomData(true).
    * 
    * For auth records, to force the export of the email field you need to set
-   * record.IgnoreEmailVisibility(true).
+   * record.Ignore邮箱Visibility(true).
    */
   publicExport(): _TygojaDict
  }
@@ -13013,15 +13013,15 @@ namespace core {
  }
  interface Record {
   /**
-   * Email returns the "email" record field value (usually available with Auth collections).
+   * 邮箱 returns the "email" record field value (usually available with Auth collections).
    */
   email(): string
  }
  interface Record {
   /**
-   * SetEmail sets the "email" record field value (usually available with Auth collections).
+   * Set邮箱 sets the "email" record field value (usually available with Auth collections).
    */
-  setEmail(email: string): void
+  set邮箱(email: string): void
  }
  interface Record {
   /**
@@ -13031,9 +13031,9 @@ namespace core {
  }
  interface Record {
   /**
-   * SetEmailVisibility sets the "emailVisibility" record field value (usually available with Auth collections).
+   * Set邮箱Visibility sets the "emailVisibility" record field value (usually available with Auth collections).
    */
-  setEmailVisibility(visible: boolean): void
+  set邮箱Visibility(visible: boolean): void
  }
  interface Record {
   /**
@@ -13067,27 +13067,27 @@ namespace core {
  }
  interface Record {
   /**
-   * SetPassword sets the "password" record field value (usually available with Auth collections).
+   * Set密码 sets the "password" record field value (usually available with Auth collections).
    */
-  setPassword(password: string): void
+  set密码(password: string): void
  }
  interface Record {
   /**
-   * SetRandomPassword sets the "password" auth record field to a random autogenerated value.
+   * SetRandom密码 sets the "password" auth record field to a random autogenerated value.
    * 
    * The autogenerated password is ~30 characters and it is set directly as hash,
    * aka. the field plain password value validators (length, pattern, etc.) are ignored
    * (this is usually used as part of the auto created OTP or OAuth2 user flows).
    */
-  setRandomPassword(): string
+  setRandom密码(): string
  }
  interface Record {
   /**
-   * ValidatePassword validates a plain password against the "password" record field.
+   * Validate密码 validates a plain password against the "password" record field.
    * 
    * Returns false if the password is incorrect.
    */
-  validatePassword(password: string): boolean
+  validate密码(password: string): boolean
  }
  interface Record {
   /**
@@ -13244,7 +13244,7 @@ namespace core {
  interface BaseApp {
   /**
    * FindAuthRecordByToken finds the auth record associated with the provided JWT
-   * (auth, file, verifyEmail, changeEmail, passwordReset types).
+   * (auth, file, verify邮箱, change邮箱, passwordReset types).
    * 
    * Optionally specify a list of validTypes to check tokens only from those types.
    * 
@@ -13254,14 +13254,14 @@ namespace core {
  }
  interface BaseApp {
   /**
-   * FindAuthRecordByEmail finds the auth record associated with the provided email.
+   * FindAuthRecordBy邮箱 finds the auth record associated with the provided email.
    * 
    * The email check would be case-insensitive if the related collection
    * email unique index has COLLATE NOCASE specified for the email column.
    * 
    * Returns an error if it is not an auth collection or the record is not found.
    */
-  findAuthRecordByEmail(collectionModelOrIdentifier: any, email: string): (Record)
+  findAuthRecordBy邮箱(collectionModelOrIdentifier: any, email: string): (Record)
  }
  interface BaseApp {
   /**
@@ -13339,15 +13339,15 @@ namespace core {
  }
  interface Record {
   /**
-   * NewPasswordResetToken generates and returns a new auth record password reset request token.
+   * New密码ResetToken generates and returns a new auth record password reset request token.
    */
-  newPasswordResetToken(): string
+  new密码ResetToken(): string
  }
  interface Record {
   /**
-   * NewEmailChangeToken generates and returns a new auth record change email request token.
+   * New邮箱ChangeToken generates and returns a new auth record change email request token.
    */
-  newEmailChangeToken(newEmail: string): string
+  new邮箱ChangeToken(new邮箱: string): string
  }
  interface Record {
   /**
@@ -13357,7 +13357,7 @@ namespace core {
  }
  interface settings {
   smtp: SMTPConfig
-  backups: BackupsConfig
+  backups: 返回upsConfig
   s3: S3Config
   meta: MetaConfig
   rateLimits: RateLimitsConfig
@@ -13366,85 +13366,85 @@ namespace core {
   logs: LogsConfig
  }
  /**
-  * Settings defines the PocketBase app settings.
+  * 设置 defines the PocketBase app settings.
   */
  type _sUSqZcG = settings
- interface Settings extends _sUSqZcG {
+ interface 设置 extends _sUSqZcG {
  }
- interface Settings {
+ interface 设置 {
   /**
-   * TableName implements [Model.TableName] interface method.
+   * Table名称 implements [Model.Table名称] interface method.
    */
-  tableName(): string
+  table名称(): string
  }
- interface Settings {
+ interface 设置 {
   /**
-   * PK implements [Model.LastSavedPK] interface method.
+   * PK implements [Model.Last保存dPK] interface method.
    */
-  lastSavedPK(): any
+  last保存dPK(): any
  }
- interface Settings {
+ interface 设置 {
   /**
    * PK implements [Model.PK] interface method.
    */
   pk(): any
  }
- interface Settings {
+ interface 设置 {
   /**
    * IsNew implements [Model.IsNew] interface method.
    */
   isNew(): boolean
  }
- interface Settings {
+ interface 设置 {
   /**
    * MarkAsNew implements [Model.MarkAsNew] interface method.
    */
   markAsNew(): void
  }
- interface Settings {
+ interface 设置 {
   /**
    * MarkAsNew implements [Model.MarkAsNotNew] interface method.
    */
   markAsNotNew(): void
  }
- interface Settings {
+ interface 设置 {
   /**
    * PostScan implements [Model.PostScan] interface method.
    */
   postScan(): void
  }
- interface Settings {
+ interface 设置 {
   /**
    * String returns a serialized string representation of the current settings.
    */
   string(): string
  }
- interface Settings {
+ interface 设置 {
   /**
    * DBExport prepares and exports the current settings for db persistence.
    */
   dbExport(app: App): _TygojaDict
  }
- interface Settings {
+ interface 设置 {
   /**
    * PostValidate implements the [PostValidator] interface and defines
-   * the Settings model validations.
+   * the 设置 model validations.
    */
   postValidate(ctx: context.Context, app: App): void
  }
- interface Settings {
+ interface 设置 {
   /**
    * Merge merges the "other" settings into the current one.
    */
-  merge(other: Settings): void
+  merge(other: 设置): void
  }
- interface Settings {
+ interface 设置 {
   /**
    * Clone creates a new deep copy of the current settings.
    */
-  clone(): (Settings)
+  clone(): (设置)
  }
- interface Settings {
+ interface 设置 {
   /**
    * MarshalJSON implements the [json.Marshaler] interface.
    * 
@@ -13470,12 +13470,12 @@ namespace core {
    */
   tls: boolean
   /**
-   * LocalName is optional domain name or IP address used for the
+   * Local名称 is optional domain name or IP address used for the
    * EHLO/HELO exchange (if not explicitly set, defaults to "localhost").
    * 
    * This is required only by some SMTP servers, such as Gmail SMTP-relay.
    */
-  localName: string
+  local名称: string
  }
  interface SMTPConfig {
   /**
@@ -13521,7 +13521,7 @@ namespace core {
    */
   validate(): void
  }
- interface BackupsConfig {
+ interface 返回upsConfig {
   /**
    * Cron is a cron expression to schedule auto backups, eg. "* * * * *".
    * 
@@ -13540,17 +13540,17 @@ namespace core {
    */
   s3: S3Config
  }
- interface BackupsConfig {
+ interface 返回upsConfig {
   /**
-   * Validate makes BackupsConfig validatable by implementing [validation.Validatable] interface.
+   * Validate makes 返回upsConfig validatable by implementing [validation.Validatable] interface.
    */
   validate(): void
  }
  interface MetaConfig {
-  appName: string
+  app名称: string
   appURL: string
-  senderName: string
-  senderAddress: string
+  sender名称: string
+  sender添加ress: string
   hideControls: boolean
  }
  interface MetaConfig {
@@ -13683,19 +13683,19 @@ namespace core {
   value: types.JSONRaw
  }
  interface Param {
-  tableName(): string
+  table名称(): string
  }
  interface BaseApp {
   /**
-   * ReloadSettings initializes and reloads the stored application settings.
+   * Reload设置 initializes and reloads the stored application settings.
    * 
    * If no settings were stored it will persist the current app ones.
    */
-  reloadSettings(): void
+  reload设置(): void
  }
  interface BaseApp {
   /**
-   * DeleteView drops the specified view name.
+   * 删除View drops the specified view name.
    * 
    * This method is a no-op if a view with the provided name doesn't exist.
    * 
@@ -13706,7 +13706,7 @@ namespace core {
  }
  interface BaseApp {
   /**
-   * SaveView creates (or updates already existing) persistent SQL view.
+   * 保存View creates (or updates already existing) persistent SQL view.
    * 
    * NB! Be aware that this method is vulnerable to SQL injection and the
    * "selectQuery" argument must come only from trusted input!
@@ -13715,7 +13715,7 @@ namespace core {
  }
  interface BaseApp {
   /**
-   * CreateViewFields creates a new FieldsList from the provided select query.
+   * 创建ViewFields creates a new FieldsList from the provided select query.
    * 
    * There are some caveats:
    * - The select query must have an "id" column.
@@ -13727,7 +13727,7 @@ namespace core {
   /**
    * FindRecordByViewFile returns the original Record of the provided view collection file.
    */
-  findRecordByViewFile(viewCollectionModelOrIdentifier: any, fileFieldName: string, filename: string): (Record)
+  findRecordByViewFile(viewCollectionModelOrIdentifier: any, fileField名称: string, filename: string): (Record)
  }
  interface queryField {
  }
@@ -13756,9 +13756,9 @@ namespace mails {
    */
   (app: CoreApp, authRecord: core.Record, otpId: string, pass: string): void
  }
- interface sendRecordPasswordReset {
+ interface sendRecord密码Reset {
   /**
-   * SendRecordPasswordReset sends a password reset request email to the specified auth record.
+   * SendRecord密码Reset sends a password reset request email to the specified auth record.
    */
   (app: CoreApp, authRecord: core.Record): void
  }
@@ -13768,11 +13768,11 @@ namespace mails {
    */
   (app: CoreApp, authRecord: core.Record): void
  }
- interface sendRecordChangeEmail {
+ interface sendRecordChange邮箱 {
   /**
-   * SendRecordChangeEmail sends a change email confirmation email to the specified auth record.
+   * SendRecordChange邮箱 sends a change email confirmation email to the specified auth record.
    */
-  (app: CoreApp, authRecord: core.Record, newEmail: string): void
+  (app: CoreApp, authRecord: core.Record, new邮箱: string): void
  }
 }
 
@@ -13780,11 +13780,11 @@ namespace forms {
  // @ts-ignore
  import validation = ozzo_validation
  /**
-  * AppleClientSecretCreate is a form struct to generate a new Apple Client Secret.
+  * AppleClientSecret创建 is a form struct to generate a new Apple Client Secret.
   * 
   * Reference: https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens
   */
- interface AppleClientSecretCreate {
+ interface AppleClientSecret创建 {
   /**
    * ClientId is the identifier of your app (aka. Service ID).
    */
@@ -13795,7 +13795,7 @@ namespace forms {
    */
   teamId: string
   /**
-   * KeyId is a 10-character key identifier generated for the "Sign in with Apple"
+   * KeyId is a 10-character key identifier generated for the "登录 with Apple"
    * private key associated with your developer account.
    */
   keyId: string
@@ -13810,22 +13810,22 @@ namespace forms {
    */
   duration: number
  }
- interface newAppleClientSecretCreate {
+ interface newAppleClientSecret创建 {
   /**
-   * NewAppleClientSecretCreate creates a new [AppleClientSecretCreate] form with initializer
+   * NewAppleClientSecret创建 creates a new [AppleClientSecret创建] form with initializer
    * config created from the provided [CoreApp] instances.
    */
-  (app: CoreApp): (AppleClientSecretCreate)
+  (app: CoreApp): (AppleClientSecret创建)
  }
- interface AppleClientSecretCreate {
+ interface AppleClientSecret创建 {
   /**
    * Validate makes the form validatable by implementing [validation.Validatable] interface.
    */
   validate(): void
  }
- interface AppleClientSecretCreate {
+ interface AppleClientSecret创建 {
   /**
-   * Submit validates the form and returns a new Apple Client Secret JWT.
+   * 提交 validates the form and returns a new Apple Client Secret JWT.
    */
   submit(): string
  }
@@ -13895,42 +13895,42 @@ namespace forms {
   /**
    * Deprecated: It was previously used as part of the record create action but it is not needed anymore and will be removed in the future.
    * 
-   * DrySubmit performs a temp form submit within a transaction and reverts it at the end.
-   * For actual record persistence, check the [RecordUpsert.Submit()] method.
+   * Dry提交 performs a temp form submit within a transaction and reverts it at the end.
+   * For actual record persistence, check the [RecordUpsert.提交()] method.
    * 
    * This method doesn't perform validations, handle file uploads/deletes or trigger app save events!
    */
-  drySubmit(callback: (txApp: CoreApp, drySavedRecord: core.Record) => void): void
+  dry提交(callback: (txApp: CoreApp, dry保存dRecord: core.Record) => void): void
  }
  interface RecordUpsert {
   /**
-   * Submit validates the form specific validations and attempts to save the form record.
+   * 提交 validates the form specific validations and attempts to save the form record.
    */
   submit(): void
  }
  /**
-  * TestEmailSend is a email template test request form.
+  * Test邮箱Send is a email template test request form.
   */
- interface TestEmailSend {
+ interface Test邮箱Send {
   email: string
   template: string
   collection: string // optional, fallbacks to _superusers
  }
- interface newTestEmailSend {
+ interface newTest邮箱Send {
   /**
-   * NewTestEmailSend creates and initializes new TestEmailSend form.
+   * NewTest邮箱Send creates and initializes new Test邮箱Send form.
    */
-  (app: CoreApp): (TestEmailSend)
+  (app: CoreApp): (Test邮箱Send)
  }
- interface TestEmailSend {
+ interface Test邮箱Send {
   /**
    * Validate makes the form validatable by implementing [validation.Validatable] interface.
    */
   validate(): void
  }
- interface TestEmailSend {
+ interface Test邮箱Send {
   /**
-   * Submit validates and sends a test email to the form.Email address.
+   * 提交 validates and sends a test email to the form.邮箱 address.
    */
   submit(): void
  }
@@ -13957,7 +13957,7 @@ namespace forms {
  }
  interface TestS3Filesystem {
   /**
-   * Submit validates and performs a S3 filesystem connection test.
+   * 提交 validates and performs a S3 filesystem connection test.
    */
   submit(): void
  }
@@ -14019,7 +14019,7 @@ namespace apis {
  }
  // @ts-ignore
  import validation = ozzo_validation
- interface backupCreateForm {
+ interface backup创建Form {
   name: string
  }
  interface backupUploadForm {
@@ -14145,7 +14145,7 @@ namespace apis {
    * 	apis.RequireAuth("_superusers", "users") // only the listed auth collections
    * ```
    */
-  (...optCollectionNames: string[]): (hook.Handler<core.RequestEvent | undefined>)
+  (...optCollection名称s: string[]): (hook.Handler<core.RequestEvent | undefined>)
  }
  interface requireSuperuserAuth {
   /**
@@ -14191,7 +14191,7 @@ namespace apis {
    */
   (limitBytes: number): (hook.Handler<core.RequestEvent | undefined>)
  }
- type _saXJZha = io.ReadCloser
+ type _saXJZha = io.Read关闭r
  interface limitedReader extends _saXJZha {
  }
  interface limitedReader {
@@ -14389,12 +14389,12 @@ namespace apis {
   record: any //  map or core.Record
   action: string
  }
- interface EmailChangeConfirmForm {
+ interface 邮箱Change确认Form {
   token: string
   password: string
  }
  interface emailChangeRequestForm {
-  newEmail: string
+  new邮箱: string
  }
  interface impersonateForm {
   /**
@@ -14420,7 +14420,7 @@ namespace apis {
  }
  interface providerInfo {
   name: string
-  displayName: string
+  display名称: string
   state: string
   authURL: string
   /**
@@ -14447,21 +14447,21 @@ namespace apis {
    * @todo remove after dropping v0.22 support
    */
   authProviders: Array<providerInfo>
-  usernamePassword: boolean
-  emailPassword: boolean
+  username密码: boolean
+  email密码: boolean
  }
  interface createOTPForm {
   email: string
  }
- interface recordConfirmPasswordResetForm {
+ interface record确认密码ResetForm {
   token: string
   password: string
-  passwordConfirm: string
+  password确认: string
  }
- interface recordRequestPasswordResetForm {
+ interface recordRequest密码ResetForm {
   email: string
  }
- interface recordConfirmVerificationForm {
+ interface record确认VerificationForm {
   token: string
  }
  interface recordRequestVerificationForm {
@@ -14469,7 +14469,7 @@ namespace apis {
  }
  interface recordOAuth2LoginForm {
   /**
-   * Additional data that will be used for creating a new auth record
+   * 添加itional data that will be used for creating a new auth record
    * if an existing OAuth2 account doesn't exist.
    */
   createData: _TygojaDict
@@ -14509,7 +14509,7 @@ namespace apis {
   otpId: string
   password: string
  }
- interface authWithPasswordForm {
+ interface authWith密码Form {
   identity: string
   password: string
   /**
@@ -14568,13 +14568,13 @@ namespace apis {
    */
   showStartBanner: boolean
   /**
-   * HttpAddr is the TCP address to listen for the HTTP server (eg. "127.0.0.1:80").
+   * Http添加r is the TCP address to listen for the HTTP server (eg. "127.0.0.1:80").
    */
-  httpAddr: string
+  http添加r: string
   /**
-   * HttpsAddr is the TCP address to listen for the HTTPS server (eg. "127.0.0.1:443").
+   * Https添加r is the TCP address to listen for the HTTPS server (eg. "127.0.0.1:443").
    */
-  httpsAddr: string
+  https添加r: string
   /**
    * Optional domains list to use when issuing the TLS certificate.
    * 
@@ -14600,7 +14600,7 @@ namespace apis {
    * ```
    * 	app.Bootstrap()
    * 	apis.Serve(app, apis.ServeConfig{
-   * 		HttpAddr:        "127.0.0.1:8080",
+   * 		Http添加r:        "127.0.0.1:8080",
    * 		ShowStartBanner: false,
    * 	})
    * ```
@@ -14893,7 +14893,7 @@ namespace syscall {
    * and don't call UnlockOSThread until done with PtraceSyscall calls.
    */
   ptrace: boolean
-  setsid: boolean // Create session.
+  setsid: boolean // 创建 session.
   /**
    * Setpgid sets the process group ID of the child to Pgid,
    * or, if Pgid == 0, to the new child's process ID.
@@ -15050,9 +15050,9 @@ namespace syscall {
  * to use this package.
  * 
  * The Time returned by time.Now contains a monotonic clock reading.
- * If Time t has a monotonic clock reading, t.Add adds the same duration to
+ * If Time t has a monotonic clock reading, t.添加 adds the same duration to
  * both the wall clock and monotonic clock readings to compute the result.
- * Because t.AddDate(y, m, d), t.Round(d), and t.Truncate(d) are wall time
+ * Because t.添加Date(y, m, d), t.Round(d), and t.Truncate(d) are wall time
  * computations, they always strip any monotonic clock reading from their results.
  * Because t.In, t.Local, and t.UTC are used for their effect on the interpretation
  * of the wall time, they also strip any monotonic clock reading from their results.
@@ -15068,7 +15068,7 @@ namespace syscall {
  * On such a system, t.Sub(u) may not accurately reflect the actual
  * time that passed between t and u. The same applies to other functions and
  * methods that subtract times, such as [Since], [Until], [Time.Before], [Time.After],
- * [Time.Add], [Time.Equal] and [Time.Compare]. In some cases, you may need to strip
+ * [Time.添加], [Time.Equal] and [Time.Compare]. In some cases, you may need to strip
  * the monotonic clock to get accurate results.
  * 
  * Because the monotonic clock reading has no meaning outside
@@ -15159,7 +15159,7 @@ namespace time {
   * 
   * Time instants can be compared using the [Time.Before], [Time.After], and [Time.Equal] methods.
   * The [Time.Sub] method subtracts two instants, producing a [Duration].
-  * The [Time.Add] method adds a Time and a Duration, producing a Time.
+  * The [Time.添加] method adds a Time and a Duration, producing a Time.
   * 
   * The zero value of type Time is January 1, year 1, 00:00:00.000000000 UTC.
   * As this time is unlikely to come up in practice, the [Time.IsZero] method gives
@@ -15383,7 +15383,7 @@ namespace time {
  }
  interface Time {
   /**
-   * Add returns the time t+d.
+   * 添加 returns the time t+d.
    */
   add(d: Duration): Time
  }
@@ -15392,27 +15392,27 @@ namespace time {
    * Sub returns the duration t-u. If the result exceeds the maximum (or minimum)
    * value that can be stored in a [Duration], the maximum (or minimum) duration
    * will be returned.
-   * To compute t-d for a duration d, use t.Add(-d).
+   * To compute t-d for a duration d, use t.添加(-d).
    */
   sub(u: Time): Duration
  }
  interface Time {
   /**
-   * AddDate returns the time corresponding to adding the
+   * 添加Date returns the time corresponding to adding the
    * given number of years, months, and days to t.
-   * For example, AddDate(-1, 2, 3) applied to January 1, 2011
+   * For example, 添加Date(-1, 2, 3) applied to January 1, 2011
    * returns March 4, 2010.
    * 
    * Note that dates are fundamentally coupled to timezones, and calendrical
-   * periods like days don't have fixed durations. AddDate uses the Location of
+   * periods like days don't have fixed durations. 添加Date uses the Location of
    * the Time value to determine these durations. That means that the same
-   * AddDate arguments can produce a different shift in absolute time depending on
-   * the base Time value and its Location. For example, AddDate(0, 0, 1) applied
+   * 添加Date arguments can produce a different shift in absolute time depending on
+   * the base Time value and its Location. For example, 添加Date(0, 0, 1) applied
    * to 12:00 on March 27 always returns 12:00 on March 28. At some locations and
    * in some years this is a 24 hour shift. In others it's a 23 hour shift due to
    * daylight savings time transitions.
    * 
-   * AddDate normalizes its result in the same way that Date does,
+   * 添加Date normalizes its result in the same way that Date does,
    * so, for example, adding one month to October 31 yields
    * December 1, the normalized form for November 31.
    */
@@ -15617,23 +15617,23 @@ namespace time {
  * Incoming requests to a server should create a [Context], and outgoing
  * calls to servers should accept a Context. The chain of function
  * calls between them must propagate the Context, optionally replacing
- * it with a derived Context created using [WithCancel], [WithDeadline],
+ * it with a derived Context created using [With取消], [WithDeadline],
  * [WithTimeout], or [WithValue].
  * 
  * A Context may be canceled to indicate that work done on its behalf should stop.
  * A Context with a deadline is canceled after the deadline passes.
  * When a Context is canceled, all Contexts derived from it are also canceled.
  * 
- * The [WithCancel], [WithDeadline], and [WithTimeout] functions take a
+ * The [With取消], [WithDeadline], and [WithTimeout] functions take a
  * Context (the parent) and return a derived Context (the child) and a
- * [CancelFunc]. Calling the CancelFunc directly cancels the child and its
+ * [取消Func]. Calling the 取消Func directly cancels the child and its
  * children, removes the parent's reference to the child, and stops
- * any associated timers. Failing to call the CancelFunc leaks the
+ * any associated timers. Failing to call the 取消Func leaks the
  * child and its children until the parent is canceled. The go vet tool
- * checks that CancelFuncs are used on all control-flow paths.
+ * checks that 取消Funcs are used on all control-flow paths.
  * 
- * The [WithCancelCause], [WithDeadlineCause], and [WithTimeoutCause] functions
- * return a [CancelCauseFunc], which takes an error and records it as
+ * The [With取消Cause], [WithDeadlineCause], and [WithTimeoutCause] functions
+ * return a [取消CauseFunc], which takes an error and records it as
  * the cancellation cause. Calling [Cause] on the canceled context
  * or any of its children retrieves the cause. If no cause is specified,
  * Cause(ctx) returns the same value as ctx.Err().
@@ -15687,7 +15687,7 @@ namespace context {
    * The close of the Done channel may happen asynchronously,
    * after the cancel function returns.
    * 
-   * WithCancel arranges for Done to be closed when cancel is called;
+   * With取消 arranges for Done to be closed when cancel is called;
    * WithDeadline arranges for Done to be closed when the deadline
    * expires; WithTimeout arranges for Done to be closed when the timeout
    * elapses.
@@ -15718,7 +15718,7 @@ namespace context {
    * If Done is not yet closed, Err returns nil.
    * If Done is closed, Err returns a non-nil error explaining why:
    * DeadlineExceeded if the context's deadline passed,
-   * or Canceled if the context was canceled for some other reason.
+   * or 取消ed if the context was canceled for some other reason.
    * After Err returns a non-nil error, successive calls to Err return the same error.
    */
   err(): void
@@ -15839,16 +15839,16 @@ namespace io {
   write(p: string|Array<number>): number
  }
  /**
-  * ReadCloser is the interface that groups the basic Read and Close methods.
+  * Read关闭r is the interface that groups the basic Read and 关闭 methods.
   */
- interface ReadCloser {
+ interface Read关闭r {
   [key:string]: any;
  }
  /**
-  * ReadSeekCloser is the interface that groups the basic Read, Seek and Close
+  * ReadSeek关闭r is the interface that groups the basic Read, Seek and 关闭
   * methods.
   */
- interface ReadSeekCloser {
+ interface ReadSeek关闭r {
   [key:string]: any;
  }
 }
@@ -15876,7 +15876,7 @@ namespace fs {
   [key:string]: any;
   /**
    * Open opens the named file.
-   * [File.Close] must be called to release any associated resources.
+   * [File.关闭] must be called to release any associated resources.
    * 
    * When Open returns an error, it should be of type *PathError
    * with the Op field set to "open", the Path field set to name,
@@ -15907,9 +15907,9 @@ namespace fs {
  interface DirEntry {
   [key:string]: any;
   /**
-   * Name returns the name of the file (or subdirectory) described by the entry.
+   * 名称 returns the name of the file (or subdirectory) described by the entry.
    * This name is only the final element of the path (the base name), not the entire path.
-   * For example, Name would return "hello.go" not "home/gopher/hello.go".
+   * For example, 名称 would return "hello.go" not "home/gopher/hello.go".
    */
   name(): string
   /**
@@ -16092,10 +16092,10 @@ namespace fs {
  * 	}
  * ```
  * 
- * # Name Resolution
+ * # 名称 Resolution
  * 
  * The method for resolving domain names, whether indirectly with functions like Dial
- * or directly with functions like [LookupHost] and [LookupAddr], varies by operating system.
+ * or directly with functions like [LookupHost] and [Lookup添加r], varies by operating system.
  * 
  * On Unix systems, the resolver has two options for resolving names.
  * It can use a pure Go resolver that sends DNS requests directly to the servers
@@ -16150,7 +16150,7 @@ namespace fs {
  * On Plan 9, the resolver always accesses /net/cs and /net/dns.
  * 
  * On Windows, in Go 1.18.x and earlier, the resolver always used C
- * library functions, such as GetAddrInfo and DnsQuery.
+ * library functions, such as Get添加rInfo and DnsQuery.
  */
 namespace net {
  /**
@@ -16173,18 +16173,18 @@ namespace net {
    */
   write(b: string|Array<number>): number
   /**
-   * Close closes the connection.
+   * 关闭 closes the connection.
    * Any blocked Read or Write operations will be unblocked and return errors.
    */
   close(): void
   /**
-   * LocalAddr returns the local network address, if known.
+   * Local添加r returns the local network address, if known.
    */
-  localAddr(): Addr
+  local添加r(): 添加r
   /**
-   * RemoteAddr returns the remote network address, if known.
+   * Remote添加r returns the remote network address, if known.
    */
-  remoteAddr(): Addr
+  remote添加r(): 添加r
   /**
    * SetDeadline sets the read and write deadlines associated
    * with the connection. It is equivalent to calling both
@@ -16236,14 +16236,14 @@ namespace net {
    */
   accept(): Conn
   /**
-   * Close closes the listener.
+   * 关闭 closes the listener.
    * Any blocked Accept operations will be unblocked and return errors.
    */
   close(): void
   /**
-   * Addr returns the listener's network address.
+   * 添加r returns the listener's network address.
    */
-  addr(): Addr
+  addr(): 添加r
  }
 }
 
@@ -16417,18 +16417,18 @@ namespace sql {
    * Ping verifies a connection to the database is still alive,
    * establishing a connection if necessary.
    * 
-   * Ping uses [context.Background] internally; to specify the context, use
+   * Ping uses [context.返回ground] internally; to specify the context, use
    * [DB.PingContext].
    */
   ping(): void
  }
  interface DB {
   /**
-   * Close closes the database and prevents new queries from starting.
-   * Close then waits for all queries that have started processing on the server
+   * 关闭 closes the database and prevents new queries from starting.
+   * 关闭 then waits for all queries that have started processing on the server
    * to finish.
    * 
-   * It is rare to Close a [DB], as the [DB] handle is meant to be
+   * It is rare to 关闭 a [DB], as the [DB] handle is meant to be
    * long-lived and shared between many goroutines.
    */
   close(): void
@@ -16492,7 +16492,7 @@ namespace sql {
    * PrepareContext creates a prepared statement for later queries or executions.
    * Multiple queries or executions may be run concurrently from the
    * returned statement.
-   * The caller must call the statement's [*Stmt.Close] method
+   * The caller must call the statement's [*Stmt.关闭] method
    * when the statement is no longer needed.
    * 
    * The provided context is used for the preparation of the statement, not for the
@@ -16505,10 +16505,10 @@ namespace sql {
    * Prepare creates a prepared statement for later queries or executions.
    * Multiple queries or executions may be run concurrently from the
    * returned statement.
-   * The caller must call the statement's [*Stmt.Close] method
+   * The caller must call the statement's [*Stmt.关闭] method
    * when the statement is no longer needed.
    * 
-   * Prepare uses [context.Background] internally; to specify the context, use
+   * Prepare uses [context.返回ground] internally; to specify the context, use
    * [DB.PrepareContext].
    */
   prepare(query: string): (Stmt)
@@ -16525,7 +16525,7 @@ namespace sql {
    * Exec executes a query without returning any rows.
    * The args are for any placeholder parameters in the query.
    * 
-   * Exec uses [context.Background] internally; to specify the context, use
+   * Exec uses [context.返回ground] internally; to specify the context, use
    * [DB.ExecContext].
    */
   exec(query: string, ...args: any[]): Result
@@ -16542,7 +16542,7 @@ namespace sql {
    * Query executes a query that returns rows, typically a SELECT.
    * The args are for any placeholder parameters in the query.
    * 
-   * Query uses [context.Background] internally; to specify the context, use
+   * Query uses [context.返回ground] internally; to specify the context, use
    * [DB.QueryContext].
    */
   query(query: string, ...args: any[]): (Rows)
@@ -16567,7 +16567,7 @@ namespace sql {
    * Otherwise, [*Row.Scan] scans the first selected row and discards
    * the rest.
    * 
-   * QueryRow uses [context.Background] internally; to specify the context, use
+   * QueryRow uses [context.返回ground] internally; to specify the context, use
    * [DB.QueryRowContext].
    */
   queryRow(query: string, ...args: any[]): (Row)
@@ -16592,7 +16592,7 @@ namespace sql {
    * Begin starts a transaction. The default isolation level is dependent on
    * the driver.
    * 
-   * Begin uses [context.Background] internally; to specify the context, use
+   * Begin uses [context.返回ground] internally; to specify the context, use
    * [DB.BeginTx].
    */
   begin(): (Tx)
@@ -16611,7 +16611,7 @@ namespace sql {
    * Queries run on the same Conn will be run in the same database session.
    * 
    * Every Conn must be returned to the database pool after use by
-   * calling [Conn.Close].
+   * calling [Conn.关闭].
    */
   conn(ctx: context.Context): (Conn)
  }
@@ -16665,7 +16665,7 @@ namespace sql {
    * 
    * To use an existing prepared statement on this transaction, see [Tx.Stmt].
    * 
-   * Prepare uses [context.Background] internally; to specify the context, use
+   * Prepare uses [context.返回ground] internally; to specify the context, use
    * [Tx.PrepareContext].
    */
   prepare(query: string): (Stmt)
@@ -16711,7 +16711,7 @@ namespace sql {
    * The returned statement operates within the transaction and will be closed
    * when the transaction has been committed or rolled back.
    * 
-   * Stmt uses [context.Background] internally; to specify the context, use
+   * Stmt uses [context.返回ground] internally; to specify the context, use
    * [Tx.StmtContext].
    */
   stmt(stmt: Stmt): (Stmt)
@@ -16728,7 +16728,7 @@ namespace sql {
    * Exec executes a query that doesn't return rows.
    * For example: an INSERT and UPDATE.
    * 
-   * Exec uses [context.Background] internally; to specify the context, use
+   * Exec uses [context.返回ground] internally; to specify the context, use
    * [Tx.ExecContext].
    */
   exec(query: string, ...args: any[]): Result
@@ -16743,7 +16743,7 @@ namespace sql {
   /**
    * Query executes a query that returns rows, typically a SELECT.
    * 
-   * Query uses [context.Background] internally; to specify the context, use
+   * Query uses [context.返回ground] internally; to specify the context, use
    * [Tx.QueryContext].
    */
   query(query: string, ...args: any[]): (Rows)
@@ -16768,7 +16768,7 @@ namespace sql {
    * Otherwise, the [*Row.Scan] scans the first selected row and discards
    * the rest.
    * 
-   * QueryRow uses [context.Background] internally; to specify the context, use
+   * QueryRow uses [context.返回ground] internally; to specify the context, use
    * [Tx.QueryRowContext].
    */
   queryRow(query: string, ...args: any[]): (Row)
@@ -16798,7 +16798,7 @@ namespace sql {
    * Exec executes a prepared statement with the given arguments and
    * returns a [Result] summarizing the effect of the statement.
    * 
-   * Exec uses [context.Background] internally; to specify the context, use
+   * Exec uses [context.返回ground] internally; to specify the context, use
    * [Stmt.ExecContext].
    */
   exec(...args: any[]): Result
@@ -16815,7 +16815,7 @@ namespace sql {
    * Query executes a prepared query statement with the given arguments
    * and returns the query results as a *Rows.
    * 
-   * Query uses [context.Background] internally; to specify the context, use
+   * Query uses [context.返回ground] internally; to specify the context, use
    * [Stmt.QueryContext].
    */
   query(...args: any[]): (Rows)
@@ -16847,14 +16847,14 @@ namespace sql {
    * 	err := nameByUseridStmt.QueryRow(id).Scan(&name)
    * ```
    * 
-   * QueryRow uses [context.Background] internally; to specify the context, use
+   * QueryRow uses [context.返回ground] internally; to specify the context, use
    * [Stmt.QueryRowContext].
    */
   queryRow(...args: any[]): (Row)
  }
  interface Stmt {
   /**
-   * Close closes the statement.
+   * 关闭 closes the statement.
    */
   close(): void
  }
@@ -16891,7 +16891,7 @@ namespace sql {
  interface Rows {
   /**
    * Err returns the error, if any, that was encountered during iteration.
-   * Err may be called after an explicit or implicit [Rows.Close].
+   * Err may be called after an explicit or implicit [Rows.关闭].
    */
   err(): void
  }
@@ -16978,10 +16978,10 @@ namespace sql {
  }
  interface Rows {
   /**
-   * Close closes the [Rows], preventing further enumeration. If [Rows.Next] is called
+   * 关闭 closes the [Rows], preventing further enumeration. If [Rows.Next] is called
    * and returns false and there are no further result sets,
    * the [Rows] are closed automatically and it will suffice to check the
-   * result of [Rows.Err]. Close is idempotent and does not affect the result of [Rows.Err].
+   * result of [Rows.Err]. 关闭 is idempotent and does not affect the result of [Rows.Err].
    */
   close(): void
  }
@@ -17124,31 +17124,31 @@ namespace exec {
   processState?: os.ProcessState
   err: Error // LookPath error, if any.
   /**
-   * If Cancel is non-nil, the command must have been created with
-   * CommandContext and Cancel will be called when the command's
-   * Context is done. By default, CommandContext sets Cancel to
+   * If 取消 is non-nil, the command must have been created with
+   * CommandContext and 取消 will be called when the command's
+   * Context is done. By default, CommandContext sets 取消 to
    * call the Kill method on the command's Process.
    * 
-   * Typically a custom Cancel will send a signal to the command's
+   * Typically a custom 取消 will send a signal to the command's
    * Process, but it may instead take other actions to initiate cancellation,
    * such as closing a stdin or stdout pipe or sending a shutdown request on a
    * network socket.
    * 
-   * If the command exits with a success status after Cancel is
-   * called, and Cancel does not return an error equivalent to
+   * If the command exits with a success status after 取消 is
+   * called, and 取消 does not return an error equivalent to
    * os.ErrProcessDone, then Wait and similar methods will return a non-nil
-   * error: either an error wrapping the one returned by Cancel,
+   * error: either an error wrapping the one returned by 取消,
    * or the error from the Context.
-   * (If the command exits with a non-success status, or Cancel
+   * (If the command exits with a non-success status, or 取消
    * returns an error that wraps os.ErrProcessDone, Wait and similar methods
    * continue to return the command's usual exit status.)
    * 
-   * If Cancel is set to nil, nothing will happen immediately when the command's
+   * If 取消 is set to nil, nothing will happen immediately when the command's
    * Context is done, but a nonzero WaitDelay will still take effect. That may
    * be useful, for example, to work around deadlocks in commands that do not
    * support shutdown signals but are expected to always finish quickly.
    * 
-   * Cancel will not be called if Start returns a non-nil error.
+   * 取消 will not be called if Start returns a non-nil error.
    */
   cancel: () => void
   /**
@@ -17163,14 +17163,14 @@ namespace exec {
    * and/or its I/O pipes.
    * 
    * If the child process has failed to exit — perhaps because it ignored or
-   * failed to receive a shutdown signal from a Cancel function, or because no
-   * Cancel function was set — then it will be terminated using os.Process.Kill.
+   * failed to receive a shutdown signal from a 取消 function, or because no
+   * 取消 function was set — then it will be terminated using os.Process.Kill.
    * 
    * Then, if the I/O pipes communicating with the child process are still open,
    * those pipes are closed in order to unblock any goroutines currently blocked
    * on Read or Write calls.
    * 
-   * If pipes are closed due to WaitDelay, no Cancel call has occurred,
+   * If pipes are closed due to WaitDelay, no 取消 call has occurred,
    * and the command has otherwise exited with a successful status, Wait and
    * similar methods will return ErrWaitDelay instead of nil.
    * 
@@ -17262,11 +17262,11 @@ namespace exec {
    * StdinPipe returns a pipe that will be connected to the command's
    * standard input when the command starts.
    * The pipe will be closed automatically after [Cmd.Wait] sees the command exit.
-   * A caller need only call Close to force the pipe to close sooner.
+   * A caller need only call 关闭 to force the pipe to close sooner.
    * For example, if the command being run will not exit until standard input
    * is closed, the caller must close the pipe.
    */
-  stdinPipe(): io.WriteCloser
+  stdinPipe(): io.Write关闭r
  }
  interface Cmd {
   /**
@@ -17279,7 +17279,7 @@ namespace exec {
    * For the same reason, it is incorrect to call [Cmd.Run] when using StdoutPipe.
    * See the example for idiomatic usage.
    */
-  stdoutPipe(): io.ReadCloser
+  stdoutPipe(): io.Read关闭r
  }
  interface Cmd {
   /**
@@ -17292,7 +17292,7 @@ namespace exec {
    * For the same reason, it is incorrect to use [Cmd.Run] when using StderrPipe.
    * See the StdoutPipe example for idiomatic usage.
    */
-  stderrPipe(): io.ReadCloser
+  stderrPipe(): io.Read关闭r
  }
  interface Cmd {
   /**
@@ -17311,7 +17311,7 @@ namespace exec {
  * 
  * ```
  * 	c := cron.New()
- * 	c.MustAdd("dailyReport", "0 0 * * *", func() { ... })
+ * 	c.Must添加("dailyReport", "0 0 * * *", func() { ... })
  * 	c.Start()
  * ```
  */
@@ -17336,13 +17336,13 @@ namespace cron {
  }
  interface Cron {
   /**
-   * MustAdd is similar to Add() but panic on failure.
+   * Must添加 is similar to 添加() but panic on failure.
    */
-  mustAdd(jobId: string, cronExpr: string, run: () => void): void
+  must添加(jobId: string, cronExpr: string, run: () => void): void
  }
  interface Cron {
   /**
-   * Add registers a single cron job.
+   * 添加 registers a single cron job.
    * 
    * If there is already a job with the provided id, then the old job
    * will be replaced with the new one.
@@ -17354,13 +17354,13 @@ namespace cron {
  }
  interface Cron {
   /**
-   * Remove removes a single cron job by its id.
+   * 移除 removes a single cron job by its id.
    */
   remove(jobId: string): void
  }
  interface Cron {
   /**
-   * RemoveAll removes all registered cron jobs.
+   * 移除All removes all registered cron jobs.
    */
   removeAll(): void
  }
@@ -17475,7 +17475,7 @@ namespace multipart {
  * 	if err != nil {
  * 		// handle error
  * 	}
- * 	defer resp.Body.Close()
+ * 	defer resp.Body.关闭()
  * 	body, err := io.ReadAll(resp.Body)
  * 	// ...
  * ```
@@ -17495,7 +17495,7 @@ namespace multipart {
  * 
  * 	req, err := http.NewRequest("GET", "http://example.com", nil)
  * 	// ...
- * 	req.Header.Add("If-None-Match", `W/"wyzzy"`)
+ * 	req.Header.添加("If-None-Match", `W/"wyzzy"`)
  * 	resp, err := client.Do(req)
  * 	// ...
  * ```
@@ -17537,7 +17537,7 @@ namespace multipart {
  * 
  * ```
  * 	s := &http.Server{
- * 		Addr:           ":8080",
+ * 		添加r:           ":8080",
  * 		Handler:        myHandler,
  * 		ReadTimeout:    10 * time.Second,
  * 		WriteTimeout:   10 * time.Second,
@@ -17676,18 +17676,18 @@ namespace http {
    * 
    * For client requests, a nil body means the request has no
    * body, such as a GET request. The HTTP Client's Transport
-   * is responsible for calling the Close method.
+   * is responsible for calling the 关闭 method.
    * 
    * For server requests, the Request Body is always non-nil
    * but will return EOF immediately when no body is present.
    * The Server will close the request body. The ServeHTTP
    * Handler does not need to.
    * 
-   * Body must allow Read to be called concurrently with Close.
-   * In particular, calling Close should unblock a Read waiting
+   * Body must allow Read to be called concurrently with 关闭.
+   * In particular, calling 关闭 should unblock a Read waiting
    * for input.
    */
-  body: io.ReadCloser
+  body: io.Read关闭r
   /**
    * GetBody defines an optional func to return a new copy of
    * Body. It is used for client requests when a redirect requires
@@ -17696,7 +17696,7 @@ namespace http {
    * 
    * For server requests, it is unused.
    */
-  getBody: () => io.ReadCloser
+  getBody: () => io.Read关闭r
   /**
    * ContentLength records the length of the associated content.
    * The value -1 indicates that the length is unknown.
@@ -17716,7 +17716,7 @@ namespace http {
    */
   transferEncoding: Array<string>
   /**
-   * Close indicates whether to close the connection after
+   * 关闭 indicates whether to close the connection after
    * replying to this request (for servers) or after sending this
    * request and reading its response (for clients).
    * 
@@ -17793,15 +17793,15 @@ namespace http {
    */
   trailer: Header
   /**
-   * RemoteAddr allows HTTP servers and other software to record
+   * Remote添加r allows HTTP servers and other software to record
    * the network address that sent the request, usually for
    * logging. This field is not filled in by ReadRequest and
    * has no defined format. The HTTP server in this package
-   * sets RemoteAddr to an "IP:port" address before invoking a
+   * sets Remote添加r to an "IP:port" address before invoking a
    * handler.
    * This field is ignored by the HTTP client.
    */
-  remoteAddr: string
+  remote添加r: string
   /**
    * RequestURI is the unmodified request-target of the
    * Request-Line (RFC 7230, Section 3.1.1) as sent by the client
@@ -17820,15 +17820,15 @@ namespace http {
    */
   tls?: any
   /**
-   * Cancel is an optional channel whose closure indicates that the client
+   * 取消 is an optional channel whose closure indicates that the client
    * request should be regarded as canceled. Not all implementations of
-   * RoundTripper may support Cancel.
+   * RoundTripper may support 取消.
    * 
    * For server requests, this field is not applicable.
    * 
    * Deprecated: Set the Request's context with NewRequestWithContext
-   * instead. If a Request's Cancel field and context are both
-   * set, it is undefined whether Cancel is respected.
+   * instead. If a Request's 取消 field and context are both
+   * set, it is undefined whether 取消 is respected.
    */
   cancel: undefined
   /**
@@ -17907,10 +17907,10 @@ namespace http {
  }
  interface Request {
   /**
-   * CookiesNamed parses and returns the named HTTP cookies sent with the request
+   * Cookies名称d parses and returns the named HTTP cookies sent with the request
    * or an empty slice if none matched.
    */
-  cookiesNamed(name: string): Array<(Cookie | undefined)>
+  cookies名称d(name: string): Array<(Cookie | undefined)>
  }
  interface Request {
   /**
@@ -17923,11 +17923,11 @@ namespace http {
  }
  interface Request {
   /**
-   * AddCookie adds a cookie to the request. Per RFC 6265 section 5.4,
-   * AddCookie does not attach more than one [Cookie] header field. That
+   * 添加Cookie adds a cookie to the request. Per RFC 6265 section 5.4,
+   * 添加Cookie does not attach more than one [Cookie] header field. That
    * means all cookies, if any, are written into the same line,
    * separated by semicolon.
-   * AddCookie only sanitizes c's name and value, and does not sanitize
+   * 添加Cookie only sanitizes c's name and value, and does not sanitize
    * a Cookie header already present in the request.
    */
   addCookie(c: Cookie): void
@@ -18160,10 +18160,10 @@ namespace http {
    * Write writes the data to the connection as part of an HTTP reply.
    * 
    * If [ResponseWriter.WriteHeader] has not yet been called, Write calls
-   * WriteHeader(http.StatusOK) before writing the data. If the Header
+   * WriteHeader(http.状态OK) before writing the data. If the Header
    * does not contain a Content-Type line, Write adds a Content-Type set
    * to the result of passing the initial 512 bytes of written data to
-   * [DetectContentType]. Additionally, if the total size of all written
+   * [DetectContentType]. 添加itionally, if the total size of all written
    * data is under a few KB and there are no Flush calls, the
    * Content-Length header is added automatically.
    * 
@@ -18185,7 +18185,7 @@ namespace http {
    * status code.
    * 
    * If WriteHeader is not called explicitly, the first call to Write
-   * will trigger an implicit WriteHeader(http.StatusOK).
+   * will trigger an implicit WriteHeader(http.状态OK).
    * Thus explicit calls to WriteHeader are mainly used to
    * send error codes or 1xx informational responses.
    * 
@@ -18208,7 +18208,7 @@ namespace http {
   */
  interface Server {
   /**
-   * Addr optionally specifies the TCP address for the server to listen on,
+   * 添加r optionally specifies the TCP address for the server to listen on,
    * in the form "host:port". If empty, ":http" (port 80) is used.
    * The service names are defined in RFC 6335 and assigned by IANA.
    * See net.Dial for details of the address format.
@@ -18279,7 +18279,7 @@ namespace http {
    * protocol upgrade has occurred. The map key is the protocol
    * name negotiated. The Handler argument should be used to
    * handle HTTP requests and will initialize the Request's TLS
-   * and RemoteAddr if not already set. The connection is
+   * and Remote添加r if not already set. The connection is
    * automatically closed when the function returns.
    * If TLSNextProto is not nil, HTTP/2 support is not enabled
    * automatically.
@@ -18303,7 +18303,7 @@ namespace http {
    * the base context for incoming requests on this server.
    * The provided Listener is the specific Listener that's
    * about to start accepting requests.
-   * If BaseContext is nil, the default is context.Background().
+   * If BaseContext is nil, the default is context.返回ground().
    * If non-nil, it must return a non-nil context.
    */
   baseContext: (_arg0: net.Listener) => context.Context
@@ -18336,14 +18336,14 @@ namespace http {
  }
  interface Server {
   /**
-   * Close immediately closes all active net.Listeners and any
+   * 关闭 immediately closes all active net.Listeners and any
    * connections in state [StateNew], [StateActive], or [StateIdle]. For a
    * graceful shutdown, use [Server.Shutdown].
    * 
-   * Close does not attempt to close (and does not even know about)
+   * 关闭 does not attempt to close (and does not even know about)
    * any hijacked connections, such as WebSockets.
    * 
-   * Close returns any error returned from closing the [Server]'s
+   * 关闭 returns any error returned from closing the [Server]'s
    * underlying Listener(s).
    */
   close(): void
@@ -18359,7 +18359,7 @@ namespace http {
    * error returned from closing the [Server]'s underlying Listener(s).
    * 
    * When Shutdown is called, [Serve], [ListenAndServe], and
-   * [ListenAndServeTLS] immediately return [ErrServerClosed]. Make sure the
+   * [ListenAndServeTLS] immediately return [ErrServer关闭d]. Make sure the
    * program doesn't exit and waits instead for Shutdown to return.
    * 
    * Shutdown does not attempt to close nor wait for hijacked
@@ -18369,7 +18369,7 @@ namespace http {
    * register shutdown notification functions.
    * 
    * Once Shutdown has been called on a server, it may not be reused;
-   * future calls to methods such as Serve will return ErrServerClosed.
+   * future calls to methods such as Serve will return ErrServer关闭d.
    */
   shutdown(ctx: context.Context): void
  }
@@ -18385,14 +18385,14 @@ namespace http {
  }
  interface Server {
   /**
-   * ListenAndServe listens on the TCP network address s.Addr and then
+   * ListenAndServe listens on the TCP network address s.添加r and then
    * calls [Serve] to handle requests on incoming connections.
    * Accepted connections are configured to enable TCP keep-alives.
    * 
-   * If s.Addr is blank, ":http" is used.
+   * If s.添加r is blank, ":http" is used.
    * 
-   * ListenAndServe always returns a non-nil error. After [Server.Shutdown] or [Server.Close],
-   * the returned error is [ErrServerClosed].
+   * ListenAndServe always returns a non-nil error. After [Server.Shutdown] or [Server.关闭],
+   * the returned error is [ErrServer关闭d].
    */
   listenAndServe(): void
  }
@@ -18407,7 +18407,7 @@ namespace http {
    * Config.NextProtos.
    * 
    * Serve always returns a non-nil error and closes l.
-   * After [Server.Shutdown] or [Server.Close], the returned error is [ErrServerClosed].
+   * After [Server.Shutdown] or [Server.关闭], the returned error is [ErrServer关闭d].
    */
   serve(l: net.Listener): void
  }
@@ -18425,8 +18425,8 @@ namespace http {
    * certFile should be the concatenation of the server's certificate,
    * any intermediates, and the CA's certificate.
    * 
-   * ServeTLS always returns a non-nil error. After [Server.Shutdown] or [Server.Close], the
-   * returned error is [ErrServerClosed].
+   * ServeTLS always returns a non-nil error. After [Server.Shutdown] or [Server.关闭], the
+   * returned error is [ErrServer关闭d].
    */
   serveTLS(l: net.Listener, certFile: string, keyFile: string): void
  }
@@ -18441,7 +18441,7 @@ namespace http {
  }
  interface Server {
   /**
-   * ListenAndServeTLS listens on the TCP network address s.Addr and
+   * ListenAndServeTLS listens on the TCP network address s.添加r and
    * then calls [ServeTLS] to handle requests on incoming TLS connections.
    * Accepted connections are configured to enable TCP keep-alives.
    * 
@@ -18452,10 +18452,10 @@ namespace http {
    * concatenation of the server's certificate, any intermediates, and
    * the CA's certificate.
    * 
-   * If s.Addr is blank, ":https" is used.
+   * If s.添加r is blank, ":https" is used.
    * 
    * ListenAndServeTLS always returns a non-nil error. After [Server.Shutdown] or
-   * [Server.Close], the returned error is [ErrServerClosed].
+   * [Server.关闭], the returned error is [ErrServer关闭d].
    */
   listenAndServeTLS(certFile: string, keyFile: string): void
  }
@@ -18546,8 +18546,8 @@ namespace blob {
    */
   metadata: _TygojaDict
   /**
-   * CreateTime is the time the blob was created, if available. If not available,
-   * CreateTime will be the zero time.
+   * 创建Time is the time the blob was created, if available. If not available,
+   * 创建Time will be the zero time.
    */
   createTime: time.Time
   /**
@@ -18569,7 +18569,7 @@ namespace blob {
  }
  /**
   * Reader reads bytes from a blob.
-  * It implements io.ReadSeekCloser, and must be closed after reads are finished.
+  * It implements io.ReadSeek关闭r, and must be closed after reads are finished.
   */
  interface Reader {
  }
@@ -18587,7 +18587,7 @@ namespace blob {
  }
  interface Reader {
   /**
-   * Close implements io.Closer (https://golang.org/pkg/io/#Closer).
+   * 关闭 implements io.关闭r (https://golang.org/pkg/io/#关闭r).
    */
   close(): void
  }
@@ -18731,7 +18731,7 @@ namespace blob {
  * 	\pF            Unicode character class F (one-letter name)
  * ```
  * 
- * Named character classes as character class elements:
+ * 名称d character classes as character class elements:
  * 
  * ```
  * 	[\d]           digits (== \d)
@@ -18740,8 +18740,8 @@ namespace blob {
  * 	[^\D]          not not digits (== \d)
  * 	[[:name:]]     named ASCII class inside character class (== [:name:])
  * 	[^[:name:]]    named ASCII class inside negated character class (== [:^name:])
- * 	[\p{Name}]     named Unicode property inside character class (== \p{Name})
- * 	[^\p{Name}]    named Unicode property inside negated character class (== \P{Name})
+ * 	[\p{名称}]     named Unicode property inside character class (== \p{名称})
+ * 	[^\p{名称}]    named Unicode property inside negated character class (== \P{名称})
  * ```
  * 
  * Perl character classes (all ASCII-only):
@@ -18804,15 +18804,15 @@ namespace store {
  }
  interface Store<K, T> {
   /**
-   * RemoveAll removes all the existing store entries.
+   * 移除All removes all the existing store entries.
    */
   removeAll(): void
  }
  interface Store<K, T> {
   /**
-   * Remove removes a single entry from the store.
+   * 移除 removes a single entry from the store.
    * 
-   * Remove does nothing if key doesn't exist in the store.
+   * 移除 does nothing if key doesn't exist in the store.
    */
   remove(key: K): void
  }
@@ -18983,7 +18983,7 @@ namespace hook {
  /**
   * Handler defines a single Hook handler.
   * Multiple handlers can share the same id.
-  * If Id is not explicitly set it will be autogenerated by Hook.Add and Hook.AddHandler.
+  * If Id is not explicitly set it will be autogenerated by Hook.添加 and Hook.添加Handler.
   */
  interface Handler<T> {
   /**
@@ -18996,7 +18996,7 @@ namespace hook {
   /**
    * Id is the unique identifier of the handler.
    * 
-   * It could be used later to remove the handler from a hook via [Hook.Remove].
+   * It could be used later to remove the handler from a hook via [Hook.移除].
    * 
    * If missing, an autogenerated value will be assigned when adding
    * the handler to a hook.
@@ -19060,7 +19060,7 @@ namespace hook {
   /**
    * Unbind removes one or many hook handler by their id.
    */
-  unbind(...idsToRemove: string[]): void
+  unbind(...idsTo移除: string[]): void
  }
  interface Hook<T> {
   /**
@@ -19141,7 +19141,7 @@ namespace types {
  }
  interface DateTime {
   /**
-   * Add returns a new DateTime based on the current DateTime + the specified duration.
+   * 添加 returns a new DateTime based on the current DateTime + the specified duration.
    */
   add(duration: time.Duration): DateTime
  }
@@ -19156,9 +19156,9 @@ namespace types {
  }
  interface DateTime {
   /**
-   * AddDate returns a new DateTime based on the current one + duration.
+   * 添加Date returns a new DateTime based on the current one + duration.
    * 
-   * It follows the same rules as [time.AddDate].
+   * It follows the same rules as [time.添加Date].
    */
   addDate(years: number, months: number, days: number): DateTime
  }
@@ -19485,9 +19485,9 @@ namespace router {
  }
  interface Event {
   /**
-   * Status reports the status code of the current response.
+   * 状态 reports the status code of the current response.
    * 
-   * This method always returns 0 if e.Response doesn't implement the StatusTracker interface
+   * This method always returns 0 if e.Response doesn't implement the 状态Tracker interface
    * (all router package handlers receives a ResponseWritter that implements it unless explicitly replaced with a custom one).
    */
   status(): number
@@ -19512,7 +19512,7 @@ namespace router {
    * SetCookie is an alias for [http.SetCookie].
    * 
    * SetCookie adds a Set-Cookie header to the current response's headers.
-   * The provided cookie must have a valid Name.
+   * The provided cookie must have a valid 名称.
    * Invalid cookies may be silently dropped.
    */
   setCookie(cookie: http.Cookie): void
@@ -19945,7 +19945,7 @@ namespace cobra {
    * previously set context will be returned. Otherwise, nil is returned.
    * 
    * Notice that a call to Execute and ExecuteC will replace a nil context of
-   * a command with a context.Background, so a background context will be
+   * a command with a context.返回ground, so a background context will be
    * returned by Context after one of these functions has been called.
    */
   context(): context.Context
@@ -20144,7 +20144,7 @@ namespace cobra {
  }
  interface Command {
   /**
-   * NamePadding returns padding for the name.
+   * 名称Padding returns padding for the name.
    */
   namePadding(): number
  }
@@ -20191,9 +20191,9 @@ namespace cobra {
  }
  interface Command {
   /**
-   * SuggestionsFor provides suggestions for the typedName.
+   * SuggestionsFor provides suggestions for the typed名称.
    */
-  suggestionsFor(typedName: string): Array<string>
+  suggestionsFor(typed名称: string): Array<string>
  }
  interface Command {
   /**
@@ -20292,7 +20292,7 @@ namespace cobra {
  }
  interface Command {
   /**
-   * AddCommand adds one or more commands to this parent command.
+   * 添加Command adds one or more commands to this parent command.
    */
   addCommand(...cmds: (Command | undefined)[]): void
  }
@@ -20316,13 +20316,13 @@ namespace cobra {
  }
  interface Command {
   /**
-   * AddGroup adds one or more command groups to this parent command.
+   * 添加Group adds one or more command groups to this parent command.
    */
   addGroup(...groups: (Group | undefined)[]): void
  }
  interface Command {
   /**
-   * RemoveCommand removes one or more commands from a parent command.
+   * 移除Command removes one or more commands from a parent command.
    */
   removeCommand(...cmds: (Command | undefined)[]): void
  }
@@ -20376,10 +20376,10 @@ namespace cobra {
  }
  interface Command {
   /**
-   * DisplayName returns the name to display in help text. Returns command Name()
-   * If CommandDisplayNameAnnoation is not set
+   * Display名称 returns the name to display in help text. Returns command 名称()
+   * If CommandDisplay名称Annoation is not set
    */
-  displayName(): string
+  display名称(): string
  }
  interface Command {
   /**
@@ -20396,7 +20396,7 @@ namespace cobra {
  }
  interface Command {
   /**
-   * Name returns the command's name: the first word in the use line.
+   * 名称 returns the command's name: the first word in the use line.
    */
   name(): string
  }
@@ -20415,7 +20415,7 @@ namespace cobra {
  }
  interface Command {
   /**
-   * NameAndAliases returns a list of the command name and all aliases
+   * 名称AndAliases returns a list of the command name and all aliases
    */
   nameAndAliases(): string
  }
@@ -20446,13 +20446,13 @@ namespace cobra {
  }
  interface Command {
   /**
-   * IsAdditionalHelpTopicCommand determines if a command is an additional
+   * Is添加itionalHelpTopicCommand determines if a command is an additional
    * help topic command; additional help topic command is determined by the
    * fact that it is NOT runnable/hidden/deprecated, and has no sub commands that
    * are runnable/hidden/deprecated.
    * Concrete example: https://github.com/spf13/cobra/issues/393#issuecomment-282741924.
    */
-  isAdditionalHelpTopicCommand(): boolean
+  is添加itionalHelpTopicCommand(): boolean
  }
  interface Command {
   /**
@@ -20604,13 +20604,13 @@ namespace cobra {
    * You can use pre-defined completion functions such as [FixedCompletions] or [NoFileCompletions],
    * or you can define your own.
    */
-  registerFlagCompletionFunc(flagName: string, f: CompletionFunc): void
+  registerFlagCompletionFunc(flag名称: string, f: CompletionFunc): void
  }
  interface Command {
   /**
    * GetFlagCompletionFunc returns the completion function for the given flag of the command, if available.
    */
-  getFlagCompletionFunc(flagName: string): [CompletionFunc, boolean]
+  getFlagCompletionFunc(flag名称: string): [CompletionFunc, boolean]
  }
  interface Command {
   /**
@@ -20639,21 +20639,21 @@ namespace cobra {
    * MarkFlagsRequiredTogether marks the given flags with annotations so that Cobra errors
    * if the command is invoked with a subset (but not all) of the given flags.
    */
-  markFlagsRequiredTogether(...flagNames: string[]): void
+  markFlagsRequiredTogether(...flag名称s: string[]): void
  }
  interface Command {
   /**
    * MarkFlagsOneRequired marks the given flags with annotations so that Cobra errors
    * if the command is invoked without at least one flag from the given set of flags.
    */
-  markFlagsOneRequired(...flagNames: string[]): void
+  markFlagsOneRequired(...flag名称s: string[]): void
  }
  interface Command {
   /**
    * MarkFlagsMutuallyExclusive marks the given flags with annotations so that Cobra errors
    * if the command is invoked with more than one flag from the given set of flags.
    */
-  markFlagsMutuallyExclusive(...flagNames: string[]): void
+  markFlagsMutuallyExclusive(...flag名称s: string[]): void
  }
  interface Command {
   /**
@@ -20822,14 +20822,14 @@ namespace auth {
    */
   setPKCE(enable: boolean): void
   /**
-   * DisplayName usually returns provider name as it is officially written
+   * Display名称 usually returns provider name as it is officially written
    * and it could be used directly in the UI.
    */
-  displayName(): string
+  display名称(): string
   /**
-   * SetDisplayName sets the provider's display name.
+   * SetDisplay名称 sets the provider's display name.
    */
-  setDisplayName(displayName: string): void
+  setDisplay名称(display名称: string): void
   /**
    * Scopes returns the provider access permissions that will be requested.
    */
@@ -21111,7 +21111,7 @@ namespace subscriptions {
    * For example, writing to a router.Event:
    * 
    * ```
-   * 	m := Message{Name: "users/create", Data: []byte{...}}
+   * 	m := Message{名称: "users/create", Data: []byte{...}}
    * 	m.WriteSSE(e.Response, "yourEventId")
    * 	e.Flush()
    * ```
@@ -21417,7 +21417,7 @@ namespace subscriptions {
  * A Record contains a mixture of simple public fields (e.g. Time, Level, Message)
  * and hidden fields that refer to state (such as attributes) indirectly. This
  * means that modifying a simple copy of a Record (e.g. by calling
- * [Record.Add] or [Record.AddAttrs] to add attributes)
+ * [Record.添加] or [Record.添加Attrs] to add attributes)
  * may have unexpected effects on the original.
  * Before modifying a Record, use [Record.Clone] to
  * create a copy that shares no state with the original,
@@ -21625,9 +21625,9 @@ namespace sync {
 
 namespace io {
  /**
-  * WriteCloser is the interface that groups the basic Write and Close methods.
+  * Write关闭r is the interface that groups the basic Write and 关闭 methods.
   */
- interface WriteCloser {
+ interface Write关闭r {
   [key:string]: any;
  }
 }
@@ -21900,10 +21900,10 @@ namespace syscall {
  // @ts-ignore
  import errpkg = errors
  /**
-  * SysProcIDMap holds Container ID to Host ID mappings used for User Namespaces in Linux.
+  * SysProcIDMap holds Container ID to Host ID mappings used for User 名称spaces in Linux.
   * See user_namespaces(7).
   * 
-  * Note that User Namespaces are not available on a number of popular Linux
+  * Note that User 名称spaces are not available on a number of popular Linux
   * versions (due to security issues), or are available but subject to AppArmor
   * restrictions like in Ubuntu 24.04.
   */
@@ -22127,7 +22127,7 @@ namespace url {
  }
  interface Values {
   /**
-   * Add adds the value to key. It appends to any existing
+   * 添加 adds the value to key. It appends to any existing
    * values associated with key.
    */
   add(key: string, value: string): void
@@ -22233,13 +22233,13 @@ namespace types {
 
 namespace net {
  /**
-  * Addr represents a network end point address.
+  * 添加r represents a network end point address.
   * 
-  * The two methods [Addr.Network] and [Addr.String] conventionally return strings
+  * The two methods [添加r.Network] and [添加r.String] conventionally return strings
   * that can be passed as the arguments to [Dial], but the exact form
   * and meaning of the strings is up to the implementation.
   */
- interface Addr {
+ interface 添加r {
   [key:string]: any;
   network(): string // name of the network (for example, "tcp", "udp")
   string(): string // string form of address (for example, "192.0.2.1:25", "[2001:db8::1]:80")
@@ -22276,7 +22276,7 @@ namespace textproto {
  interface MIMEHeader extends _TygojaDict{}
  interface MIMEHeader {
   /**
-   * Add adds the key, value pair to the header.
+   * 添加 adds the key, value pair to the header.
    * It appends to any existing values associated with key.
    */
   add(key: string, value: string): void
@@ -22343,7 +22343,7 @@ namespace multipart {
  }
  interface Form {
   /**
-   * RemoveAll removes any temporary files associated with a [Form].
+   * 移除All removes any temporary files associated with a [Form].
    */
   removeAll(): void
  }
@@ -22416,9 +22416,9 @@ namespace http {
  interface Cookie {
   /**
    * String returns the serialization of the cookie for use in a [Cookie]
-   * header (if only Name and Value are set) or a Set-Cookie response
+   * header (if only 名称 and Value are set) or a Set-Cookie response
    * header (if other fields are set).
-   * If c is nil or c.Name is invalid, the empty string is returned.
+   * If c is nil or c.名称 is invalid, the empty string is returned.
    */
   string(): string
  }
@@ -22439,7 +22439,7 @@ namespace http {
  interface Header extends _TygojaDict{}
  interface Header {
   /**
-   * Add adds the key, value pair to the header.
+   * 添加 adds the key, value pair to the header.
    * It appends to any existing values associated with key.
    * The key is case insensitive; it is canonicalized by
    * [CanonicalHeaderKey].
@@ -22687,7 +22687,7 @@ namespace http {
    * on a successful "101 Switching Protocols" response,
    * as used by WebSockets and HTTP/2's "h2c" mode.
    */
-  body: io.ReadCloser
+  body: io.Read关闭r
   /**
    * ContentLength records the length of the associated content. The
    * value -1 indicates that the length is unknown. Unless Request.Method
@@ -22701,7 +22701,7 @@ namespace http {
    */
   transferEncoding: Array<string>
   /**
-   * Close records whether the header directed that the connection be
+   * 关闭 records whether the header directed that the connection be
    * closed after reading Body. The value is advice for clients: neither
    * ReadResponse nor Response.Write ever closes a connection.
    */
@@ -22775,7 +22775,7 @@ namespace http {
    * This method consults the following fields of the response r:
    * 
    * ```
-   * 	StatusCode
+   * 	状态Code
    * 	ProtoMajor
    * 	ProtoMinor
    * 	Request.Method
@@ -22925,10 +22925,10 @@ namespace cobra {
    */
   disableNoDescFlag: boolean
   /**
-   * DisableDescriptions turns off all completion descriptions for shells
+   * Disable描述s turns off all completion descriptions for shells
    * that support them
    */
-  disableDescriptions: boolean
+  disable描述s: boolean
   /**
    * HiddenDefaultCmd makes the default 'completion' command hidden
    */
@@ -23015,7 +23015,7 @@ namespace sql {
  interface DBStats {
   maxOpenConnections: number // Maximum number of open connections to the database.
   /**
-   * Pool Status
+   * Pool 状态
    */
   openConnections: number // The number of established connections both in use and idle.
   inUse: number // The number of connections currently in use.
@@ -23025,19 +23025,19 @@ namespace sql {
    */
   waitCount: number // The total number of connections waited for.
   waitDuration: time.Duration // The total time blocked waiting for a new connection.
-  maxIdleClosed: number // The total number of connections closed due to SetMaxIdleConns.
-  maxIdleTimeClosed: number // The total number of connections closed due to SetConnMaxIdleTime.
-  maxLifetimeClosed: number // The total number of connections closed due to SetConnMaxLifetime.
+  maxIdle关闭d: number // The total number of connections closed due to SetMaxIdleConns.
+  maxIdleTime关闭d: number // The total number of connections closed due to SetConnMaxIdleTime.
+  maxLifetime关闭d: number // The total number of connections closed due to SetConnMaxLifetime.
  }
  /**
   * Conn represents a single database connection rather than a pool of database
   * connections. Prefer running queries from [DB] unless there is a specific
   * need for a continuous single database connection.
   * 
-  * A Conn must call [Conn.Close] to return the connection to the database pool
+  * A Conn must call [Conn.关闭] to return the connection to the database pool
   * and may do so concurrently with a running query.
   * 
-  * After a call to [Conn.Close], all operations on the
+  * After a call to [Conn.关闭], all operations on the
   * connection fail with [ErrConnDone].
   */
  interface Conn {
@@ -23078,7 +23078,7 @@ namespace sql {
    * PrepareContext creates a prepared statement for later queries or executions.
    * Multiple queries or executions may be run concurrently from the
    * returned statement.
-   * The caller must call the statement's [*Stmt.Close] method
+   * The caller must call the statement's [*Stmt.关闭] method
    * when the statement is no longer needed.
    * 
    * The provided context is used for the preparation of the statement, not for the
@@ -23092,7 +23092,7 @@ namespace sql {
    * duration of f. The driverConn must not be used outside of f.
    * 
    * Once f returns and err is not [driver.ErrBadConn], the [Conn] will continue to be usable
-   * until [Conn.Close] is called.
+   * until [Conn.关闭] is called.
    */
   raw(f: (driverConn: any) => void): void
  }
@@ -23113,9 +23113,9 @@ namespace sql {
  }
  interface Conn {
   /**
-   * Close returns the connection to the connection pool.
-   * All operations after a Close will return with [ErrConnDone].
-   * Close is safe to call concurrently with other operations and will
+   * 关闭 returns the connection to the connection pool.
+   * All operations after a 关闭 will return with [ErrConnDone].
+   * 关闭 is safe to call concurrently with other operations and will
    * block until all other operations finish. It may be useful to first
    * cancel any used context and then call close directly after.
    */
@@ -23128,7 +23128,7 @@ namespace sql {
  }
  interface ColumnType {
   /**
-   * Name returns the name or alias of the column.
+   * 名称 returns the name or alias of the column.
    */
   name(): string
  }
@@ -23166,14 +23166,14 @@ namespace sql {
  }
  interface ColumnType {
   /**
-   * DatabaseTypeName returns the database system name of the column type. If an empty
+   * DatabaseType名称 returns the database system name of the column type. If an empty
    * string is returned, then the driver type name is not supported.
    * Consult your driver documentation for a list of driver data types. [ColumnType.Length] specifiers
    * are not included.
    * Common type names include "VARCHAR", "TEXT", "NVARCHAR", "DECIMAL", "BOOL",
    * "INT", and "BIGINT".
    */
-  databaseTypeName(): string
+  databaseType名称(): string
  }
  /**
   * Row is the result of calling [DB.QueryRow] to select a single row.
@@ -23318,55 +23318,55 @@ namespace router {
  }
  interface RouterGroup<T> {
   /**
-   * Any is a shorthand for [RouterGroup.AddRoute] with "" as route method (aka. matches any method).
+   * Any is a shorthand for [RouterGroup.添加Route] with "" as route method (aka. matches any method).
    */
   any(path: string, action: (e: T) => void): (Route<T>)
  }
  interface RouterGroup<T> {
   /**
-   * GET is a shorthand for [RouterGroup.AddRoute] with GET as route method.
+   * GET is a shorthand for [RouterGroup.添加Route] with GET as route method.
    */
   get(path: string, action: (e: T) => void): (Route<T>)
  }
  interface RouterGroup<T> {
   /**
-   * SEARCH is a shorthand for [RouterGroup.AddRoute] with SEARCH as route method.
+   * SEARCH is a shorthand for [RouterGroup.添加Route] with SEARCH as route method.
    */
   search(path: string, action: (e: T) => void): (Route<T>)
  }
  interface RouterGroup<T> {
   /**
-   * POST is a shorthand for [RouterGroup.AddRoute] with POST as route method.
+   * POST is a shorthand for [RouterGroup.添加Route] with POST as route method.
    */
   post(path: string, action: (e: T) => void): (Route<T>)
  }
  interface RouterGroup<T> {
   /**
-   * DELETE is a shorthand for [RouterGroup.AddRoute] with DELETE as route method.
+   * DELETE is a shorthand for [RouterGroup.添加Route] with DELETE as route method.
    */
   delete(path: string, action: (e: T) => void): (Route<T>)
  }
  interface RouterGroup<T> {
   /**
-   * PATCH is a shorthand for [RouterGroup.AddRoute] with PATCH as route method.
+   * PATCH is a shorthand for [RouterGroup.添加Route] with PATCH as route method.
    */
   patch(path: string, action: (e: T) => void): (Route<T>)
  }
  interface RouterGroup<T> {
   /**
-   * PUT is a shorthand for [RouterGroup.AddRoute] with PUT as route method.
+   * PUT is a shorthand for [RouterGroup.添加Route] with PUT as route method.
    */
   put(path: string, action: (e: T) => void): (Route<T>)
  }
  interface RouterGroup<T> {
   /**
-   * HEAD is a shorthand for [RouterGroup.AddRoute] with HEAD as route method.
+   * HEAD is a shorthand for [RouterGroup.添加Route] with HEAD as route method.
    */
   head(path: string, action: (e: T) => void): (Route<T>)
  }
  interface RouterGroup<T> {
   /**
-   * OPTIONS is a shorthand for [RouterGroup.AddRoute] with OPTIONS as route method.
+   * OPTIONS is a shorthand for [RouterGroup.添加Route] with OPTIONS as route method.
    */
   options(path: string, action: (e: T) => void): (Route<T>)
  }
@@ -23424,7 +23424,7 @@ namespace slog {
    * It is called early, before any arguments are processed,
    * to save effort if the log event should be discarded.
    * If called from a Logger method, the first argument is the context
-   * passed to that method, or context.Background() if nil was passed
+   * passed to that method, or context.返回ground() if nil was passed
    * or the method does not take a context.
    * The context is passed so Enabled can use its values
    * to make a decision.
@@ -23435,7 +23435,7 @@ namespace slog {
    * It will only be called when Enabled returns true.
    * The Context argument is as for Enabled.
    * It is present solely to provide Handlers access to the context's values.
-   * Canceling the context should not affect record processing.
+   * 取消ing the context should not affect record processing.
    * (Among other things, log messages may be necessary to debug a
    * cancellation-related problem.)
    * 
@@ -23572,13 +23572,13 @@ namespace url {
  }
  interface Userinfo {
   /**
-   * Username returns the username.
+   * 用户名 returns the username.
    */
   username(): string
  }
  interface Userinfo {
   /**
-   * Password returns the password in case it is set, and whether it is set.
+   * 密码 returns the password in case it is set, and whether it is set.
    */
   password(): [string, boolean]
  }
@@ -23605,18 +23605,18 @@ namespace multipart {
  }
  interface Part {
   /**
-   * FormName returns the name parameter if p has a Content-Disposition
+   * Form名称 returns the name parameter if p has a Content-Disposition
    * of type "form-data".  Otherwise it returns the empty string.
    */
-  formName(): string
+  form名称(): string
  }
  interface Part {
   /**
-   * FileName returns the filename parameter of the [Part]'s Content-Disposition
+   * File名称 returns the filename parameter of the [Part]'s Content-Disposition
    * header. If not empty, the filename is passed through filepath.Base (which is
    * platform dependent) before being returned.
    */
-  fileName(): string
+  file名称(): string
  }
  interface Part {
   /**
@@ -23756,14 +23756,14 @@ namespace slog {
  }
  interface Record {
   /**
-   * AddAttrs appends the given Attrs to the [Record]'s list of Attrs.
+   * 添加Attrs appends the given Attrs to the [Record]'s list of Attrs.
    * It omits empty groups.
    */
   addAttrs(...attrs: Attr[]): void
  }
  interface Record {
   /**
-   * Add converts the args to Attrs as described in [Logger.Log],
+   * 添加 converts the args to Attrs as described in [Logger.Log],
    * then appends the Attrs to the [Record]'s list of Attrs.
    * It omits empty groups.
    */

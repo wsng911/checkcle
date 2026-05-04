@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, Dialog描述, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -8,28 +8,28 @@ import { RegionalAgentConfigForm } from "./RegionalAgentConfigForm";
 import { RegionalOneClickTab } from "./RegionalOneClickTab";
 import { RegionalManualTab } from "./RegionalManualTab";
 
-interface AddRegionalAgentDialogProps {
+interface 添加RegionalAgentDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onAgentAdded: () => void;
+  onAgent添加ed: () => void;
 }
 
-export const AddRegionalAgentDialog: React.FC<AddRegionalAgentDialogProps> = ({
+export const 添加RegionalAgentDialog: React.FC<添加RegionalAgentDialogProps> = ({
   open,
   onOpenChange,
-  onAgentAdded
+  onAgent添加ed
 }) => {
   const { t } = useLanguage();
   const { toast } = useToast();
   const [activeTab, setActiveTab] = useState("configure");
   const [formData, setFormData] = useState({
-    regionName: "",
+    region名称: "",
     agentIp: "",
   });
   const [agentToken, setAgentToken] = useState("");
   const [agentId, setAgentId] = useState("");
   const [currentPocketBaseUrl, setCurrentPocketBaseUrl] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [is提交ting, setIs提交ting] = useState(false);
 
   // Generate new credentials when dialog opens or after successful creation
   const generateNewCredentials = () => {
@@ -47,36 +47,36 @@ export const AddRegionalAgentDialog: React.FC<AddRegionalAgentDialogProps> = ({
     }
   }, [open]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handle提交 = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.regionName.trim() || !formData.agentIp.trim()) return;
+    if (!formData.region名称.trim() || !formData.agentIp.trim()) return;
 
-    setIsSubmitting(true);
+    setIs提交ting(true);
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       toast({
         title: t('success'),
-        description: t('agentCreatedSuccessfully'),
+        description: t('agent创建dSuccessfully'),
       });
       setActiveTab("one-click");
       generateNewCredentials();
       
-      onAgentAdded();
+      onAgent添加ed();
     } catch (error) {
       toast({
         title: t('error'),
-        description: t('failedToCreateAgent'),
+        description: t('failedTo创建Agent'),
         variant: "destructive",
       });
     } finally {
-      setIsSubmitting(false);
+      setIs提交ting(false);
     }
   };
 
-  const handleDialogClose = () => {
+  const handleDialog关闭 = () => {
     setFormData({
-      regionName: "",
+      region名称: "",
       agentIp: "",
     });
     setActiveTab("configure");
@@ -85,51 +85,51 @@ export const AddRegionalAgentDialog: React.FC<AddRegionalAgentDialogProps> = ({
   };
 
   return (
-    <Dialog open={open} onOpenChange={handleDialogClose}>
-      <DialogContent className="sm:max-w-[900px] max-h-[90vh] overflow-auto">
+    <Dialog open={open} onOpenChange={handleDialog关闭}>
+      <DialogContent class名称="sm:max-w-[900px] max-h-[90vh] overflow-auto">
         <DialogHeader>
-          <DialogTitle>{t('addRegionalMonitoringAgent')}</DialogTitle>
-          <DialogDescription>
-            {t('deployRegionalMonitoringAgent')}
-          </DialogDescription>
+          <DialogTitle>{t('addRegional监控ingAgent')}</DialogTitle>
+          <Dialog描述>
+            {t('deployRegional监控ingAgent')}
+          </Dialog描述>
         </DialogHeader>
 
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-3">
+        <Tabs value={activeTab} onValueChange={setActiveTab} class名称="w-full">
+          <TabsList class名称="grid w-full grid-cols-3">
             <TabsTrigger value="configure">{t('configureAgent')}</TabsTrigger>
             <TabsTrigger value="one-click">{t('oneClickInstallTab')}</TabsTrigger>
             <TabsTrigger value="manual">{t('manualInstallTab')}</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="configure" className="space-y-6">
+          <TabsContent value="configure" class名称="space-y-6">
             <RegionalAgentConfigForm
               formData={formData}
               setFormData={setFormData}
               agentId={agentId}
               agentToken={agentToken}
               currentPocketBaseUrl={currentPocketBaseUrl}
-              isSubmitting={isSubmitting}
-              onSubmit={handleSubmit}
+              is提交ting={is提交ting}
+              on提交={handle提交}
             />
           </TabsContent>
 
-          <TabsContent value="one-click" className="space-y-6">
+          <TabsContent value="one-click" class名称="space-y-6">
             <RegionalOneClickTab
               agentToken={agentToken}
               currentPocketBaseUrl={currentPocketBaseUrl}
               formData={formData}
               agentId={agentId}
-              onDialogClose={handleDialogClose}
+              onDialog关闭={handleDialog关闭}
             />
           </TabsContent>
 
-          <TabsContent value="manual" className="space-y-6">
+          <TabsContent value="manual" class名称="space-y-6">
             <RegionalManualTab
               agentToken={agentToken}
               currentPocketBaseUrl={currentPocketBaseUrl}
               formData={formData}
               agentId={agentId}
-              onDialogClose={handleDialogClose}
+              onDialog关闭={handleDialog关闭}
             />
           </TabsContent>
         </Tabs>

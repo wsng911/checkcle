@@ -3,35 +3,35 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { Service } from "@/services/serviceService";
-import { StatusCards } from "./StatusCards";
+import { 状态Cards } from "./状态Cards";
 import { ServiceFilters } from "./ServiceFilters";
-import { ServicesTable } from "./ServicesTable";
-import { AddServiceDialog } from "@/components/services/AddServiceDialog";
+import { 服务Table } from "./服务Table";
+import { 添加ServiceDialog } from "@/components/services/添加ServiceDialog";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-interface DashboardContentProps {
+interface 仪表盘ContentProps {
   services: Service[];
   isLoading: boolean;
   error: Error | null;
 }
 
-export const DashboardContent = ({ services, isLoading, error }: DashboardContentProps) => {
+export const 仪表盘Content = ({ services, isLoading, error }: 仪表盘ContentProps) => {
   const { t } = useLanguage();
   const [filter, setFilter] = useState<string>("all");
-  const [searchTerm, setSearchTerm] = useState<string>("");
-  const [isAddDialogOpen, setIsAddDialogOpen] = useState<boolean>(false);
+  const [searchTerm, set搜索Term] = useState<string>("");
+  const [is添加DialogOpen, setIs添加DialogOpen] = useState<boolean>(false);
 
   // Filter services based on search term and type filter
-  const filteredServices = services.filter(service => {
-    const matchesSearch = service.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+  const filtered服务 = services.filter(service => {
+    const matches搜索 = service.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
                         (service.url && service.url.toLowerCase().includes(searchTerm.toLowerCase()));
     const matchesFilter = filter === 'all' || service.type.toLowerCase() === filter.toLowerCase();
-    return matchesSearch && matchesFilter;
+    return matches搜索 && matchesFilter;
   });
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center h-full gap-4 text-foreground">
+      <div class名称="flex flex-col items-center justify-center h-full gap-4 text-foreground">
         <p>Error loading service data.</p>
         <Button onClick={() => window.location.reload()}>{t('retry')}</Button>
       </div>
@@ -39,36 +39,36 @@ export const DashboardContent = ({ services, isLoading, error }: DashboardConten
   }
 
   return (
-    <main className="flex-1 flex flex-col overflow-auto bg-background p-6 pb-0">
-      <div className="flex flex-col flex-1">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-foreground">{t('overview')}</h2>
+    <main class名称="flex-1 flex flex-col overflow-auto bg-background p-6 pb-0">
+      <div class名称="flex flex-col flex-1">
+        <div class名称="flex justify-between items-center mb-6">
+          <h2 class名称="text-2xl font-bold text-foreground">{t('overview')}</h2>
           <Button 
-            className="text-primary-foreground"
-            onClick={() => setIsAddDialogOpen(true)}
+            class名称="text-primary-foreground"
+            onClick={() => setIs添加DialogOpen(true)}
           >
-            <Plus className="w-4 h-4 mr-2" /> {t('newService')}
+            <Plus class名称="w-4 h-4 mr-2" /> {t('newService')}
           </Button>
         </div>
         
-        <StatusCards services={services} />
+        <状态Cards services={services} />
         
         <ServiceFilters 
           filter={filter}
           setFilter={setFilter}
           searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-          servicesCount={filteredServices.length}
+          set搜索Term={set搜索Term}
+          servicesCount={filtered服务.length}
         />
         
-        <div className="flex-1 flex flex-col pb-6">
-          <ServicesTable services={filteredServices} />
+        <div class名称="flex-1 flex flex-col pb-6">
+          <服务Table services={filtered服务} />
         </div>
       </div>
 
-      <AddServiceDialog 
-        open={isAddDialogOpen}
-        onOpenChange={setIsAddDialogOpen}
+      <添加ServiceDialog 
+        open={is添加DialogOpen}
+        onOpenChange={setIs添加DialogOpen}
       />
     </main>
   );

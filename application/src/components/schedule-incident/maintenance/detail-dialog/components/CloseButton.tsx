@@ -3,15 +3,15 @@ import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 
-interface CloseButtonProps {
-  onClose: () => void;
+interface 关闭ButtonProps {
+  on关闭: () => void;
 }
 
-export const CloseButton: React.FC<CloseButtonProps> = ({ onClose }) => {
+export const 关闭Button: React.FC<关闭ButtonProps> = ({ on关闭 }) => {
   const { t } = useLanguage();
   
   return (
-    <Button variant="secondary" onClick={onClose}>
+    <Button variant="secondary" onClick={on关闭}>
       {t('close')}
     </Button>
   );

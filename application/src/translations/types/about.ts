@@ -1,7 +1,7 @@
 
 export interface AboutTranslations {
   aboutCheckCle: string;
-  systemDescription: string;
+  system描述: string;
   systemVersion: string;
   license: string;
   mitLicense: string;
@@ -10,8 +10,8 @@ export interface AboutTranslations {
   viewDocumentation: string;
   followOnX: string;
   joinDiscord: string;
-  quickActions: string;
-  quickActionsDescription: string;
+  quick操作: string;
+  quick操作描述: string;
   quickTips: string;
   releasedOn: string;
 	updateSchema: string;
@@ -27,6 +27,6 @@ export interface AboutTranslations {
 	instructionsCollections: string;
 	instructionsImportAuth: string;
 	collectionsUpdatedCount: string;
-	collectionsCreatedCount: string;
+	collections创建dCount: string;
 	collectionsSkippedCount: string;
 }

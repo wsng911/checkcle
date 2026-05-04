@@ -16,7 +16,7 @@ export const DockerStatsCards = ({ stats }: DockerStatsCardsProps) => {
 
   const cards = [
     {
-      title: t('totalContainers', 'docker'),
+      title: t('total容器', 'docker'),
       value: stats.total,
       icon: Container,
       color: "text-blue-600",
@@ -54,19 +54,19 @@ export const DockerStatsCards = ({ stats }: DockerStatsCardsProps) => {
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+    <div class名称="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
       {cards.map((card) => {
         const IconComponent = card.icon;
         return (
           <Card 
             key={card.title} 
-            className="border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 relative"
+            class名称="border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 relative"
             style={{ background: card.gradient }}
           >
             {/* Grid Pattern Overlay */}
-            <div className="absolute inset-0 z-0 opacity-10">
+            <div class名称="absolute inset-0 z-0 opacity-10">
               <div 
-                className="w-full h-full" 
+                class名称="w-full h-full" 
                 style={{ 
                   backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), 
                                     linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
@@ -75,22 +75,22 @@ export const DockerStatsCards = ({ stats }: DockerStatsCardsProps) => {
               />
             </div>
 
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 relative z-10">
-              <CardTitle className="text-sm font-medium text-white/70">
+            <CardHeader class名称="flex flex-row items-center justify-between space-y-0 pb-2 relative z-10">
+              <CardTitle class名称="text-sm font-medium text-white/70">
                 {card.title}
               </CardTitle>
-              <div className="p-2.5 rounded-xl bg-white/20 backdrop-blur-sm shadow-sm transition-all duration-300 group-hover:scale-110">
-                <IconComponent className="h-4 w-4 text-white" />
+              <div class名称="p-2.5 rounded-xl bg-white/20 backdrop-blur-sm shadow-sm transition-all duration-300 group-hover:scale-110">
+                <IconComponent class名称="h-4 w-4 text-white" />
               </div>
             </CardHeader>
-            <CardContent className="relative z-10">
-              <div className="flex items-center justify-between">
-                <div className="text-2xl font-bold text-white">
+            <CardContent class名称="relative z-10">
+              <div class名称="flex items-center justify-between">
+                <div class名称="text-2xl font-bold text-white">
                   {card.value}
                 </div>
                 <Badge 
                   variant="outline" 
-                  className="text-xs font-mono font-bold px-2 py-1 rounded-md bg-white/20 backdrop-blur-sm text-white border border-white/30"
+                  class名称="text-xs font-mono font-bold px-2 py-1 rounded-md bg-white/20 backdrop-blur-sm text-white border border-white/30"
                 >
                   {t('containersLabel', 'docker')}
                 </Badge>

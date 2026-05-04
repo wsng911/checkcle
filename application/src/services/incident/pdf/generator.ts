@@ -4,7 +4,7 @@ import { IncidentItem } from '../types';
 import { userService } from '@/services/userService';
 import {
   addBasicInfoSection,
-  addDescriptionSection,
+  add描述Section,
   addAffectedSystemsSection,
   addRootCauseSection,
   addResolutionSection,
@@ -36,7 +36,7 @@ export const generatePdf = async (incident: IncidentItem): Promise<string> => {
   }
   
   try {
-    // Create new PDF document with portrait orientation
+    // 创建 new PDF document with portrait orientation
     const doc = new jsPDF({
       orientation: 'portrait',
       unit: 'mm',
@@ -47,7 +47,7 @@ export const generatePdf = async (incident: IncidentItem): Promise<string> => {
     const title = incident.title || `Incident Report #${incident.id}`;
     const filename = `incident-report-${incident.id}.pdf`;
     
-    // Add metadata
+    // 添加 metadata
     doc.setProperties({
       title: title,
       subject: 'Incident Report',
@@ -55,14 +55,14 @@ export const generatePdf = async (incident: IncidentItem): Promise<string> => {
       creator: 'CheckCle',
     });
     
-    // Add header section
+    // 添加 header section
     let yPos = addHeader(doc, incident);
     
-    // Add basic information section
+    // 添加 basic information section
     yPos = addBasicInfoSection(doc, incident, yPos);
     
-    // Add description section
-    yPos = addDescriptionSection(doc, incident, yPos);
+    // 添加 description section
+    yPos = add描述Section(doc, incident, yPos);
     
     // Check if we need to add a new page
     if (yPos > 250) {
@@ -70,7 +70,7 @@ export const generatePdf = async (incident: IncidentItem): Promise<string> => {
       yPos = 20;
     }
     
-    // Add affected systems section
+    // 添加 affected systems section
     yPos = addAffectedSystemsSection(doc, incident, yPos);
     
     // Check if we need to add a new page
@@ -79,7 +79,7 @@ export const generatePdf = async (incident: IncidentItem): Promise<string> => {
       yPos = 20;
     }
     
-    // Add root cause section
+    // 添加 root cause section
     yPos = addRootCauseSection(doc, incident, yPos);
     
     // Check if we need to add a new page
@@ -88,7 +88,7 @@ export const generatePdf = async (incident: IncidentItem): Promise<string> => {
       yPos = 20;
     }
     
-    // Add resolution steps section
+    // 添加 resolution steps section
     yPos = addResolutionSection(doc, incident, yPos);
     
     // Check if we need to add a new page
@@ -97,7 +97,7 @@ export const generatePdf = async (incident: IncidentItem): Promise<string> => {
       yPos = 20;
     }
     
-    // Add assignment section
+    // 添加 assignment section
     yPos = addAssignmentSection(doc, incident, yPos, assignedUser);
     
     // Check if we need to add a new page
@@ -106,13 +106,13 @@ export const generatePdf = async (incident: IncidentItem): Promise<string> => {
       yPos = 20;
     }
     
-    // Add lessons learned section if available
+    // 添加 lessons learned section if available
     addLessonsLearnedSection(doc, incident, yPos);
     
-    // Add footer to all pages
+    // 添加 footer to all pages
     addFooter(doc);
     
-    // Save the PDF
+    // 保存 the PDF
     doc.save(filename);
     
     console.log('PDF generated successfully:', filename);

@@ -1,12 +1,12 @@
 
-import { Globe, Boxes, Layers, Calendar, BarChart2, LineChart, MapPin, Settings, User, Bell, Database, Info, BookOpen } from "lucide-react";
+import { Globe, Boxes, Layers, Calendar, BarChart2, LineChart, MapPin, 设置, User, Bell, Database, Info, BookOpen } from "lucide-react";
 
 export const mainMenuItems = [
   {
     id: 'uptime-monitoring',
     path: '/dashboard',
     icon: Globe,
-    translationKey: 'uptimeMonitoring',
+    translationKey: 'uptime监控ing',
     color: 'text-purple-400',
     hasNavigation: true
   },
@@ -14,7 +14,7 @@ export const mainMenuItems = [
     id: 'instance-monitoring',
     path: '/instance-monitoring',
     icon: Boxes,
-    translationKey: 'instanceMonitoring',
+    translationKey: 'instance监控ing',
     color: 'text-blue-400',
     hasNavigation: true
   },
@@ -46,7 +46,7 @@ export const mainMenuItems = [
     id: 'regional-monitoring',
     path: '/regional-monitoring',
     icon: MapPin,
-    translationKey: 'regionalMonitoring',
+    translationKey: 'regional监控ing',
     color: 'text-indigo-400',
     hasNavigation: true
   },
@@ -63,8 +63,8 @@ export const mainMenuItems = [
 export const settingsMenuItems = [
   {
     id: 'general',
-    icon: Settings,
-    translationKey: 'generalSettings'
+    icon: 设置,
+    translationKey: 'general设置'
   },
   {
     id: 'users',
@@ -74,7 +74,7 @@ export const settingsMenuItems = [
   {
     id: 'notifications',
     icon: Bell,
-    translationKey: 'notificationSettings'
+    translationKey: 'notification设置'
   },
   {
     id: 'templates',

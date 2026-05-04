@@ -4,17 +4,17 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { UptimeData } from '@/types/service.types';
 import { useTheme } from '@/contexts/ThemeContext';
 
-interface UptimeStatusItemProps {
+interface Uptime状态ItemProps {
   item: UptimeData;
   index: number;
 }
 
-export const UptimeStatusItem = ({ item, index }: UptimeStatusItemProps) => {
+export const Uptime状态Item = ({ item, index }: Uptime状态ItemProps) => {
   const { theme } = useTheme();
 
   // Get appropriate color classes for each status type
-  const getStatusColor = (itemStatus: string) => {
-    switch(itemStatus) {
+  const get状态Color = (item状态: string) => {
+    switch(item状态) {
       case "up":
         return theme === "dark" ? "bg-emerald-500" : "bg-emerald-500"; 
       case "down":
@@ -28,8 +28,8 @@ export const UptimeStatusItem = ({ item, index }: UptimeStatusItemProps) => {
   };
   
   // Get status label
-  const getStatusLabel = (itemStatus: string): string => {
-    switch(itemStatus) {
+  const get状态Label = (item状态: string): string => {
+    switch(item状态) {
       case "up": return "Online";
       case "down": return "Offline";
       case "warning": return "Degraded";
@@ -56,21 +56,21 @@ export const UptimeStatusItem = ({ item, index }: UptimeStatusItemProps) => {
     <Tooltip>
       <TooltipTrigger asChild>
         <div 
-          className={`h-5 w-1.5 rounded-sm ${getStatusColor(item.status)} cursor-pointer hover:opacity-80 transition-opacity`}
+          class名称={`h-5 w-1.5 rounded-sm ${get状态Color(item.status)} cursor-pointer hover:opacity-80 transition-opacity`}
         />
       </TooltipTrigger>
       <TooltipContent 
         side="top"
-        className="bg-gray-900 text-white border-gray-800 px-3 py-2"
+        class名称="bg-gray-900 text-white border-gray-800 px-3 py-2"
       >
-        <div className="flex flex-col gap-1 text-xs">
-          <div className="font-medium">{getStatusLabel(item.status)}</div>
+        <div class名称="flex flex-col gap-1 text-xs">
+          <div class名称="font-medium">{get状态Label(item.status)}</div>
           <div>
             {item.status !== "paused" && item.status !== "down" ? 
               `${item.responseTime}ms` : 
               "No response"}
           </div>
-          <div className="text-gray-400">
+          <div class名称="text-gray-400">
             {formatTimestamp(item.timestamp)}
           </div>
         </div>

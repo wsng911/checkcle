@@ -42,7 +42,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
       root.classList.remove("dark");
     }
     
-    // Save theme preference to localStorage
+    // 保存 theme preference to localStorage
     localStorage.setItem("theme", theme);
   }, [theme]);
 

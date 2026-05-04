@@ -25,12 +25,12 @@ export const MaintenanceDetailDialog = ({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent 
-        className="dialog-content sm:max-w-[700px] max-h-[90vh] overflow-y-auto 
+        class名称="dialog-content sm:max-w-[700px] max-h-[90vh] overflow-y-auto 
                   print:max-w-none print:max-h-none print:overflow-visible 
                   print:shadow-none print:m-0 print:p-0 print:border-none
                   print:absolute print:left-0 print:top-0 print:w-full print:h-auto"
       >
-        <MaintenanceDetailContent maintenance={maintenance} onClose={() => onOpenChange(false)} />
+        <MaintenanceDetailContent maintenance={maintenance} on关闭={() => onOpenChange(false)} />
       </DialogContent>
     </Dialog>
   );

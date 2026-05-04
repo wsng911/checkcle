@@ -2,11 +2,11 @@ import React from "react";
 import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-interface SSLStatusBadgeProps {
+interface SSL状态BadgeProps {
   status: string;
 }
 
-export const SSLStatusBadge: React.FC<SSLStatusBadgeProps> = ({ status }) => {
+export const SSL状态Badge: React.FC<SSL状态BadgeProps> = ({ status }) => {
   const { t } = useLanguage();
   let variant = "";
   let label = "";
@@ -34,7 +34,7 @@ export const SSLStatusBadge: React.FC<SSLStatusBadgeProps> = ({ status }) => {
   }
 
   return (
-    <Badge className={`${variant} text-white`}>
+    <Badge class名称={`${variant} text-white`}>
       {label}
     </Badge>
   );

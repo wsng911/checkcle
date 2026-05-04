@@ -6,28 +6,28 @@ import * as z from "zod";
 import { toast } from "sonner";
 import { Bell, X } from "lucide-react";
 
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, Form描述, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { DialogFooter } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
-import { AddSSLCertificateDto } from "@/types/ssl.types";
+import { 添加SSLCertificateDto } from "@/types/ssl.types";
 import { alertConfigService, AlertConfiguration } from "@/services/alertConfigService";
 import { sslNotificationTemplateService, SslNotificationTemplate } from "@/services/sslNotificationTemplateService";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-interface AddSSLCertificateFormProps {
-  onSubmit: (data: AddSSLCertificateDto) => Promise<void>;
-  onCancel: () => void;
+interface 添加SSLCertificateFormProps {
+  on提交: (data: 添加SSLCertificateDto) => Promise<void>;
+  on取消: () => void;
   isPending?: boolean;
 }
 
-export const AddSSLCertificateForm = ({
-  onSubmit,
-  onCancel,
+export const 添加SSLCertificateForm = ({
+  on提交,
+  on取消,
   isPending = false
-}: AddSSLCertificateFormProps) => {
+}: 添加SSLCertificateFormProps) => {
   const { t } = useLanguage();
 
   const formSchema = z.object({
@@ -88,10 +88,10 @@ export const AddSSLCertificateForm = ({
     fetchData();
   }, [t]);
 
-  const handleSubmit = async (values: z.infer<typeof formSchema>) => {
+  const handle提交 = async (values: z.infer<typeof formSchema>) => {
     try {
       // Convert the form values to the required DTO format
-      const certData: AddSSLCertificateDto = {
+      const certData: 添加SSLCertificateDto = {
         domain: values.domain,
         warning_threshold: values.warning_threshold,
         expiry_threshold: values.expiry_threshold,
@@ -105,21 +105,21 @@ export const AddSSLCertificateForm = ({
         check_interval: values.check_interval
       };
 
-      await onSubmit(certData);
+      await on提交(certData);
       form.reset();
     } catch (error) {
-      toast.error(t('failedToAddCertificate'));
+      toast.error(t('failedTo添加Certificate'));
     }
   };
 
-  const handleAddNotificationChannel = (channelId: string) => {
+  const handle添加NotificationChannel = (channelId: string) => {
     const currentChannels = form.getValues("notification_channels") || [];
     if (!currentChannels.includes(channelId)) {
       form.setValue("notification_channels", [...currentChannels, channelId]);
     }
   };
 
-  const handleRemoveNotificationChannel = (channelId: string) => {
+  const handle移除NotificationChannel = (channelId: string) => {
     const currentChannels = form.getValues("notification_channels") || [];
     form.setValue("notification_channels", currentChannels.filter(id => id !== channelId));
   };
@@ -128,7 +128,7 @@ export const AddSSLCertificateForm = ({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
+      <form on提交={form.handle提交(handle提交)} class名称="space-y-6">
         <FormField
           control={form.control}
           name="domain"
@@ -143,7 +143,7 @@ export const AddSSLCertificateForm = ({
           )}
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class名称="grid grid-cols-1 md:grid-cols-2 gap-4">
           <FormField
             control={form.control}
             name="warning_threshold"
@@ -153,9 +153,9 @@ export const AddSSLCertificateForm = ({
                 <FormControl>
                   <Input type="number" {...field} />
                 </FormControl>
-                <FormDescription>
+                <Form描述>
                   {t('getNotifiedExpiration')}
-                </FormDescription>
+                </Form描述>
                 <FormMessage />
               </FormItem>
             )}
@@ -169,9 +169,9 @@ export const AddSSLCertificateForm = ({
                 <FormControl>
                   <Input type="number" {...field} />
                 </FormControl>
-                <FormDescription>
+                <Form描述>
                   {t('getNotifiedCritical')}
-                </FormDescription>
+                </Form描述>
                 <FormMessage />
               </FormItem>
             )}
@@ -187,9 +187,9 @@ export const AddSSLCertificateForm = ({
               <FormControl>
                 <Input type="number" min="1" max="30" {...field} />
               </FormControl>
-              <FormDescription>
+              <Form描述>
                 How often to check the SSL certificate (in days)
-              </FormDescription>
+              </Form描述>
               <FormMessage />
             </FormItem>
           )}
@@ -200,9 +200,9 @@ export const AddSSLCertificateForm = ({
           render={({ field }) => (
             <FormItem>
               <FormLabel>{t('notificationChannel')} (Multi-select)</FormLabel>
-              <div className="space-y-3">
+              <div class名称="space-y-3">
                 <Select
-                  onValueChange={handleAddNotificationChannel}
+                  onValueChange={handle添加NotificationChannel}
                   value=""
                 >
                   <FormControl>
@@ -229,20 +229,20 @@ export const AddSSLCertificateForm = ({
 
                 {/* Display selected channels */}
                 {selectedChannels.length > 0 && (
-                  <div className="flex flex-wrap gap-2">
+                  <div class名称="flex flex-wrap gap-2">
                     {selectedChannels.map((channelId) => {
                       const channel = alertConfigs.find(config => config.id === channelId);
                       return (
-                        <Badge key={channelId} variant="secondary" className="flex items-center gap-1">
+                        <Badge key={channelId} variant="secondary" class名称="flex items-center gap-1">
                           {channel ? `${channel.notify_name} (${channel.notification_type})` : channelId}
                           <Button
                             type="button"
                             variant="ghost"
                             size="sm"
-                            className="h-auto p-0 ml-1"
-                            onClick={() => handleRemoveNotificationChannel(channelId)}
+                            class名称="h-auto p-0 ml-1"
+                            onClick={() => handle移除NotificationChannel(channelId)}
                           >
-                            <X className="h-3 w-3" />
+                            <X class名称="h-3 w-3" />
                           </Button>
                         </Badge>
                       );
@@ -250,10 +250,10 @@ export const AddSSLCertificateForm = ({
                   </div>
                 )}
               </div>
-              <FormDescription className="flex items-center gap-1">
-                <Bell className="h-4 w-4" />
+              <Form描述 class名称="flex items-center gap-1">
+                <Bell class名称="h-4 w-4" />
                 {t('whereToSend')}
-              </FormDescription>
+              </Form描述>
               <FormMessage />
             </FormItem>
           )}
@@ -286,15 +286,15 @@ export const AddSSLCertificateForm = ({
                   )}
                 </SelectContent>
               </Select>
-              <FormDescription>
+              <Form描述>
                 Template for SSL certificate alert messages
-              </FormDescription>
+              </Form描述>
               <FormMessage />
             </FormItem>
           )}
         />
         <DialogFooter>
-          <Button type="button" variant="outline" onClick={onCancel}>{t('cancel')}</Button>
+          <Button type="button" variant="outline" onClick={on取消}>{t('cancel')}</Button>
           <Button type="submit" disabled={isPending || isLoading}>
             {t('addCertificate')}
           </Button>

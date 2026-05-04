@@ -4,14 +4,14 @@ import { User } from "@/services/userService";
 
 export const useUserDialogs = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [isAddUserDialogOpen, setIsAddUserDialogOpen] = useState(false);
+  const [is添加UserDialogOpen, setIs添加UserDialogOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [currentUser, setCurrentUser] = useState<User | null>(null);
-  const [userToDelete, setUserToDelete] = useState<User | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [userTo删除, setUserTo删除] = useState<User | null>(null);
+  const [is提交ting, setIs提交ting] = useState(false);
   const [updateError, setUpdateError] = useState<string | null>(null);
 
-  const handleEditUser = (user: User, form: any) => {
+  const handle编辑User = (user: User, form: any) => {
     setUpdateError(null);
     setCurrentUser(user);
     form.reset({
@@ -25,27 +25,27 @@ export const useUserDialogs = () => {
     setIsDialogOpen(true);
   };
 
-  const handleDeletePrompt = (user: User) => {
-    setUserToDelete(user);
+  const handle删除Prompt = (user: User) => {
+    setUserTo删除(user);
     setIsDeleting(true);
   };
 
   return {
     isDialogOpen,
     setIsDialogOpen,
-    isAddUserDialogOpen,
-    setIsAddUserDialogOpen,
+    is添加UserDialogOpen,
+    setIs添加UserDialogOpen,
     isDeleting,
     setIsDeleting,
-    isSubmitting,
-    setIsSubmitting,
+    is提交ting,
+    setIs提交ting,
     updateError,
     setUpdateError,
     currentUser,
     setCurrentUser,
-    userToDelete,
-    setUserToDelete,
-    handleEditUser,
-    handleDeletePrompt,
+    userTo删除,
+    setUserTo删除,
+    handle编辑User,
+    handle删除Prompt,
   };
 };

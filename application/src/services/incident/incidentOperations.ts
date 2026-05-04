@@ -1,18 +1,18 @@
 
 import { pb } from '@/lib/pocketbase';
-import { CreateIncidentInput, IncidentItem } from './types';
-import { formatStatus } from './incidentUtils';
+import { 创建IncidentInput, IncidentItem } from './types';
+import { format状态 } from './incidentUtils';
 import { invalidateCache } from './incidentCache';
 
 // Update incident status
-export const updateIncidentStatus = async (id: string, status: string): Promise<void> => {
+export const updateIncident状态 = async (id: string, status: string): Promise<void> => {
   try {
-    const formattedStatus = formatStatus(status);
-    console.log(`Updating incident ${id} status to ${status} (formatted: ${formattedStatus})`);
+    const formatted状态 = format状态(status);
+    console.log(`Updating incident ${id} status to ${status} (formatted: ${formatted状态})`);
     
     // Update both status and impact_status fields
     await pb.collection('incidents').update(id, { 
-      status: formattedStatus,
+      status: formatted状态,
       impact_status: status.toLowerCase(), // Set impact_status to the lowercase status value
       ...(status.toLowerCase() === 'resolved' ? { resolution_time: new Date().toISOString() } : {})
     });
@@ -27,7 +27,7 @@ export const updateIncidentStatus = async (id: string, status: string): Promise<
   }
 };
 
-// Delete incident
+// 删除 incident
 export const deleteIncident = async (id: string): Promise<void> => {
   try {
     await pb.collection('incidents').delete(id);
@@ -42,14 +42,14 @@ export const deleteIncident = async (id: string): Promise<void> => {
   }
 };
 
-// Create incident
-export const createIncident = async (data: CreateIncidentInput): Promise<void> => {
+// 创建 incident
+export const createIncident = async (data: 创建IncidentInput): Promise<void> => {
   try {
     // Format the payload according to API requirements
     const payload = {
       title: data.title,
       description: data.description,
-      status: formatStatus(data.status),
+      status: format状态(data.status),
       impact_status: data.status.toLowerCase(),
       // Use lowercase for impact and priority to match API expectations
       impact: data.impact.toLowerCase(),
@@ -91,7 +91,7 @@ export const updateIncident = async (id: string, data: Partial<IncidentItem>): P
       ...(data.priority ? { priority: data.priority.toLowerCase() } : {}),
       ...(data.status
         ? {
-            status: formatStatus(data.status),
+            status: format状态(data.status),
             impact_status: data.status.toLowerCase(),
           }
         : {}),

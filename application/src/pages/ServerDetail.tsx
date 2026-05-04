@@ -10,7 +10,7 @@ import { serverService } from "@/services/serverService";
 import { authService } from "@/services/authService";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Server } from "lucide-react";
-import { ServerMetricsOverview } from "@/components/servers/ServerMetricsOverview";
+import { ServerMetrics概览 } from "@/components/servers/ServerMetrics概览";
 import { ServerHistoryCharts } from "@/components/servers/ServerHistoryCharts";
 import { ServerSystemInfoCard } from "@/components/servers/ServerSystemInfoCard";
 
@@ -57,7 +57,7 @@ const ServerDetail = () => {
     }
     
     // Check system_info (both JSON and plain text), then fallback to os_type
-    const osFromJson = systemInfo.OSName || '';
+    const osFromJson = systemInfo.OS名称 || '';
     const osFromText = systemInfoText;
     const osFromType = server.os_type || '';
     
@@ -103,31 +103,31 @@ const ServerDetail = () => {
     navigate('/login');
   };
 
-  const handleBackToServers = () => {
+  const handle返回ToServers = () => {
     navigate('/instance-monitoring');
   };
 
   if (serverError) {
     return (
-      <div className="flex h-screen overflow-hidden bg-background text-foreground">
+      <div class名称="flex h-screen overflow-hidden bg-background text-foreground">
         <Sidebar collapsed={sidebarCollapsed} />
-        <div className="flex flex-col flex-1">
+        <div class名称="flex flex-col flex-1">
           <Header 
             currentUser={currentUser} 
             onLogout={handleLogout} 
             sidebarCollapsed={sidebarCollapsed} 
             toggleSidebar={toggleSidebar} 
           />
-          <main className="flex-1 flex flex-col items-center justify-center p-4 sm:p-6">
-            <div className="text-center max-w-md w-full">
-              <h2 className="text-xl sm:text-2xl font-bold mb-4">{t('errorLoadingServer')}</h2>
-              <p className="text-muted-foreground mb-4 text-sm sm:text-base">
+          <main class名称="flex-1 flex flex-col items-center justify-center p-4 sm:p-6">
+            <div class名称="text-center max-w-md w-full">
+              <h2 class名称="text-xl sm:text-2xl font-bold mb-4">{t('errorLoadingServer')}</h2>
+              <p class名称="text-muted-foreground mb-4 text-sm sm:text-base">
                 {t('unableToFetchServerData')}
               </p>
-              <div className="text-xs text-muted-foreground mb-4 font-mono">
+              <div class名称="text-xs text-muted-foreground mb-4 font-mono">
                 Error: {serverError?.message || 'Unknown error'}
               </div>
-              <Button onClick={handleBackToServers} variant="outline" className="text-sm sm:text-base">
+              <Button onClick={handle返回ToServers} variant="outline" class名称="text-sm sm:text-base">
                 {t('backToServers')}
               </Button>
             </div>
@@ -139,19 +139,19 @@ const ServerDetail = () => {
 
   if (serverLoading) {
     return (
-      <div className="flex h-screen overflow-hidden bg-background text-foreground">
+      <div class名称="flex h-screen overflow-hidden bg-background text-foreground">
         <Sidebar collapsed={sidebarCollapsed} />
-        <div className="flex flex-col flex-1">
+        <div class名称="flex flex-col flex-1">
           <Header 
             currentUser={currentUser} 
             onLogout={handleLogout} 
             sidebarCollapsed={sidebarCollapsed} 
             toggleSidebar={toggleSidebar} 
           />
-          <main className="flex-1 flex flex-col items-center justify-center p-4 sm:p-6">
-            <div className="text-center">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-              <p className="text-muted-foreground">{t('loadingServerDetails')}</p>
+          <main class名称="flex-1 flex flex-col items-center justify-center p-4 sm:p-6">
+            <div class名称="text-center">
+              <div class名称="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+              <p class名称="text-muted-foreground">{t('loadingServerDetails')}</p>
             </div>
           </main>
         </div>
@@ -160,52 +160,52 @@ const ServerDetail = () => {
   }
 
   return (
-    <div className="flex h-screen overflow-hidden bg-background text-foreground">
+    <div class名称="flex h-screen overflow-hidden bg-background text-foreground">
       <Sidebar collapsed={sidebarCollapsed} />
-      <div className="flex flex-col flex-1 min-w-0">
+      <div class名称="flex flex-col flex-1 min-w-0">
         <Header 
           currentUser={currentUser} 
           onLogout={handleLogout} 
           sidebarCollapsed={sidebarCollapsed} 
           toggleSidebar={toggleSidebar} 
         />
-        <main className="flex-1 overflow-auto">
-          <div className="mx-[20px] my-[20px]">
+        <main class名称="flex-1 overflow-auto">
+          <div class名称="mx-[20px] my-[20px]">
             {/* Header Section */}
-            <div className="mb-6 lg:mb-8">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-3 mb-2">
+            <div class名称="mb-6 lg:mb-8">
+              <div class名称="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div class名称="min-w-0 flex-1">
+                  <div class名称="flex items-center gap-3 mb-2">
                     <Button
-                      onClick={handleBackToServers}
+                      onClick={handle返回ToServers}
                       variant="outline"
                       size="sm"
-                      className="flex items-center gap-2"
+                      class名称="flex items-center gap-2"
                     >
-                      <ArrowLeft className="h-4 w-4" />
+                      <ArrowLeft class名称="h-4 w-4" />
                       {t('backToServers')}
                     </Button>
                   </div>
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="h-12 w-12 rounded bg-primary/10 flex items-center justify-center p-2">
+                  <div class名称="flex items-center gap-3 mb-2">
+                    <div class名称="h-12 w-12 rounded bg-primary/10 flex items-center justify-center p-2">
                       {server && getOSLogo(server) ? (
                         <img
                           src={getOSLogo(server)}
                           alt="OS Logo"
-                          className="w-full h-full object-contain"
+                          class名称="w-full h-full object-contain"
                         />
                       ) : (
-                        <Server className="h-6 w-6 text-primary" />
+                        <Server class名称="h-6 w-6 text-primary" />
                       )}
                     </div>
-                    <h1 className="text-2xl font-bold text-foreground">
+                    <h1 class名称="text-2xl font-bold text-foreground">
                       {server?.name || t('serverDetail')}
                     </h1>
                   </div>
-                  <p className="text-muted-foreground mt-1 sm:mt-2 text-sm sm:text-base">
+                  <p class名称="text-muted-foreground mt-1 sm:mt-2 text-sm sm:text-base">
                     {t('monitorServerMetrics')}
                     {server && (
-                      <span className="block text-xs text-muted-foreground/70 mt-1">
+                      <span class名称="block text-xs text-muted-foreground/70 mt-1">
                         {t('serverHostnameIpOs')
                           .replace('{hostname}', server.hostname)
                           .replace('{ip_address}', server.ip_address)
@@ -217,23 +217,23 @@ const ServerDetail = () => {
                 
                 {/* System Info Card */}
                 {server && (
-                  <div className="flex-shrink-0">
+                  <div class名称="flex-shrink-0">
                     <ServerSystemInfoCard server={server} />
                   </div>
                 )}
               </div>
             </div>
 
-            {/* Server Overview Cards */}
+            {/* Server 概览 Cards */}
             {server && (
-              <div className="mb-6 lg:mb-8">
-                <ServerMetricsOverview server={server} />
+              <div class名称="mb-6 lg:mb-8">
+                <ServerMetrics概览 server={server} />
               </div>
             )}
 
             {/* Historical Charts Section - Single comprehensive section */}
             {server && (
-              <div className="min-w-0">
+              <div class名称="min-w-0">
                 <ServerHistoryCharts serverId={server.id} />
               </div>
             )}

@@ -5,27 +5,27 @@ import { Service } from "@/services/serviceService";
 import { useTheme } from "@/contexts/ThemeContext";
 import {useLanguage} from "@/contexts/LanguageContext.tsx";
 
-interface StatusCardsProps {
+interface 状态CardsProps {
   services: Service[];
 }
 
-export const StatusCards = ({ services }: StatusCardsProps) => {
+export const 状态Cards = ({ services }: 状态CardsProps) => {
 	const { t } = useLanguage();
 
   // Count services by status
-  const upServices = services.filter(s => s.status === "up").length;
-  const downServices = services.filter(s => s.status === "down").length;
-  const pausedServices = services.filter(s => s.status === "paused").length;
-  const warningServices = services.filter(s => s.responseTime > 1000).length;
+  const up服务 = services.filter(s => s.status === "up").length;
+  const down服务 = services.filter(s => s.status === "down").length;
+  const paused服务 = services.filter(s => s.status === "paused").length;
+  const warning服务 = services.filter(s => s.responseTime > 1000).length;
   
   // Get current theme to adjust card styles
   const { theme } = useTheme();
   
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 w-full">
-      {/* Up Services Card */}
+    <div class名称="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 w-full">
+      {/* Up 服务 Card */}
       <Card 
-        className={`border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 ${
+        class名称={`border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 ${
           theme === 'dark' ? 'dark-card' : ''
         } relative z-10`}
         style={{
@@ -35,8 +35,8 @@ export const StatusCards = ({ services }: StatusCardsProps) => {
         }}
       >
         {/* Grid Pattern Overlay */}
-        <div className="absolute inset-0 z-0 opacity-10">
-          <div className="w-full h-full" 
+        <div class名称="absolute inset-0 z-0 opacity-10">
+          <div class名称="w-full h-full" 
             style={{ 
               backgroundImage: `linear-gradient(#000 1px, transparent 1px), 
                                 linear-gradient(90deg, #fff 1px, transparent 1px)`,
@@ -44,20 +44,20 @@ export const StatusCards = ({ services }: StatusCardsProps) => {
             }}
           ></div>
         </div>
-        <CardHeader className="pb-2 relative z-10">
-          <CardTitle className="text-sm font-medium text-white">{t("upServices")}</CardTitle>
+        <CardHeader class名称="pb-2 relative z-10">
+          <CardTitle class名称="text-sm font-medium text-white">{t("up服务")}</CardTitle>
         </CardHeader>
-        <CardContent className="flex items-center justify-between relative z-10">
-          <span className="text-5xl font-bold text-white">{upServices}</span>
-          <div className="rounded-full p-3 bg-white/25 backdrop-blur-sm">
-            <ArrowUp className="h-6 w-6 text-white" />
+        <CardContent class名称="flex items-center justify-between relative z-10">
+          <span class名称="text-5xl font-bold text-white">{up服务}</span>
+          <div class名称="rounded-full p-3 bg-white/25 backdrop-blur-sm">
+            <ArrowUp class名称="h-6 w-6 text-white" />
           </div>
         </CardContent>
       </Card>
       
-      {/* Down Services Card */}
+      {/* Down 服务 Card */}
       <Card 
-        className={`border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 ${
+        class名称={`border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 ${
           theme === 'dark' ? 'dark-card' : ''
         } relative z-10`}
         style={{
@@ -67,8 +67,8 @@ export const StatusCards = ({ services }: StatusCardsProps) => {
         }}
       >
         {/* Grid Pattern Overlay */}
-        <div className="absolute inset-0 z-0 opacity-10">
-          <div className="w-full h-full" 
+        <div class名称="absolute inset-0 z-0 opacity-10">
+          <div class名称="w-full h-full" 
             style={{ 
               backgroundImage: `linear-gradient(#000 1px, transparent 1px), 
                                 linear-gradient(90deg, #fff 1px, transparent 1px)`,
@@ -76,20 +76,20 @@ export const StatusCards = ({ services }: StatusCardsProps) => {
             }}
           ></div>
         </div>
-        <CardHeader className="pb-2 relative z-10">
-          <CardTitle className="text-sm font-medium text-white">{t("downServices")}</CardTitle>
+        <CardHeader class名称="pb-2 relative z-10">
+          <CardTitle class名称="text-sm font-medium text-white">{t("down服务")}</CardTitle>
         </CardHeader>
-        <CardContent className="flex items-center justify-between relative z-10">
-          <span className="text-5xl font-bold text-white">{downServices}</span>
-          <div className="rounded-full p-3 bg-white/25 backdrop-blur-sm">
-            <ArrowDown className="h-6 w-6 text-white" />
+        <CardContent class名称="flex items-center justify-between relative z-10">
+          <span class名称="text-5xl font-bold text-white">{down服务}</span>
+          <div class名称="rounded-full p-3 bg-white/25 backdrop-blur-sm">
+            <ArrowDown class名称="h-6 w-6 text-white" />
           </div>
         </CardContent>
       </Card>
       
-      {/* Paused Services Card */}
+      {/* Paused 服务 Card */}
       <Card 
-        className={`border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 ${
+        class名称={`border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 ${
           theme === 'dark' ? 'dark-card' : ''
         } relative z-10`}
         style={{
@@ -99,8 +99,8 @@ export const StatusCards = ({ services }: StatusCardsProps) => {
         }}
       >
         {/* Grid Pattern Overlay */}
-        <div className="absolute inset-0 z-0 opacity-10">
-          <div className="w-full h-full" 
+        <div class名称="absolute inset-0 z-0 opacity-10">
+          <div class名称="w-full h-full" 
             style={{ 
               backgroundImage: `linear-gradient(#000 1px, transparent 1px), 
                                 linear-gradient(90deg, #fff 1px, transparent 1px)`,
@@ -108,20 +108,20 @@ export const StatusCards = ({ services }: StatusCardsProps) => {
             }}
           ></div>
         </div>
-        <CardHeader className="pb-2 relative z-10">
-          <CardTitle className="text-sm font-medium text-white">{t("pausedServices")}</CardTitle>
+        <CardHeader class名称="pb-2 relative z-10">
+          <CardTitle class名称="text-sm font-medium text-white">{t("paused服务")}</CardTitle>
         </CardHeader>
-        <CardContent className="flex items-center justify-between relative z-10">
-          <span className="text-5xl font-bold text-white">{pausedServices}</span>
-          <div className="rounded-full p-3 bg-white/25 backdrop-blur-sm">
-            <Pause className="h-6 w-6 text-white" />
+        <CardContent class名称="flex items-center justify-between relative z-10">
+          <span class名称="text-5xl font-bold text-white">{paused服务}</span>
+          <div class名称="rounded-full p-3 bg-white/25 backdrop-blur-sm">
+            <Pause class名称="h-6 w-6 text-white" />
           </div>
         </CardContent>
       </Card>
       
-      {/* Warning Services Card */}
+      {/* Warning 服务 Card */}
       <Card 
-        className={`border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 ${
+        class名称={`border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 ${
           theme === 'dark' ? 'dark-card' : ''
         } relative z-10`}
         style={{
@@ -131,8 +131,8 @@ export const StatusCards = ({ services }: StatusCardsProps) => {
         }}
       >
         {/* Grid Pattern Overlay */}
-        <div className="absolute inset-0 z-0 opacity-10">
-          <div className="w-full h-full" 
+        <div class名称="absolute inset-0 z-0 opacity-10">
+          <div class名称="w-full h-full" 
             style={{ 
               backgroundImage: `linear-gradient(#000 1px, transparent 1px), 
                                 linear-gradient(90deg, #fff 1px, transparent 1px)`,
@@ -140,13 +140,13 @@ export const StatusCards = ({ services }: StatusCardsProps) => {
             }}
           ></div>
         </div>
-        <CardHeader className="pb-2 relative z-10">
-          <CardTitle className="text-sm font-medium text-white">{t("warningServices")}</CardTitle>
+        <CardHeader class名称="pb-2 relative z-10">
+          <CardTitle class名称="text-sm font-medium text-white">{t("warning服务")}</CardTitle>
         </CardHeader>
-        <CardContent className="flex items-center justify-between relative z-10">
-          <span className="text-5xl font-bold text-white">{warningServices}</span>
-          <div className="rounded-full p-3 bg-white/25 backdrop-blur-sm">
-            <AlertTriangle className="h-6 w-6 text-white" />
+        <CardContent class名称="flex items-center justify-between relative z-10">
+          <span class名称="text-5xl font-bold text-white">{warning服务}</span>
+          <div class名称="rounded-full p-3 bg-white/25 backdrop-blur-sm">
+            <AlertTriangle class名称="h-6 w-6 text-white" />
           </div>
         </CardContent>
       </Card>

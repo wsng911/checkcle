@@ -1,6 +1,6 @@
 export interface DockerTranslations {
   // Tables and headers
-  dockerContainers: string;
+  docker容器: string;
   container: string;
   status: string;
   cpuUsage: string;
@@ -9,25 +9,25 @@ export interface DockerTranslations {
   uptime: string;
   lastChecked: string;
   actions: string;
-  searchContainersPlaceholder: string;
+  search容器Placeholder: string;
   refresh: string;
   openMenu: string;
   viewMetrics: string;
   viewDetails: string;
 
-  // Status badges and stats
+  // 状态 badges and stats
   running: string;
   stopped: string;
   warning: string;
   unknown: string;
-  totalContainers: string;
+  total容器: string;
   containersLabel: string;
 
   // Empty states
-  noContainersFound: string;
-  noContainersRunning: string;
-  tryAdjustSearch: string;
-  startSomeContainers: string;
+  no容器Found: string;
+  no容器Running: string;
+  tryAdjust搜索: string;
+  startSome容器: string;
 
   // Metrics dialog
   containerMetricsTitle: string; // e.g., Container Metrics: {name}

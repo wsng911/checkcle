@@ -14,10 +14,10 @@ import {
   SelectTrigger, 
   SelectValue 
 } from "@/components/ui/select";
-import { PageSize } from "@/hooks/useServicesPagination";
+import { PageSize } from "@/hooks/use服务Pagination";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-interface ServicesPaginationProps {
+interface 服务PaginationProps {
   currentPage: number;
   totalPages: number;
   pageSize: PageSize;
@@ -26,14 +26,14 @@ interface ServicesPaginationProps {
   onPageSizeChange: (size: PageSize) => void;
 }
 
-export function ServicesPagination({
+export function 服务Pagination({
   currentPage,
   totalPages,
   pageSize,
   totalItems,
   onPageChange,
   onPageSizeChange,
-}: ServicesPaginationProps) {
+}: 服务PaginationProps) {
   const { t } = useLanguage();
 
   // Generate page numbers to display
@@ -61,16 +61,16 @@ export function ServicesPagination({
   const endItem = Math.min(currentPage * pageSize, totalItems);
 
   return (
-    <div className="flex items-center justify-between py-4 px-4 border-t border-border">
-      <div className="flex items-center space-x-2">
-       <span className="text-sm text-muted-foreground whitespace-nowrap">
+    <div class名称="flex items-center justify-between py-4 px-4 border-t border-border">
+      <div class名称="flex items-center space-x-2">
+       <span class名称="text-sm text-muted-foreground whitespace-nowrap">
         {t("rowsPerPage") ?? "Rows per page"}:
        </span>
         <Select
           value={pageSize.toString()}
           onValueChange={(value) => onPageSizeChange(parseInt(value) as PageSize)}
         >
-          <SelectTrigger className="h-8 w-[70px]">
+          <SelectTrigger class名称="h-8 w-[70px]">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -79,7 +79,7 @@ export function ServicesPagination({
             <SelectItem value="50">50</SelectItem>
           </SelectContent>
         </Select>
-        <span className="text-sm text-muted-foreground whitespace-nowrap">
+        <span class名称="text-sm text-muted-foreground whitespace-nowrap">
 	        {totalItems > 0
            ? t("servicesPagination", {"startItem": startItem, "endItem": endItem, "totalItems": totalItems})
            : t("servicesPaginationNoService")
@@ -93,7 +93,7 @@ export function ServicesPagination({
             <PaginationItem>
               <PaginationPrevious
                 onClick={() => onPageChange(Math.max(1, currentPage - 1))}
-                className={
+                class名称={
                   currentPage === 1 
                     ? "pointer-events-none opacity-50" 
                     : "cursor-pointer"
@@ -106,7 +106,7 @@ export function ServicesPagination({
                 <PaginationLink
                   isActive={page === currentPage}
                   onClick={() => onPageChange(page)}
-                  className="cursor-pointer"
+                  class名称="cursor-pointer"
                 >
                   {page}
                 </PaginationLink>
@@ -116,7 +116,7 @@ export function ServicesPagination({
             <PaginationItem>
               <PaginationNext
                 onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
-                className={
+                class名称={
                   currentPage === totalPages 
                     ? "pointer-events-none opacity-50" 
                     : "cursor-pointer"

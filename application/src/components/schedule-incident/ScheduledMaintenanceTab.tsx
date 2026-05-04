@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, Card描述, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { MaintenanceTable, MaintenanceStatusChecker } from './maintenance';
+import { MaintenanceTable, Maintenance状态Checker } from './maintenance';
 import { LoadingState } from '@/components/services/LoadingState';
 import { Calendar, Clock, CheckCircle } from 'lucide-react';
 import { useMaintenanceData } from './hooks/useMaintenanceData';
@@ -66,16 +66,16 @@ export const ScheduledMaintenanceTab = ({ refreshTrigger = 0 }: ScheduledMainten
     gradient: string
   ) => (
     <Card
-      className="border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 relative z-10"
+      class名称="border-none rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 relative z-10"
       style={{
         background: theme === 'dark'
           ? `linear-gradient(135deg, rgba(65,59,55,0.8) 0%, ${gradient})`
           : `linear-gradient(135deg, rgba(65,59,55,0.8) 0%, ${gradient})`,
       }}
     >
-      <div className="absolute inset-0 z-0 opacity-10">
+      <div class名称="absolute inset-0 z-0 opacity-10">
         <div
-          className="w-full h-full"
+          class名称="w-full h-full"
           style={{
             backgroundImage: `linear-gradient(#000 1px, transparent 1px),
                               linear-gradient(90deg, #fff 1px, transparent 1px)`,
@@ -83,12 +83,12 @@ export const ScheduledMaintenanceTab = ({ refreshTrigger = 0 }: ScheduledMainten
           }}
         />
       </div>
-      <CardHeader className="pb-2 relative z-10">
-        <CardTitle className="text-sm font-medium text-white">{title}</CardTitle>
+      <CardHeader class名称="pb-2 relative z-10">
+        <CardTitle class名称="text-sm font-medium text-white">{title}</CardTitle>
       </CardHeader>
-      <CardContent className="flex items-center justify-between relative z-10">
-        <span className="text-4xl font-bold text-white">{value}</span>
-        <div className="rounded-full p-3 bg-white/25 backdrop-blur-sm">
+      <CardContent class名称="flex items-center justify-between relative z-10">
+        <span class名称="text-4xl font-bold text-white">{value}</span>
+        <div class名称="rounded-full p-3 bg-white/25 backdrop-blur-sm">
           {icon}
         </div>
       </CardContent>
@@ -97,35 +97,35 @@ export const ScheduledMaintenanceTab = ({ refreshTrigger = 0 }: ScheduledMainten
 
   return (
     <>
-      <MaintenanceStatusChecker
+      <Maintenance状态Checker
         maintenanceData={maintenanceData}
-        onStatusUpdated={handleMaintenanceUpdated}
+        on状态Updated={handleMaintenanceUpdated}
       />
 
-      {/* Overview Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 w-full">
+      {/* 概览 Cards */}
+      <div class名称="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 w-full">
         {gradientCard(
           t('upcomingMaintenance'),
           loading ? '...' : overviewStats.upcoming,
-          <Calendar className="h-6 w-6 text-white" />,
+          <Calendar class名称="h-6 w-6 text-white" />,
           'rgba(59,130,246,0.6)'
         )}
         {gradientCard(
           t('ongoingMaintenance'),
           loading ? '...' : overviewStats.ongoing,
-          <Clock className="h-6 w-6 text-white" />,
+          <Clock class名称="h-6 w-6 text-white" />,
           'rgba(251,191,36,0.6)'
         )}
         {gradientCard(
           t('completedMaintenance'),
           loading ? '...' : overviewStats.completed,
-          <CheckCircle className="h-6 w-6 text-white" />,
+          <CheckCircle class名称="h-6 w-6 text-white" />,
           'rgba(34,197,94,0.6)'
         )}
         {gradientCard(
           t('totalScheduledHours'),
           loading ? '...' : `${overviewStats.totalDuration}h`,
-          <Clock className="h-6 w-6 text-white" />,
+          <Clock class名称="h-6 w-6 text-white" />,
           'rgba(139,92,246,0.6)'
         )}
       </div>
@@ -133,18 +133,18 @@ export const ScheduledMaintenanceTab = ({ refreshTrigger = 0 }: ScheduledMainten
       <Card>
         <CardHeader>
           <CardTitle>{t('scheduledMaintenance')}</CardTitle>
-          <CardDescription>
+          <Card描述>
             {t('scheduledMaintenanceDesc')}
-          </CardDescription>
+          </Card描述>
         </CardHeader>
         <CardContent>
           <Tabs
             defaultValue="upcoming"
             value={filter}
-            className="w-full"
+            class名称="w-full"
             onValueChange={handleTabChange}
           >
-            <TabsList className="mb-6">
+            <TabsList class名称="mb-6">
               <TabsTrigger value="upcoming">{t('upcomingMaintenance')}</TabsTrigger>
               <TabsTrigger value="ongoing">{t('ongoingMaintenance')}</TabsTrigger>
               <TabsTrigger value="completed">{t('completedMaintenance')}</TabsTrigger>

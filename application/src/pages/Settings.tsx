@@ -4,15 +4,15 @@ import { Header } from "@/components/dashboard/Header";
 import { Sidebar } from "@/components/dashboard/Sidebar";
 import { authService } from "@/services/authService";
 import { useNavigate, useLocation } from "react-router-dom";
-import GeneralSettingsPanel from "@/components/settings/GeneralSettings";
+import General设置Panel from "@/components/settings/General设置";
 import UserManagement from "@/components/settings/user-management";
-import { NotificationSettings } from "@/components/settings/notification-settings";
+import { Notification设置 } from "@/components/settings/notification-settings";
 import { AlertsTemplates } from "@/components/settings/alerts-templates";
 import { AboutSystem } from "@/components/settings/about-system";
-import DataRetentionSettings from "@/components/settings/data-retention/DataRetentionSettings";
+import DataRetention设置 from "@/components/settings/data-retention/DataRetention设置";
 import { useSidebar } from "@/contexts/SidebarContext";
 
-const Settings = () => {
+const 设置 = () => {
   // Use shared sidebar state
   const { sidebarCollapsed, toggleSidebar } = useSidebar();
 
@@ -22,7 +22,7 @@ const Settings = () => {
   const location = useLocation();
   
   // Get the panel from URL query params
-  const queryParams = new URLSearchParams(location.search);
+  const queryParams = new URL搜索Params(location.search);
   const panelParam = queryParams.get('panel');
   
   // State for active settings panel
@@ -45,21 +45,21 @@ const Settings = () => {
   };
 
   return (
-    <div className="flex h-screen bg-background text-foreground">
+    <div class名称="flex h-screen bg-background text-foreground">
       <Sidebar collapsed={sidebarCollapsed} />
-      <div className="flex flex-col flex-1 overflow-hidden">
+      <div class名称="flex flex-col flex-1 overflow-hidden">
         <Header 
           currentUser={currentUser} 
           onLogout={handleLogout} 
           sidebarCollapsed={sidebarCollapsed} 
           toggleSidebar={toggleSidebar} 
         />
-        <div className="flex-1 overflow-auto p-6 space-y-6">
-          {activePanel === "general" && <GeneralSettingsPanel />}
+        <div class名称="flex-1 overflow-auto p-6 space-y-6">
+          {activePanel === "general" && <General设置Panel />}
           {activePanel === "users" && <UserManagement />}
-          {activePanel === "notifications" && <NotificationSettings />}
+          {activePanel === "notifications" && <Notification设置 />}
           {activePanel === "templates" && <AlertsTemplates />}
-          {activePanel === "data-retention" && <DataRetentionSettings />}
+          {activePanel === "data-retention" && <DataRetention设置 />}
           {activePanel === "about" && <AboutSystem />}
         </div>
       </div>
@@ -67,4 +67,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default 设置;

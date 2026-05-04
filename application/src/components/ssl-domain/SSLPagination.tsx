@@ -61,16 +61,16 @@ export function SSLPagination({
   const endItem = Math.min(currentPage * pageSize, totalItems);
 
   return (
-    <div className="flex items-center justify-between py-4 px-4 border-t border-border">
-      <div className="flex items-center space-x-2">
-        <span className="text-sm text-muted-foreground">
+    <div class名称="flex items-center justify-between py-4 px-4 border-t border-border">
+      <div class名称="flex items-center space-x-2">
+        <span class名称="text-sm text-muted-foreground">
           {t("rowsPerPage") || "Rows per page"}:
         </span>
         <Select
           value={pageSize.toString()}
           onValueChange={(value) => onPageSizeChange(parseInt(value) as SSLPageSize)}
         >
-          <SelectTrigger className="h-8 w-[70px]">
+          <SelectTrigger class名称="h-8 w-[70px]">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -79,7 +79,7 @@ export function SSLPagination({
             <SelectItem value="50">50</SelectItem>
           </SelectContent>
         </Select>
-        <span className="text-sm text-muted-foreground">
+        <span class名称="text-sm text-muted-foreground">
           {totalItems > 0 
             ? `${startItem}-${endItem} of ${totalItems} ${t("certificates") || "certificates"}`
             : `0 ${t("certificates") || "certificates"}`
@@ -93,7 +93,7 @@ export function SSLPagination({
             <PaginationItem>
               <PaginationPrevious
                 onClick={() => onPageChange(Math.max(1, currentPage - 1))}
-                className={
+                class名称={
                   currentPage === 1 
                     ? "pointer-events-none opacity-50" 
                     : "cursor-pointer"
@@ -106,7 +106,7 @@ export function SSLPagination({
                 <PaginationLink
                   isActive={page === currentPage}
                   onClick={() => onPageChange(page)}
-                  className="cursor-pointer"
+                  class名称="cursor-pointer"
                 >
                   {page}
                 </PaginationLink>
@@ -116,7 +116,7 @@ export function SSLPagination({
             <PaginationItem>
               <PaginationNext
                 onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
-                className={
+                class名称={
                   currentPage === totalPages 
                     ? "pointer-events-none opacity-50" 
                     : "cursor-pointer"

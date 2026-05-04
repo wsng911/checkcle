@@ -1,6 +1,6 @@
 export interface PublicTranslations {
-  // CurrentStatusSection
-  systemStatus: string;
+  // Current状态Section
+  system状态: string;
   allOperational: string;
   degradedPerformance: string;
   underMaintenance: string;
@@ -8,15 +8,15 @@ export interface PublicTranslations {
   statusUnknown: string;
   autoUpdatedByHealth: string;
   lastUpdatedAt: string; // e.g., Last updated: {time} UTC
-  liveStatusMonitoring: string;
+  live状态监控ing: string;
 
-  // PublicStatusPage generic
-  loadingStatusPage: string;
-  fetchingRealtimeStatus: string;
+  // Public状态Page generic
+  loading状态Page: string;
+  fetchingRealtime状态: string;
   slugLabel: string; // Slug
   statusPageNotFound: string;
-  notFoundDescription: string;
-  goBack: string;
+  notFound描述: string;
+  go返回: string;
   retry: string;
 }
 

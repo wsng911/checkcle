@@ -11,10 +11,10 @@ export const NetworkTooltipContent = ({ active, payload, label }: NetworkTooltip
   const data = payload[0]?.payload;
 
   return (
-    <div className="bg-popover/95 border border-border backdrop-blur-sm rounded-lg p-3 shadow-lg">
-      <p className="font-medium text-popover-foreground mb-2">{label}</p>
+    <div class名称="bg-popover/95 border border-border backdrop-blur-sm rounded-lg p-3 shadow-lg">
+      <p class名称="font-medium text-popover-foreground mb-2">{label}</p>
       {data?.fullTimestamp && (
-        <p className="text-xs text-muted-foreground mb-2">
+        <p class名称="text-xs text-muted-foreground mb-2">
           {new Date(data.fullTimestamp).toLocaleString('en-US', {
             weekday: 'short',
             year: 'numeric',
@@ -27,18 +27,18 @@ export const NetworkTooltipContent = ({ active, payload, label }: NetworkTooltip
         </p>
       )}
       {payload.map((entry: any, index: number) => (
-        <div key={index} className="flex items-center gap-2 mb-1">
+        <div key={index} class名称="flex items-center gap-2 mb-1">
           <div 
-            className="w-3 h-3 rounded-full" 
+            class名称="w-3 h-3 rounded-full" 
             style={{ backgroundColor: entry.color }}
           />
-          <span className="text-sm font-medium">
+          <span class名称="text-sm font-medium">
             {entry.name}: {entry.dataKey.includes('Speed') ? `${entry.value} KB/s` : entry.value}
           </span>
         </div>
       ))}
       {data && (
-        <div className="text-xs text-muted-foreground mt-2 pt-2 border-t border-border">
+        <div class名称="text-xs text-muted-foreground mt-2 pt-2 border-t border-border">
           <div>Total RX: {data.networkRx}</div>
           <div>Total TX: {data.networkTx}</div>
         </div>

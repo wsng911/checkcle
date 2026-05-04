@@ -12,7 +12,7 @@ export const sslTranslations: SSLTranslations = {
   detailedInfo: "ព័ត៌មានលម្អិត",
   viewDetailedInformation: "មើលព័ត៌មានលម្អិត",
 
-  // Status related
+  // 状态 related
   valid: "មានសុពលភាព",
   expiringSoon: "ជិតផុតកំណត់",
   expired: "ផុតកំណត់",
@@ -25,7 +25,7 @@ export const sslTranslations: SSLTranslations = {
 
   // Form fields
   domain: "ដូមេន",
-  domainName: "ឈ្មោះដូមេន",
+  domain名称: "ឈ្មោះដូមេន",
   domainCannotChange: "ដូមេនមិនអាចផ្លាស់ប្តូរបានបន្ទាប់ពីការបង្កើត",
   warningThreshold: "កម្រិតព្រមាន",
   warningThresholdDays: "កម្រិតព្រមាន (ថ្ងៃ)",
@@ -51,11 +51,11 @@ export const sslTranslations: SSLTranslations = {
   validityDays: "ថ្ងៃសុពលភាព",
   validityPeriod: "រយៈពេលសុពលភាព",
   organization: "អង្គការ",
-  commonName: "ឈ្មោះទូទៅ",
+  common名称: "ឈ្មោះទូទៅ",
   serialNumber: "លេខសៀរៀល",
   algorithm: "អាល់ហ្គោរីត",
-  subjectAltNames: "ឈ្មោះផ្សេងៗដែលអាចប្រើបាន",
-   subjectAlternativeNames: "ឈ្មោះជំនួសផ្សេងៗ",
+  subjectAlt名称s: "ឈ្មោះផ្សេងៗដែលអាចប្រើបាន",
+   subjectAlternative名称s: "ឈ្មោះជំនួសផ្សេងៗ",
   resolvedIP: "IP របស់ដូមែន",
   issuedTo: "ចេញសម្រាប់",
   days: "ថ្ងៃ",
@@ -85,21 +85,21 @@ export const sslTranslations: SSLTranslations = {
   certificateDetails: "ព័ត៌មានលម្អិតវិញ្ញាបនបត្រ",
   
   // Notifications and messages
-  sslCertificateAdded: "វិញ្ញាបនបត្រ SSL បានបន្ថែមដោយជោគជ័យ",
+  sslCertificate添加ed: "វិញ្ញាបនបត្រ SSL បានបន្ថែមដោយជោគជ័យ",
   sslCertificateUpdated: "វិញ្ញាបនបត្រ SSL បានធ្វើបច្ចុប្បន្នភាពដោយជោគជ័យ",
-  sslCertificateDeleted: "វិញ្ញាបនបត្រ SSL ត្រូវបានលុបដោយជោគជ័យ",
+  sslCertificate删除d: "វិញ្ញាបនបត្រ SSL ត្រូវបានលុបដោយជោគជ័យ",
   sslCertificateRefreshed: "វិញ្ញាបនបត្រ SSL សម្រាប់ {domain} បានធ្វើបច្ចុប្បន្នភាពដោយជោគជ័យ",
   allCertificatesRefreshed: "វិញ្ញាបនបត្រទាំងអស់ {count} បានធ្វើបច្ចុប្បន្នភាពដោយជោគជ័យ",
   someCertificatesFailed: "វិញ្ញាបនប័ត្រ {success} បានធ្វើបច្ចុប្បន្នភាព, {failed} បានបរាជ័យ",
-  failedToAddCertificate: "បរាជ័យក្នុងការបន្ថែមវិញ្ញាបនបត្រ SSL",
+  failedTo添加Certificate: "បរាជ័យក្នុងការបន្ថែមវិញ្ញាបនបត្រ SSL",
   failedToLoadCertificates: "បរាជ័យក្នុងការផ្ទុកវិញ្ញាបនបត្រ SSL",
   failedToUpdateCertificate: "បរាជ័យក្នុងការធ្វើបច្ចុប្បន្នភាពវិញ្ញាបនបត្រ SSL",
-  failedToDeleteCertificate: "បរាជ័យក្នុងការលុបវិញ្ញាបនបត្រ SSL",
+  failedTo删除Certificate: "បរាជ័យក្នុងការលុបវិញ្ញាបនបត្រ SSL",
   failedToCheckCertificate: "បរាជ័យក្នុងការពិនិត្យមើលវិញ្ញាបនបត្រ SSL",
   noCertificatesToRefresh: "មិនមានវិញ្ញាបនបត្រដើម្បីធ្វើបច្ចុប្បន្នភាពទេ",
   startingRefreshAll: "ចាប់ផ្តើមធ្វើបច្ចុប្បន្នភាពវិញ្ញាបនបត្រចំនួន {count}",
   checkingSSLCertificate: "កំពុងពិនិត្យមើលវិញ្ញាបនបត្រ SSL...",
-  deleteConfirmation: "តើអ្នកពិតជាចង់លុបវិញ្ញាបនបត្រសម្រាប់",
+  delete确认ation: "តើអ្នកពិតជាចង់លុបវិញ្ញាបនបត្រសម្រាប់",
   deleteWarning: "សកម្មភាពនេះមិនអាចត្រឡប់វិញបានទេ។ វានឹងលុបវិញ្ញាបនបត្រជាអចិន្ត្រៃយ៍។",
   
   // Misc

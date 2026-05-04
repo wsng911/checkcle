@@ -1,7 +1,7 @@
 
 import { pb } from '@/lib/pocketbase';
 
-interface RetentionSettings {
+interface Retention设置 {
   uptimeRetentionDays: number;
   serverRetentionDays: number;
   lastCleanup?: string;
@@ -13,7 +13,7 @@ interface CleanupResult {
 }
 
 export const dataRetentionService = {
-  async getRetentionSettings(): Promise<RetentionSettings | null> {
+  async getRetention设置(): Promise<Retention设置 | null> {
     try {
       // Try to get existing settings from data_settings collection
       const records = await pb.collection('data_settings').getFullList({
@@ -44,7 +44,7 @@ export const dataRetentionService = {
     }
   },
 
-  async updateRetentionSettings(settings: RetentionSettings): Promise<void> {
+  async updateRetention设置(settings: Retention设置): Promise<void> {
     try {
       // Check if settings already exist
       const existingRecords = await pb.collection('data_settings').getFullList({
@@ -63,7 +63,7 @@ export const dataRetentionService = {
         // Update existing record
         await pb.collection('data_settings').update(existingRecords[0].id, data);
       } else {
-        // Create new record
+        // 创建 new record
         await pb.collection('data_settings').create({
           ...data,
           created: new Date().toISOString()
@@ -79,12 +79,12 @@ export const dataRetentionService = {
 
   async manualUptimeCleanup(): Promise<CleanupResult> {
     try {
-      const settings = await this.getRetentionSettings();
+      const settings = await this.getRetention设置();
       if (!settings) {
         throw new Error("Could not load retention settings");
       }
 
-      let totalDeleted = 0;
+      let total删除d = 0;
       const cleanedCollections: string[] = [];
 
       // Calculate cutoff date for uptime data
@@ -103,7 +103,7 @@ export const dataRetentionService = {
         
         for (const record of uptimeRecords) {
           await pb.collection('uptime_data').delete(record.id);
-          totalDeleted++;
+          total删除d++;
         }
         
         if (uptimeRecords.length > 0) {
@@ -113,10 +113,10 @@ export const dataRetentionService = {
         console.error("Error cleaning uptime_data:", error);
       }
 
-      console.log(`Uptime cleanup completed. Deleted ${totalDeleted} records`);
+      console.log(`Uptime cleanup completed. 删除d ${total删除d} records`);
 
       return {
-        deletedRecords: totalDeleted,
+        deletedRecords: total删除d,
         collections: cleanedCollections
       };
     } catch (error) {
@@ -127,12 +127,12 @@ export const dataRetentionService = {
 
   async manualServerCleanup(): Promise<CleanupResult> {
     try {
-      const settings = await this.getRetentionSettings();
+      const settings = await this.getRetention设置();
       if (!settings) {
         throw new Error("Could not load retention settings");
       }
 
-      let totalDeleted = 0;
+      let total删除d = 0;
       const cleanedCollections: string[] = [];
 
       // Calculate cutoff date for server data
@@ -151,7 +151,7 @@ export const dataRetentionService = {
         
         for (const record of pingRecords) {
           await pb.collection('ping_data').delete(record.id);
-          totalDeleted++;
+          total删除d++;
         }
         
         if (pingRecords.length > 0) {
@@ -161,10 +161,10 @@ export const dataRetentionService = {
         console.error("Error cleaning ping_data:", error);
       }
 
-      console.log(`Server cleanup completed. Deleted ${totalDeleted} records`);
+      console.log(`Server cleanup completed. 删除d ${total删除d} records`);
 
       return {
-        deletedRecords: totalDeleted,
+        deletedRecords: total删除d,
         collections: cleanedCollections
       };
     } catch (error) {
@@ -176,12 +176,12 @@ export const dataRetentionService = {
   async manualCleanup(): Promise<CleanupResult> {
     try {
       // Get current retention settings
-      const settings = await this.getRetentionSettings();
+      const settings = await this.getRetention设置();
       if (!settings) {
         throw new Error("Could not load retention settings");
       }
 
-      let totalDeleted = 0;
+      let total删除d = 0;
       const cleanedCollections: string[] = [];
 
       // Calculate cutoff dates
@@ -203,7 +203,7 @@ export const dataRetentionService = {
         
         for (const record of uptimeRecords) {
           await pb.collection('uptime_data').delete(record.id);
-          totalDeleted++;
+          total删除d++;
         }
         
         if (uptimeRecords.length > 0) {
@@ -223,7 +223,7 @@ export const dataRetentionService = {
         
         for (const record of pingRecords) {
           await pb.collection('ping_data').delete(record.id);
-          totalDeleted++;
+          total删除d++;
         }
         
         if (pingRecords.length > 0) {
@@ -236,10 +236,10 @@ export const dataRetentionService = {
       // Update last cleanup timestamp
       await this.updateLastCleanupTime();
 
-      console.log(`Manual cleanup completed. Deleted ${totalDeleted} records from collections: ${cleanedCollections.join(', ')}`);
+      console.log(`Manual cleanup completed. 删除d ${total删除d} records from collections: ${cleanedCollections.join(', ')}`);
 
       return {
-        deletedRecords: totalDeleted,
+        deletedRecords: total删除d,
         collections: cleanedCollections
       };
     } catch (error) {
@@ -268,7 +268,7 @@ export const dataRetentionService = {
 
   async scheduleAutomaticCleanup(): Promise<void> {
     try {
-      const settings = await this.getRetentionSettings();
+      const settings = await this.getRetention设置();
       if (!settings) return;
 
       // Check if enough time has passed since last cleanup (run daily)
@@ -285,7 +285,7 @@ export const dataRetentionService = {
 
       console.log("Starting scheduled automatic cleanup");
       const result = await this.manualCleanup();
-      console.log(`Automatic cleanup completed. Deleted ${result.deletedRecords} records`);
+      console.log(`Automatic cleanup completed. 删除d ${result.deletedRecords} records`);
     } catch (error) {
       console.error("Error during automatic cleanup:", error);
     }

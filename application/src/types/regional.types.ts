@@ -11,7 +11,7 @@ export interface RegionalService {
   updated: string;
 }
 
-export interface CreateRegionalServiceParams {
+export interface 创建RegionalServiceParams {
   region_name: string;
   agent_ip_address: string;
 }

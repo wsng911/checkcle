@@ -3,27 +3,27 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { RefreshCw, AlertCircle } from 'lucide-react';
-import { usePublicStatusPageData } from './hooks/usePublicStatusPageData';
-import { StatusPageHeader } from './StatusPageHeader';
-import { CurrentStatusSection } from './CurrentStatusSection';
-import { ComponentsStatusSection } from './ComponentsStatusSection';
+import { usePublic状态PageData } from './hooks/usePublic状态PageData';
+import { 状态PageHeader } from './状态PageHeader';
+import { Current状态Section } from './Current状态Section';
+import { Components状态Section } from './Components状态Section';
 import { OverallUptimeSection } from './OverallUptimeSection';
-import { PublicStatusPageFooter } from './PublicStatusPageFooter';
+import { Public状态PageFooter } from './Public状态PageFooter';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-export const PublicStatusPage = () => {
+export const Public状态Page = () => {
   const { t } = useLanguage();
   const { slug } = useParams<{ slug: string }>();
-//  console.log('PublicStatusPage - slug from params:', slug);
+//  console.log('Public状态Page - slug from params:', slug);
   
-  const { page, components, services, uptimeData, loading, error } = usePublicStatusPageData(slug);
+  const { page, components, services, uptimeData, loading, error } = usePublic状态PageData(slug);
   const [lastUpdated, setLastUpdated] = useState(new Date());
 
   // Auto-refresh every 30 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setLastUpdated(new Date());
-      // The usePublicStatusPageData hook handles data refetching
+      // The usePublic状态PageData hook handles data refetching
     }, 30000);
 
     return () => clearInterval(interval);
@@ -34,7 +34,7 @@ export const PublicStatusPage = () => {
     if (page) {
       const root = document.documentElement;
       
-      // Remove any existing theme classes
+      // 移除 any existing theme classes
       root.classList.remove('dark', 'light');
       
       // Apply the selected theme
@@ -53,17 +53,17 @@ export const PublicStatusPage = () => {
     };
   }, [page?.theme]);
 
- // console.log('PublicStatusPage state:', { loading, error, page: !!page, components: components.length, services: services.length });
+ // console.log('Public状态Page state:', { loading, error, page: !!page, components: components.length, services: services.length });
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center space-y-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-          <div className="space-y-2">
-            <p className="text-lg font-medium text-foreground">{t('loadingStatusPage', 'public')}</p>
-            <p className="text-sm text-muted-foreground">{t('fetchingRealtimeStatus', 'public')}</p>
-            <p className="text-xs text-muted-foreground">{t('slugLabel', 'public')}: {slug || 'No slug provided'}</p>
+      <div class名称="min-h-screen bg-background flex items-center justify-center">
+        <div class名称="text-center space-y-4">
+          <div class名称="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+          <div class名称="space-y-2">
+            <p class名称="text-lg font-medium text-foreground">{t('loading状态Page', 'public')}</p>
+            <p class名称="text-sm text-muted-foreground">{t('fetchingRealtime状态', 'public')}</p>
+            <p class名称="text-xs text-muted-foreground">{t('slugLabel', 'public')}: {slug || 'No slug provided'}</p>
           </div>
         </div>
       </div>
@@ -72,24 +72,24 @@ export const PublicStatusPage = () => {
 
   if (error || !page) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center space-y-6 max-w-md">
-          <div className="mx-auto h-16 w-16 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center">
-            <AlertCircle className="h-8 w-8 text-red-600 dark:text-red-400" />
+      <div class名称="min-h-screen bg-background flex items-center justify-center">
+        <div class名称="text-center space-y-6 max-w-md">
+          <div class名称="mx-auto h-16 w-16 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center">
+            <AlertCircle class名称="h-8 w-8 text-red-600 dark:text-red-400" />
           </div>
-          <div className="space-y-2">
-            <h1 className="text-2xl font-bold text-foreground">{t('statusPageNotFound', 'public')}</h1>
-            <p className="text-muted-foreground">
-              {error || t('notFoundDescription', 'public')}
+          <div class名称="space-y-2">
+            <h1 class名称="text-2xl font-bold text-foreground">{t('statusPageNotFound', 'public')}</h1>
+            <p class名称="text-muted-foreground">
+              {error || t('notFound描述', 'public')}
             </p>
-            <p className="text-xs text-muted-foreground">{t('slugLabel', 'public')}: {slug || 'No slug provided'}</p>
+            <p class名称="text-xs text-muted-foreground">{t('slugLabel', 'public')}: {slug || 'No slug provided'}</p>
           </div>
-          <div className="flex gap-3 justify-center">
+          <div class名称="flex gap-3 justify-center">
             <Button onClick={() => window.history.back()} variant="outline">
-              {t('goBack', 'public')}
+              {t('go返回', 'public')}
             </Button>
-            <Button onClick={() => window.location.reload()} className="gap-2">
-              <RefreshCw className="h-4 w-4" />
+            <Button onClick={() => window.location.reload()} class名称="gap-2">
+              <RefreshCw class名称="h-4 w-4" />
               {t('retry', 'public')}
             </Button>
           </div>
@@ -99,17 +99,17 @@ export const PublicStatusPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div class名称="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <StatusPageHeader page={page} />
+      <状态PageHeader page={page} />
 
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-4 py-8">
-        {/* Current Status */}
-        <CurrentStatusSection page={page} components={components} services={services} />
+      <main class名称="max-w-4xl mx-auto px-4 py-8">
+        {/* Current 状态 */}
+        <Current状态Section page={page} components={components} services={services} />
 
-        {/* Components Status */}
-        <ComponentsStatusSection 
+        {/* Components 状态 */}
+        <Components状态Section 
           components={components} 
           services={services} 
           uptimeData={uptimeData} 
@@ -119,7 +119,7 @@ export const PublicStatusPage = () => {
         <OverallUptimeSection uptimeData={uptimeData} />
 
         {/* Footer */}
-        <PublicStatusPageFooter page={page} />
+        <Public状态PageFooter page={page} />
       </main>
 
       {/* Custom CSS */}

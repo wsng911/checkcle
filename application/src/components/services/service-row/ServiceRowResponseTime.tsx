@@ -11,14 +11,14 @@ export const ServiceRowResponseTime = ({ responseTime }: ServiceRowResponseTimeP
   const isResponseTimeHigh = responseTime >= 1000;
 
   return (
-    <div className="font-mono text-base flex items-center gap-1.5">
+    <div class名称="font-mono text-base flex items-center gap-1.5">
       {responseTime > 0 ? (
         <>
-          <span className={isResponseTimeHigh ? "text-amber-500 font-semibold" : ""}>
+          <span class名称={isResponseTimeHigh ? "text-amber-500 font-semibold" : ""}>
             {responseTime}ms
           </span>
           {isResponseTimeHigh && (
-            <AlertTriangle className="h-4 w-4 text-amber-500" />
+            <AlertTriangle class名称="h-4 w-4 text-amber-500" />
           )}
         </>
       ) : 'N/A'}

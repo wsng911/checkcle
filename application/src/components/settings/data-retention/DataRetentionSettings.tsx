@@ -1,25 +1,25 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, Card描述, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Alert, Alert描述 } from "@/components/ui/alert";
 import { Loader2, Database, Trash2, AlertTriangle, Globe, Server } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { authService } from "@/services/authService";
 import { dataRetentionService } from "@/services/dataRetentionService";
 
-interface RetentionSettings {
+interface Retention设置 {
   uptimeRetentionDays: number;
   serverRetentionDays: number;
 }
 
-const DataRetentionSettings = () => {
+const DataRetention设置 = () => {
   const { t } = useLanguage();
   const { toast } = useToast();
-  const [settings, setSettings] = useState<RetentionSettings>({
+  const [settings, set设置] = useState<Retention设置>({
     uptimeRetentionDays: 30,
     serverRetentionDays: 30
   });
@@ -36,16 +36,16 @@ const DataRetentionSettings = () => {
 
   useEffect(() => {
     if (isSuperAdmin) {
-      loadSettings();
+      load设置();
     }
   }, [isSuperAdmin]);
 
-  const loadSettings = async () => {
+  const load设置 = async () => {
     try {
       setIsLoading(true);
-      const result = await dataRetentionService.getRetentionSettings();
+      const result = await dataRetentionService.getRetention设置();
       if (result) {
-        setSettings({
+        set设置({
           uptimeRetentionDays: result.uptimeRetentionDays || 30,
           serverRetentionDays: result.serverRetentionDays || 30
         });
@@ -62,12 +62,12 @@ const DataRetentionSettings = () => {
     }
   };
 
-  const handleSave = async () => {
+  const handle保存 = async () => {
     try {
       setIsSaving(true);
-      await dataRetentionService.updateRetentionSettings(settings);
+      await dataRetentionService.updateRetention设置(settings);
       toast({
-        title: "Settings saved",
+        title: "设置 saved",
         description: "Data retention settings have been updated",
       });
     } catch (error) {
@@ -88,11 +88,11 @@ const DataRetentionSettings = () => {
       
       toast({
         title: "Uptime cleanup completed",
-        description: `Deleted ${result.deletedRecords} old uptime records`,
+        description: `删除d ${result.deletedRecords} old uptime records`,
       });
       
       // Reload settings to get updated last cleanup time
-      await loadSettings();
+      await load设置();
     } catch (error) {
       toast({
         title: "Error",
@@ -111,11 +111,11 @@ const DataRetentionSettings = () => {
       
       toast({
         title: "Server cleanup completed",
-        description: `Deleted ${result.deletedRecords} old server records`,
+        description: `删除d ${result.deletedRecords} old server records`,
       });
       
       // Reload settings to get updated last cleanup time
-      await loadSettings();
+      await load设置();
     } catch (error) {
       toast({
         title: "Error",
@@ -134,11 +134,11 @@ const DataRetentionSettings = () => {
       
       toast({
         title: "Database cleanup completed",
-        description: `Deleted ${result.deletedRecords} old records`,
+        description: `删除d ${result.deletedRecords} old records`,
       });
       
       // Reload settings to get updated last cleanup time
-      await loadSettings();
+      await load设置();
     } catch (error) {
       toast({
         title: "Error",
@@ -153,20 +153,20 @@ const DataRetentionSettings = () => {
   // Show permission notice for admin users
   if (!isSuperAdmin) {
     return (
-      <div className="p-4">
+      <div class名称="p-4">
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Database className="h-5 w-5" />
+            <CardTitle class名称="flex items-center gap-2">
+              <Database class名称="h-5 w-5" />
               {t("dataRetention")}
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <Alert className="border-blue-200 bg-blue-50 dark:bg-blue-950 dark:border-blue-800">
-              <AlertTriangle className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-              <AlertDescription className="text-blue-700 dark:text-blue-300">
-                <span className="font-medium">{t("permissionNotice")}</span> {t("permissionNoticeDataRetention")}
-              </AlertDescription>
+          <CardContent class名称="space-y-4">
+            <Alert class名称="border-blue-200 bg-blue-50 dark:bg-blue-950 dark:border-blue-800">
+              <AlertTriangle class名称="h-5 w-5 text-blue-600 dark:text-blue-400" />
+              <Alert描述 class名称="text-blue-700 dark:text-blue-300">
+                <span class名称="font-medium">{t("permissionNotice")}</span> {t("permissionNoticeDataRetention")}
+              </Alert描述>
             </Alert>
           </CardContent>
         </Card>
@@ -176,27 +176,27 @@ const DataRetentionSettings = () => {
 
   if (isLoading) {
     return (
-      <div className="p-4 flex items-center justify-center">
-        <Loader2 className="h-6 w-6 animate-spin mr-2" />
-        {t("loadingRetentionSettings")}
+      <div class名称="p-4 flex items-center justify-center">
+        <Loader2 class名称="h-6 w-6 animate-spin mr-2" />
+        {t("loadingRetention设置")}
       </div>
     );
   }
 
   return (
-    <div className="p-4 space-y-6">
+    <div class名称="p-4 space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Database className="h-5 w-5" />
+          <CardTitle class名称="flex items-center gap-2">
+            <Database class名称="h-5 w-5" />
             {t("dataRetention")}
           </CardTitle>
-          <CardDescription>
-            {t("dataRetentionDescription")}
-          </CardDescription>
+          <Card描述>
+            {t("dataRetention描述")}
+          </Card描述>
         </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="space-y-4">
+        <CardContent class名称="space-y-6">
+          <div class名称="space-y-4">
             <div>
               <Label htmlFor="uptimeRetention">{t("uptimeRetentionLabel")}</Label>
               <Input
@@ -210,14 +210,14 @@ const DataRetentionSettings = () => {
                   if (value === '' || isNaN(Number(value))) {
                     return;
                   }
-                  setSettings(prev => ({
+                  set设置(prev => ({
                     ...prev,
                     uptimeRetentionDays: Number(value)
                   }));
                 }}
-                className="mt-1"
+                class名称="mt-1"
               />
-              <p className="text-sm text-muted-foreground mt-1">
+              <p class名称="text-sm text-muted-foreground mt-1">
                 {t("uptimeRetentionHelp")}
               </p>
             </div>
@@ -235,14 +235,14 @@ const DataRetentionSettings = () => {
                   if (value === '' || isNaN(Number(value))) {
                     return;
                   }
-                  setSettings(prev => ({
+                  set设置(prev => ({
                     ...prev,
                     serverRetentionDays: Number(value)
                   }));
                 }}
-                className="mt-1"
+                class名称="mt-1"
               />
-              <p className="text-sm text-muted-foreground mt-1">
+              <p class名称="text-sm text-muted-foreground mt-1">
                 {t("serverRetentionHelp")}
               </p>
             </div>
@@ -250,21 +250,21 @@ const DataRetentionSettings = () => {
 
           {lastCleanup && (
             <Alert>
-              <Database className="h-4 w-4" />
-              <AlertDescription>
+              <Database class名称="h-4 w-4" />
+              <Alert描述>
                 {t("lastCleanup")}: {new Date(lastCleanup).toLocaleString()}
-              </AlertDescription>
+              </Alert描述>
             </Alert>
           )}
         </CardContent>
-        <CardFooter className="flex justify-end">
+        <CardFooter class名称="flex justify-end">
           <Button
-            onClick={handleSave}
+            onClick={handle保存}
             disabled={isSaving}
-            className="flex items-center gap-2"
+            class名称="flex items-center gap-2"
           >
             {isSaving ? (
-              <Loader2 className="h-4 w-4 animate-spin" />
+              <Loader2 class名称="h-4 w-4 animate-spin" />
             ) : null}
             {t("save")}
           </Button>
@@ -274,4 +274,4 @@ const DataRetentionSettings = () => {
   );
 };
 
-export default DataRetentionSettings;
+export default DataRetention设置;

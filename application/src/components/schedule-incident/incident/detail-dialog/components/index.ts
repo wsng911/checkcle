@@ -1,4 +1,4 @@
 
 export * from './PrintButton';
 export * from './DownloadPdfButton';
-export * from './CloseButton';
+export * from './关闭Button';

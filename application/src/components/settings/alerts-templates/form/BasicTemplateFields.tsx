@@ -11,13 +11,13 @@ interface BasicTemplateFieldsProps {
 
 export const BasicTemplateFields: React.FC<BasicTemplateFieldsProps> = ({ control }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class名称="grid grid-cols-1 md:grid-cols-2 gap-4">
       <FormField
         control={control}
         name="name"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Template Name</FormLabel>
+            <FormLabel>Template 名称</FormLabel>
             <FormControl>
               <Input 
                 placeholder="Enter template name" 

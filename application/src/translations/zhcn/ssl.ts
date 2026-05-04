@@ -12,7 +12,7 @@ export const sslTranslations: SSLTranslations = {
   detailedInfo: "关于",
   viewDetailedInformation: "查看详细信息",
 
-  // Status related
+  // 状态 related
   valid: "有效",
   expiringSoon: "即将过期",
   expired: "已过期",
@@ -25,7 +25,7 @@ export const sslTranslations: SSLTranslations = {
 
   // Form fields
   domain: "域",
-  domainName: "域名",
+  domain名称: "域名",
   domainCannotChange: "域名创建后不能更改",
   warningThreshold: "警告阈值",
   warningThresholdDays: "警告阈值（天）",
@@ -51,11 +51,11 @@ export const sslTranslations: SSLTranslations = {
   validityDays: "有效期天数",
   validityPeriod: "有效期",
   organization: "组织",
-  commonName: "通用名称",
+  common名称: "通用名称",
   serialNumber: "序列号",
   algorithm: "算法",
-  subjectAltNames: "主题备用名称",
-  subjectAlternativeNames: "主题备用名称",
+  subjectAlt名称s: "主题备用名称",
+  subjectAlternative名称s: "主题备用名称",
   resolvedIP: "解析 IP",
   issuedTo: "颁发给",
   days: "天",
@@ -85,21 +85,21 @@ export const sslTranslations: SSLTranslations = {
   certificateDetails: "证书详情",
   
   // Notifications and messages
-  sslCertificateAdded: "SSL 证书添加成功",
+  sslCertificate添加ed: "SSL 证书添加成功",
   sslCertificateUpdated: "SSL 证书更新成功",
-  sslCertificateDeleted: "SSL 证书删除成功",
+  sslCertificate删除d: "SSL 证书删除成功",
   sslCertificateRefreshed: "SSL 证书为 {domain} 刷新成功",
   allCertificatesRefreshed: "所有 {count} 证书刷新成功",
   someCertificatesFailed: "{success} 证书刷新成功，{failed} 失败",
-  failedToAddCertificate: "添加 SSL 证书失败",
+  failedTo添加Certificate: "添加 SSL 证书失败",
   failedToLoadCertificates: "加载 SSL 证书失败",
   failedToUpdateCertificate: "更新 SSL 证书失败",
-  failedToDeleteCertificate: "删除 SSL 证书失败",
+  failedTo删除Certificate: "删除 SSL 证书失败",
   failedToCheckCertificate: "检查 SSL 证书失败",
   noCertificatesToRefresh: "没有证书可刷新",
   startingRefreshAll: "开始刷新 {count} 证书",
   checkingSSLCertificate: "检查 SSL 证书...",
-  deleteConfirmation: "确定要删除 {domain} 的证书吗？",
+  delete确认ation: "确定要删除 {domain} 的证书吗？",
   deleteWarning: "此操作无法撤销。这将永久删除证书。",
   
   // Misc

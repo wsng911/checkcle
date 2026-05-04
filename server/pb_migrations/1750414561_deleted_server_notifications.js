@@ -2,7 +2,7 @@
 migrate((app) => {
 
   try {
-    const collection = app.findCollectionByNameOrId("pbc_3414192583");
+    const collection = app.findCollectionBy名称OrId("pbc_3414192583");
     return app.delete(collection);
   } catch (e) {
     console.warn("Skip delete (server_notifications):", e?.message);
@@ -144,7 +144,7 @@ migrate((app) => {
           "hidden": false,
           "id": "autodate2990389176",
           "name": "created",
-          "onCreate": true,
+          "on创建": true,
           "onUpdate": false,
           "presentable": false,
           "system": false,
@@ -154,7 +154,7 @@ migrate((app) => {
           "hidden": false,
           "id": "autodate3332085495",
           "name": "updated",
-          "onCreate": true,
+          "on创建": true,
           "onUpdate": true,
           "presentable": false,
           "system": false,

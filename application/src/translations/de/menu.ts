@@ -3,21 +3,21 @@ import { MenuTranslations } from '../types/menu';
 
 export const menuTranslations: MenuTranslations = {
   // Hauptmenü-Übersetzungen
-  uptimeMonitoring: "Betriebszeitüberwachung",
-  instanceMonitoring: "Instanzüberwachung",
+  uptime监控ing: "Betriebszeitüberwachung",
+  instance监控ing: "Instanzüberwachung",
   sslDomain: "SSL & Domain",
   scheduleIncident: "Zeitplan & Vorfall",
   operationalPage: "Betriebsstatus-Seite",
   reports: "Berichte",
-  regionalMonitoring: "Regional Monitoring",
+  regional监控ing: "Regional 监控ing",
   // Einstellungen-Panel
   settingPanel: "Einstellungsbereich",
-  generalSettings: "Allgemeine Einstellungen",
+  general设置: "Allgemeine Einstellungen",
   userManagement: "Benutzerverwaltung",
-  notificationSettings: "Benachrichtigungseinstellungen",
+  notification设置: "Benachrichtigungseinstellungen",
   alertsTemplates: "Alarmvorlagen",
   rolesManagement: "Rollenverwaltung",
   dataRetention: "Datenspeicherung",
-  backupSettings: "Backup-Einstellungen",
+  backup设置: "返回up-Einstellungen",
   aboutSystem: "Über das System",
 };

@@ -53,7 +53,7 @@ export const OverallUptimeSection = ({ uptimeData }: OverallUptimeSectionProps) 
     return incidents;
   };
 
-  const getBadgeClassName = (trend: string) => {
+  const getBadgeClass名称 = (trend: string) => {
     switch (trend) {
       case 'excellent':
         return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200';
@@ -79,7 +79,7 @@ export const OverallUptimeSection = ({ uptimeData }: OverallUptimeSectionProps) 
     }
   };
 
-  const getStatusMessage = (uptime: number) => {
+  const get状态Message = (uptime: number) => {
     if (uptime >= 99.9) {
       return "All systems are performing excellently with minimal downtime.";
     } else if (uptime >= 99.5) {
@@ -96,99 +96,99 @@ export const OverallUptimeSection = ({ uptimeData }: OverallUptimeSectionProps) 
   const incidentCount = getIncidentCount();
 
   return (
-    <Card className="mb-8 bg-card border-border">
+    <Card class名称="mb-8 bg-card border-border">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-card-foreground">
-          <BarChart3 className="h-5 w-5" />
+        <CardTitle class名称="flex items-center gap-2 text-card-foreground">
+          <BarChart3 class名称="h-5 w-5" />
           Performance Metrics (Last 90 Days)
         </CardTitle>
-        <p className="text-sm text-muted-foreground">
+        <p class名称="text-sm text-muted-foreground">
           Historical performance and reliability statistics
         </p>
       </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
-            <div className="flex items-center justify-between mb-2">
-              <div className="flex items-center gap-2">
-                <TrendingUp className="h-4 w-4 text-green-600 dark:text-green-400" />
-                <span className="text-sm font-medium text-green-700 dark:text-green-300">Overall Uptime</span>
+      <CardContent class名称="space-y-6">
+        <div class名称="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class名称="p-4 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
+            <div class名称="flex items-center justify-between mb-2">
+              <div class名称="flex items-center gap-2">
+                <TrendingUp class名称="h-4 w-4 text-green-600 dark:text-green-400" />
+                <span class名称="text-sm font-medium text-green-700 dark:text-green-300">Overall Uptime</span>
               </div>
-              <Badge className={getBadgeClassName(trend)}>
+              <Badge class名称={getBadgeClass名称(trend)}>
                 {getTrendText(trend)}
               </Badge>
             </div>
-            <div className="text-3xl font-bold text-green-600 dark:text-green-400">{overallUptime}%</div>
-            <div className="text-xs text-green-700 dark:text-green-300 mt-1">
+            <div class名称="text-3xl font-bold text-green-600 dark:text-green-400">{overallUptime}%</div>
+            <div class名称="text-xs text-green-700 dark:text-green-300 mt-1">
               Target: 99.9%
             </div>
           </div>
 
-          <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
-            <div className="flex items-center gap-2 mb-2">
-              <Calendar className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-              <span className="text-sm font-medium text-blue-700 dark:text-blue-300">Incidents</span>
+          <div class名称="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
+            <div class名称="flex items-center gap-2 mb-2">
+              <Calendar class名称="h-4 w-4 text-blue-600 dark:text-blue-400" />
+              <span class名称="text-sm font-medium text-blue-700 dark:text-blue-300">Incidents</span>
             </div>
-            <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">{incidentCount}</div>
-            <div className="text-xs text-blue-700 dark:text-blue-300 mt-1">
+            <div class名称="text-3xl font-bold text-blue-600 dark:text-blue-400">{incidentCount}</div>
+            <div class名称="text-xs text-blue-700 dark:text-blue-300 mt-1">
               Last 90 days
             </div>
           </div>
 
-          <div className="p-4 rounded-lg bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800">
-            <div className="flex items-center gap-2 mb-2">
-              <BarChart3 className="h-4 w-4 text-purple-600 dark:text-purple-400" />
-              <span className="text-sm font-medium text-purple-700 dark:text-purple-300">Avg Response</span>
+          <div class名称="p-4 rounded-lg bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800">
+            <div class名称="flex items-center gap-2 mb-2">
+              <BarChart3 class名称="h-4 w-4 text-purple-600 dark:text-purple-400" />
+              <span class名称="text-sm font-medium text-purple-700 dark:text-purple-300">Avg Response</span>
             </div>
-            <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">100ms</div>
-            <div className="text-xs text-purple-700 dark:text-purple-300 mt-1">
+            <div class名称="text-3xl font-bold text-purple-600 dark:text-purple-400">100ms</div>
+            <div class名称="text-xs text-purple-700 dark:text-purple-300 mt-1">
               Response time
             </div>
           </div>
         </div>
 
-        <div className="space-y-3">
-          <div className="flex items-center justify-between">
-            <h4 className="text-sm font-medium text-foreground">Uptime History</h4>
-            <div className="flex items-center gap-4 text-xs text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <div className="h-3 w-3 bg-green-500 rounded"></div>
+        <div class名称="space-y-3">
+          <div class名称="flex items-center justify-between">
+            <h4 class名称="text-sm font-medium text-foreground">Uptime History</h4>
+            <div class名称="flex items-center gap-4 text-xs text-muted-foreground">
+              <div class名称="flex items-center gap-2">
+                <div class名称="h-3 w-3 bg-green-500 rounded"></div>
                 <span>Operational</span>
               </div>
-              <div className="flex items-center gap-2">
-                <div className="h-3 w-3 bg-yellow-500 rounded"></div>
+              <div class名称="flex items-center gap-2">
+                <div class名称="h-3 w-3 bg-yellow-500 rounded"></div>
                 <span>Degraded</span>
               </div>
-              <div className="flex items-center gap-2">
-                <div className="h-3 w-3 bg-red-500 rounded"></div>
+              <div class名称="flex items-center gap-2">
+                <div class名称="h-3 w-3 bg-red-500 rounded"></div>
                 <span>Down</span>
               </div>
             </div>
           </div>
           
-          <div className="p-4 bg-background/50 rounded-lg border">
+          <div class名称="p-4 bg-background/50 rounded-lg border">
             {Object.keys(uptimeData).length > 0 ? (
               <UptimeHistoryRenderer serviceId={Object.keys(uptimeData)[0]} uptimeData={uptimeData} />
             ) : (
-              <div className="flex justify-center items-center h-12 text-muted-foreground">
-                <div className="flex gap-1">
+              <div class名称="flex justify-center items-center h-12 text-muted-foreground">
+                <div class名称="flex gap-1">
                   {Array.from({ length: 90 }, (_, i) => (
-                    <div key={i} className="h-8 w-1 bg-green-500 rounded-sm"></div>
+                    <div key={i} class名称="h-8 w-1 bg-green-500 rounded-sm"></div>
                   ))}
                 </div>
               </div>
             )}
           </div>
           
-          <div className="flex justify-between text-xs text-muted-foreground">
+          <div class名称="flex justify-between text-xs text-muted-foreground">
             <span>90 days ago</span>
             <span>Today</span>
           </div>
         </div>
 
-        <div className="p-4 bg-muted/50 rounded-lg border">
-          <div className="text-sm text-muted-foreground text-center">
-            {getStatusMessage(overallUptime)}
+        <div class名称="p-4 bg-muted/50 rounded-lg border">
+          <div class名称="text-sm text-muted-foreground text-center">
+            {get状态Message(overallUptime)}
           </div>
         </div>
       </CardContent>

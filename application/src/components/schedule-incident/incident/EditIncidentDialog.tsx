@@ -4,7 +4,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
+  Dialog描述,
   DialogHeader,
   DialogTitle,
   DialogFooter,
@@ -12,7 +12,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { useIncidentEditForm } from './hooks/useIncidentEditForm';
+import { useIncident编辑Form } from './hooks/useIncident编辑Form';
 import {
   IncidentBasicFields,
   IncidentAffectedFields,
@@ -21,14 +21,14 @@ import {
 } from './form';
 import { IncidentItem } from '@/services/incident/types';
 
-interface EditIncidentDialogProps {
+interface 编辑IncidentDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   incident: IncidentItem;
   onIncidentUpdated: () => void;
 }
 
-export const EditIncidentDialog: React.FC<EditIncidentDialogProps> = ({
+export const 编辑IncidentDialog: React.FC<编辑IncidentDialogProps> = ({
   open,
   onOpenChange,
   incident,
@@ -36,61 +36,61 @@ export const EditIncidentDialog: React.FC<EditIncidentDialogProps> = ({
 }) => {
   const { t } = useLanguage();
   
-  const handleClose = () => {
+  const handle关闭 = () => {
     onOpenChange(false);
   };
   
-  const { form, onSubmit } = useIncidentEditForm(
+  const { form, on提交 } = useIncident编辑Form(
     incident,
     onIncidentUpdated,
-    handleClose
+    handle关闭
   );
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[700px] max-h-[90vh]">
-        <ScrollArea className="h-[80vh]">
-          <div className="px-1 py-2">
-            <DialogHeader className="mb-4">
-              <DialogTitle className="text-xl">{t('editIncident')}</DialogTitle>
-              <DialogDescription>
+      <DialogContent class名称="sm:max-w-[700px] max-h-[90vh]">
+        <ScrollArea class名称="h-[80vh]">
+          <div class名称="px-1 py-2">
+            <DialogHeader class名称="mb-4">
+              <DialogTitle class名称="text-xl">{t('editIncident')}</DialogTitle>
+              <Dialog描述>
                 {t('editIncidentDesc')}
-              </DialogDescription>
+              </Dialog描述>
             </DialogHeader>
             
             <Form {...form}>
-              <form onSubmit={onSubmit} className="space-y-6">
-                <div className="space-y-8 pb-4">
-                  <div className="space-y-4">
-                    <h3 className="text-sm font-medium border-b pb-2">{t('basicInfo')}</h3>
+              <form on提交={on提交} class名称="space-y-6">
+                <div class名称="space-y-8 pb-4">
+                  <div class名称="space-y-4">
+                    <h3 class名称="text-sm font-medium border-b pb-2">{t('basicInfo')}</h3>
                     <IncidentBasicFields />
                   </div>
                   
-                  <div className="space-y-4">
-                    <h3 className="text-sm font-medium border-b pb-2">{t('affectedSystems')}</h3>
+                  <div class名称="space-y-4">
+                    <h3 class名称="text-sm font-medium border-b pb-2">{t('affectedSystems')}</h3>
                     <IncidentAffectedFields />
                   </div>
                   
-                  <div className="space-y-4">
-                    <h3 className="text-sm font-medium border-b pb-2">{t('configuration')}</h3>
+                  <div class名称="space-y-4">
+                    <h3 class名称="text-sm font-medium border-b pb-2">{t('configuration')}</h3>
                     <IncidentConfigFields />
                   </div>
                   
-                  <div className="space-y-4">
-                    <h3 className="text-sm font-medium border-b pb-2">{t('resolutionDetails')}</h3>
+                  <div class名称="space-y-4">
+                    <h3 class名称="text-sm font-medium border-b pb-2">{t('resolutionDetails')}</h3>
                     <IncidentDetailsFields />
                   </div>
                   
-                  <DialogFooter className="pt-4 mt-4 border-t">
+                  <DialogFooter class名称="pt-4 mt-4 border-t">
                     <Button
                       type="button"
                       variant="outline"
-                      onClick={handleClose}
+                      onClick={handle关闭}
                     >
                       {t('cancel')}
                     </Button>
                     <Button type="submit">
-                      {form.formState.isSubmitting ? t('updating') : t('update')}
+                      {form.formState.is提交ting ? t('updating') : t('update')}
                     </Button>
                   </DialogFooter>
                 </div>

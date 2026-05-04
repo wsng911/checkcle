@@ -1,69 +1,69 @@
 
 import { useEffect } from "react";
 import { Service } from "@/types/service.types";
-import { ServicesTableView } from "./ServicesTableView";
-import { ServicesPagination } from "./ServicesPagination";
-import { ServiceDeleteDialog } from "./ServiceDeleteDialog";
+import { 服务TableView } from "./服务TableView";
+import { 服务Pagination } from "./服务Pagination";
+import { Service删除Dialog } from "./Service删除Dialog";
 import { ServiceHistoryDialog } from "./ServiceHistoryDialog";
-import { ServiceEditDialog } from "./ServiceEditDialog";
-import { useServiceActions, useDialogState } from "./hooks";
-import { useServicesPagination } from "@/hooks/useServicesPagination";
+import { Service编辑Dialog } from "./Service编辑Dialog";
+import { useService操作, useDialogState } from "./hooks";
+import { use服务Pagination } from "@/hooks/use服务Pagination";
 
-interface ServicesTableContainerProps {
+interface 服务TableContainerProps {
   services: Service[];
 }
 
-export const ServicesTableContainer = ({ services }: ServicesTableContainerProps) => {
+export const 服务TableContainer = ({ services }: 服务TableContainerProps) => {
   const {
-    services: localServices,
+    services: local服务,
     selectedService,
     isDeleting,
     setSelectedService,
-    updateServices,
+    update服务,
     handleViewDetail,
     handlePauseResume,
-    handleEdit,
-    handleDelete,
-    confirmDelete,
+    handle编辑,
+    handle删除,
+    confirm删除,
     handleMuteAlerts
-  } = useServiceActions(services);
+  } = useService操作(services);
 
   const {
     isHistoryDialogOpen,
-    isDeleteDialogOpen,
-    isEditDialogOpen,
+    is删除DialogOpen,
+    is编辑DialogOpen,
     setIsHistoryDialogOpen,
-    setIsDeleteDialogOpen,
-    handleEditDialogChange,
-    handleDeleteDialogChange
+    setIs删除DialogOpen,
+    handle编辑DialogChange,
+    handle删除DialogChange
   } = useDialogState();
 
   const {
-    paginatedServices,
+    paginated服务,
     currentPage,
     totalPages,
     pageSize,
     totalItems,
     handlePageChange,
     handlePageSizeChange,
-  } = useServicesPagination({ services: localServices });
+  } = use服务Pagination({ services: local服务 });
 
   // Update local services state when props change
   useEffect(() => {
-    updateServices(services);
+    update服务(services);
   }, [services]);
 
   // Handler functions that combine local state management
-  const onEdit = (service: Service) => {
-    const selectedService = handleEdit(service);
+  const on编辑 = (service: Service) => {
+    const selectedService = handle编辑(service);
     setTimeout(() => {
-      handleEditDialogChange(true);
+      handle编辑DialogChange(true);
     }, 0);
   };
   
-  const onDelete = (service: Service) => {
-    handleDelete(service);
-    setIsDeleteDialogOpen(true);
+  const on删除 = (service: Service) => {
+    handle删除(service);
+    setIs删除DialogOpen(true);
   };
   
   const openHistoryDialog = (service: Service) => {
@@ -72,17 +72,17 @@ export const ServicesTableContainer = ({ services }: ServicesTableContainerProps
   };
 
   return (
-    <div className="flex-1 flex flex-col h-full">
-      <ServicesTableView 
-        services={paginatedServices}
+    <div class名称="flex-1 flex flex-col h-full">
+      <服务TableView 
+        services={paginated服务}
         onViewDetail={handleViewDetail}
         onPauseResume={handlePauseResume}
-        onEdit={onEdit}
-        onDelete={onDelete}
+        on编辑={on编辑}
+        on删除={on删除}
         onMuteAlerts={handleMuteAlerts}
       />
 
-      <ServicesPagination
+      <服务Pagination
         currentPage={currentPage}
         totalPages={totalPages}
         pageSize={pageSize}
@@ -97,17 +97,17 @@ export const ServicesTableContainer = ({ services }: ServicesTableContainerProps
         selectedService={selectedService}
       />
 
-      <ServiceDeleteDialog 
-        isOpen={isDeleteDialogOpen}
-        onOpenChange={(open) => handleDeleteDialogChange(open, isDeleting)}
+      <Service删除Dialog 
+        isOpen={is删除DialogOpen}
+        onOpenChange={(open) => handle删除DialogChange(open, isDeleting)}
         selectedService={selectedService}
-        onConfirmDelete={confirmDelete}
+        on确认删除={confirm删除}
         isDeleting={isDeleting}
       />
 
-      <ServiceEditDialog
-        open={isEditDialogOpen}
-        onOpenChange={handleEditDialogChange}
+      <Service编辑Dialog
+        open={is编辑DialogOpen}
+        onOpenChange={handle编辑DialogChange}
         service={selectedService}
       />
     </div>

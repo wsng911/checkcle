@@ -14,7 +14,7 @@ export interface OperationTranslations {
   publicPages: string;
   operational: string;
   deleteOperationalPage: string;
-  deleteOperationalPageConfirm: string;
+  deleteOperationalPage确认: string;
   cancel: string;
   delete: string;
   deleting: string;
@@ -23,18 +23,18 @@ export interface OperationTranslations {
   editOperationalPage: string;
   updateYourOperationalPage: string;
   title: string;
-  myServiceStatusPlaceholder: string;
+  myService状态Placeholder: string;
   slug: string;
-  myServiceStatusSlugPlaceholder: string;
+  myService状态SlugPlaceholder: string;
   description: string;
-  operationalPageDescriptionPlaceholder: string;
+  operationalPage描述Placeholder: string;
   theme: string;
   selectTheme: string;
   themeDefault: string;
   themeDark: string;
   themeLight: string;
   status: string;
-  selectStatus: string;
+  select状态: string;
   statusOperational: string;
   statusDegraded: string;
   statusMaintenance: string;
@@ -43,20 +43,20 @@ export interface OperationTranslations {
   makePagePublic: string;
   customDomainOptional: string;
   customDomainPlaceholder: string;
-  customDomainDescription: string;
+  customDomain描述: string;
   cancelUpdate: string;
   updating: string;
   updatePage: string;
 
   // ComponentsSelector.tsx
   statusPageComponents: string;
-  addMonitoringComponentsDesc: string;
+  add监控ingComponentsDesc: string;
   selectedComponents: string;
   service: string;
   server: string;
   addComponent: string;
-  componentName: string;
-  componentNamePlaceholder: string; 
+  component名称: string;
+  component名称Placeholder: string; 
   displayOrder: string;
   descriptionOptional: string;
   descriptionPlaceholder: string;
@@ -74,12 +74,12 @@ export interface OperationTranslations {
   view: string;
   edit: string;
 
-  // CreateOperationalPageDialog.tsx
+  // 创建OperationalPageDialog.tsx
   createOperationalPage: string;
   createOperationalPageDesc: string;
   createPage: string;
   creating: string;
-  initialStatus: string;
+  initial状态: string;
 
 
 }

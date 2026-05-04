@@ -1,10 +1,10 @@
 
-export interface SettingsApiRequest {
+export interface 设置ApiRequest {
   action: string;
   data?: any;
 }
 
-export interface SettingsApiResponse {
+export interface 设置ApiResponse {
   status: number;
   json: {
     success: boolean;
@@ -13,7 +13,7 @@ export interface SettingsApiResponse {
   };
 }
 
-export interface SmtpSettings {
+export interface Smtp设置 {
   enabled?: boolean;
   host?: string;
   port?: number;
@@ -21,5 +21,5 @@ export interface SmtpSettings {
   password?: string;
   authMethod?: string;
   tls?: boolean;
-  localName?: string;
+  local名称?: string;
 }

@@ -51,18 +51,18 @@ export const normalizeMaintenanceItem = (item: any): MaintenanceItem => {
 };
 
 // Utility function to convert maintenance status to display format
-export const formatMaintenanceStatus = (status: string): string => {
+export const formatMaintenance状态 = (status: string): string => {
   if (!status) return 'Unknown';
   
   // Convert to lowercase and replace underscores with spaces
-  const formattedStatus = status.toLowerCase().replace('_', ' ');
+  const formatted状态 = status.toLowerCase().replace('_', ' ');
   
   // Capitalize first letter
-  return formattedStatus.charAt(0).toUpperCase() + formattedStatus.slice(1);
+  return formatted状态.charAt(0).toUpperCase() + formatted状态.slice(1);
 };
 
 // Get appropriate color class based on status
-export const getStatusColorClass = (status: string): string => {
+export const get状态ColorClass = (status: string): string => {
   const statusLower = status?.toLowerCase() || '';
   
   switch (statusLower) {

@@ -2,7 +2,7 @@ import React from "react";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
+  Dialog描述,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -25,19 +25,19 @@ const ImpersonationTokenDialog = ({
 }: ImpersonationTokenDialogProps) => {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[650px] w-[95vw]">
+      <DialogContent class名称="sm:max-w-[650px] w-[95vw]">
         <DialogHeader>
           <DialogTitle>Impersonation token</DialogTitle>
-          <DialogDescription>
+          <Dialog描述>
             {impersonatedUserLabel
               ? `Use this token to impersonate ${impersonatedUserLabel}. Keep it secret.`
               : "Use this token to impersonate the selected user. Keep it secret."}
-          </DialogDescription>
+          </Dialog描述>
         </DialogHeader>
 
-        <div className="space-y-2">
-          <div className="rounded-md border bg-muted p-3">
-            <pre className="text-sm overflow-x-auto whitespace-pre-wrap break-all">
+        <div class名称="space-y-2">
+          <div class名称="rounded-md border bg-muted p-3">
+            <pre class名称="text-sm overflow-x-auto whitespace-pre-wrap break-all">
               <code>{token ?? ""}</code>
             </pre>
           </div>
@@ -45,7 +45,7 @@ const ImpersonationTokenDialog = ({
 
         <DialogFooter>
           <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
-            Close
+            关闭
           </Button>
           <Button
             type="button"

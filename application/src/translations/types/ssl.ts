@@ -10,7 +10,7 @@ export interface SSLTranslations {
   detailedInfo: string;
   viewDetailedInformation: string;
 
-  // Status related
+  // 状态 related
   valid: string;
   expiringSoon: string;
   expired: string;
@@ -23,7 +23,7 @@ export interface SSLTranslations {
 
   // Form fields
   domain: string;
-  domainName: string;
+  domain名称: string;
   domainCannotChange: string;
   warningThreshold: string;
   warningThresholdDays: string;
@@ -49,11 +49,11 @@ export interface SSLTranslations {
   validityDays: string;
   validityPeriod: string;
   organization: string;
-  commonName: string;
+  common名称: string;
   serialNumber: string;
   algorithm: string;
-  subjectAltNames: string;
-  subjectAlternativeNames: string;
+  subjectAlt名称s: string;
+  subjectAlternative名称s: string;
   resolvedIP: string;
   issuedTo: string;
   days: string;
@@ -83,21 +83,21 @@ export interface SSLTranslations {
   certificateDetails: string;
   
   // Notifications and messages
-  sslCertificateAdded: string;
+  sslCertificate添加ed: string;
   sslCertificateUpdated: string;
-  sslCertificateDeleted: string;
+  sslCertificate删除d: string;
   sslCertificateRefreshed: string;
   allCertificatesRefreshed: string;
   someCertificatesFailed: string;
-  failedToAddCertificate: string;
+  failedTo添加Certificate: string;
   failedToLoadCertificates: string;
   failedToUpdateCertificate: string;
-  failedToDeleteCertificate: string;
+  failedTo删除Certificate: string;
   failedToCheckCertificate: string;
   noCertificatesToRefresh: string;
   startingRefreshAll: string;
   checkingSSLCertificate: string;
-  deleteConfirmation: string;
+  delete确认ation: string;
   deleteWarning: string;
   
   // Misc
