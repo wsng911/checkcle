@@ -28,3 +28,4 @@ server/pb_data/
 Dockerfile
 application/src/lib/pocketbase-prod.ts
 .github/
+.github/
